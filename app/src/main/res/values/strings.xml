@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CRMAndroid</string>
+
+    <string name="write_journal">写日志</string>
+    <string name="send_approval">发审批</string>
+    <string name="send_notice">发公告</string>
+    <string name="write_customer">录入客户</string>
+    <string name="order_metting">预约会议室</string>
+    <string name="product_advice">产品建议</string>
+
+</resources>

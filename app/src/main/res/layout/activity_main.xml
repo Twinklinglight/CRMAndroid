@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wtcrmandroid.activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#c4c8cc" />
+
+    <RadioGroup
+        android:id="@+id/rg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/HomeRadioButtonTheme"
+            android:checked="true"
+            android:drawableTop="@drawable/selector_main_tap_home"
+            android:text="工作台" />
+
+        <RadioButton
+            android:id="@+id/rb_found"
+            style="@style/HomeRadioButtonTheme"
+            android:drawableTop="@drawable/selector_main_tap_found"
+            android:text="发现" />
+
+        <RadioButton
+            android:id="@+id/rb_address_book"
+            style="@style/HomeRadioButtonTheme"
+            android:drawableTop="@drawable/selector_main_tap_address_book"
+            android:text="通讯录" />
+
+        <RadioButton
+            android:id="@+id/rb_mine"
+            style="@style/HomeRadioButtonTheme"
+            android:drawableTop="@drawable/selector_main_tap_my"
+            android:text="我的" />
+    </RadioGroup>
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--控制台字体颜色-->
+    <color name="colorTitle">#ffffff</color>
+    <color name="colorIconText">#2b2f33</color>
+    <color name="colorContext">#939699</color>
+
+</resources>
