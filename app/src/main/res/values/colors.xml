@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorBackground">#F5F6F7</color>
 
     <!--控制台字体颜色-->
     <color name="colorTitle">#ffffff</color>

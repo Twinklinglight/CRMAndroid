@@ -8,4 +8,18 @@
     <string name="order_metting">预约会议室</string>
     <string name="product_advice">产品建议</string>
 
+    <string name="write_daysum">写日总结</string>
+    <string name="write_dayplan">写日计划</string>
+    <string name="write_weeksum">写周总结</string>
+    <string name="write_weekplan">写周计划</string>
+    
+    <string name="work_sort">工作分类</string>
+    <string name="work_content">工作事项或内容</string>
+    <string name="execute_person">执行人员</string>
+    <string name="work_persent">此工作所占比重</string>
+    <string name="remark">备注</string>
+
+    <string name="add_work">添加工作</string>
+
+
 </resources>
