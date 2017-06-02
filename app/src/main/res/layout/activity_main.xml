@@ -1,55 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.wtcrmandroid.activity.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/fl_main"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <View
+        <FrameLayout
+            android:id="@+id/fl_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c4c8cc" />
+
+        <RadioGroup
+            android:id="@+id/rg_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/HomeRadioButtonTheme"
+                android:checked="true"
+                android:drawableTop="@drawable/selector_main_tap_home"
+                android:text="工作台" />
+
+            <RadioButton
+                android:id="@+id/rb_found"
+                style="@style/HomeRadioButtonTheme"
+                android:drawableTop="@drawable/selector_main_tap_found"
+                android:text="发现" />
+
+            <RadioButton
+                android:id="@+id/rb_address_book"
+                style="@style/HomeRadioButtonTheme"
+                android:drawableTop="@drawable/selector_main_tap_address_book"
+                android:text="通讯录" />
+
+            <RadioButton
+                android:id="@+id/rb_mine"
+                style="@style/HomeRadioButtonTheme"
+                android:drawableTop="@drawable/selector_main_tap_my"
+                android:text="我的" />
+        </RadioGroup>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/title_window"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#c4c8cc" />
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="45dp">
 
-    <RadioGroup
-        android:id="@+id/rg_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:background="#ffffff"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:weightSum="4">
 
-        <RadioButton
-            android:id="@+id/rb_home"
-            style="@style/HomeRadioButtonTheme"
-            android:checked="true"
-            android:drawableTop="@drawable/selector_main_tap_home"
-            android:text="工作台" />
+            <LinearLayout
+                android:id="@+id/ll_control_fragment_write_journal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/rb_found"
-            style="@style/HomeRadioButtonTheme"
-            android:drawableTop="@drawable/selector_main_tap_found"
-            android:text="发现" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/home_write_journl"/>
 
-        <RadioButton
-            android:id="@+id/rb_address_book"
-            style="@style/HomeRadioButtonTheme"
-            android:drawableTop="@drawable/selector_main_tap_address_book"
-            android:text="通讯录" />
+                <TextView
+                    style="@style/TopPlusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/write_journal"/>
 
-        <RadioButton
-            android:id="@+id/rb_mine"
-            style="@style/HomeRadioButtonTheme"
-            android:drawableTop="@drawable/selector_main_tap_my"
-            android:text="我的" />
-    </RadioGroup>
+            </LinearLayout>
 
-</LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_control_fragment_send_approval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/home_send_approval"/>
+
+                <TextView
+                    style="@style/TopPlusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/send_approval"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_control_fragment_send_notice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/home_send_notice"/>
+
+                <TextView
+                    style="@style/TopPlusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/send_notice"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_control_fragment_write_customer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/home_write_customer"/>
+
+                <TextView
+                    style="@style/TopPlusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/write_customer"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:id="@+id/ll_control_fragment_order_metting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/home_order_meeting"/>
+
+                <TextView
+                    style="@style/TopPlusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_metting"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_control_fragment_product_advice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/home_product_advice"/>
+
+                <TextView
+                    style="@style/TopPlusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_advice"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cancle_onlick"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:orientation="vertical"/>
+
+    </LinearLayout>
+</RelativeLayout>

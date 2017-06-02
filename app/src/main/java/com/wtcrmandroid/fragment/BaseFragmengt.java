@@ -26,6 +26,7 @@ public abstract class BaseFragmengt<T extends BaseData> extends Fragment impleme
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate( Rlayout(), container, false);
         unbinder = ButterKnife.bind(this, view);
+        init();
         return view;
     }
 

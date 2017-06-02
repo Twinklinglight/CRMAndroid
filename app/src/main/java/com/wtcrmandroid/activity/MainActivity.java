@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity;
 
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.wtcrmandroid.R;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by 1363655717 on 2017-05-31.
@@ -25,6 +27,9 @@ public class MainActivity extends BaseActivity<BaseData> {
     @BindView(R.id.rg_bottom)
     RadioGroup rgBottom;
     public List<BaseFragmengt> fragments = new ArrayList<BaseFragmengt>();
+    @BindView(R.id.title_window)
+    LinearLayout titleWindow;
+
     @Override
     public void returnData(int key, BaseData data) {
 
@@ -42,5 +47,14 @@ public class MainActivity extends BaseActivity<BaseData> {
         fragments.add(new AddressBookFragment());
         fragments.add(new MyFragment());
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.fl_main, rgBottom);
+    }
+
+    public void setTitleWindow(int i) {
+        titleWindow.setVisibility(i);
+    }
+
+    @OnClick(R.id.cancle_onlick)
+    public void onClick() {
+//        titleWindow.setVisibility(View.GONE);
     }
 }
