@@ -18,6 +18,7 @@
     <string name="execute_person">执行人员</string>
     <string name="work_persent">此工作所占比重</string>
     <string name="remark">备注</string>
+    <string name="complete_condition">完成情况</string>
 
     <string name="add_work">添加工作</string>
 

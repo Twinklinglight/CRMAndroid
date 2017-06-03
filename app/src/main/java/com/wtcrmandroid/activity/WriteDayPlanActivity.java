@@ -1,20 +1,28 @@
 package com.wtcrmandroid.activity;
 
-import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.adapter.WriteDayPlanAdapter;
 import com.wtcrmandroid.http.data.BaseData;
-import com.wtcrmandroid.view.WorkSortDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class WriteDayPlanActivity extends BaseActivity {
 
-    @BindView(R.id.rl_dayplan_sort)
-    RelativeLayout mRlDayplanSort;
+
+    @BindView(R.id.lv_write_dayplan)
+    ListView mLvWriteDayplan;
+    @BindView(R.id.rl_dayplan_addjob)
+    RelativeLayout mRlDayPlanAddjob;
+
+    private WriteDayPlanAdapter mDayPlanAdapter;
+    private List<String> mList;
 
     @Override
     protected int layout() {
@@ -24,6 +32,11 @@ public class WriteDayPlanActivity extends BaseActivity {
     @Override
     protected void initview() {
 
+        mList = new ArrayList<>();
+        mList.add("");
+        mDayPlanAdapter = new WriteDayPlanAdapter(mList);
+        mLvWriteDayplan.setAdapter(mDayPlanAdapter);
+        mDayPlanAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -31,17 +44,10 @@ public class WriteDayPlanActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
-    @OnClick(R.id.rl_dayplan_sort)
+    @OnClick(R.id.rl_dayplan_addjob)
     public void onViewClicked() {
-
-        WorkSortDialog workSortDialog = new WorkSortDialog(this);
-        workSortDialog.show();
+        mList.add("");
+        mDayPlanAdapter.notifyDataSetChanged();
     }
 }
