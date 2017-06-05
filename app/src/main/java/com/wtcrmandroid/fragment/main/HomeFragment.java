@@ -1,16 +1,19 @@
 package com.wtcrmandroid.fragment.main;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.JournalManagerActivity;
 import com.wtcrmandroid.activity.MainActivity;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static android.view.View.GONE;
 
@@ -38,17 +41,17 @@ public class HomeFragment extends BaseFragmengt {
         titlebar.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity activity =(MainActivity) getActivity();
-                if(window){
+                MainActivity activity = (MainActivity) getActivity();
+                if (window) {
 
                     RotateAnimation operatingAnim = (RotateAnimation) AnimationUtils.loadAnimation(
                             getActivity(), R.anim.rotating_45);
                     LinearInterpolator lin = new LinearInterpolator();
                     operatingAnim.setInterpolator(lin);
                     titlebar.getRightImage().startAnimation(operatingAnim);
-                    window=false;
+                    window = false;
                     activity.setTitleWindow(GONE);
-                }else {
+                } else {
 
 
                     RotateAnimation operatingAnim = (RotateAnimation) AnimationUtils.loadAnimation(
@@ -57,11 +60,16 @@ public class HomeFragment extends BaseFragmengt {
                     operatingAnim.setInterpolator(lin);
                     titlebar.getRightImage().startAnimation(operatingAnim);
                     activity.setTitleWindow(View.VISIBLE);
-                    window=true;
+                    window = true;
                 }
             }
         });
 
 
+    }
+
+    @OnClick(R.id.tv_log_management)
+    public void onClick() {
+        startActivity(new Intent(getActivity(), JournalManagerActivity.class));
     }
 }
