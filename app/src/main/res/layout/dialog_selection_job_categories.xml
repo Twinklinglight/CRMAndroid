@@ -14,6 +14,7 @@
         android:textColor="#2B2F33"/>
 
     <RadioGroup
+        android:id="@+id/rgp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp">
