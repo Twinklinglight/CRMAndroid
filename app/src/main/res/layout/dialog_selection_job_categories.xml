@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/shape_rounded_rectangle_white_bg"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="工作分类"
+        android:textSize="18dp"
+        android:textColor="#2B2F33"/>
+
+    <RadioGroup
+        android:id="@+id/rgp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/rb_A"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:text="A类"
+            android:textSize="16dp"
+            android:textColor="#35393D"/>
+
+        <RadioButton
+            android:id="@+id/rb_B"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:text="B类"
+            android:textSize="16dp"
+            android:textColor="#35393D"/>
+
+        <RadioButton
+            android:id="@+id/rb_C"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:text="C类"
+            android:textSize="16dp"
+            android:textColor="#35393D"/>
+    </RadioGroup>
+
+</LinearLayout>

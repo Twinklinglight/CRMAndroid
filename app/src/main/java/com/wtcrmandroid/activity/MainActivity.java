@@ -5,6 +5,7 @@ import android.widget.RadioGroup;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
+import com.wtcrmandroid.dialog.SelectionJobCategoriesDialog;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 import com.wtcrmandroid.fragment.main.AddressBookFragment;
 import com.wtcrmandroid.fragment.main.FoundFragment;
@@ -49,12 +50,18 @@ public class MainActivity extends BaseActivity<BaseData> {
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.fl_main, rgBottom);
     }
 
+
+    /**
+     * 首页窗口的显示与隐藏控制方法
+     * @param i
+     */
     public void setTitleWindow(int i) {
         titleWindow.setVisibility(i);
     }
 
     @OnClick(R.id.cancle_onlick)
     public void onClick() {
+        new SelectionJobCategoriesDialog(this,R.style.Dialog).show();
 //        titleWindow.setVisibility(View.GONE);
     }
 }
