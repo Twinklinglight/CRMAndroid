@@ -41,7 +41,7 @@
                 <TableRow android:paddingTop="25dp">
 
                     <TextView
-                        android:id="@+id/tv_rzgl"
+                        android:id="@+id/tv_log_management"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
