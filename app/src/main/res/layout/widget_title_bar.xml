@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:background="@mipmap/title_back" />
+            android:background="@mipmap/ic_title_back" />
 
         <TextView
             android:id="@+id/left_text"
