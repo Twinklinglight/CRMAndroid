@@ -85,7 +85,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/home_write_journl"/>
+                    android:src="@mipmap/ic_home_write_journl"/>
 
                 <TextView
                     style="@style/TopPlusText"
@@ -106,7 +106,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/home_send_approval"/>
+                    android:src="@mipmap/ic_home_send_approval"/>
 
                 <TextView
                     style="@style/TopPlusText"
@@ -127,7 +127,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/home_send_notice"/>
+                    android:src="@mipmap/ic_home_send_notice"/>
 
                 <TextView
                     style="@style/TopPlusText"
@@ -148,7 +148,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/home_write_customer"/>
+                    android:src="@mipmap/ic_home_write_customer"/>
 
                 <TextView
                     style="@style/TopPlusText"
@@ -180,7 +180,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/home_order_meeting"/>
+                    android:src="@mipmap/ic_home_order_meeting"/>
 
                 <TextView
                     style="@style/TopPlusText"
@@ -201,7 +201,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/home_product_advice"/>
+                    android:src="@mipmap/ic_home_product_advice"/>
 
                 <TextView
                     style="@style/TopPlusText"
