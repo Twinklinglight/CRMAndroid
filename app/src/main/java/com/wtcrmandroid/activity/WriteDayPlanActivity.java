@@ -22,9 +22,13 @@ public class WriteDayPlanActivity extends BaseActivity {
 
 
     @BindView(R.id.lv_write_dayplan)
-    ListView mLvWriteDayplan;
-
-    ViewHolder viewHolder;
+    ListView mLvWriteDayplan;       //工作事项列表
+    @BindView(R.id.tv_dayplan_date)
+    TextView mTvDayplanDate;        //显示选择时间
+    @BindView(R.id.ib_dayplan_calender)
+    ImageButton mIbDayplanCalender; //日历弹窗按钮
+    @BindView(R.id.tv_dayplan_submit)
+    TextView mTvDayplanSubmit;      //提交
 
     private WriteDayPlanAdapter mDayPlanAdapter;
     private List<String> mList;
@@ -42,9 +46,6 @@ public class WriteDayPlanActivity extends BaseActivity {
         mList.add("");
         mDayPlanAdapter = new WriteDayPlanAdapter(mList);
         mLvWriteDayplan.setAdapter(mDayPlanAdapter);
-        View headview = LayoutInflater.from(this).inflate(R.layout.item_xrz_head, null);
-        viewHolder = new ViewHolder(headview);
-        mLvWriteDayplan.addHeaderView(headview);
 
         View footview = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
         mViewHolder1 = new ViewHolder1(footview);
@@ -69,31 +70,12 @@ public class WriteDayPlanActivity extends BaseActivity {
     }
 
 
-   /* @OnClick(R.id.rl_addjob)
-    public void onViewClicked() {
-        mList.add("");
-        mDayPlanAdapter.notifyDataSetChanged();
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
 
-
-
-    static class ViewHolder {
-        @BindView(R.id.tv_dayplan_date)
-        TextView mTvDayplanDate;
-        @BindView(R.id.ib_dayplan_calender)
-        ImageButton mIbDayplanCalender;
-
-        ViewHolder(View view) {
-            ButterKnife.bind(this, view);
-        }
-    }
 
     static class ViewHolder1 {
         @BindView(R.id.rl_addjob)
