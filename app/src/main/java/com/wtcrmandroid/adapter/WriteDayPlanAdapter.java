@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.WorkSortDialog;
@@ -52,10 +53,10 @@ public class WriteDayPlanAdapter extends BaseAdapter {
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
 
-        }else {
-            viewHolder = (ViewHolder)view.getTag();
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.mRlDayplanSort.setOnClickListener(new View.OnClickListener() {
+        viewHolder.mTvDayplanSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new WorkSortDialog(parent.getContext()).show();
@@ -66,14 +67,18 @@ public class WriteDayPlanAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @BindView(R.id.rl_dayplan_sort)
-        RelativeLayout mRlDayplanSort;
+        @BindView(R.id.tv_dayplan_sort)
+        TextView mTvDayplanSort;
         @BindView(R.id.tv_dayplan_content)
         EditText mTvDayplanContent;
+        @BindView(R.id.ib_dayplan_yy)
+        ImageButton mIbDayplanYy;
+        @BindView(R.id.et_dayplan_person)
+        EditText mEtDayplanPerson;
         @BindView(R.id.tv_dayplan_person)
         EditText mTvDayplanPerson;
-        @BindView(R.id.tv_dayplan_persent)
-        EditText mTvDayplanPersent;
+        @BindView(R.id.tv_dayplan_time)
+        EditText mTvDayplanTime;
         @BindView(R.id.tv_dayplan_remark)
         EditText mTvDayplanRemark;
 

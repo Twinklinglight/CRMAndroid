@@ -30,7 +30,7 @@
 
     <style name="TopPlusText">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/colorIconText</item>
+        <item name="android:textColor">@color/colorContext</item>
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
@@ -55,5 +55,7 @@
         <!--是否显示背景色-->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
+
 
 </resources>
