@@ -180,7 +180,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_home_order_meeting"/>
+                    android:src="@mipmap/ic_home_meeting_room_reservation"/>
 
                 <TextView
                     style="@style/TopPlusText"
