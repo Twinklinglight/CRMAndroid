@@ -10,10 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
+
+
         </activity>
         <activity android:name=".activity.JournalManagerActivity">
+
         </activity>
         <activity android:name=".activity.WriteDayPlanActivity">
+
+
+
+        </activity>
+        <!--写周计划界面-->
+        <activity android:name=".activity.WriteWeekPlanActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
