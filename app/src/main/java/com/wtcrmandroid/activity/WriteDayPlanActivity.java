@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.WriteDayPlanAdapter;
+import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.http.data.BaseData;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class WriteDayPlanActivity extends BaseActivity {
     ImageButton mIbDayplanCalender; //日历弹窗按钮
     @BindView(R.id.tv_dayplan_submit)
     TextView mTvDayplanSubmit;      //提交
+    @BindView(R.id.titlebar)
+    TitleBar mTitlebar;             //标题
 
     private WriteDayPlanAdapter mDayPlanAdapter;
     private List<String> mList;
@@ -46,6 +49,7 @@ public class WriteDayPlanActivity extends BaseActivity {
         mList.add("");
         mDayPlanAdapter = new WriteDayPlanAdapter(mList);
         mLvWriteDayplan.setAdapter(mDayPlanAdapter);
+        mTitlebar.setTitletext("写日计划");
 
         View footview = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
         mViewHolder1 = new ViewHolder1(footview);

@@ -1,4 +1,4 @@
-package com.wtcrmandroid.view;
+package com.wtcrmandroid.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 选择工作类型：A类、B类、C类
+ * 选择工作类型：A类、B类、C类、D类
  * Created by zxd on 2017/6/2.
  */
 
@@ -31,8 +31,6 @@ public class WorkSortDialog extends Dialog {
     RadioGroup mWorkSortRg;
     @BindView(R.id.bt_worksort_dialog_sure)
     Button mBtWorksortDialogSure;
-    @BindView(R.id.bt_worksort_dialog_cancle)
-    Button mBtWorksortDialogCancle;
     private Context mContext;
 
     public WorkSortDialog(Context context) {
@@ -58,6 +56,10 @@ public class WorkSortDialog extends Dialog {
                         break;
                     case R.id.rb_C:
                         Toast.makeText(mContext, "选C", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rb_D:
+                        Toast.makeText(mContext, "选D", Toast.LENGTH_SHORT).show();
+                        break;
 
                 }
             }
@@ -80,15 +82,11 @@ public class WorkSortDialog extends Dialog {
         dialogWindow.setAttributes(lp);
     }
 
-    @OnClick({R.id.bt_worksort_dialog_sure, R.id.bt_worksort_dialog_cancle})
+    @OnClick({R.id.bt_worksort_dialog_sure})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_worksort_dialog_sure:
                 Toast.makeText(mContext, "确定", Toast.LENGTH_SHORT).show();
-                dismiss();
-                break;
-            case R.id.bt_worksort_dialog_cancle:
-                Toast.makeText(mContext, "取消", Toast.LENGTH_SHORT).show();
                 dismiss();
                 break;
         }

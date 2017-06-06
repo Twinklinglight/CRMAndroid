@@ -9,8 +9,16 @@
     android:orientation="vertical"
     tools:context="com.wtcrmandroid.activity.WriteDayPlanActivity">
 
+    <com.wtcrmandroid.custompricing.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+    </com.wtcrmandroid.custompricing.TitleBar>
+
     <RelativeLayout
         android:id="@+id/rl_head"
+        android:layout_below="@id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"

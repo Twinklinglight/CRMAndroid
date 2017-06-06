@@ -27,5 +27,9 @@
     <string name="myjournal">我的日志</string>
     <string name="bmygrz">部门员工日志</string>
 
+    <string name="complete_details">完成详情</string>
+    <string name="nocomplete_reason">未完成原因</string>
+    <string name="nocompelete_time">下次完成时间</string>
+
 
 </resources>

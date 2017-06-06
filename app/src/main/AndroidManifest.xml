@@ -11,25 +11,30 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
 
-
-        </activity>
-        <activity android:name=".activity.JournalManagerActivity">
-
-        </activity>
-        <activity android:name=".activity.WriteDayPlanActivity">
-
-
-
-        </activity>
-        <!--写周计划界面-->
-        <activity android:name=".activity.WriteWeekPlanActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- 日志管理 -->
+        <activity android:name=".activity.JournalManagerActivity">
+
+        </activity>
+        <!-- 写日计划 -->
+        <activity android:name=".activity.WriteDayPlanActivity">
+        </activity>
+
+        <!-- 写日总结 -->
         <activity android:name=".activity.WriteDaySumActivity">
+        </activity>
+
+        <!-- 写周计划界面 -->
+        <activity android:name=".activity.WriteWeekPlanActivity">
+        </activity>
+
+        <!--我的日志-->
+        <activity android:name=".activity.MyJournalActivity">
         </activity>
     </application>
 

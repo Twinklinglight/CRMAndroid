@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.view.WorkSortDialog;
+import com.wtcrmandroid.dialog.WorkSortDialog;
 
 import java.util.List;
 
