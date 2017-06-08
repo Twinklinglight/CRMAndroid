@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?><!--日志管理主界面-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/left_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/ic_title_back" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:padding="5dp"
+            android:layout_width="0dp"
+            android:layout_height="27dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:hint="请输入要查找人的姓名"
+            android:background="@drawable/shape_rounded_rectangle5_white_bg"/>
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:text="搜索"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+
+
+    </LinearLayout>
+</LinearLayout>
