@@ -57,13 +57,6 @@ public class JournalManagerActivity extends BaseActivity {
     public void onViewClicked() {
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
     @OnClick({R.id.ll_journalManager_write_daysum, R.id.rl_journalManager_myjournal,
             R.id.ll_journalManager_write_dayplan, R.id.ll_journalManager_write_weeksum,
             R.id.ll_journalManager_write_weekplan, R.id.rl_journalManager_bmygrz})

@@ -15,10 +15,10 @@ import butterknife.BindView;
 
 /**
  * Created by 1363655717 on 2017-06-05.
- * 写周计划
+ * 写周总结
  */
 
-public class WriteWeekPlanActivity extends BaseActivity<BaseData> {
+public class WriteWeekConclusionActivity extends BaseActivity<BaseData> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.lv_write_work_plan)

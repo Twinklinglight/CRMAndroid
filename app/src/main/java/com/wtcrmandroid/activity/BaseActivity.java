@@ -3,7 +3,7 @@ package com.wtcrmandroid.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.view.AllView;
 
 import butterknife.ButterKnife;

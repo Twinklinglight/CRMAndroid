@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+写周总结布局
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f5f6f7">
+
+    <com.wtcrmandroid.custompricing.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="计划时间"
+            android:textSize="14dp"
+            android:textColor="#95979A"
+           />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="2017.6.4-2017.6.11"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#2b2f33"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_gray_arrow"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/lv_write_work_plan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:text="立即提交"
+        android:background="#3B9CFF"/>
+</LinearLayout>
