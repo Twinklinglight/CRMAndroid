@@ -5,6 +5,7 @@ import android.widget.EditText;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.iat.Iat;
+import com.wtcrmandroid.utils.L;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,23 +36,22 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
     }
 
     public void doVoice() {
-//        if (iat == null) {
-//            iat = new Iat(this);
-//        }
-        iat = new Iat(this);
+        if (iat == null) {
+            iat = new Iat(this);
+        }
         iat.iatRecognize();
-//        iat.setSetRestult(new Iat.setResult() {
-//            @Override
-//            public void succeed(String result) {
-//                etSearch.setText(result);
-//
-//            }
-//
-//            @Override
-//            public void failed(String iatError) {
-//                L.e("出现了一个错误，请您重试");
-//            }
-//        });
+        iat.setSetRestult(new Iat.setResult() {
+            @Override
+            public void succeed(String result) {
+                etSearch.setText(result);
+
+            }
+
+            @Override
+            public void failed(String iatError) {
+                L.e("出现了一个错误，请您重试");
+            }
+        });
     }
 
     @OnClick(R.id.tv_right)
