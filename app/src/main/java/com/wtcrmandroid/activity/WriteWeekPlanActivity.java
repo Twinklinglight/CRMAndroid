@@ -3,8 +3,13 @@ package com.wtcrmandroid.activity;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.adapter.listview.WriterWeekPlaneAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
+import com.wtcrmandroid.model.WriterWeekPlaneData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -32,6 +37,11 @@ public class WriteWeekPlanActivity extends BaseActivity<BaseData> {
     @Override
     protected void initview() {
         titlebar.setTitletext("写周计划");
+        WriterWeekPlaneData writerWeekPlaneData=new WriterWeekPlaneData();
+        writerWeekPlaneData.setTvPlan("本周计划");
+        List<WriterWeekPlaneData> list =new ArrayList<>();
+        list.add(writerWeekPlaneData);
+        lvWriteWorkPlan.setAdapter(new WriterWeekPlaneAdapter(this,list));
 
     }
 }

@@ -5,7 +5,7 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriterWeekPlaneAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 
 import java.util.ArrayList;

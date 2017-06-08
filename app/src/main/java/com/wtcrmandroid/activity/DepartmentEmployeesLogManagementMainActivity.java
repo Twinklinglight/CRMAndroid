@@ -1,8 +1,11 @@
 package com.wtcrmandroid.activity;
 
+import android.content.Intent;
+import android.view.View;
+
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 
@@ -29,6 +32,12 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
     protected void initview() {
         titlebar.setTitletext("部门员工日志");
         titlebar.setRightImageResource(R.mipmap.ico_plus);
+        titlebar.setRightOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,DepartmentEmployeesLogManagementSerachActivity.class));
+            }
+        });
 
     }
 }

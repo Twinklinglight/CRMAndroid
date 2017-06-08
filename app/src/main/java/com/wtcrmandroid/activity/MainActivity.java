@@ -10,7 +10,7 @@ import com.wtcrmandroid.fragment.main.AddressBookFragment;
 import com.wtcrmandroid.fragment.main.FoundFragment;
 import com.wtcrmandroid.fragment.main.HomeFragment;
 import com.wtcrmandroid.fragment.main.MyFragment;
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import java.util.ArrayList;
 import java.util.List;
