@@ -1,4 +1,4 @@
-package com.wtcrmandroid.http.rxrequest;
+package com.wtcrmandroid.http.retrofit2.rxrequest;
 
 import android.content.Context;
 

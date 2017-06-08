@@ -1,6 +1,6 @@
-package com.wtcrmandroid.http;
+package com.wtcrmandroid.http.retrofit2;
 
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import java.util.Map;
 
