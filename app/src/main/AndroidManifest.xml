@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,7 +18,6 @@
         </activity>
         <!-- 日志管理 -->
         <activity android:name=".activity.JournalManagerActivity">
-
         </activity>
         <!-- 写日计划 -->
         <activity android:name=".activity.WriteDayPlanActivity">
@@ -33,8 +31,20 @@
         <activity android:name=".activity.WriteWeekPlanActivity">
         </activity>
 
-        <!--我的日志-->
+        <!-- 我的日志 -->
         <activity android:name=".activity.MyJournalActivity">
+        </activity>
+        <activity android:name=".activity.SingleCustomer">
+        </activity>
+        <activity android:name=".activity.MajorCustomerActivity">
+        </activity>
+        <activity android:name=".activity.GetMoneyActivity">
+        </activity>
+        <activity android:name=".activity.TodayWorkLoadActivity">
+        </activity>
+        <activity android:name=".activity.GetSingleCustomerActivity">
+        </activity>
+        <activity android:name=".activity.AddPurposeCustomerActivity">
         </activity>
     </application>
 
