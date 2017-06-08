@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,12 +7,6 @@
     android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context="com.wtcrmandroid.activity.JournalManagerActivity">
-
-    <com.wtcrmandroid.custompricing.TitleBar
-        android:id="@+id/titlebar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </com.wtcrmandroid.custompricing.TitleBar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,6 +24,7 @@
             android:padding="10dp">
 
             <LinearLayout
+                android:id="@+id/ll_write_day_conclusion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
@@ -43,13 +37,13 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_rzgl_daysum"/>
+                    android:src="@mipmap/ic_rzgl_daysum" />
 
                 <TextView
                     style="@style/TopPlusText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/write_daysum"/>
+                    android:text="@string/write_daysum" />
 
             </LinearLayout>
 
@@ -57,7 +51,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_journalManager_write_dayplan"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,6 +60,7 @@
             android:padding="10dp">
 
             <LinearLayout
+                android:id="@+id/ll_write_day_plan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
@@ -78,13 +73,13 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_rzgl_dayplan"/>
+                    android:src="@mipmap/ic_rzgl_dayplan" />
 
                 <TextView
                     style="@style/TopPlusText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/write_dayplan"/>
+                    android:text="@string/write_dayplan" />
 
             </LinearLayout>
 
@@ -110,6 +105,7 @@
             android:padding="10dp">
 
             <LinearLayout
+                android:id="@+id/ll_write_week_conclusion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
@@ -122,13 +118,13 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_rzgl_weeksum"/>
+                    android:src="@mipmap/ic_rzgl_weeksum" />
 
                 <TextView
                     style="@style/TopPlusText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/write_weeksum"/>
+                    android:text="@string/write_weeksum" />
 
             </LinearLayout>
 
@@ -145,6 +141,7 @@
             android:padding="10dp">
 
             <LinearLayout
+                android:id="@+id/ll_write_week_plane"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
@@ -157,13 +154,13 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_rzgl_weekplan"/>
+                    android:src="@mipmap/ic_rzgl_weekplan" />
 
                 <TextView
                     style="@style/TopPlusText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/write_weekplan"/>
+                    android:text="@string/write_weekplan" />
 
             </LinearLayout>
 
@@ -174,18 +171,18 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_journalManager_myjournal"
+        android:id="@+id/rl_my_log"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
         android:layout_marginTop="25dp"
+        android:background="@android:color/white"
         android:padding="10dp">
 
         <ImageView
             android:id="@+id/iv_myjournal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_rzgl_myjournal"/>
+            android:src="@mipmap/ic_rzgl_myjournal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -194,20 +191,19 @@
             android:layout_toRightOf="@id/iv_myjournal"
             android:paddingLeft="20dp"
             android:text="@string/myjournal"
-            android:textColor="@color/colorIconText"
-            />
+            android:textColor="@color/colorIconText" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_rzgl_arrow"/>
+            android:src="@mipmap/ic_rzgl_arrow" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_journalManager_bmygrz"
+        android:id="@+id/rl_department_employees_log_management"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -217,7 +213,7 @@
             android:id="@+id/iv_myweekjournal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_rzgl_bmygrz"/>
+            android:src="@mipmap/ic_rzgl_bmygrz" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -226,18 +222,16 @@
             android:layout_toRightOf="@id/iv_myweekjournal"
             android:paddingLeft="20dp"
             android:text="@string/bmygrz"
-            android:textColor="@color/colorIconText"
-            />
+            android:textColor="@color/colorIconText" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_rzgl_arrow"/>
+            android:src="@mipmap/ic_rzgl_arrow" />
 
     </RelativeLayout>
-
 
 
 </LinearLayout>

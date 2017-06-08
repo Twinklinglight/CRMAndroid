@@ -1,4 +1,4 @@
-package com.wtcrmandroid.http;
+package com.wtcrmandroid.http.retrofit2;
 
 import android.app.Activity;
 
@@ -10,9 +10,9 @@ import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.wtcrmandroid.http.cach.RxRetrofitCache;
-import com.wtcrmandroid.http.rxrequest.RxHelper;
-import com.wtcrmandroid.http.rxrequest.RxSubscribe;
+import com.wtcrmandroid.http.retrofit2.cach.RxRetrofitCache;
+import com.wtcrmandroid.http.retrofit2.rxrequest.RxHelper;
+import com.wtcrmandroid.http.retrofit2.rxrequest.RxSubscribe;
 
 import java.io.IOException;
 import java.util.Map;

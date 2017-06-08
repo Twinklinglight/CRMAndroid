@@ -1,4 +1,4 @@
-package com.wtcrmandroid.http.data;
+package com.wtcrmandroid.http.retrofit2.data;
 
 import java.io.Serializable;
 

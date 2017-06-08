@@ -1,7 +1,7 @@
-package com.wtcrmandroid.http.rxrequest;
+package com.wtcrmandroid.http.retrofit2.rxrequest;
 
 
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import rx.Observable;
 import rx.Subscriber;
