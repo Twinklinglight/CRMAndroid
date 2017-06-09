@@ -1,17 +1,15 @@
 package com.wtcrmandroid.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -24,17 +22,17 @@ public class JournalManagerActivity extends BaseActivity {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
-    @BindView(R.id.rl_journalManager_myjournal)
+    @BindView(R.id.rl_my_log)
     RelativeLayout mRlJournalManagerMyjournal;  //我的日志
     @BindView(R.id.ll_journalManager_write_daysum)
     LinearLayout mLlJournalManagerWriteDaysum;  //写日总结
-    @BindView(R.id.ll_journalManager_write_dayplan)
+    @BindView(R.id.ll_write_day_plan)
     LinearLayout mLlJournalManagerWriteDayplan; //写日计划
     @BindView(R.id.ll_journalManager_write_weeksum)
     LinearLayout mLlJournalManagerWriteWeeksum; //写周总结
     @BindView(R.id.ll_journalManager_write_weekplan)
     LinearLayout mLlJournalManagerWriteWeekplan; //写周计划
-    @BindView(R.id.rl_journalManager_bmygrz)
+    @BindView(R.id.rl_department_employees_log_management)
     RelativeLayout mRlJournalManagerBmygrz;     //部门员工日志
 
     @Override
@@ -52,31 +50,34 @@ public class JournalManagerActivity extends BaseActivity {
 
     }
 
-
-    @OnClick(R.id.rl_journalManager_myjournal)
-    public void onViewClicked() {
-    }
-
-    @OnClick({R.id.ll_journalManager_write_daysum, R.id.rl_journalManager_myjournal,
-            R.id.ll_journalManager_write_dayplan, R.id.ll_journalManager_write_weeksum,
-            R.id.ll_journalManager_write_weekplan, R.id.rl_journalManager_bmygrz})
+    @OnClick({R.id.ll_journalManager_write_daysum, R.id.rl_my_log,
+            R.id.ll_write_day_plan, R.id.ll_journalManager_write_weeksum,
+            R.id.ll_journalManager_write_weekplan, R.id.rl_department_employees_log_management})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            //写日总结
             case R.id.ll_journalManager_write_daysum:
                 startActivity(new Intent(JournalManagerActivity.this,WriteDaySumActivity.class));
                 break;
-            case R.id.ll_journalManager_write_dayplan:
+            //写日计划
+            case R.id.ll_write_day_plan:
                 startActivity(new Intent(JournalManagerActivity.this,WriteDayPlanActivity.class));
                 break;
+            //写周总结
             case R.id.ll_journalManager_write_weeksum:
+                startActivity(new Intent(JournalManagerActivity.this,WriteWeekConclusionActivity.class));
                 break;
+            //写周计划
             case R.id.ll_journalManager_write_weekplan:
                 startActivity(new Intent(JournalManagerActivity.this,WriteWeekPlanActivity.class));
                 break;
-            case R.id.rl_journalManager_myjournal:
+            //我的日志
+            case R.id.rl_my_log:
                 startActivity(new Intent(JournalManagerActivity.this, MyJournalActivity.class));
                 break;
-            case R.id.rl_journalManager_bmygrz:
+            //部门日志
+            case R.id.rl_department_employees_log_management:
+                startActivity(new Intent(JournalManagerActivity.this,DepartmentEmployeesLogManagementMainActivity.class));
                 break;
 
         }
