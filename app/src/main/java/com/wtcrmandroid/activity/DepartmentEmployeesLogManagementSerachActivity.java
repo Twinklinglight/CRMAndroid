@@ -4,8 +4,13 @@ import android.widget.EditText;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.http.retrofit2.data.BaseData;
+import com.wtcrmandroid.httpfactory.HttpRequest;
+import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.iat.Iat;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.MD5Utils;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -56,6 +61,31 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
 
     @OnClick(R.id.tv_right)
     public void onClick() {
-        doVoice();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("userName", "afdsfga");
+        params.put("userPass", MD5Utils.MD5("122"));
+        HttpRequest.instance().sendPost("http://192.168.0.7/api/Login/UserLogin", params, DepartmentEmployeesLogManagementMainActivity.class, new StringCallBack() {
+            @Override
+            public void onError(int errorRet, String errorMsg) {
+                   L.e(errorMsg);
+            }
+
+            @Override
+            public void onNetError(Exception e) {
+                L.e("onNetError"+e.toString());
+            }
+
+            @Override
+            public void onResponse(String response) {
+                L.e(response);
+            }
+        });
+//        Map map=new HashMap();
+//        map.put("username","18336302752");
+//        map.put("psw","18336302752");
+//        map.put("key","18336302752");
+//        map.put("uuid","fasdfas");
+//        new HttpUtils().post("UserLogin",map,DepartmentEmployeesLogManagementSerachActivity.this);
+//        doVoice();
     }
 }
