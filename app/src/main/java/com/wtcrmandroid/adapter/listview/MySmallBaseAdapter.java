@@ -44,9 +44,9 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         T1 holder = null;
-        if (convertView == null) {
+//        if (convertView == null) {
             convertView = onCreateViewHolder();
-        }
+//        }
         holder = (T1) convertView.getTag();
         convert(holder, position);
         return convertView;
