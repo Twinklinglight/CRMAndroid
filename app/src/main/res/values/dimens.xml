@@ -3,4 +3,7 @@
     <dimen name="titlebar_height">45dp</dimen>
     <dimen name="Text36">15sp</dimen>
     <dimen name="Text32">13sp</dimen>
+
+    <dimen name="refresh_header_height">80dp</dimen>
+    <dimen name="load_more_footer_height">60dp</dimen>
 </resources>

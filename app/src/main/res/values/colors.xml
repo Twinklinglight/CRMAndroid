@@ -10,6 +10,8 @@
     <color name="colorIconText">#2b2f33</color>
     <color name="colorContext">#939699</color>
 
+    <color name="pulltorefresh_bg">#BCBCBC</color>
+
 
 
 </resources>

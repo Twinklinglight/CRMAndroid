@@ -70,15 +70,31 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/lv_myjournal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
+    <com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
         android:layout_below="@id/ll_below_titlebar"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_refresh_header" />
+
+        <ListView
+            android:id="@id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"/>
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/layout_loadmore_footer" />
+
+    </com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout>
 
     <FrameLayout
         android:layout_below="@id/ll_below_titlebar"

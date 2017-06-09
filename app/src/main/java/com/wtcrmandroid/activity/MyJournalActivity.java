@@ -2,6 +2,7 @@ package com.wtcrmandroid.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -13,6 +14,9 @@ import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.MyJournalData;
+import com.wtcrmandroid.pulltorefresh.OnLoadMoreListener;
+import com.wtcrmandroid.pulltorefresh.OnRefreshListener;
+import com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +26,12 @@ import butterknife.OnClick;
 
 /**
  * 我的日志Activity
+ *
  * @author zxd
  * @date 2017/6/6
  */
 
-public class MyJournalActivity extends BaseActivity {
+public class MyJournalActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -34,16 +39,20 @@ public class MyJournalActivity extends BaseActivity {
     LinearLayout mLlMyjournalType;  //类型筛选按钮
     @BindView(R.id.ll_myjournal_time)
     LinearLayout mLlMyjournalTime;  //时间筛选按钮
-    @BindView(R.id.lv_myjournal)
-    ListView mLvMyjournal;          //我的日志列表
     @BindView(R.id.ll_xiala_type)
     LinearLayout mLlXialaType;      //类型弹框
     @BindView(R.id.iv_type_arrow)
     ImageView mIvTypeArrow;         //类型向下箭头
     @BindView(R.id.iv_time_arrow)
     ImageView mIvTimeArrow;         //时间向下箭头
+    @BindView(R.id.swipe_target)
+    ListView mSwipeTarget;          //日志列表
+    @BindView(R.id.swipeToLoadLayout)
+    SwipeToLoadLayout mSwipeToLoadLayout;   //刷新布局
+
+    private Handler mHandler = new Handler();
     private MyJournalAdapter mAdapter;
-    private List<MyJournalData>mList;
+    private List<MyJournalData> mList;
 
     @Override
     protected int layout() {
@@ -53,6 +62,8 @@ public class MyJournalActivity extends BaseActivity {
     @Override
     protected void initview() {
         mList = new ArrayList<>();
+        mSwipeToLoadLayout.setOnRefreshListener(this);
+        mSwipeToLoadLayout.setOnLoadMoreListener(this);
         for (int i = 0; i < 6; i++) {
             MyJournalData myJournalData = new MyJournalData();
             myJournalData.setJournalContent("这个，那个，啥");
@@ -61,16 +72,16 @@ public class MyJournalActivity extends BaseActivity {
         }
         mTitlebar.setTitletext("我的日志");
         mAdapter = new MyJournalAdapter(mList);
-        mLvMyjournal.setAdapter(mAdapter);
+        mSwipeTarget.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
-        mLvMyjournal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mSwipeTarget.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 1){
-                    startActivity(new Intent(MyJournalActivity.this,HtDaysumDetailsActivity.class));
-                }else {
-                    startActivity(new Intent(MyJournalActivity.this,HtDayplanDetails.class));
+                if (position == 1) {
+                    startActivity(new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class));
+                } else {
+                    startActivity(new Intent(MyJournalActivity.this, HtDayplanDetails.class));
                 }
             }
         });
@@ -99,4 +110,24 @@ public class MyJournalActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onRefresh() {
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeToLoadLayout.setRefreshing(false);
+            }
+        },2000);
+
+    }
+
+    @Override
+    public void onLoadMore() {
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeToLoadLayout.setLoadingMore(false);
+            }
+        },2000);
+    }
 }
