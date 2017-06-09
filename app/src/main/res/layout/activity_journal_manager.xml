@@ -8,6 +8,12 @@
     android:orientation="vertical"
     tools:context="com.wtcrmandroid.activity.JournalManagerActivity">
 
+    <com.wtcrmandroid.custompricing.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height">
+    </com.wtcrmandroid.custompricing.TitleBar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
