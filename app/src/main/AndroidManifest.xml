@@ -44,8 +44,10 @@
         </activity>
 
         <!-- 写周计划界面 -->
-        <activity android:name=".activity.WriteWeekPlanActivity">
-        </activity>
+        <activity android:name=".activity.WriteWeekPlanActivity"/>
+        <!-- 写周总结界面 -->
+        <activity android:name=".activity.WriteWeekConclusionActivity"/>
+
 
         <!-- 我的日志 -->
         <activity android:name=".activity.MyJournalActivity">
