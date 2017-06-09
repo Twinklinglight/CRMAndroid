@@ -12,8 +12,8 @@
     <string name="write_dayplan">写日计划</string>
     <string name="write_weeksum">写周总结</string>
     <string name="write_weekplan">写周计划</string>
-    
-    <string name="work_sort">工作分类</string>
+
+    <string name="work_sort">工作事项等级</string>
     <string name="work_content">工作事项或内容</string>
     <string name="execute_person">执行人员</string>
     <string name="work_persent">此工作所占比重</string>
@@ -23,9 +23,53 @@
     <string name="submit">立即提交</string>
 
     <string name="add_work">再添加一项</string>
-    
+
     <string name="myjournal">我的日志</string>
     <string name="bmygrz">部门员工日志</string>
 
+    <string name="complete_details">完成详情</string>
+    <string name="nocomplete_reason">未完成原因</string>
+    <string name="nocompelete_time">下次完成时间</string>
 
+
+    <string name="analysis">预测到单客户情况分析</string>
+    <string name="genjin">重点意向客户跟进情况</string>
+
+    <string name="Customer_name">客户名称:</string>
+    <string name="fengxi_genjin">分析跟进:</string>
+    <string name="deal_percent">成交百分比:</string>
+    <string name="hint_sort">请选择工作事件等级</string>
+    <string name="hint__name">请输入客户名称</string>
+    <string name="hint_genjin">请输入情况分析/跟进方案</string>
+    <string name="hint_percent">请输入成交百分比</string>
+    <string name="if_get">是否踩中</string>
+    <string name="hint_if">请选择是否踩中</string>
+    <string name="reson_fx">原因分析:</string>
+    <string name="hint_reson">请输入原因分析</string>
+    <string name="gjfa">跟进方案</string>
+    <string name="hint_gjfa">请输入跟进方案</string>
+
+    <string name="Major_save">完成保存</string>
+
+    <!--xs_daysum_foot-->
+    <string name="work_load">今日工作量</string>
+    <string name="money_qk">今日汇款到单情况</string>
+    <string name="single_analysis">预测到单客户踩中/踩中分析</string>
+    <string name="add_customer">新增意向客户情况</string>
+
+    <!--今日工作量-->
+    <string name="phone_number">有效电话:</string>
+    <string name="sm_count">有效上门:</string>
+    <string name="A_customer">A类客户库存:</string>
+    <string name="B_customer">B类客户库存:</string>
+    <string name="add_A">新增A类客户:</string>
+    <string name="add_B">新增B类客户:</string>
+    <string name="krl">库容量:</string>
+    <string name="hint_number">请输入有效电话数量</string>
+    <string name="hint_sm">请输入有效上门数量</string>
+    <string name="hint_A">请输入A类客户库存</string>
+    <string name="hint_B">请输入B类客户库存</string>
+    <string name="hint_add_A">请输入新增A类客户</string>
+    <string name="hint_add_B">请输入新增B类客户</string>
+    <string name="hint_krl">请输入库容量</string>
 </resources>

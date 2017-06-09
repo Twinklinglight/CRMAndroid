@@ -56,6 +56,17 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <!--较黑 36-->
+    <style name="ContentText">
+        <item name="android:textColor">@color/colorIconText</item>
+        <item name="android:textSize">@dimen/Text36</item>
+    </style>
+
+    <!--浅色 36-->
+    <style name="HintText">
+        <item name="android:textColor">@color/colorContext</item>
+        <item name="android:textSize">@dimen/Text36</item>
+    </style>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.wtcrmandroid.view;
+package com.wtcrmandroid.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

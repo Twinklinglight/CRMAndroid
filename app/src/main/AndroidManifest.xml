@@ -31,20 +31,36 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
+        <!-- 日志管理 -->
         <activity android:name=".activity.JournalManagerActivity">
-
         </activity>
+        <!-- 写日计划 -->
         <activity android:name=".activity.WriteDayPlanActivity">
-
-
-
         </activity>
-        <!--写周计划界面-->
+
+        <!-- 写日总结 -->
+        <activity android:name=".activity.WriteDaySumActivity">
+        </activity>
+
+        <!-- 写周计划界面 -->
         <activity android:name=".activity.WriteWeekPlanActivity">
+        </activity>
 
-
+        <!-- 我的日志 -->
+        <activity android:name=".activity.MyJournalActivity">
+        </activity>
+        <activity android:name=".activity.SingleCustomer">
+        </activity>
+        <activity android:name=".activity.MajorCustomerActivity">
+        </activity>
+        <activity android:name=".activity.GetMoneyActivity">
+        </activity>
+        <activity android:name=".activity.TodayWorkLoadActivity">
+        </activity>
+        <activity android:name=".activity.GetSingleCustomerActivity">
+        </activity>
+        <activity android:name=".activity.AddPurposeCustomerActivity">
         </activity>
         <!--部门员工日志管理首页-->
         <activity android:name=".activity.DepartmentEmployeesLogManagementMainActivity"/>

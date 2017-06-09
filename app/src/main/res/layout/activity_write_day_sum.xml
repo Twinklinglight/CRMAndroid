@@ -5,15 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:orientation="vertical"
-    tools:context="com.wtcrmandroid.activity.WriteDayPlanActivity">
+    tools:context="com.wtcrmandroid.activity.WriteDaySumActivity">
 
     <com.wtcrmandroid.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="45dp">
-
     </com.wtcrmandroid.custompricing.TitleBar>
 
     <RelativeLayout
@@ -44,7 +41,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_dayplan_submit"
+        android:id="@+id/tv_daysum_submit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
@@ -54,12 +51,11 @@
         android:textColor="#ffffff"/>
 
     <ListView
-        android:id="@+id/lv_write_dayplan"
-        android:layout_above="@id/tv_dayplan_submit"
+        android:id="@+id/lv_write_daysum"
+        android:layout_above="@id/tv_daysum_submit"
         android:layout_below="@id/rl_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>
-
 
 </RelativeLayout>
