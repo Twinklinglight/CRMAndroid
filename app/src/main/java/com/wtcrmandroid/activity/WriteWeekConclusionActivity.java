@@ -36,9 +36,9 @@ public class WriteWeekConclusionActivity extends BaseActivity<BaseData> {
 
     @Override
     protected void initview() {
-        titlebar.setTitletext("写周计划");
+        titlebar.setTitletext("写周总结");
         WriterWeekPlaneData writerWeekPlaneData=new WriterWeekPlaneData();
-        writerWeekPlaneData.setTvPlan("本周计划");
+        writerWeekPlaneData.setTvPlan("本周总结");
         List<WriterWeekPlaneData> list =new ArrayList<>();
         list.add(writerWeekPlaneData);
         lvWriteWorkPlan.setAdapter(new WriterWeekPlaneAdapter(this,list));
