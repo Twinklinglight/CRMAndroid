@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.WriteDayPlanAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.data.BaseData;
 import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import java.util.ArrayList;
@@ -19,6 +18,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+/**
+*  写日计划activity
+*  @author zxd
+*  @date 2017/6/8
+*/
 
 public class WriteDayPlanActivity extends BaseActivity {
 

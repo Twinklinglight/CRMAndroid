@@ -2,12 +2,12 @@ package com.wtcrmandroid.activity;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 
 /**
-*
+*   写日总结activity
 *  @author zxd
 *  @date 2017/6/6
 */

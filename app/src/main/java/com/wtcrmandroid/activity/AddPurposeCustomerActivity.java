@@ -5,12 +5,12 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.data.BaseData;
+import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
+/** 新增意向客户activity
  * @author zxd
  * @date 2017/6/8
  */

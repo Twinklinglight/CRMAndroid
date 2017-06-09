@@ -2,4 +2,5 @@
 <resources>
     <dimen name="titlebar_height">45dp</dimen>
     <dimen name="Text36">15sp</dimen>
+    <dimen name="Text32">13sp</dimen>
 </resources>
