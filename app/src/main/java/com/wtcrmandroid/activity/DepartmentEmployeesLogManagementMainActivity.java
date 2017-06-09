@@ -10,7 +10,6 @@ import com.wtcrmandroid.utils.L;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Locale;
 
 import butterknife.BindView;
 
@@ -54,7 +53,7 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
 //                while (it.hasNext()) {
 //                    System.out.println(it.next());
 //                }
-                Comparator comp = Collator.getInstance(Locale.ENGLISH);
+                Comparator comp = Collator.getInstance();
                 String[] newArray={"中山","汕头","广州","安庆","sadf","阳江","南京","武汉","北京","安阳","北方","yf","as"};
                 Arrays.sort(newArray,comp);
                 for(String i:newArray){

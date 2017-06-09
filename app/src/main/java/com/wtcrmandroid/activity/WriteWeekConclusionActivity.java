@@ -3,7 +3,7 @@ package com.wtcrmandroid.activity;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.listview.WriterWeekPlaneAdapter;
+import com.wtcrmandroid.adapter.listview.WriterWeekConclusionAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
@@ -41,7 +41,7 @@ public class WriteWeekConclusionActivity extends BaseActivity<BaseData> {
         writerWeekPlaneData.setTvPlan("本周总结");
         List<WriterWeekPlaneData> list =new ArrayList<>();
         list.add(writerWeekPlaneData);
-        lvWriteWorkPlan.setAdapter(new WriterWeekPlaneAdapter(this,list));
+        lvWriteWorkPlan.setAdapter(new WriterWeekConclusionAdapter(this,list));
 
     }
 }
