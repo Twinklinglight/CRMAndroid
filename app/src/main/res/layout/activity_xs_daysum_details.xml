@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wtcrmandroid.activity.XsDaysumDetailsActivity">
+
+    <com.wtcrmandroid.custompricing.TitleBar
+        android:id="@id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height">
+    </com.wtcrmandroid.custompricing.TitleBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:id="@+id/iv_journal_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_type_daysum"/>
+
+        <TextView
+            android:id="@+id/tv_journal_type"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ContentText"
+            android:text="@string/A_customer"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_daysum_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+            </android.support.design.widget.TabLayout>
+
+            <com.wtcrmandroid.view.MyViewPager
+                android:id="@+id/vp_dayplan_details"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+            </com.wtcrmandroid.view.MyViewPager>
+
+            <com.wtcrmandroid.view.MyListView
+                android:id="@+id/lv_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.wtcrmandroid.view.MyListView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

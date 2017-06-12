@@ -26,6 +26,7 @@
     <string name="hint_dayplan_content">工作内容:</string>
     <string name="hint_daysum_wcqk">完成情况:</string>
     <string name="hint_daysum_xxfx">学习反省:</string>
+    <string name="hint_weekplan_mb">计划目标:</string>
 
 
     <string name="add_work">再添加一项</string>
@@ -48,11 +49,11 @@
     <string name="hint__name">请输入客户名称</string>
     <string name="hint_genjin">请输入情况分析/跟进方案</string>
     <string name="hint_percent">请输入成交百分比</string>
-    <string name="if_get">是否踩中</string>
+    <string name="if_get">是否踩中:</string>
     <string name="hint_if">请选择是否踩中</string>
     <string name="reson_fx">原因分析:</string>
     <string name="hint_reson">请输入原因分析</string>
-    <string name="gjfa">跟进方案</string>
+    <string name="gjfa">跟进方案:</string>
     <string name="hint_gjfa">请输入跟进方案</string>
 
     <string name="Major_save">完成保存</string>
@@ -78,4 +79,7 @@
     <string name="hint_add_A">请输入新增A类客户</string>
     <string name="hint_add_B">请输入新增B类客户</string>
     <string name="hint_krl">请输入库容量</string>
+    <string name="Customer_type">客户类型:</string>
+    <string name="Product_type">产品类型:</string>
+    <string name="Getmoney">回款金额:</string>
 </resources>
