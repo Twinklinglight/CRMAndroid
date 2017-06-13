@@ -3,7 +3,6 @@ package com.wtcrmandroid.activity;
 import android.widget.EditText;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.httpfactory.HttpRequest;
 import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.iat.Iat;
@@ -20,15 +19,12 @@ import butterknife.OnClick;
  * 部门员工日志管理搜索页
  */
 
-public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity {
+public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity   {
     @BindView(R.id.et_search)
     EditText etSearch;
     private Iat iat;
 
-    @Override
-    public void returnData(int key, BaseData data) {
 
-    }
 
     @Override
     protected int layout() {
@@ -62,30 +58,35 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
     @OnClick(R.id.tv_right)
     public void onClick() {
         HashMap<String, String> params = new HashMap<>();
-        params.put("userName", "afdsfga");
-        params.put("userPass", MD5Utils.MD5("122"));
-        HttpRequest.instance().sendPost("http://192.168.0.7/api/Login/UserLogin", params, DepartmentEmployeesLogManagementMainActivity.class, new StringCallBack() {
+        params.put("userName", "shenzhongjia");
+        params.put("userPass", MD5Utils.MD5("shen123456"));
+        L.e(MD5Utils.MD5("shen123456"));
+        HttpRequest.instance().sendPost("http://192.168.0.7/api/Login/UserLogin", params,null, new StringCallBack() {
             @Override
             public void onError(int errorRet, String errorMsg) {
-                   L.e(errorMsg);
-            }
 
-            @Override
-            public void onNetError(Exception e) {
-                L.e("onNetError"+e.toString());
             }
 
             @Override
             public void onResponse(String response) {
-                L.e(response);
+
+            }
+
+            @Override
+            public void onNetError(Exception e) {
+
             }
         });
-//        Map map=new HashMap();
-//        map.put("username","18336302752");
-//        map.put("psw","18336302752");
-//        map.put("key","18336302752");
-//        map.put("uuid","fasdfas");
-//        new HttpUtils().post("UserLogin",map,DepartmentEmployeesLogManagementSerachActivity.this);
-//        doVoice();
+//     HashMap<String, String> params = new HashMap<>();
+//        params.put("userName", "shenzhongjia");
+//        params.put("userPass", MD5Utils.MD5("shen123456"));
+//        new HttpUtils().post("UserLogin",params,DepartmentEmployeesLogManagementSerachActivity.this);
+////        doVoice();
+    }
+
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }

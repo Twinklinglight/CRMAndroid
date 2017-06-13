@@ -1,13 +1,13 @@
 package com.wtcrmandroid.activity;
 
-import android.icu.text.Collator;
+import android.content.Intent;
 import android.view.View;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.utils.L;
 
+import java.text.Collator;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -22,10 +22,7 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
 
-    @Override
-    public void returnData(int key, BaseData data) {
 
-    }
 
     @Override
     protected int layout() {
@@ -36,6 +33,12 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
     protected void initview() {
         titlebar.setTitletext("部门员工日志");
         titlebar.setRightImageResource(R.mipmap.ico_plus);
+        titlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         titlebar.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,9 +62,14 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
                 for(String i:newArray){
                     L.e(i);
                 }
-//                startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,DepartmentEmployeesLogManagementSerachActivity.class));
+                startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,DepartmentEmployeesLogManagementSerachActivity.class));
             }
         });
+
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
 
     }
 }

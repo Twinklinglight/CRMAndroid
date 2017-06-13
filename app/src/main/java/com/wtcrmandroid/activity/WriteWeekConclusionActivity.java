@@ -5,7 +5,6 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriterWeekConclusionAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 
 import java.util.ArrayList;
@@ -18,16 +17,12 @@ import butterknife.BindView;
  * 写周总结
  */
 
-public class WriteWeekConclusionActivity extends BaseActivity<BaseData> {
+public class WriteWeekConclusionActivity extends BaseActivity {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.lv_write_work_plan)
     ListView lvWriteWorkPlan;
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
 
     @Override
     protected int layout() {
@@ -42,6 +37,11 @@ public class WriteWeekConclusionActivity extends BaseActivity<BaseData> {
         List<WriterWeekPlaneData> list =new ArrayList<>();
         list.add(writerWeekPlaneData);
         lvWriteWorkPlan.setAdapter(new WriterWeekConclusionAdapter(this,list));
+
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
 
     }
 }

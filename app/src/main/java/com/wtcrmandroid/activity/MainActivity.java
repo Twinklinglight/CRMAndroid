@@ -10,7 +10,6 @@ import com.wtcrmandroid.fragment.main.AddressBookFragment;
 import com.wtcrmandroid.fragment.main.FoundFragment;
 import com.wtcrmandroid.fragment.main.HomeFragment;
 import com.wtcrmandroid.fragment.main.MyFragment;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ import butterknife.OnClick;
  * Created by 1363655717 on 2017-05-31.
  */
 
-public class MainActivity extends BaseActivity<BaseData> {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.rg_bottom)
     RadioGroup rgBottom;
@@ -30,10 +29,7 @@ public class MainActivity extends BaseActivity<BaseData> {
     @BindView(R.id.title_window)
     LinearLayout titleWindow;
 
-    @Override
-    public void returnData(int key, BaseData data) {
 
-    }
 
     @Override
     protected int layout() {
@@ -63,5 +59,10 @@ public class MainActivity extends BaseActivity<BaseData> {
     public void onClick() {
 //        new SelectionJobCategoriesDialog(this, R.style.Dialog).show();
 //        titleWindow.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }

@@ -8,7 +8,10 @@ import android.widget.ListView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
+import com.wtcrmandroid.data.LoginData;
+import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,7 +21,7 @@ import butterknife.OnClick;
  * @date 2017/6/6
  */
 
-public class MyJournalActivity extends BaseActivity {
+public class MyJournalActivity extends BaseActivity<MyJournalPresenter,List<LoginData>> {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -43,16 +46,14 @@ public class MyJournalActivity extends BaseActivity {
     @Override
     protected void initview() {
         mTitlebar.setTitletext("我的日志");
+        presenter=new MyJournalPresenter(this);
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
 
 
     @OnClick(R.id.ll_myjournal_type)
     public void onViewClicked() {
+        presenter.getData();
 
         if (mLlXialaType.getVisibility() == View.VISIBLE) {
             mLlXialaType.setVisibility(View.INVISIBLE);
@@ -68,4 +69,10 @@ public class MyJournalActivity extends BaseActivity {
 
     }
 
+
+
+    @Override
+    public void returnData(int key, List<LoginData> data) {
+
+    }
 }

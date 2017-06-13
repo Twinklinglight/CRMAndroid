@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,10 +25,6 @@ public class GetMoneyActivity extends BaseActivity {
     @BindView(R.id.lv_getmoney)
     ListView mLvGetmoney;           //列表
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
 
     @Override
     protected int layout() {
@@ -44,5 +39,10 @@ public class GetMoneyActivity extends BaseActivity {
 
     @OnClick(R.id.tv_getmoney_save)
     public void onViewClicked() {
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }
