@@ -21,14 +21,6 @@ public class PostRequest extends OkHttpRequest{
 	}
 	@Override
 	protected void initBuilder() {
-//		FormBody.Builder body = new FormBody.Builder();
-//		for(Map.Entry<String,String> entry:params.entrySet()){
-//			if (entry.getValue()==null){
-//				L.e("PostRequest","Param value can not be null!");
-//				return;
-//			}
-//			body.add(entry.getKey(),entry.getValue());
-//		}
 		String string=params.toString();
 		L.e(string);
         JSONObject json = null;
