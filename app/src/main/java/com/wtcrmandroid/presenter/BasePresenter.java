@@ -9,6 +9,8 @@ import java.util.Map;
 
 /**
  * Created by 1363655717 on 2017-06-12.
+ * 基类
+ *
  */
 
 public abstract class BasePresenter<T> {
@@ -16,8 +18,8 @@ public abstract class BasePresenter<T> {
     public BasePresenter(AllView<T> view) {
         this.view=view;
     }
-    protected abstract void returnData(String response);
-    protected void post(String url, Map<String, String> params){
+    protected abstract void returnData(int key,String response);
+    protected void post(String url, Map<String, String> params, final int key){
         HttpRequest.instance().sendPost(url, params,null, new StringCallBack() {
             @Override
             public void onError(int errorRet, String errorMsg) {
@@ -26,7 +28,7 @@ public abstract class BasePresenter<T> {
 
             @Override
             public void onResponse(String response) {
-                returnData(response);
+                returnData(key,response);
 
             }
 
