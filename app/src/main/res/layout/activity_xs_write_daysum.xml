@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context="com.wtcrmandroid.activity.WriteDayPlanActivity">
+    tools:context="com.wtcrmandroid.activity.XsWriteDaysumActivity">
 
     <com.wtcrmandroid.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="@dimen/titlebar_height">
 
     </com.wtcrmandroid.custompricing.TitleBar>
 
     <RelativeLayout
-        android:id="@+id/rl_head"
-        android:layout_below="@id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -26,14 +23,14 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/tv_dayplan_date"
+            android:id="@+id/tv_daypsum_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/app_name"/>
 
         <ImageButton
-            android:id="@+id/ib_dayplan_calender"
+            android:id="@+id/ib_daypsum_calender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -42,23 +39,21 @@
 
     </RelativeLayout>
 
+    <ListView
+        android:id="@+id/lv_xs_daypsum"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
     <TextView
-        android:id="@+id/tv_dayplan_submit"
+        android:id="@+id/tv_daysum_submit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        android:layout_alignParentBottom="true"
         android:gravity="center"
         android:text="@string/submit"
         android:textColor="#ffffff"/>
 
-    <ListView
-        android:id="@+id/lv_write_dayplan"
-        android:layout_above="@id/tv_dayplan_submit"
-        android:layout_below="@id/rl_head"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
-
-
-</RelativeLayout>
+</LinearLayout>

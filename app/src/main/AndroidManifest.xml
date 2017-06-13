@@ -28,7 +28,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -53,23 +52,23 @@
         <!-- 我的日志 -->
         <activity android:name=".activity.MyJournalActivity">
         </activity>
-        <!--预测到单客户-->
+        <!-- 预测到单客户 -->
         <activity android:name=".activity.SingleCustomer">
         </activity>
 
-        <!--重点意向客户-->
+        <!-- 重点意向客户 -->
         <activity android:name=".activity.MajorCustomerActivity">
         </activity>
-        <!--回款到单-->
+        <!-- 回款到单 -->
         <activity android:name=".activity.GetMoneyActivity">
         </activity>
-        <!--今日工作量-->
+        <!-- 今日工作量 -->
         <activity android:name=".activity.TodayWorkLoadActivity">
         </activity>
-        <!--预测单客户踩中-->
+        <!-- 预测单客户踩中 -->
         <activity android:name=".activity.GetSingleCustomerActivity">
         </activity>
-        <!--新增意向客户-->
+        <!-- 新增意向客户 -->
         <activity android:name=".activity.AddPurposeCustomerActivity">
         </activity>
         <!-- 部门员工日志管理首页 -->
@@ -78,20 +77,24 @@
         <activity android:name=".activity.DepartmentEmployeesLogManagementSerachActivity"/>
         <activity android:name=".activity.HtDayplanDetails">
         </activity>
-        <!--后台日总结详情-->
+        <!-- 后台日总结详情 -->
         <activity android:name=".activity.HtDaysumDetailsActivity">
         </activity>
-        <!--销售日计划详情-->
+        <!-- 销售日计划详情 -->
         <activity android:name=".activity.XsDayplanDetailsActivity">
         </activity>
-        <!--销售日总结详情-->
+        <!-- 销售日总结详情 -->
         <activity android:name=".activity.XsDaysumDetailsActivity">
         </activity>
-        <!--周计划详情-->
+        <!-- 周计划详情 -->
         <activity android:name=".activity.WeekplanDetailsActivity">
         </activity>
-        <!--周总结详情-->
+        <!-- 周总结详情 -->
         <activity android:name=".activity.WeeksumDetailsActivity">
+        </activity>
+        <activity android:name=".activity.XsWriteDayplanActivity">
+        </activity>
+        <activity android:name=".activity.XsWriteDaysumActivity">
         </activity>
     </application>
 

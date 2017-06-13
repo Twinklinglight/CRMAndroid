@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+/**
+ *
+** 周总计详情
+*  @author zxd
+*  @date 2017/6/12
+*/
 
 public class WeeksumDetailsActivity extends BaseActivity {
 
