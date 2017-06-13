@@ -9,6 +9,11 @@ import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
+/**
+*  销售写日总结
+*  @author zxd
+*  @date 2017/6/13
+*/
 
 public class XsWriteDaysumActivity extends BaseActivity {
 

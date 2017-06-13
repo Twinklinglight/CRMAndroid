@@ -80,7 +80,11 @@ public class MyJournalActivity extends BaseActivity implements OnRefreshListener
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 1) {
                     startActivity(new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class));
-                } else {
+
+                }else if(position == 2){    //测试销售日总结详情页面
+                    startActivity(new Intent(MyJournalActivity.this, XsDaysumDetailsActivity.class));
+
+                }else {
                     startActivity(new Intent(MyJournalActivity.this, HtDayplanDetails.class));
                 }
             }

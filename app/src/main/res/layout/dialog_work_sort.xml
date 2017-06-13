@@ -25,6 +25,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -32,6 +33,7 @@
                 android:text="A类"/>
 
             <TextView
+                android:id="@+id/tv_B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -39,6 +41,7 @@
                 android:text="B类"/>
 
             <TextView
+                android:id="@+id/tv_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -46,6 +49,7 @@
                 android:text="C类"/>
 
             <TextView
+                android:id="@+id/tv_D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -61,6 +65,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_hint_A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -68,6 +73,7 @@
                 android:text="紧急有重要"/>
 
             <TextView
+                android:id="@+id/tv_hint_B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -75,6 +81,7 @@
                 android:text="较重要"/>
 
             <TextView
+                android:id="@+id/tv_hint_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -82,6 +89,7 @@
                 android:text="重要"/>
 
             <TextView
+                android:id="@+id/tv_hint_D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
