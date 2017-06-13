@@ -18,6 +18,7 @@ import com.wtcrmandroid.httpfactory.request.GetRequest;
 import com.wtcrmandroid.httpfactory.request.PingUtils;
 import com.wtcrmandroid.httpfactory.request.PostRequest;
 import com.wtcrmandroid.utils.DESUtils;
+import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.MD5Utils;
 
 import org.json.JSONException;
@@ -161,7 +162,7 @@ public class HttpRequest {
         if (params == null) {
             params = new HashMap<>();
         }
-        params.put("ver_version", VERSION_CODE + "");//版本
+//        params.put("ver_version", VERSION_CODE + "");//版本
         PostRequest postRequest = new PostRequest(url, null, params, tag);
         Request request = postRequest.getRequest();
         deliverResult(url, request, resultCallBack);
@@ -194,9 +195,9 @@ public class HttpRequest {
         int ret = -1;
         try {
             String result = response.body().string();
-            com.wtcrmandroid.utils.L.e("json", "json_result:" + result);
+            L.e("json", "json_result:" + result);
             JSONObject json = new JSONObject(result);
-            com.wtcrmandroid.utils.L.e("json", "praseResponse: " + json);
+            L.e("json", "praseResponse: " + json);
             if (!json.isNull("ret")) {//ret不为空
                 ret = json.getInt("ret");
                 if (ret == 0) {
@@ -334,4 +335,6 @@ public class HttpRequest {
             }
         });
     }
+
+
 }
