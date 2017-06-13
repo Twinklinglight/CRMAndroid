@@ -72,4 +72,11 @@ public class HomeFragment extends BaseFragmengt {
     public void onClick() {
         startActivity(new Intent(getActivity(), JournalManagerActivity.class));
     }
+
+
+
+    @Override
+    public void returnData(int key, Object data) {
+
+    }
 }
