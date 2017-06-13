@@ -3,7 +3,6 @@ package com.wtcrmandroid;
 import android.app.Application;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
@@ -14,13 +13,6 @@ import com.iflytek.cloud.SpeechUtility;
 import com.wtcrmandroid.http.retrofit2.ApiService;
 
 import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by 1363655717 on 2017-06-07.
@@ -35,21 +27,6 @@ public class MyApplication extends Application{
         super.onCreate();
         // 应用程序入口处调用，避免手机内存过小，杀死后台进程后通过历史intent进入Activity造成SpeechUtility对象为null
         SpeechUtility.createUtility(MyApplication.this, "appid=" +"5937b406");
-        ScalarsConverterFactory scalarsConverterFactory = ScalarsConverterFactory.create();
-        Gson gson = new GsonBuilder().registerTypeAdapterFactory(new SafeTypeAdapterFactory()).create();
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
-        apiService = new Retrofit.Builder()
-//                .baseUrl("http://www.jiushijiudian.com/")
-                .baseUrl("http://192.168.0.7/api/Login/")
-//                .baseUrl("http://android.chinawutong.com/")
-                .addConverterFactory(scalarsConverterFactory)
-//                .addConverterFactory(gsonConverterFactory)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .client(client)
-                .build().create(ApiService.class);
         application=this;
     }
 
