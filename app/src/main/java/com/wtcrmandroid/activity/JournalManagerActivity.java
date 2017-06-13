@@ -7,7 +7,6 @@ import android.widget.RelativeLayout;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -15,6 +14,8 @@ import butterknife.OnClick;
 /**
  * @author zxd
  * @date 2017/6/6
+ * 日志管理
+ * 修改 6.12 申中佳
  */
 
 public class JournalManagerActivity extends BaseActivity {
@@ -45,10 +46,7 @@ public class JournalManagerActivity extends BaseActivity {
         mTitlebar.setTitletext("日志管理");
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
 
-    }
 
     @OnClick({R.id.ll_journalManager_write_daysum, R.id.rl_my_log,
             R.id.ll_write_day_plan, R.id.ll_journalManager_write_weeksum,
@@ -81,5 +79,10 @@ public class JournalManagerActivity extends BaseActivity {
                 break;
 
         }
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }

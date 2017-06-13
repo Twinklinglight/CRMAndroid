@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.WriteDayPlanAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,16 +72,17 @@ public class WriteDayPlanActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 
 

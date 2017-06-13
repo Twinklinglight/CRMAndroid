@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
+import com.wtcrmandroid.data.BaseData;
 import com.wtcrmandroid.view.AllView;
 
 import butterknife.ButterKnife;
@@ -17,7 +17,7 @@ import butterknife.Unbinder;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public abstract class BaseFragmengt<T extends BaseData> extends Fragment implements AllView<T> {
+public abstract class BaseFragmengt<T extends BaseData> extends Fragment implements AllView {
 
     Unbinder unbinder;
 
@@ -45,10 +45,7 @@ public abstract class BaseFragmengt<T extends BaseData> extends Fragment impleme
 
     }
 
-    @Override
-    public void returnData(int key, T data) {
 
-    }
 
     @Override
     public void onDestroyView() {

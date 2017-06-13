@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,10 +24,7 @@ public class MajorCustomerActivity extends BaseActivity {
     @BindView(R.id.lv_singlecustomer)
     ListView mLvSinglecustomer;     //列表
 
-    @Override
-    public void returnData(int key, BaseData data) {
 
-    }
 
     @Override
     protected int layout() {
@@ -43,5 +39,10 @@ public class MajorCustomerActivity extends BaseActivity {
 
     @OnClick(R.id.tv_major_save)
     public void onViewClicked() {
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }

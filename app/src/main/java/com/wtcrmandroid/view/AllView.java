@@ -1,13 +1,10 @@
 package com.wtcrmandroid.view;
 
-
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
-
 /**
  * Created by 1363655717 on 2017-05-31.
  */
 
-public interface AllView<T extends BaseData>{
+public interface AllView<T>{
     /**
      * 显示吐司
      * @param text 吐司显示文本
@@ -21,6 +18,7 @@ public interface AllView<T extends BaseData>{
      */
 
     void returnData(int key,T data);
+
 
 
 }

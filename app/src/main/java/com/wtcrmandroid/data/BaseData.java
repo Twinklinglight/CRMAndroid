@@ -1,4 +1,4 @@
-package com.wtcrmandroid.http.retrofit2.data;
+package com.wtcrmandroid.data;
 
 import java.io.Serializable;
 
@@ -8,12 +8,12 @@ import java.io.Serializable;
  */
 
 public class BaseData<T> implements Serializable {
+    public String ret;
     public String msg;
-    public String resultdesc;
-    public T spread;
+    public T data;
 
     public boolean success() {
-        if (msg.equals("OK") || msg.equals("ok"))
+        if (msg.equals("成功"))
             return true;
         else
             return false;

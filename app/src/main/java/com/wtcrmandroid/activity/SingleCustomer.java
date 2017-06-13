@@ -4,7 +4,6 @@ import android.widget.ListView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 /**
@@ -32,9 +31,9 @@ public class SingleCustomer extends BaseActivity {
 
     }
 
+
     @Override
-    public void returnData(int key, BaseData data) {
+    public void returnData(int key, Object data) {
 
     }
-
 }

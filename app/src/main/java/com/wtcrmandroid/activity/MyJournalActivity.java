@@ -1,24 +1,16 @@
 package com.wtcrmandroid.activity;
 
 import android.animation.ObjectAnimator;
-import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
-import com.wtcrmandroid.model.MyJournalData;
-import com.wtcrmandroid.pulltorefresh.OnLoadMoreListener;
-import com.wtcrmandroid.pulltorefresh.OnRefreshListener;
-import com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout;
+import com.wtcrmandroid.data.LoginData;
+import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -31,7 +23,7 @@ import butterknife.OnClick;
  * @date 2017/6/6
  */
 
-public class MyJournalActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener {
+public class MyJournalActivity extends BaseActivity<MyJournalPresenter,List<LoginData>> {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -39,20 +31,14 @@ public class MyJournalActivity extends BaseActivity implements OnRefreshListener
     LinearLayout mLlMyjournalType;  //类型筛选按钮
     @BindView(R.id.ll_myjournal_time)
     LinearLayout mLlMyjournalTime;  //时间筛选按钮
+    @BindView(R.id.lv_myjournal)
+    ListView mLvMyjournal;          //我的日志列表
     @BindView(R.id.ll_xiala_type)
     LinearLayout mLlXialaType;      //类型弹框
     @BindView(R.id.iv_type_arrow)
-    ImageView mIvTypeArrow;         //类型向下箭头
+    ImageView mIvTypeArrow;
     @BindView(R.id.iv_time_arrow)
-    ImageView mIvTimeArrow;         //时间向下箭头
-    @BindView(R.id.swipe_target)
-    ListView mSwipeTarget;          //日志列表
-    @BindView(R.id.swipeToLoadLayout)
-    SwipeToLoadLayout mSwipeToLoadLayout;   //刷新布局
-
-    private Handler mHandler = new Handler();
-    private MyJournalAdapter mAdapter;
-    private List<MyJournalData> mList;
+    ImageView mIvTimeArrow;
 
     @Override
     protected int layout() {
@@ -61,44 +47,15 @@ public class MyJournalActivity extends BaseActivity implements OnRefreshListener
 
     @Override
     protected void initview() {
-        mList = new ArrayList<>();
-        mSwipeToLoadLayout.setOnRefreshListener(this);
-        mSwipeToLoadLayout.setOnLoadMoreListener(this);
-        for (int i = 0; i < 6; i++) {
-            MyJournalData myJournalData = new MyJournalData();
-            myJournalData.setJournalContent("这个，那个，啥");
-            myJournalData.setJournalTitle("2017-5-31日计划");
-            mList.add(myJournalData);
-        }
         mTitlebar.setTitletext("我的日志");
-        mAdapter = new MyJournalAdapter(mList);
-        mSwipeTarget.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
-
-        mSwipeTarget.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 1) {
-                    startActivity(new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class));
-
-                }else if(position == 2){    //测试销售日总结详情页面
-                    startActivity(new Intent(MyJournalActivity.this, XsDaysumDetailsActivity.class));
-
-                }else {
-                    startActivity(new Intent(MyJournalActivity.this, HtDayplanDetails.class));
-                }
-            }
-        });
+        presenter=new MyJournalPresenter(this);
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
 
 
     @OnClick(R.id.ll_myjournal_type)
     public void onViewClicked() {
+        presenter.getData();
 
         if (mLlXialaType.getVisibility() == View.VISIBLE) {
             mLlXialaType.setVisibility(View.INVISIBLE);
@@ -114,24 +71,10 @@ public class MyJournalActivity extends BaseActivity implements OnRefreshListener
 
     }
 
-    @Override
-    public void onRefresh() {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeToLoadLayout.setRefreshing(false);
-            }
-        },2000);
 
-    }
 
     @Override
-    public void onLoadMore() {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeToLoadLayout.setLoadingMore(false);
-            }
-        },2000);
+    public void returnData(int key, List<LoginData> data) {
+
     }
 }

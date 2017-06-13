@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,12 +32,13 @@ public class GetSingleCustomerActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
 
     @OnClick(R.id.tv_dayplan_submit)
     public void onViewClicked() {
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }

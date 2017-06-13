@@ -3,7 +3,8 @@ package com.wtcrmandroid.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
+import com.wtcrmandroid.presenter.BasePresenter;
+import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.AllView;
 
 import butterknife.ButterKnife;
@@ -16,10 +17,12 @@ import butterknife.ButterKnife;
  */
 
 
-public abstract class BaseActivity<T extends BaseData> extends AppCompatActivity implements AllView<T> {
+public abstract class BaseActivity<T extends BasePresenter,T1> extends AppCompatActivity implements AllView<T1> {
+    protected T presenter;
 
     @Override
     public void showToast(String text) {
+        L.e(text);
 
     }
 
@@ -43,4 +46,9 @@ public abstract class BaseActivity<T extends BaseData> extends AppCompatActivity
      * 初始化方法
      */
     protected abstract void initview();
+//    @Override
+//    public void returnBean(int key, String data) {
+//
+//        returnData(key,list);
+//    }
 }

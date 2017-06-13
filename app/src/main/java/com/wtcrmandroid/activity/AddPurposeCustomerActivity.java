@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,13 +35,15 @@ public class AddPurposeCustomerActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
 
-    }
 
 
     @OnClick(R.id.tv_addcustomer_save)
     public void onViewClicked() {
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }

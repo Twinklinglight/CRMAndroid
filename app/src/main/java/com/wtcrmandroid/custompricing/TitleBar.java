@@ -38,6 +38,9 @@ public class TitleBar extends RelativeLayout {
     RelativeLayout rightLayout;
     private Activity activity;
 
+
+
+
     public TitleBar(Context context, AttributeSet attrs, int defStyle) {
         this(context, attrs);
     }
@@ -57,7 +60,10 @@ public class TitleBar extends RelativeLayout {
         ButterKnife.bind(view);
 
 
+
+
     }
+
 
     /**
      * 设置标题
@@ -86,6 +92,9 @@ public class TitleBar extends RelativeLayout {
 
     public void setRightImageResource(int i){
         rightImage.setImageResource(i);
+    }
+    public void setLeftOnClickListener(OnClickListener onClickListener){
+        leftLayout.setOnClickListener(onClickListener);
     }
     public void setRightOnClickListener(OnClickListener onClickListener){
         rightLayout.setOnClickListener(onClickListener);
