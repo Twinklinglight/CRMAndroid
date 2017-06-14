@@ -6,7 +6,6 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class WeekplanDetailsActivity extends BaseActivity {
     }
 
     @Override
-    public void returnData(int key, BaseData data) {
+    public void returnData(int key, Object data) {
 
     }
 }

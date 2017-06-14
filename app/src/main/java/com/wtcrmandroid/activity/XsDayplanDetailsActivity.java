@@ -11,7 +11,6 @@ import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.MajorCustomerFragment;
 import com.wtcrmandroid.fragment.SingleCustomerFragment;
 import com.wtcrmandroid.fragment.WorkPlanFragment;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +65,7 @@ public class XsDayplanDetailsActivity extends BaseActivity {
     }
 
     @Override
-    public void returnData(int key, BaseData data) {
+    public void returnData(int key, Object data) {
 
     }
 }

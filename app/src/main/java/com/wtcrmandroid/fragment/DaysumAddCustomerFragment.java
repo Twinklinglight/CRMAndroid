@@ -25,4 +25,8 @@ public class DaysumAddCustomerFragment extends BaseFragmengt {
 
     }
 
+    @Override
+    public void returnData(int key, Object data) {
+
+    }
 }

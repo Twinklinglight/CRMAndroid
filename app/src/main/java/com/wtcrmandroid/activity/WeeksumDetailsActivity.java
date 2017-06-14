@@ -6,7 +6,6 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.WeeksumDetailsData;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class WeeksumDetailsActivity extends BaseActivity {
     }
 
     @Override
-    public void returnData(int key, BaseData data) {
+    public void returnData(int key, Object data) {
 
     }
 }

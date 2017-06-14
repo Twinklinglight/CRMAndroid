@@ -10,7 +10,6 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.iflytek.cloud.SpeechUtility;
-import com.wtcrmandroid.http.retrofit2.ApiService;
 
 import java.io.IOException;
 
@@ -21,7 +20,6 @@ import java.io.IOException;
 public class MyApplication extends Application{
     public String userAgent;
     public static MyApplication application;
-    public ApiService apiService;
     @Override
     public void onCreate() {
         super.onCreate();

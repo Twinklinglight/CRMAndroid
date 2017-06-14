@@ -15,7 +15,6 @@ import com.wtcrmandroid.fragment.DaysumHkdzFragment;
 import com.wtcrmandroid.fragment.DaysumSingleCustomerFragment;
 import com.wtcrmandroid.fragment.DaysumWorkCountFragment;
 import com.wtcrmandroid.fragment.DaysumWorkPlanFragment;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.view.MyListView;
 import com.wtcrmandroid.view.MyViewPager;
@@ -88,11 +87,6 @@ public class XsDaysumDetailsActivity extends BaseActivity {
         mTabDaysumDetails.setTabMode(MODE_SCROLLABLE);  //tab滚动模式
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
-
     public void getData() {
         for (int i = 0; i < 8; i++) {
             CommentData commentData = new CommentData();
@@ -102,6 +96,11 @@ public class XsDaysumDetailsActivity extends BaseActivity {
             commentData.setCommentContent("除了这你还弄啥类");
             mCommentDatas.add(commentData);
         }
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 
     static class ViewHolder {
