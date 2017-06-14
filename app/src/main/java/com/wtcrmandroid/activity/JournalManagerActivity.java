@@ -44,6 +44,12 @@ public class JournalManagerActivity extends BaseActivity {
     @Override
     protected void initview() {
         mTitlebar.setTitletext("日志管理");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 
