@@ -18,7 +18,7 @@
             android:src="@mipmap/ic_xrz_workrank"/>
 
         <TextView
-            android:id="@+id/tv_dayplan_sort"
+            android:id="@+id/tv_daysum_sort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -50,7 +50,7 @@
             android:src="@mipmap/ic_xrz_context"/>
 
         <EditText
-            android:id="@+id/tv_dayplan_content"
+            android:id="@+id/tv_daysum_content"
             style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             />
 
         <ImageButton
-            android:id="@+id/ib_dayplan_yy"
+            android:id="@+id/ib_daypsum_yy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -84,7 +84,7 @@
             android:src="@mipmap/ic_xrz_person"/>
 
         <EditText
-            android:id="@+id/et_dayplan_person"
+            android:id="@+id/et_daysum_person"
             style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,84 +99,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:gravity="center_vertical">
 
-        <RelativeLayout
-            android:layout_width="0dp"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/iv_dayplan_percent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_xrz_percent"/>
-
-            <EditText
-                android:id="@+id/tv_dayplan_percent"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/iv_dayplan_percent"
-                android:hint="@string/work_persent"
-                android:paddingLeft="10dp"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
+            android:src="@mipmap/ic_xrz_wcqk"/>
+        <TextView
+            android:id="@+id/tv_daysum_complete"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/white"
-            android:padding="10dp">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            style="@style/ContentText"
+            android:hint="@string/hint_daysum_wcqk"/>
 
-            <ImageView
-                android:id="@+id/iv_dayplan_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_xrz_time"/>
-
-            <EditText
-                android:id="@+id/tv_dayplan_time"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/iv_dayplan_time"
-                android:hint="@string/complete_time"
-                android:paddingLeft="10dp"
-                />
-
-        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_gray_arrow"/>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/white"
-        android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/iv_dayplan_remark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_xrz_remark"/>
-
-        <EditText
-            android:id="@+id/tv_dayplan_remark"
-            style="@style/EditTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/iv_dayplan_remark"
-            android:hint="@string/remark"
-            android:paddingLeft="10dp"
-            />
-
-    </RelativeLayout>
 
 </LinearLayout>

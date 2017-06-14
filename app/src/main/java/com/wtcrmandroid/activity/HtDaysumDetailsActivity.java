@@ -70,8 +70,6 @@ public class HtDaysumDetailsActivity extends BaseActivity {
 
     }
 
-
-
     public void getData() {
         for (int i = 0; i < 3; i++) {
             HtDaysumDetailsData htDaysumDetailsData = new HtDaysumDetailsData();

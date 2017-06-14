@@ -15,7 +15,6 @@ import com.wtcrmandroid.fragment.DaysumHkdzFragment;
 import com.wtcrmandroid.fragment.DaysumSingleCustomerFragment;
 import com.wtcrmandroid.fragment.DaysumWorkCountFragment;
 import com.wtcrmandroid.fragment.DaysumWorkPlanFragment;
-
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.view.MyListView;
 import com.wtcrmandroid.view.MyViewPager;
@@ -87,7 +86,6 @@ public class XsDaysumDetailsActivity extends BaseActivity {
         mTabDaysumDetails.setupWithViewPager(mVpDayplanDetails);    //关联vp
         mTabDaysumDetails.setTabMode(MODE_SCROLLABLE);  //tab滚动模式
     }
-
 
     public void getData() {
         for (int i = 0; i < 8; i++) {

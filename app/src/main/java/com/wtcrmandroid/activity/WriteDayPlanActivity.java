@@ -1,6 +1,5 @@
 package com.wtcrmandroid.activity;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,19 +8,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.WriteDayPlanAdapter;
+import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.model.WriteDayplanData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 /**
-*  写日计划activity
-*  @author zxd
-*  @date 2017/6/8
-*/
+ * 写日计划activity
+ *
+ * @author zxd
+ * @date 2017/6/8
+ */
 
 public class WriteDayPlanActivity extends BaseActivity {
 
@@ -38,7 +40,7 @@ public class WriteDayPlanActivity extends BaseActivity {
     TitleBar mTitlebar;             //标题
 
     private WriteDayPlanAdapter mDayPlanAdapter;
-    private List<String> mList;
+    private List<WriteDayplanData> mList;
     private ViewHolder1 mViewHolder1;
 
     @Override
@@ -49,35 +51,34 @@ public class WriteDayPlanActivity extends BaseActivity {
     @Override
     protected void initview() {
 
-        mList = new ArrayList<>();
-        mList.add("");
-        mDayPlanAdapter = new WriteDayPlanAdapter(mList);
-        mLvWriteDayplan.setAdapter(mDayPlanAdapter);
         mTitlebar.setTitletext("写日计划");
-
-        View footview = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
-        mViewHolder1 = new ViewHolder1(footview);
-        mLvWriteDayplan.addFooterView(footview);
-
+        mList = new ArrayList<>();
+        WriteDayplanData writeDayplanData = new WriteDayplanData();
+        writeDayplanData.setWorkSort("A类");
+        mList.add(writeDayplanData);
+        mDayPlanAdapter = new WriteDayPlanAdapter(this, mList);
+        mLvWriteDayplan.setAdapter(mDayPlanAdapter);
         mDayPlanAdapter.notifyDataSetChanged();
 
-        mViewHolder1.mRlAddjob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (mList.size() > 0) {
 
-                mList.add("");
-                mDayPlanAdapter.notifyDataSetChanged();
+            View footview = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
+            mViewHolder1 = new ViewHolder1(footview);
+            mLvWriteDayplan.addFooterView(footview);
 
-            }
-        });
-    }
+            mDayPlanAdapter.notifyDataSetChanged();
 
+            mViewHolder1.mRlAddjob.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
+                    WriteDayplanData writeDayplanData1 = new WriteDayplanData();
+                    writeDayplanData1.setWorkSort("B类");
+                    mList.add(writeDayplanData1);
+                    mDayPlanAdapter.notifyDataSetChanged();
+                }
+            });
+        }
     }
 
     @Override

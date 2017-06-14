@@ -47,7 +47,6 @@ public class HtDayplanDetails extends BaseActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-
     public void getData() {
         mData = new ArrayList<>();
         for (int i = 0; i < 5; i++) {

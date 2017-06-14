@@ -16,24 +16,42 @@ import okhttp3.RequestBody;
  */
 public class PostRequest extends OkHttpRequest{
 
-	public PostRequest(String url, String userAgent, Map<String, Object> params, Object tag) {
+	public PostRequest(String url, String userAgent, Map<String, String> params, Object tag) {
 		super(url, userAgent, params, tag);
 	}
 	@Override
 	protected void initBuilder() {
 		String string=params.toString();
 		L.e(string);
-        JSONObject json = null;
-        try {
-            json = new JSONObject(string);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        L.e(json.toString());
+		JSONObject json = null;
+		try {
+			json = new JSONObject(string);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		L.e(json.toString());
 //        RequestBody requestBody=body.build();
-//		requestBody.contentType();
+//    requestBody.contentType();
 
-//		builder.url(url).header("User-Agent",userAgent).post(requestBody);
+//    builder.url(url).header("User-Agent",userAgent).post(requestBody);
 		builder.url(url).post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString()));
 	}
+
+	/*public PostRequest(String url, String userAgent, Map<String, String> params, Object tag) {
+		super(url, userAgent, params, tag);
+	}
+	@Override
+	protected void initBuilder() {
+		FormBody.Builder body = new FormBody.Builder();
+		for(Map.Entry<String,String> entry:params.entrySet()){
+			if (entry.getValue()==null){
+				L.e("PostRequest","Param value can not be null!");
+				return;
+			}
+			body.add(entry.getKey(),entry.getValue());
+		}
+		RequestBody requestBody=body.build();
+//		builder.url(url).header("User-Agent",userAgent).post(requestBody);
+		builder.url(url).post(requestBody);
+	}*/
 }

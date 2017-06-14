@@ -38,7 +38,7 @@
     <style name="EditTextStyle">
         <item name="android:background">@android:color/white</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textCursorDrawable">@drawable/edittext_cursor_shap</item>
     </style>
 

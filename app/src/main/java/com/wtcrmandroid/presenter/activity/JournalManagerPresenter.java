@@ -9,6 +9,7 @@ import com.wtcrmandroid.view.AllView;
  */
 
 public class JournalManagerPresenter extends BasePresenter{
+
     public JournalManagerPresenter(AllView view) {
         super(view);
     }
