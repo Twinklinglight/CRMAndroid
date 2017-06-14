@@ -16,7 +16,7 @@ import okhttp3.RequestBody;
  */
 public class PostRequest extends OkHttpRequest{
 
-	public PostRequest(String url, String userAgent, Map<String, String> params, Object tag) {
+	public PostRequest(String url, String userAgent, Map<String, Object> params, Object tag) {
 		super(url, userAgent, params, tag);
 	}
 	@Override
@@ -37,21 +37,5 @@ public class PostRequest extends OkHttpRequest{
 		builder.url(url).post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString()));
 	}
 
-	/*public PostRequest(String url, String userAgent, Map<String, String> params, Object tag) {
-		super(url, userAgent, params, tag);
-	}
-	@Override
-	protected void initBuilder() {
-		FormBody.Builder body = new FormBody.Builder();
-		for(Map.Entry<String,String> entry:params.entrySet()){
-			if (entry.getValue()==null){
-				L.e("PostRequest","Param value can not be null!");
-				return;
-			}
-			body.add(entry.getKey(),entry.getValue());
-		}
-		RequestBody requestBody=body.build();
-//		builder.url(url).header("User-Agent",userAgent).post(requestBody);
-		builder.url(url).post(requestBody);
-	}*/
+
 }
