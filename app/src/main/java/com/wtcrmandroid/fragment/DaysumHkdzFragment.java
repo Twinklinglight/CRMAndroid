@@ -16,4 +16,9 @@ public class DaysumHkdzFragment extends BaseFragmengt {
     protected void init() {
 
     }
+
+    @Override
+    public void returnData(int key, Object data) {
+
+    }
 }

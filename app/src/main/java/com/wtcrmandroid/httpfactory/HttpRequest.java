@@ -103,7 +103,7 @@ public class HttpRequest {
      * @param tag            此请求的标识
      * @param resultCallBack 请求回调
      */
-    public void sendGet(String url, Map<String, String> params, Object tag, StringCallBack resultCallBack) {
+    public void sendGet(String url, Map<String, Object> params, Object tag, StringCallBack resultCallBack) {
         if (params == null) {
             params = new HashMap<>();
         }
@@ -122,7 +122,7 @@ public class HttpRequest {
      * @param tag         此请求的标识
      * @param retCallBack 请求回调
      */
-    public void sendGet(final String url, Map<String, String> params, Object tag, final RetCallBack retCallBack) {
+    public void sendGet(final String url, Map<String, Object> params, Object tag, final RetCallBack retCallBack) {
         if (params == null) {
             params = new HashMap<>();
         }
@@ -158,7 +158,7 @@ public class HttpRequest {
      * @param resultCallBack 请求回调
      */
 
-    public void sendPost(String url, Map<String, String> params, Object tag, StringCallBack resultCallBack) {
+    public void sendPost(String url, Map<String, Object> params, Object tag, StringCallBack resultCallBack) {
         if (params == null) {
             params = new HashMap<>();
         }

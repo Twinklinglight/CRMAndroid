@@ -38,7 +38,7 @@ public class LoginPresenter extends BasePresenter<List<LoginData>> {
      * 登录
      */
     public void login() {
-        HashMap<String, String> params = new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("userName", "shenzhongjia");
         params.put("userPass", MD5Utils.MD5("shen123456"));
         L.e(MD5Utils.MD5("shen123456"));

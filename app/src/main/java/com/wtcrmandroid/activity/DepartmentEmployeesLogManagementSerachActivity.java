@@ -57,7 +57,7 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
 
     @OnClick(R.id.tv_right)
     public void onClick() {
-        HashMap<String, String> params = new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("userName", "shenzhongjia");
         params.put("userPass", MD5Utils.MD5("shen123456"));
         L.e(MD5Utils.MD5("shen123456"));

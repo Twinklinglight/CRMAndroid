@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by chen on 2016/3/9.
  */
 public class GetRequest extends OkHttpRequest{
-	public GetRequest(String url, String userAgent, Map<String, String> params, Object tag) {
+	public GetRequest(String url, String userAgent, Map<String, Object> params, Object tag) {
 		super(url, userAgent, params, tag);
 	}
 
@@ -37,9 +37,9 @@ public class GetRequest extends OkHttpRequest{
 		builder.url(url).header("User-Agent",userAgent).build();
 		L.e("url","url:"+url);
 	}
-	private String map2String(Map<String,String> params){
+	private String map2String(Map<String,Object> params){
 		StringBuffer stringBuffer = new StringBuffer();
-		for (Map.Entry<String,String> entry:params.entrySet()) {
+		for (Map.Entry<String,Object> entry:params.entrySet()) {
 			stringBuffer.append(entry.getKey());
 			stringBuffer.append("=");
 			if (entry.getValue()!=null){

@@ -50,4 +50,8 @@ public class WorkPlanFragment extends BaseFragmengt {
         }
     }
 
+    @Override
+    public void returnData(int key, Object data) {
+
+    }
 }

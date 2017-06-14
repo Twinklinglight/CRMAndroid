@@ -19,7 +19,7 @@ public abstract class BasePresenter<T> {
         this.view=view;
     }
     protected abstract void returnData(int key,String response);
-    protected void post(String url, Map<String, String> params, final int key){
+    protected void post(String url, Map<String, Object> params, final int key){
         HttpRequest.instance().sendPost(url, params,null, new StringCallBack() {
             @Override
             public void onError(int errorRet, String errorMsg) {

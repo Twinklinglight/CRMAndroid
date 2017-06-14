@@ -24,4 +24,8 @@ public class DaysumWorkPlanFragment extends BaseFragmengt {
 
     }
 
+    @Override
+    public void returnData(int key, Object data) {
+
+    }
 }

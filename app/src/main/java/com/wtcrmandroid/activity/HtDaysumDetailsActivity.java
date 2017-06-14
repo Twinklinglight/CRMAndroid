@@ -8,7 +8,6 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.HtDaysumDetailsData;
 import com.wtcrmandroid.view.MyListView;
@@ -71,10 +70,7 @@ public class HtDaysumDetailsActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
 
-    }
 
     public void getData() {
         for (int i = 0; i < 3; i++) {
@@ -95,6 +91,11 @@ public class HtDaysumDetailsActivity extends BaseActivity {
             mDtailsList.add(htDaysumDetailsData);
             mCommentList.add(commentData);
         }
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 
     static class ViewHolder {

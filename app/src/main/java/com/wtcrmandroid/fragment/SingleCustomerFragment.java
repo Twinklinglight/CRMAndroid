@@ -53,4 +53,8 @@ public class SingleCustomerFragment extends BaseFragmengt {
         }
     }
 
+    @Override
+    public void returnData(int key, Object data) {
+
+    }
 }

@@ -7,7 +7,6 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
 
 import java.util.ArrayList;
@@ -48,10 +47,6 @@ public class HtDayplanDetails extends BaseActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void returnData(int key, BaseData data) {
-
-    }
 
     public void getData() {
         mData = new ArrayList<>();
@@ -64,5 +59,10 @@ public class HtDayplanDetails extends BaseActivity {
 
             mData.add(htDayplanDetailsData);
         }
+    }
+
+    @Override
+    public void returnData(int key, Object data) {
+
     }
 }

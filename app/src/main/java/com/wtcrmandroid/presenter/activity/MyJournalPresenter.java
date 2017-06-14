@@ -26,7 +26,7 @@ public class MyJournalPresenter extends BasePresenter{
         params.put("userPass", MD5Utils.MD5("shen123456"));
         params.put("type", "day");
         params.put("isPlan", "false");
-        params.put("nowDate", "2017-06-13");
+        params.put("nowDate", "2017-06-12");
         L.e(MD5Utils.MD5("shen123456"));
         post("http://192.168.0.7/api/WorkPlan/getUserWorkPlan", params,0);
     }

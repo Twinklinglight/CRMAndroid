@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.http.retrofit2.data.BaseData;
 
 import butterknife.BindView;
 /**
@@ -38,8 +37,9 @@ public class XsWriteDaysumActivity extends BaseActivity {
 
     }
 
+
     @Override
-    public void returnData(int key, BaseData data) {
+    public void returnData(int key, Object data) {
 
     }
 }

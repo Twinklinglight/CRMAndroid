@@ -16,7 +16,7 @@ import okhttp3.RequestBody;
  */
 public class PostRequest extends OkHttpRequest{
 
-	public PostRequest(String url, String userAgent, Map<String, String> params, Object tag) {
+	public PostRequest(String url, String userAgent, Map<String, Object> params, Object tag) {
 		super(url, userAgent, params, tag);
 	}
 	@Override

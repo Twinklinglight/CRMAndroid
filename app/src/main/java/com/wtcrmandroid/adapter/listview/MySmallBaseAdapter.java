@@ -26,6 +26,10 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public List<T> getList() {
+        return list;
+    }
+
     @Override
     public int getCount() {
         return list.size();

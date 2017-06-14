@@ -10,11 +10,11 @@ import okhttp3.Request;
  */
 public abstract class OkHttpRequest {
 	protected String url;
-	protected Map<String,String> params;
+	protected Map<String,Object> params;
 	protected Object tag;
 	protected String userAgent;
 	protected Request.Builder builder=new Request.Builder();
-	public OkHttpRequest(String url,String userAgent,Map<String,String> params,Object tag){
+	public OkHttpRequest(String url,String userAgent,Map<String,Object> params,Object tag){
 		this.url=url;
 		this.userAgent=userAgent;
 		this.params=params;

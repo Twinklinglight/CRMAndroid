@@ -45,4 +45,9 @@ public class MajorCustomerFragment extends BaseFragmengt {
             mDatas.add(majorCustomerData);
         }
     }
+
+    @Override
+    public void returnData(int key, Object data) {
+
+    }
 }
