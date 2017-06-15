@@ -7,6 +7,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.FieldAcrivity;
 import com.wtcrmandroid.activity.JournalManagerActivity;
 import com.wtcrmandroid.activity.MainActivity;
 import com.wtcrmandroid.custompricing.TitleBar;
@@ -68,15 +69,23 @@ public class HomeFragment extends BaseFragmengt {
 
     }
 
-    @OnClick(R.id.tv_log_management)
-    public void onClick() {
-        startActivity(new Intent(getActivity(), JournalManagerActivity.class));
-    }
-
-
 
     @Override
     public void returnData(int key, Object data) {
 
+    }
+
+    @OnClick({R.id.tv_log_management, R.id.tv_field})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            //日志管理点击事件
+            case R.id.tv_log_management:
+                startActivity(new Intent(getActivity(), JournalManagerActivity.class));
+                break;
+            //外勤点击事件
+            case R.id.tv_field:
+                startActivity(new Intent(getActivity(), FieldAcrivity.class));
+                break;
+        }
     }
 }

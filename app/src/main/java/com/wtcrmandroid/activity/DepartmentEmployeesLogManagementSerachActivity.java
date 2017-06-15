@@ -1,6 +1,8 @@
 package com.wtcrmandroid.activity;
 
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.httpfactory.HttpRequest;
@@ -19,11 +21,13 @@ import butterknife.OnClick;
  * 部门员工日志管理搜索页
  */
 
-public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity   {
+public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity {
     @BindView(R.id.et_search)
     EditText etSearch;
-    private Iat iat;
+    @BindView(R.id.iv_left)
+    ImageView ivLeft;
 
+    private Iat iat;
 
 
     @Override
@@ -33,6 +37,12 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
 
     @Override
     protected void initview() {
+        ivLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -61,7 +71,7 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
         params.put("userName", "shenzhongjia");
         params.put("userPass", MD5Utils.MD5("shen123456"));
         L.e(MD5Utils.MD5("shen123456"));
-        HttpRequest.instance().sendPost("http://192.168.0.7/api/Login/UserLogin", params,null, new StringCallBack() {
+        HttpRequest.instance().sendPost("http://192.168.0.7/api/Login/UserLogin", params, null, new StringCallBack() {
             @Override
             public void onError(int errorRet, String errorMsg) {
 
