@@ -37,6 +37,7 @@
         android:padding="10dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/work_load"
@@ -59,6 +60,7 @@
         android:padding="10dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/money_qk"
@@ -81,6 +83,7 @@
         android:padding="10dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/single_analysis"
@@ -106,6 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_customer"
+            style="@style/ContentText"
             android:textColor="@color/colorIconText"/>
 
         <ImageView
@@ -120,7 +124,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:hint="本周学习与反省（心得、体会）"/>
+                android:hint="今天学习与反省（心得、体会）"/>
 
 
         </LinearLayout>

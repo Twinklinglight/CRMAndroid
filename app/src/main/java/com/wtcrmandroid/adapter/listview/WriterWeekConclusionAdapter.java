@@ -6,10 +6,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.iat.Iat;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.utils.L;
 
@@ -32,14 +34,19 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
     @Override
     protected void convert(final ViewHolder holder, int position) {
         final WriterWeekPlaneData data = list.get(position);
-        holder.tvPlan.setText(data.getTvPlan() + (position + 1));
-        holder.etWorkPlane.setText(data.getEtWorkPlane());
-        holder.etPlaneTarget.setText(data.getEtPlaneTarget());
-        holder.etProportion.setText(data.getEtProportion());
+        holder.tvPlan.setText(data.getWorkNumber() + (position + 1));
+        holder.etWorkPlane.setText(data.getWorkContent());
+        holder.etPlaneTarget.setText(data.getWorkPlanning());
+        holder.etProportion.setText(data.getWorkPercentage());
         holder.etWorkPlane.addTextChangedListener(new MyTextWatcher(data, position, 0));
         holder.etPlaneTarget.addTextChangedListener(new MyTextWatcher(data, position, 1));
         holder.etProportion.addTextChangedListener(new MyTextWatcher(data, position, 2));
-
+        holder.ivMicrophone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doVoice(holder.etWorkPlane);
+            }
+        });
         if (list.size() == position + 1) {
             holder.rlAdd.setVisibility(View.VISIBLE);
 
@@ -51,9 +58,9 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
 //                    data.setEtProportion(holder.etProportion.getText().toString());
 //                    list.set(position,data);
                     WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
-                    writerWeekPlaneData.setTvPlan("本周总结");
+                    writerWeekPlaneData.setWorkNumber("本周总结");
                     list.add(writerWeekPlaneData);
-                    L.e(list.size() + "" + list.get(0).getEtWorkPlane());
+                    L.e(list.size() + "" + list.get(0).getWorkContent());
                     WriterWeekConclusionAdapter.this.notifyDataSetChanged();
                 }
             });
@@ -101,13 +108,13 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
         public void afterTextChanged(Editable s) {
             switch (type) {
                 case 0:
-                    data.setEtWorkPlane(s.toString());
+                    data.setWorkContent(s.toString());
                     break;
                 case 1:
-                    data.setEtPlaneTarget(s.toString());
+                    data.setWorkPlanning(s.toString());
                     break;
                 case 2:
-                    data.setEtProportion(s.toString());
+                    data.setWorkPercentage(s.toString());
                     break;
                 default:
                     break;
@@ -129,9 +136,27 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
         EditText etResult;
         @BindView(R.id.rl_add)
         RelativeLayout rlAdd;
-
+        @BindView(R.id.iv_microphone)
+        ImageView ivMicrophone;
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
+    }
+    public void doVoice(final EditText etWorkPlane) {
+
+        Iat iat = new Iat(activity);
+        iat.iatRecognize();
+        iat.setSetRestult(new Iat.setResult() {
+            @Override
+            public void succeed(String result) {
+                etWorkPlane.setText(result);
+
+            }
+
+            @Override
+            public void failed(String iatError) {
+                L.e("出现了一个错误，请您重试");
+            }
+        });
     }
 }

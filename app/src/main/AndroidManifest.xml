@@ -66,7 +66,8 @@
         <activity android:name=".activity.GetMoneyActivity">
         </activity>
         <!-- 今日工作量 -->
-        <activity android:name=".activity.TodayWorkLoadActivity">
+        <activity android:name=".activity.TodayWorkLoadActivity"
+                  android:windowSoftInputMode="stateHidden">
         </activity>
         <!-- 预测单客户踩中 -->
         <activity android:name=".activity.GetSingleCustomerActivity">

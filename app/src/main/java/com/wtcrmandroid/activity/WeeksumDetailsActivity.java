@@ -43,6 +43,7 @@ public class WeeksumDetailsActivity extends BaseActivity {
         mAdapter.notifyDataSetChanged();
     }
 
+
     @Override
     public void returnData(int key, Object data) {
 

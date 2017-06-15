@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@android:color/white">
+              android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/ll_daysum_addjob"
+        android:id="@+id/ll_weeksum_addjob"
         android:padding="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:background="@android:color/white"
         android:orientation="horizontal">
 
         <ImageView
@@ -47,18 +47,18 @@
                 android:src="@mipmap/ic_xrz_sum"/>
 
             <EditText
-                android:id="@+id/et_daysum_sum"
+                android:id="@+id/et_weeksum_sum"
                 style="@style/EditTextStyle"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="今日学习与反省（心得、体会）"/>
+                android:hint="本周学习与反省（心得、体会）"/>
 
 
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/ib_daysum_sumyuyin"
+            android:id="@+id/ib_weeksum_sumyuyin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

@@ -36,6 +36,8 @@ public class JournalManagerActivity extends BaseActivity {
     @BindView(R.id.rl_department_employees_log_management)
     RelativeLayout mRlJournalManagerBmygrz;     //部门员工日志
 
+    private boolean isSales = true;    //是否是销售人员
+
     @Override
     protected int layout() {
         return R.layout.activity_journal_manager;
@@ -55,11 +57,19 @@ public class JournalManagerActivity extends BaseActivity {
         switch (view.getId()) {
             //写日总结
             case R.id.ll_journalManager_write_daysum:
-                startActivity(new Intent(JournalManagerActivity.this,WriteDaySumActivity.class));
+                if (isSales){
+                    startActivity(new Intent(JournalManagerActivity.this,XsWriteDaysumActivity.class));
+                }else {
+                    startActivity(new Intent(JournalManagerActivity.this,WriteDaySumActivity.class));
+                }
                 break;
             //写日计划
             case R.id.ll_write_day_plan:
-                startActivity(new Intent(JournalManagerActivity.this,WriteDayPlanActivity.class));
+                if (isSales){
+                    startActivity(new Intent(JournalManagerActivity.this,XsWriteDayplanActivity.class));
+                }else {
+                    startActivity(new Intent(JournalManagerActivity.this,WriteDayPlanActivity.class));
+                }
                 break;
             //写周总结
             case R.id.ll_journalManager_write_weeksum:

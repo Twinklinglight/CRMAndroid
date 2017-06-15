@@ -15,6 +15,7 @@ import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriteDaysumData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -56,6 +57,7 @@ public class XsWriteDaysumActivity extends BaseActivity {
     protected void initview() {
 
         mTitlebar.setTitletext("写日总结");
+        mDataList = new ArrayList<>();
         WriteDaysumData daysumData = new WriteDaysumData();
         daysumData.setWorkSort("A类");
         mDataList.add(daysumData);

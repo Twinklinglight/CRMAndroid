@@ -44,6 +44,8 @@ public class WeekplanDetailsActivity extends BaseActivity {
         mLvWeekplan.setAdapter(mAdapter);
     }
 
+
+
     @Override
     public void returnData(int key, Object data) {
 

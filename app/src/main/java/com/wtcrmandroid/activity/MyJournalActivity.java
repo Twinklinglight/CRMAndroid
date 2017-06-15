@@ -30,6 +30,8 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter,List<Logi
     LinearLayout mLlMyjournalType;  //类型筛选按钮
     @BindView(R.id.ll_myjournal_time)
     LinearLayout mLlMyjournalTime;  //时间筛选按钮
+//    @BindView(R.id.lv_myjournal)
+//    ListView mLvMyjournal;          //我的日志列表
     @BindView(R.id.ll_xiala_type)
     LinearLayout mLlXialaType;      //类型弹框
     @BindView(R.id.iv_type_arrow)

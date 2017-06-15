@@ -55,6 +55,9 @@
     <string name="hint_reson">请输入原因分析</string>
     <string name="gjfa">跟进方案:</string>
     <string name="hint_gjfa">请输入跟进方案</string>
+    <string name="hint_cttype">请输入客户类型</string>
+    <string name="hint_pdtype">请输入产品类型</string>
+    <string name="hint_backmoney">请输入回款金额</string>
 
     <string name="Major_save">完成保存</string>
 

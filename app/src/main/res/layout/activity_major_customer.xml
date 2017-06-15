@@ -24,7 +24,7 @@
         android:textColor="#ffffff"/>
 
     <ListView
-        android:id="@+id/lv_singlecustomer"
+        android:id="@+id/lv_majorcustomer"
         android:layout_below="@id/titlebar"
         android:layout_above="@id/tv_major_save"
         android:layout_width="match_parent"

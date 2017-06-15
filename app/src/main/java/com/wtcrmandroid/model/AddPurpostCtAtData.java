@@ -1,14 +1,14 @@
 package com.wtcrmandroid.model;
 
 /**
- * Created by zxd on 2017/6/12
+ * Created by zxd on 2017/6/14
  */
 
-public class MajorCustomerData {
+public class AddPurpostCtAtData {
 
     private String WorkSort;
     private String CustomerName;
-    private String WorkAnalysis;
+    private String AnalysisGjin;
 
     public String getWorkSort() {
         return WorkSort;
@@ -26,20 +26,20 @@ public class MajorCustomerData {
         CustomerName = customerName;
     }
 
-    public String getWorkAnalysis() {
-        return WorkAnalysis;
+    public String getAnalysisGjin() {
+        return AnalysisGjin;
     }
 
-    public void setWorkAnalysis(String workAnalysis) {
-        WorkAnalysis = workAnalysis;
+    public void setAnalysisGjin(String analysisGjin) {
+        AnalysisGjin = analysisGjin;
     }
 
     @Override
     public String toString() {
-        return "MajorCustomerData{" +
+        return "AddPurpostCtAtData{" +
                 "WorkSort='" + WorkSort + '\'' +
                 ", CustomerName='" + CustomerName + '\'' +
-                ", WorkAnalysis='" + WorkAnalysis + '\'' +
+                ", AnalysisGjin='" + AnalysisGjin + '\'' +
                 '}';
     }
 }

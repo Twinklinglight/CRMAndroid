@@ -3,7 +3,6 @@ package com.wtcrmandroid.adapter.fragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.wtcrmandroid.R;
@@ -44,11 +43,8 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener{
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-        Log.e("DF","ASDFA");
         for(int i = 0; i < rgs.getChildCount(); i++){
-            Log.e("DF","ASDFB");
             if(rgs.getChildAt(i).getId() == checkedId){
-                Log.e("DF","ASDFC");
                 Fragment fragment = fragments.get(i);
                 FragmentTransaction ft = obtainFragmentTransaction(i);
 

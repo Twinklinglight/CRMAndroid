@@ -60,4 +60,16 @@ public class WriteDayplanData {
     public void setWrokBeizhu(String wrokBeizhu) {
         WrokBeizhu = wrokBeizhu;
     }
+
+    @Override
+    public String toString() {
+        return "WriteDayplanData{" +
+                "WorkSort='" + WorkSort + '\'' +
+                ", WorkContent='" + WorkContent + '\'' +
+                ", WorkPerson='" + WorkPerson + '\'' +
+                ", WorkPercent='" + WorkPercent + '\'' +
+                ", WrokTime='" + WrokTime + '\'' +
+                ", WrokBeizhu='" + WrokBeizhu + '\'' +
+                '}';
+    }
 }

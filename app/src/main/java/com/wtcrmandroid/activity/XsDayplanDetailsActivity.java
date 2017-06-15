@@ -64,6 +64,7 @@ public class XsDayplanDetailsActivity extends BaseActivity {
 
     }
 
+
     @Override
     public void returnData(int key, Object data) {
 

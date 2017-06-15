@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -14,6 +15,7 @@ import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriteDayplanData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -54,6 +56,7 @@ public class XsWriteDayplanActivity extends BaseActivity {
     protected void initview() {
 
         mTitlebar.setTitletext("写日计划");
+        mDataList = new ArrayList<>();
         WriteDayplanData dayplanData = new WriteDayplanData();
         dayplanData.setWorkSort("A类");
         mDataList.add(dayplanData);
@@ -72,6 +75,8 @@ public class XsWriteDayplanActivity extends BaseActivity {
                 dayplanData1.setWorkSort("C类");
                 mDataList.add(dayplanData1);
                 mWriteDayPlanAdapter.notifyDataSetChanged();
+
+                Log.e("zxd",mDataList.toString());
             }
         });
 

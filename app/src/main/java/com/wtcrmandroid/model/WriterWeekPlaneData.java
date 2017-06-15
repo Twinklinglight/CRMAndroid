@@ -6,40 +6,55 @@ package com.wtcrmandroid.model;
  */
 
 public class WriterWeekPlaneData {
-    private String tvPlan;
-    private String etWorkPlane;
-    private String etPlaneTarget;
-    private String etProportion;
+    /*
+        { workNumber:"序号",
+        workContent:"工作计划事项",
+        workPlanning:"计划达成目标/完成进度",
+        workPercentage:"所占比重" }
+    */
+    private String workNumber;
+    private String workContent;
+    private String workPlanning;
+    private String workPercentage;
 
-    public String getTvPlan() {
-        return tvPlan;
+    public String getWorkNumber() {
+        return workNumber;
     }
 
-    public void setTvPlan(String tvPlan) {
-        this.tvPlan = tvPlan;
+    public void setWorkNumber(String workNumber) {
+        this.workNumber = workNumber;
     }
 
-    public String getEtWorkPlane() {
-        return etWorkPlane;
+    public String getWorkContent() {
+        return workContent;
     }
 
-    public void setEtWorkPlane(String etWorkPlane) {
-        this.etWorkPlane = etWorkPlane;
+    public void setWorkContent(String workContent) {
+        this.workContent = workContent;
     }
 
-    public String getEtPlaneTarget() {
-        return etPlaneTarget;
+    public String getWorkPlanning() {
+        return workPlanning;
     }
 
-    public void setEtPlaneTarget(String etPlaneTarget) {
-        this.etPlaneTarget = etPlaneTarget;
+    public void setWorkPlanning(String workPlanning) {
+        this.workPlanning = workPlanning;
     }
 
-    public String getEtProportion() {
-        return etProportion;
+    public String getWorkPercentage() {
+        return workPercentage;
     }
 
-    public void setEtProportion(String etProportion) {
-        this.etProportion = etProportion;
+    public void setWorkPercentage(String workPercentage) {
+        this.workPercentage = workPercentage;
+    }
+
+    public String toString() {
+        return "{" +
+                "workNumber='" + workNumber + '\'' +
+                ", workContent='" + workContent + '\'' +
+                ", workPlanning='" + workPlanning + '\'' +
+                ", workPercentage='" + workPercentage + '\'' +
+                '}';
     }
 }

@@ -18,6 +18,7 @@ import com.wtcrmandroid.httpfactory.request.GetRequest;
 import com.wtcrmandroid.httpfactory.request.PingUtils;
 import com.wtcrmandroid.httpfactory.request.PostRequest;
 import com.wtcrmandroid.utils.DESUtils;
+import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.MD5Utils;
 
 import org.json.JSONException;
@@ -102,7 +103,7 @@ public class HttpRequest {
      * @param tag            此请求的标识
      * @param resultCallBack 请求回调
      */
-    public void sendGet(String url, Map<String, String> params, Object tag, StringCallBack resultCallBack) {
+    public void sendGet(String url, Map<String, Object> params, Object tag, StringCallBack resultCallBack) {
         if (params == null) {
             params = new HashMap<>();
         }
@@ -121,7 +122,7 @@ public class HttpRequest {
      * @param tag         此请求的标识
      * @param retCallBack 请求回调
      */
-    public void sendGet(final String url, Map<String, String> params, Object tag, final RetCallBack retCallBack) {
+    public void sendGet(final String url, Map<String, Object> params, Object tag, final RetCallBack retCallBack) {
         if (params == null) {
             params = new HashMap<>();
         }
@@ -157,11 +158,11 @@ public class HttpRequest {
      * @param resultCallBack 请求回调
      */
 
-    public void sendPost(String url, Map<String, String> params, Object tag, StringCallBack resultCallBack) {
+    public void sendPost(String url, Map<String, Object> params, Object tag, StringCallBack resultCallBack) {
         if (params == null) {
             params = new HashMap<>();
         }
-        params.put("ver_version", VERSION_CODE + "");//版本
+//        params.put("ver_version", VERSION_CODE + "");//版本
         PostRequest postRequest = new PostRequest(url, null, params, tag);
         Request request = postRequest.getRequest();
         deliverResult(url, request, resultCallBack);
@@ -194,9 +195,9 @@ public class HttpRequest {
         int ret = -1;
         try {
             String result = response.body().string();
-            com.wtcrmandroid.utils.L.e("json", "json_result:" + result);
+            L.e("json", "json_result:" + result);
             JSONObject json = new JSONObject(result);
-            com.wtcrmandroid.utils.L.e("json", "praseResponse: " + json);
+            L.e("json", "praseResponse: " + json);
             if (!json.isNull("ret")) {//ret不为空
                 ret = json.getInt("ret");
                 if (ret == 0) {
@@ -334,4 +335,6 @@ public class HttpRequest {
             }
         });
     }
+
+
 }

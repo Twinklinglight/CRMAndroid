@@ -30,6 +30,7 @@ public class MajorCustomerAdapter extends MySmallBaseAdapter<MajorCustomerData, 
         holder.mTvCustomrname.setText(list.get(position).getCustomerName());
         holder.mTvAnalysis.setText(list.get(position).getWorkAnalysis());
 
+
     }
 
     @Override
@@ -53,4 +54,6 @@ public class MajorCustomerAdapter extends MySmallBaseAdapter<MajorCustomerData, 
             ButterKnife.bind(this, view);
         }
     }
+
+
 }

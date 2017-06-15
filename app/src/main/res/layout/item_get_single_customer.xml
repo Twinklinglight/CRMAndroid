@@ -133,7 +133,7 @@
 
         <EditText
             style="@style/EditTextStyle"
-            android:id="@+id/et_single_percent"
+            android:id="@+id/et_single_plan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
