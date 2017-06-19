@@ -2,6 +2,7 @@ package com.wtcrmandroid;
 
 import android.app.Application;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.TypeAdapter;
@@ -17,15 +18,22 @@ import java.io.IOException;
  * Created by 1363655717 on 2017-06-07.
  */
 
-public class MyApplication extends Application{
+public class MyApplication extends Application {
     public String userAgent;
     public static MyApplication application;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        // 应用程序入口处调用，避免手机内存过小，杀死后台进程后通过历史intent进入Activity造成SpeechUtility对象为null
-        SpeechUtility.createUtility(MyApplication.this, "appid=" +"5937b406");
-        application=this;
+        // 讯飞应用程序入口处调用，避免手机内存过小，杀死后台进程后通过历史intent进入Activity造成SpeechUtility对象为null
+        SpeechUtility.createUtility(MyApplication.this, "appid=" + "5937b406");
+        /**
+         * 百度地图
+         * 在使用SDK各组件之前初始化context信息，传入ApplicationContext
+         * 注意该方法要再setContentView方法之前实现
+         */
+        SDKInitializer.initialize(getApplicationContext());
+        application = this;
     }
 
     public String getUserAgent() {
@@ -35,6 +43,7 @@ public class MyApplication extends Application{
     public void setUserAgent(String userAgent) {
         this.userAgent = userAgent;
     }
+
     private final static class SafeTypeAdapterFactory<T> implements TypeAdapterFactory {
         @Override
         public TypeAdapter create(Gson gson, final TypeToken type) {

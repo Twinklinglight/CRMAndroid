@@ -58,10 +58,6 @@ public class TitleBar extends RelativeLayout {
     private void init(Context context) {
         View view=LayoutInflater.from(context).inflate(R.layout.widget_title_bar, this);
         ButterKnife.bind(view);
-
-
-
-
     }
 
 

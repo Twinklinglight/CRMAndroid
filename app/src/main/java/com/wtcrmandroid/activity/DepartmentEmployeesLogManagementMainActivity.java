@@ -32,7 +32,7 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
     @Override
     protected void initview() {
         titlebar.setTitletext("部门员工日志");
-        titlebar.setRightImageResource(R.mipmap.ico_plus);
+        titlebar.setRightImageResource(R.mipmap.ic_search);
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
