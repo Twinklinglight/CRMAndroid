@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.wtcrmandroid.custompricing.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height" />
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:clickable="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#fff"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@mipmap/ic_customer_call_adddress" />
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="当前位置:"
+                        android:textColor="#2b2f33"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e9edf2" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:hint="请补充详细地址"
+                    android:minHeight="48dp"
+                    android:textColor="#2b2f33"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#e9edf2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@mipmap/ic_xrz_person" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="中国物通"
+                        android:textColor="#2b2f33"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@mipmap/ic_customer_contacts" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#e9edf2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="客户意向"
+                        android:textColor="#2b2f33"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请补充客户意向"
+                        android:minHeight="48dp"
+                        android:textColor="#2b2f33"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@mipmap/ic_xrz_yuyin" />
+                </LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--<com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_marginLeft="10dp">-->
+                        <!--</com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout>-->
+                    <!--<com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_weight="1">-->
+                        <!--</com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout>-->
+                    <!--<com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_weight="1">-->
+                        <!--</com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout>-->
+                    <!--<com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_weight="1"/>-->
+                    <!---->
+                <!--</LinearLayout>-->
+
+            </LinearLayout>
+        </ScrollView>
+        <Button
+            android:id="@+id/bt_submit"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentBottom="true"
+            android:text="立即提交"
+            android:textColor="#fff"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+</LinearLayout>

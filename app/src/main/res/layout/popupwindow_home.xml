@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_window"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="45dp"
+    android:orientation="vertical"
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:id="@+id/ll_control_fragment_write_journal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_home_write_journl" />
+
+            <TextView
+                style="@style/TopPlusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/write_journal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_control_fragment_send_approval"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_home_send_approval" />
+
+            <TextView
+                style="@style/TopPlusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_approval" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_control_fragment_send_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_home_send_notice" />
+
+            <TextView
+                style="@style/TopPlusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_notice" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_control_fragment_write_customer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_home_write_customer" />
+
+            <TextView
+                style="@style/TopPlusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/write_customer" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:id="@+id/ll_control_fragment_order_metting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_home_meeting_room_reservation" />
+
+            <TextView
+                style="@style/TopPlusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_metting" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_control_fragment_product_advice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_home_product_advice" />
+
+            <TextView
+                style="@style/TopPlusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_advice" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cancle_onlick"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:orientation="vertical" />
+
+</LinearLayout>

@@ -58,10 +58,6 @@ public class TitleBar extends RelativeLayout {
     private void init(Context context) {
         View view=LayoutInflater.from(context).inflate(R.layout.widget_title_bar, this);
         ButterKnife.bind(view);
-
-
-
-
     }
 
 
@@ -89,7 +85,15 @@ public class TitleBar extends RelativeLayout {
     public void setLeftText(String text){
         leftText.setText(text);
     }
-
+    /**
+     * 设置右边按钮文字
+     *
+     * @param text
+     */
+    public void setRightText(String text) {
+        rightText.setVisibility(View.VISIBLE);
+        rightText.setText(text);
+    }
     public void setRightImageResource(int i){
         rightImage.setImageResource(i);
     }
@@ -134,6 +138,7 @@ public class TitleBar extends RelativeLayout {
             }
         });
     }
+
 
     /**
      * 设置右边按钮文字
