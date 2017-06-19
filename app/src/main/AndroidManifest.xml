@@ -111,22 +111,15 @@
         <activity android:name=".activity.WeekplanDetailsActivity"></activity>
         <!-- 周总结详情 -->
         <activity android:name=".activity.WeeksumDetailsActivity"></activity>
+
         <activity android:name=".activity.XsWriteDayplanActivity"></activity>
         <activity android:name=".activity.XsWriteDaysumActivity"></activity>
-
+        <activity android:name=".aboutmy.MycardActivity"></activity>
 
         <!--百度地图可以-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WMFitVpylrtAuTgFPbltCkoP6SRY7zIE" />
-        <activity android:name=".activity.WeeksumDetailsActivity">
-        </activity>
-        <activity android:name=".activity.XsWriteDayplanActivity">
-        </activity>
-        <activity android:name=".activity.XsWriteDaysumActivity">
-        </activity>
-        <activity android:name=".aboutmy.MycardActivity">
-        </activity>
 
         <!-- shareSDK 的activity -->
         <activity

@@ -32,7 +32,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter,List<LoginData>>{
     @OnClick(R.id.bt_login)
     public void onClick() {
         presenter.login();
-        startActivity(new Intent(this,MainActivity.class));
     }
 
     @Override

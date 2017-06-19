@@ -7,19 +7,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="wrap_content"
+        android:background="@mipmap/ic_my_background">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <ImageButton
             android:id="@+id/ib_head_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:src="@mipmap/ic_home_my_customer_library"/>
+            android:background="@null"
+            android:src="@mipmap/ic_my_headpicture"/>
 
         <TextView
             android:id="@+id/tv_name"
@@ -27,9 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ib_head_picture"
             android:layout_centerHorizontal="true"
-            android:padding="10dp"
+            android:paddingBottom="15dp"
             android:text="李悦"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="18sp"/>
 
         <TextView
@@ -38,18 +36,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_name"
             android:layout_centerHorizontal="true"
-            android:drawablePadding="-5dp"
-            android:drawableRight="@mipmap/ic_gray_arrow"
+            android:drawablePadding="2dp"
+            android:drawableRight="@mipmap/ic_motto_editor"
             android:text="只为成功找方法，不为失败找理由！"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
             />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="@android:color/white"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center">
 
         <TextView
             style="@style/ContentText"
@@ -63,16 +65,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:drawableRight="@mipmap/ic_gray_arrow"
+            android:drawableRight="@mipmap/ic_grayright_arrow"
             android:text="18530800325"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="@android:color/white"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center">
 
         <TextView
             style="@style/ContentText"
@@ -92,9 +96,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:padding="10dp">
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:background="@android:color/white">
 
         <TextView
             style="@style/ContentText"
@@ -114,10 +120,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:background="@android:color/white"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center">
 
         <TextView
             style="@style/ContentText"
@@ -131,16 +139,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:drawableRight="@mipmap/ic_gray_arrow"/>
+            android:drawableRight="@mipmap/ic_grayright_arrow"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
-        android:padding="10dp">
+        android:background="@android:color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center">
 
         <TextView
             style="@style/ContentText"
@@ -154,20 +164,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:drawableRight="@mipmap/ic_gray_arrow"/>
+            android:drawableRight="@mipmap/ic_grayright_arrow"/>
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/bt_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shap_bt_back"
-        android:text="安全退出"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/Text36"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/bt_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shap_bt_back"
+            android:text="安全退出"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/Text36"/>
+
+    </RelativeLayout>
+
+
 
 
 </LinearLayout>

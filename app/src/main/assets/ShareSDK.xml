@@ -54,12 +54,12 @@
 			KakaoStory     https://developers.kakao.com/
     -->
 
-    <ShareSDK AppKey="1ebd3a9cf4881" /> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+    <ShareSDK AppKey="1ecbd990a3542" /> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
 
-    <QQ AppId="1106155879" AppKey="lbuqFHssiN05w58v" Enable="true" Id="1" ShareByAppClient="true"
+    <QQ AppId="1106235286" AppKey="b7wFKEUFAKIlmcsz" Enable="true" Id="1" ShareByAppClient="true"
         SortId="1" />
 
-    <QZone AppId="1106155879" AppKey="lbuqFHssiN05w58v" Enable="true" Id="2" SortId="2" />
+    <QZone AppId="1106235286" AppKey="b7wFKEUFAKIlmcsz" Enable="true" Id="2" SortId="2" />
 
     <!-- 
     	Wechat微信和WechatMoments微信朋友圈的appid是一样的；

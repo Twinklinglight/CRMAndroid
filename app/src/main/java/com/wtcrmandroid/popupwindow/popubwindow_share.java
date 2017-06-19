@@ -46,7 +46,7 @@ public class popubwindow_share extends PopupWindow {
     private View view;
     private Context mContext;
 
-    public popubwindow_share(Context context,View parentView) {
+    public popubwindow_share(Context context, View parentView) {
         super(context);
         this.mContext = context;
         initView();
@@ -56,7 +56,7 @@ public class popubwindow_share extends PopupWindow {
 
     private void initView() {
         view = LayoutInflater.from(mContext).inflate(R.layout.popupwindow_share, null);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
         setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
@@ -74,7 +74,8 @@ public class popubwindow_share extends PopupWindow {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.linear_wechat:            //分享到到微信好友
-                showShare(Wechat.NAME);
+//                showShare(Wechat.NAME);
+                show(Wechat.NAME);
                 dismiss();
                 break;
             case R.id.linear_wechatmoments:     //分享到微信朋友圈
@@ -94,6 +95,19 @@ public class popubwindow_share extends PopupWindow {
                 dismiss();
                 break;
         }
+    }
+
+    private void show(String platform) {
+
+        ShareSDK.initSDK(mContext);
+        OnekeyShare oks = new OnekeyShare();
+        //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
+        oks.setPlatform(platform);
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+        oks.setText("微信分享");
+        oks.show(mContext);
+
     }
 
     /**

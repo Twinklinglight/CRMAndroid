@@ -2,7 +2,7 @@ package com.wtcrmandroid.fragment.main;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -20,7 +20,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class MyFragment extends BaseFragmengt implements MyPhoneNumberDialog.MyPhoneNumber {
     @BindView(R.id.ib_head_picture)
-    ImageButton mIbHeadPicture;         //头像按钮
+    ImageView mIbHeadPicture;         //头像按钮
     @BindView(R.id.tv_name)
     TextView mTvName;                   //姓名
     @BindView(R.id.tv_motto_modify)
@@ -36,6 +36,9 @@ public class MyFragment extends BaseFragmengt implements MyPhoneNumberDialog.MyP
     @BindView(R.id.tv_my_attendance)
     TextView mTvMyAttendance;           //我的出勤
 
+    private int PhoneNumber = 1;
+    private int Motto = 2;
+
     @Override
     protected int Rlayout() {
         return R.layout.fragment_my;
@@ -45,7 +48,7 @@ public class MyFragment extends BaseFragmengt implements MyPhoneNumberDialog.MyP
     protected void init() {
 
         //圆形图片
-        Glide.with(this).load(R.mipmap.ic_home_scan)
+        Glide.with(this).load(R.mipmap.ic_my_headpicture)
                 .bitmapTransform(new CropCircleTransformation(getContext()))
                 .into(mIbHeadPicture);
 
@@ -62,6 +65,8 @@ public class MyFragment extends BaseFragmengt implements MyPhoneNumberDialog.MyP
             @Override
             public void onClick(View v) {
 
+                new MyPhoneNumberDialog(getContext(),MyFragment.this,"签名",
+                        mTvMottoModify.getText().toString(),Motto).show();
             }
         });
 
@@ -69,7 +74,8 @@ public class MyFragment extends BaseFragmengt implements MyPhoneNumberDialog.MyP
         mTvMyPhonenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MyPhoneNumberDialog(getContext(),MyFragment.this).show();
+                new MyPhoneNumberDialog(getContext(),MyFragment.this,"联系方式",
+                        mTvMyPhonenumber.getText().toString(),PhoneNumber).show();
             }
         });
 
@@ -97,9 +103,17 @@ public class MyFragment extends BaseFragmengt implements MyPhoneNumberDialog.MyP
 
     }
 
-    @Override
-    public void getPhoneNumber(String phonenumber) {
 
-        mTvMyPhonenumber.setText(phonenumber);
+    @Override
+    public void getPhoneNumber(String phonenumber, int Type) {
+
+        switch (Type){
+            case 1:
+                mTvMyPhonenumber.setText(phonenumber);
+                break;
+            case 2:
+                mTvMottoModify.setText(phonenumber);
+                break;
+        }
     }
 }
