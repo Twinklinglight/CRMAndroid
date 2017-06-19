@@ -3,10 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <com.wtcrmandroid.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/titlebar_height"/>
+        android:layout_height="@dimen/titlebar_height" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,10 +15,26 @@
         android:orientation="horizontal">
 
         <com.wtcrmandroid.custompricing.SquareRelativeLayout
+            android:id="@+id/srl_field_clock"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@android:color/white" />
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/ic_attendance_clock" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:text="外勤打卡" />
+        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
@@ -25,10 +42,26 @@
             android:background="#e9edf2" />
 
         <com.wtcrmandroid.custompricing.SquareRelativeLayout
+            android:id="@+id/srl_field_statistical"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@android:color/white" />
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/ic_attendance_statistical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:text="外勤统计" />
+        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
@@ -36,10 +69,26 @@
             android:background="#e9edf2" />
 
         <com.wtcrmandroid.custompricing.SquareRelativeLayout
+            android:id="@+id/srl_customer_call"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@android:color/white" />
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/ic_customer_call" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:text="客户拜访" />
+        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
     </LinearLayout>
 
     <View
@@ -53,12 +102,26 @@
 
         android:orientation="horizontal">
 
-
         <com.wtcrmandroid.custompricing.SquareRelativeLayout
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@android:color/white" />
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/ic_customer_call_statistics" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:text="我的拜访记录" />
+        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
@@ -66,11 +129,26 @@
             android:background="#e9edf2" />
 
         <com.wtcrmandroid.custompricing.SquareRelativeLayout
+            android:id="@+id/srl_customer_call_statistics"
             android:layout_width="0dp"
             android:layout_height="50dp"
-
             android:layout_weight="1"
-            android:background="@android:color/white" />
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/ic_customer_call_statistics" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:text="客户拜访统计" />
+        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
@@ -78,10 +156,28 @@
             android:background="#e9edf2" />
 
         <com.wtcrmandroid.custompricing.SquareRelativeLayout
+            android:id="@+id/srl_employees_location"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@android:color/white" />
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/ic_address" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:text="员工位置" />
+        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
+
+
     </LinearLayout>
 
     <View

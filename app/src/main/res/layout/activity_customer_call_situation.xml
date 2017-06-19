@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.wtcrmandroid.custompricing.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height" />
+    <com.thinkcool.circletextimageview.CircleTextImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+
+        android:layout_gravity="center"
+        app:citv_text_text="晴朗"
+        app:citv_text_size="32sp"
+        app:citv_text_padding="35dp"
+        app:citv_text_color="#ff99cc00"
+        app:citv_fill_color="#50555D"
+        />
+</LinearLayout>
