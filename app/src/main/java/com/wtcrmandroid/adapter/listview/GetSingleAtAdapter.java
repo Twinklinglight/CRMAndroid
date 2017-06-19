@@ -67,7 +67,9 @@ public class GetSingleAtAdapter extends MySmallBaseAdapter<GetSingleCustomerData
     @Override
     protected View onCreateViewHolder() {
         View view = LayoutInflater.from(activity).inflate(R.layout.item_get_single_customer, null);
-        return null;
+        ViewHolder viewHolder = new ViewHolder(view);
+        view.setTag(viewHolder);
+        return view;
     }
 
     static class ViewHolder {

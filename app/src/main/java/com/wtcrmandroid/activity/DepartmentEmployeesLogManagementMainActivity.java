@@ -2,14 +2,19 @@ package com.wtcrmandroid.activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ListView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.adapter.listview.DepartmentJournalAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.model.DepartmentData;
 import com.wtcrmandroid.utils.L;
 
 import java.text.Collator;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -21,8 +26,11 @@ import butterknife.BindView;
 public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
+    @BindView(R.id.lv_department)
+    ListView listDepart;
 
-
+    List<DepartmentData> mDataList;
+    private DepartmentJournalAdapter mAdapter;
 
     @Override
     protected int layout() {
@@ -65,6 +73,18 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
                 startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,DepartmentEmployeesLogManagementSerachActivity.class));
             }
         });
+
+        mDataList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            DepartmentData departmentData = new DepartmentData();
+            departmentData.setPersonName("name"+i);
+            departmentData.setCommentCount("count"+i);
+            mDataList.add(departmentData);
+        }
+
+        mAdapter = new DepartmentJournalAdapter(this,mDataList);
+        listDepart.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
 
     }
 

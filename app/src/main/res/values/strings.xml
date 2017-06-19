@@ -85,4 +85,11 @@
     <string name="Customer_type">客户类型:</string>
     <string name="Product_type">产品类型:</string>
     <string name="Getmoney">回款金额:</string>
+
+    <!--我的-->
+    <string name="myphone_number">联系方式</string>
+    <string name="my_department">所在部门</string>
+    <string name="my_job">现任职位</string>
+    <string name="my_card">我的名片</string>
+    <string name="my_attendance">我的考勤</string>
 </resources>

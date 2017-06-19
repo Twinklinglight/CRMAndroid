@@ -135,15 +135,15 @@ public class TitleBar extends RelativeLayout {
         });
     }
 
-//    /**
-//     * 设置右边按钮文字
-//     *
-//     * @param text
-//     */
-//    public void setrighttext(String text) {
-//        rightText.setVisibility(View.VISIBLE);
-//        rightText.setText(text);
-//    }
+    /**
+     * 设置右边按钮文字
+     *
+     * @param text
+     */
+    public void setrighttext(String text) {
+        rightText.setVisibility(View.VISIBLE);
+        rightText.setText(text);
+    }
 //
 //    /**
 //     * 设置右边按钮图标
@@ -165,14 +165,24 @@ public class TitleBar extends RelativeLayout {
 //        leftText.setText(text);
 //    }
 //
-//    /**
-//     * 设置右边按钮点击事件
-//     *
-//     * @param click
-//     */
-//    public void setrightLayoutClick(OnClickListener click) {
-//        rightLayout.setOnClickListener(click);
-//    }
+    /**
+     * 设置右边按钮点击事件
+     *
+     * @param click
+     */
+    public void setrightLayoutClick(OnClickListener click) {
+        rightLayout.setOnClickListener(click);
+    }
+
+    /**
+     * 获取右边textview控件
+     *
+     * @return
+     */
+
+    public TextView getRightText(){
+        return rightText;
+    }
 //
 //    /**
 //     * 设置左边按钮点击事件类型

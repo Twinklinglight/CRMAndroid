@@ -1,12 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/f"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorBackground"
+              android:orientation="vertical">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="我的"
-        />
+        android:layout_height="180dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageButton
+            android:id="@+id/ib_head_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/ic_home_my_customer_library"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ib_head_picture"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="李悦"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_motto_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="-5dp"
+            android:drawableRight="@mipmap/ic_gray_arrow"
+            android:text="只为成功找方法，不为失败找理由！"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/myphone_number"/>
+
+        <TextView
+            android:id="@+id/tv_my_phonenumber"
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@mipmap/ic_gray_arrow"
+            android:text="18530800325"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_department"/>
+
+        <TextView
+            android:id="@+id/tv_my_department"
+            style="@style/HintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="产品部"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_job"/>
+
+        <TextView
+            android:id="@+id/tv_my_job"
+            style="@style/HintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="产品部员工"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_card"/>
+
+        <TextView
+            android:id="@+id/tv_my_card"
+            style="@style/HintText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@mipmap/ic_gray_arrow"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_attendance"/>
+
+        <TextView
+            android:id="@+id/tv_my_attendance"
+            style="@style/HintText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@mipmap/ic_gray_arrow"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shap_bt_back"
+        android:text="安全退出"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/Text36"/>
+
 
 </LinearLayout>

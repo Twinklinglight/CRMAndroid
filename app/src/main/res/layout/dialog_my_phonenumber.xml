@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/shap_phonenumber_dialog"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="@string/myphone_number"
+        android:textColor="@color/colorIconText"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/et_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorBackground"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="@dimen/Text36"
+        android:textColor="@color/colorIconText"
+        android:hint="请输入电话号码"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_gravity="right">
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/Text36"/>
+
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/Text36"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp"
         android:text="@string/work_sort"
         android:textSize="15sp"
         android:textColor="@android:color/black"/>
@@ -28,7 +29,8 @@
                 android:id="@+id/tv_A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@android:color/black"
                 android:text="A类"/>
 
@@ -36,7 +38,8 @@
                 android:id="@+id/tv_B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@android:color/black"
                 android:text="B类"/>
 
@@ -44,7 +47,8 @@
                 android:id="@+id/tv_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@android:color/black"
                 android:text="C类"/>
 
@@ -52,7 +56,8 @@
                 android:id="@+id/tv_D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@android:color/black"
                 android:text="D类"/>
 
@@ -68,7 +73,8 @@
                 android:id="@+id/tv_hint_A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@color/colorContext"
                 android:text="紧急有重要"/>
 
@@ -76,7 +82,8 @@
                 android:id="@+id/tv_hint_B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@color/colorContext"
                 android:text="较重要"/>
 
@@ -84,7 +91,8 @@
                 android:id="@+id/tv_hint_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@color/colorContext"
                 android:text="重要"/>
 
@@ -92,7 +100,8 @@
                 android:id="@+id/tv_hint_D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="30dp"
+                android:paddingLeft="30dp"
                 android:textColor="@color/colorContext"
                 android:text="次重要"/>
 
@@ -100,37 +109,39 @@
 
         <RadioGroup
             android:id="@+id/work_sort_rg"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
             <RadioButton
                 android:id="@+id/rb_A"
+                style="@style/RadiobtStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
                 />
 
             <RadioButton
                 android:id="@+id/rb_B"
+                style="@style/RadiobtStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
                 />
 
             <RadioButton
                 android:id="@+id/rb_C"
+                style="@style/RadiobtStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+
                 />
 
             <RadioButton
                 android:id="@+id/rb_D"
+                style="@style/RadiobtStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
                 />
         </RadioGroup>
 

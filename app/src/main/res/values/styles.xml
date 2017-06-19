@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="Dialog" parent="android:style/Theme.Dialog">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -72,6 +73,15 @@
     <style name="HintsText">
         <item name="android:textColor">@color/colorContext</item>
         <item name="android:textSize">@dimen/Text32</item>
+    </style>
+
+    <!--Radiobutton-->
+    <style name="RadiobtStyle">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/selector_radiobutton_background</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+
     </style>
 
 
