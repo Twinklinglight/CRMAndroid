@@ -12,7 +12,7 @@ import java.util.List;
  * Created by 1363655717 on 2017/3/23.
  */
 
-public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter {
+public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T1> {
     private int layoutId;
     private List <T> list;
     protected Context context;
@@ -34,9 +34,9 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter {
         this.list = list;
     }
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(getLayoutId(), parent, false);
-        final RecyclerView.ViewHolder holder = getViewHolder(v);
+    public T1 onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(layoutId, parent, false);
+        final T1 holder = getViewHolder(v);
         //单击事件回调
         v.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,18 +62,22 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        convert(holder, list.get(position));
+    public void onBindViewHolder(T1 holder, int position) {
+//        convert(holder, list.get(position));
+        if(list!=null){
+            convert(holder, list.get(position),position);
+        }else
+        convert(holder, null,position);
     }
 
-    protected abstract <T> void convert(RecyclerView.ViewHolder holder, T bean);
+    protected abstract  void convert(T1 holder, T bean, int position);
 
     @Override
     public int getItemCount() {
         if(list!=null) {
             return list.size();
         }
-        return 0;
+        return 5;
     }
 
     @Override
@@ -89,9 +93,8 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter {
         this.onItemLongClickListner = onItemLongClickListner;
     }
 
-    public abstract  int getLayoutId() ;
 
-    public abstract RecyclerView.ViewHolder getViewHolder(View v) ;
+    public abstract T1 getViewHolder(View v) ;
 
     public interface OnItemClickListner {
         void onItemClickListner(View v, int position);

@@ -1,7 +1,6 @@
 package com.wtcrmandroid.activity.field;
 
 import android.hardware.Sensor;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,7 +10,6 @@ import com.wtcrmandroid.activity.BaseMapActivity;
 import com.wtcrmandroid.custompricing.TitleBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by wt-pc on 2017/6/16.
@@ -57,10 +55,5 @@ public class CustomerCallActivity extends BaseMapActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

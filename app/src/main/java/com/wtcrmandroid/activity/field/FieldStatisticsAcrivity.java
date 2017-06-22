@@ -1,19 +1,21 @@
 package com.wtcrmandroid.activity.field;
 
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
+import com.wtcrmandroid.adapter.recycleview.FieldStatisticaAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.custompricing.TopChooseMenuBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by 1363655717 on 2017-06-14.
- * 外勤
+ * 外勤统计
  */
 
 public class FieldStatisticsAcrivity extends BaseActivity {
@@ -21,6 +23,10 @@ public class FieldStatisticsAcrivity extends BaseActivity {
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
     TopChooseMenuBar tcmbBar;
+    @BindView(R.id.rv_view)
+    RecyclerView rvView;
+
+    private BaseRecycleAdapter adapter;
 
     @Override
     public void returnData(int key, Object data) {
@@ -54,15 +60,10 @@ public class FieldStatisticsAcrivity extends BaseActivity {
 
             }
         });
-
+        rvView.setLayoutManager(new LinearLayoutManager(this));
+        rvView.setAdapter(adapter=new FieldStatisticaAdapter(this));
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
 
 }

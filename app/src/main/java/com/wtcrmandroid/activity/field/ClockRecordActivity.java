@@ -1,14 +1,15 @@
 package com.wtcrmandroid.activity.field;
 
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.adapter.recycleview.ClockRecordAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by wt-pc on 2017/6/17.
@@ -18,6 +19,9 @@ import butterknife.ButterKnife;
 public class ClockRecordActivity extends BaseActivity {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
+    @BindView(R.id.rv_view)
+    RecyclerView rvView;
+    private ClockRecordAdapter adapter;
 
     @Override
     public void returnData(int key, Object data) {
@@ -38,12 +42,11 @@ public class ClockRecordActivity extends BaseActivity {
                 finish();
             }
         });
+        rvView.setLayoutManager(new LinearLayoutManager(this));
+
+        rvView.setAdapter(adapter = new ClockRecordAdapter(this));
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
+
 }

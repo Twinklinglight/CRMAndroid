@@ -103,6 +103,7 @@
         android:orientation="horizontal">
 
         <com.wtcrmandroid.custompricing.SquareRelativeLayout
+            android:id="@+id/srl_my_call_record"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -113,7 +114,7 @@
                 android:layout_height="35dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:background="@mipmap/ic_customer_call_statistics" />
+                android:background="@mipmap/ic_my_call_record" />
 
             <TextView
                 android:layout_width="wrap_content"

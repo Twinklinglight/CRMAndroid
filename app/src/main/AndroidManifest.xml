@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.wtcrmandroid">
+    package="com.wtcrmandroid">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 读取网络信息状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 获取当前wifi状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 允许程序改变网络连接状态 -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <!-- 读取手机信息权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- SD卡读写的权限（如果需要保存音频文件到本地的话） -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
@@ -47,77 +47,100 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- ——————————————————————-外勤模块—————————————————————————— -->
-        <!-- 外勤 -->
-        <activity android:name=".activity.field.FieldActivity"/>
-        <!-- 外勤打卡 -->
-        <activity android:name=".activity.field.FieldClockActivity"/>
-        <!-- 打卡记录 -->
-        <activity android:name=".activity.field.ClockRecordActivity"/>
-        <!-- 外勤统计 -->
-        <activity android:name=".activity.field.FieldStatisticsAcrivity"/>
-        <!-- 客户拜访 -->
-        <activity android:name=".activity.field.CustomerCallActivity"/>
-        <!-- ———————————————————————————————————————————————————————————————— -->
-        <!-- 日志管理 -->
-        <activity android:name=".activity.JournalManagerActivity"/>
-        <!-- 写日计划 -->
-        <activity android:name=".activity.WriteDayPlanActivity"/>
+        <!--——————————————————————-外勤模块——————————————————————————-->
+        <!--外勤-->
+        <activity android:name=".activity.field.FieldActivity" />
+        <!--外勤打卡-->
+        <activity android:name=".activity.field.FieldClockActivity" />
+        <!--打卡记录-->
+        <activity android:name=".activity.field.ClockRecordActivity" />
+        <!--外勤统计-->
+        <activity android:name=".activity.field.FieldStatisticsAcrivity" />
+        <!--客户拜访-->
+        <activity android:name=".activity.field.CustomerCallActivity" />
+        <!--我的拜访记录-->
+        <activity android:name=".activity.field.MyCallRecordActivity" />
+        <!--客户拜访情况-->
+        <activity android:name=".activity.field.CustomerCallSituationActivity" />
+        <!--客户拜访统计-->
+        <activity android:name=".activity.field.CustomerCallStatisticsAcrivity" />
+        <!--————————————————————————————————————————————————————————————————-->
 
+                                           <!--######-->
+                                           <!--######-->
+                                           <!--######-->
+
+        <!--————————————————————————  通讯录模块  ————————————————————————————————————-->
+        <!--通讯录部门界面-->
+        <activity android:name=".activity.addressbook.AddressBookDepartmentActivity"/>
+        <!--通讯录群组界面-->
+        <activity android:name=".activity.addressbook.AddressBookGroupsActivity"/>
+        <!--————————————————————————————————————————————————————————————————-->
+
+                                           <!--######-->
+                                           <!--######-->
+                                           <!--######-->
+
+        <!-- ————————————————————————————— 日志管理 —————————————————————————————————-->
+        <!--日志管理-->
+        <activity android:name=".activity.JournalManagerActivity"></activity>
+        <!-- 写日计划 -->
+        <activity android:name=".activity.WriteDayPlanActivity"></activity>
+        <!--战报-->
+        <activity android:name=".activity.BattlefieldReportActivity" />
         <!-- 写日总结 -->
-        <activity android:name=".activity.WriteDaySumActivity"/>
+        <activity android:name=".activity.WriteDaySumActivity"></activity>
 
         <!-- 写周计划界面 -->
-        <activity android:name=".activity.WriteWeekPlanActivity"/>
+        <activity android:name=".activity.WriteWeekPlanActivity" />
         <!-- 写周总结界面 -->
-        <activity android:name=".activity.WriteWeekConclusionActivity"/>
+        <activity android:name=".activity.WriteWeekConclusionActivity" />
 
         <!-- 我的日志 -->
-        <activity android:name=".activity.MyJournalActivity"/>
+        <activity android:name=".activity.MyJournalActivity"></activity>
         <!-- 预测到单客户 -->
-        <activity android:name=".activity.SingleCustomer"/>
+        <activity android:name=".activity.SingleCustomer"></activity>
 
         <!-- 重点意向客户 -->
-        <activity android:name=".activity.MajorCustomerActivity"/>
+        <activity android:name=".activity.MajorCustomerActivity"></activity>
         <!-- 回款到单 -->
-        <activity android:name=".activity.GetMoneyActivity"/>
+        <activity android:name=".activity.GetMoneyActivity"></activity>
         <!-- 今日工作量 -->
         <activity
             android:name=".activity.TodayWorkLoadActivity"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <!-- 预测单客户踩中 -->
-        <activity android:name=".activity.GetSingleCustomerActivity"/>
+        <activity android:name=".activity.GetSingleCustomerActivity"></activity>
         <!-- 新增意向客户 -->
-        <activity android:name=".activity.AddPurposeCustomerActivity"/>
+        <activity android:name=".activity.AddPurposeCustomerActivity"></activity>
         <!-- 部门员工日志管理首页 -->
-        <activity android:name=".activity.DepartmentEmployeesLogManagementMainActivity"/>
+        <activity android:name=".activity.DepartmentEmployeesLogManagementMainActivity" />
         <!-- 部门员工日志管理搜索页 -->
-        <activity android:name=".activity.DepartmentEmployeesLogManagementSerachActivity"/>
-        <activity android:name=".activity.HtDayplanDetails"/>
+        <activity android:name=".activity.DepartmentEmployeesLogManagementSerachActivity" />
+        <activity android:name=".activity.HtDayplanDetails"></activity>
         <!-- 后台日总结详情 -->
-        <activity android:name=".activity.HtDaysumDetailsActivity"/>
+        <activity android:name=".activity.HtDaysumDetailsActivity"></activity>
         <!-- 销售日计划详情 -->
-        <activity android:name=".activity.XsDayplanDetailsActivity"/>
+        <activity android:name=".activity.XsDayplanDetailsActivity"></activity>
         <!-- 销售日总结详情 -->
-        <activity android:name=".activity.XsDaysumDetailsActivity"/>
+        <activity android:name=".activity.XsDaysumDetailsActivity"></activity>
         <!-- 周计划详情 -->
-        <activity android:name=".activity.WeekplanDetailsActivity"/>
+        <activity android:name=".activity.WeekplanDetailsActivity"></activity>
         <!-- 周总结详情 -->
-        <activity android:name=".activity.WeeksumDetailsActivity"/>
-        <activity android:name=".activity.XsWriteDayplanActivity"/>
-        <activity android:name=".activity.XsWriteDaysumActivity"/>
-        <activity android:name=".aboutmy.MycardActivity"/>
+        <activity android:name=".activity.WeeksumDetailsActivity"></activity>
+        <activity android:name=".activity.XsWriteDayplanActivity"></activity>
+        <activity android:name=".activity.XsWriteDaysumActivity"></activity>
 
-        <!-- 百度地图可以 -->
+
+        <!--百度地图可以-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WMFitVpylrtAuTgFPbltCkoP6SRY7zIE"/>

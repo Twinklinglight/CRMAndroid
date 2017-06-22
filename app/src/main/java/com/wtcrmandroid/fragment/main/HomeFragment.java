@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.JournalManagerActivity;
 import com.wtcrmandroid.activity.MainActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
@@ -25,7 +26,6 @@ import com.wtcrmandroid.fragment.BaseFragmengt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 import static android.view.View.GONE;
 
@@ -93,7 +93,7 @@ public class HomeFragment extends BaseFragmengt {
 
     }
 
-    @OnClick({R.id.tv_log_management, R.id.tv_field,R.id.tv_pullintocustomer})
+    @OnClick({R.id.tv_log_management, R.id.tv_field,R.id.rl_battlefield_report,R.id.tv_pullintocustomer})
     public void onClick(View view) {
         switch (view.getId()) {
             //日志管理点击事件
@@ -112,13 +112,18 @@ public class HomeFragment extends BaseFragmengt {
                     startActivity(new Intent(getContext(), SalePullintoCustomerActivity.class));
                 }
                 break;
+            //战报点击事件
+            case R.id.rl_battlefield_report:
+//                startActivity(new Intent(getActivity(), FieldActivity.class));
+                startActivity(new Intent(getActivity(), BattlefieldReportActivity.class));
+                break;
         }
     }
 
     private void showPopupWindow() {
         //设置contentView
         View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.popupwindow_home, null);
-        ViewHolder holder = new ViewHolder(contentView);
+        ViewHolder holder= new ViewHolder(contentView);
         holder.llControlFragmentOrderMetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,26 +131,15 @@ public class HomeFragment extends BaseFragmengt {
             }
         });
         mPopWindow = new PopupWindow(contentView,
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, false);
         mPopWindow.setContentView(contentView);
-        mPopWindow.setFocusable(false); // 设置PopupWindow可获得焦点
-        //设置各个控件的点击响应
+//        mPopWindow.setFocusable(false); // 设置PopupWindow可获得焦点
+//        设置各个控件的点击响应
         mPopWindow.showAsDropDown(titlebar);
+//        mPopWindow=new MyPopupWindow(contentView,
+//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, false,titlebar);
+//        mPopWindow=new MyPopupWindow(getContext(),titlebar);
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     static class ViewHolder {

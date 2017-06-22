@@ -50,7 +50,7 @@ public class FieldActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.srl_field_clock, R.id.srl_field_statistical, R.id.srl_customer_call, R.id.srl_customer_call_statistics, R.id.srl_employees_location})
+    @OnClick({R.id.srl_field_clock, R.id.srl_field_statistical, R.id.srl_customer_call,R.id.srl_my_call_record, R.id.srl_customer_call_statistics, R.id.srl_employees_location})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.srl_field_clock:
@@ -62,7 +62,11 @@ public class FieldActivity extends BaseActivity {
             case R.id.srl_customer_call:
                 startActivity(new Intent(FieldActivity.this,CustomerCallActivity.class));
                 break;
+            case R.id.srl_my_call_record:
+                startActivity(new Intent(FieldActivity.this,MyCallRecordActivity.class));
+                break;
             case R.id.srl_customer_call_statistics:
+                startActivity(new Intent(FieldActivity.this,CustomerCallStatisticsAcrivity.class));
                 break;
             case R.id.srl_employees_location:
                 break;

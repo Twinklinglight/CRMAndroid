@@ -24,18 +24,59 @@
                 android:text="部门"
                 android:textColor="#2b2f33"
                 android:textSize="18sp" />
+
             <ImageView
                 android:id="@+id/iv_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@mipmap/ic_graydown_arrow"/>
+                android:background="@mipmap/ic_graydown_arrow" />
         </LinearLayout>
     </RelativeLayout>
+
+    <View
+        android:id="@+id/v_center"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#e9edf2"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="部门"
+                android:textColor="#2b2f33"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/iv_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/ic_graydown_arrow" />
+        </LinearLayout>
+    </RelativeLayout>
+
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:background="#e9edf2" />
+
     <RelativeLayout
         android:id="@+id/rl_right"
         android:layout_width="0dp"
@@ -55,12 +96,13 @@
                 android:text="今天"
                 android:textColor="#2b2f33"
                 android:textSize="18sp" />
+
             <ImageView
                 android:id="@+id/iv_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@mipmap/ic_graydown_arrow"/>
+                android:background="@mipmap/ic_graydown_arrow" />
         </LinearLayout>
     </RelativeLayout>
 
