@@ -15,10 +15,10 @@ import butterknife.BindView;
 
 /**
  * Created by 1363655717 on 2017-06-14.
- * 外勤统计
+ * 客户拜访统计
  */
 
-public class FieldStatisticsAcrivity extends BaseActivity {
+public class CustomerCallStatisticsAcrivity extends BaseActivity {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
@@ -40,13 +40,14 @@ public class FieldStatisticsAcrivity extends BaseActivity {
 
     @Override
     protected void initview() {
-        titlebar.setTitletext("外勤统计");
+        titlebar.setTitletext("客户拜访统计");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        tcmbBar.setStrings(new String[]{"我的客户库","会员类型"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {

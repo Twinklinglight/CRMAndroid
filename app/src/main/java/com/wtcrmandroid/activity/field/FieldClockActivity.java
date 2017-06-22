@@ -2,7 +2,6 @@ package com.wtcrmandroid.activity.field;
 
 import android.content.Intent;
 import android.hardware.Sensor;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -74,12 +73,6 @@ public class FieldClockActivity extends BaseMapActivity {
         mBaiduMap.showInfoWindow(mInfoWindow);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
