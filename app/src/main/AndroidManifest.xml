@@ -18,15 +18,16 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -45,21 +46,34 @@
         </activity>
         <!--——————————————————————-外勤模块——————————————————————————-->
         <!--外勤-->
-        <activity android:name=".activity.field.FieldActivity"/>
+        <activity android:name=".activity.field.FieldActivity" />
         <!--外勤打卡-->
-        <activity android:name=".activity.field.FieldClockActivity"/>
+        <activity android:name=".activity.field.FieldClockActivity" />
         <!--打卡记录-->
-        <activity android:name=".activity.field.ClockRecordActivity"/>
+        <activity android:name=".activity.field.ClockRecordActivity" />
         <!--外勤统计-->
-        <activity android:name=".activity.field.FieldStatisticsAcrivity"/>
+        <activity android:name=".activity.field.FieldStatisticsAcrivity" />
         <!--客户拜访-->
-        <activity android:name=".activity.field.CustomerCallActivity"/>
+        <activity android:name=".activity.field.CustomerCallActivity" />
+        <!--我的拜访记录-->
+        <activity android:name=".activity.field.MyCallRecordActivity" />
+        <!--客户拜访情况-->
+        <activity android:name=".activity.field.CustomerCallSituationActivity" />
+        <!--客户拜访统计-->
+        <activity android:name=".activity.field.CustomerCallStatisticsAcrivity" />
+        <!--————————————————————————————————————————————————————————————————-->
+        <!--通讯录模块-->
+        <!--通讯录部门界面-->
+        <activity android:name=".activity.addressbook.AddressBookDepartmentActivity"/>
+        <!--通讯录群组界面-->
+        <activity android:name=".activity.addressbook.AddressBookGroupsActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
         <!-- 日志管理 -->
         <activity android:name=".activity.JournalManagerActivity"></activity>
         <!-- 写日计划 -->
         <activity android:name=".activity.WriteDayPlanActivity"></activity>
-
+        <!--战报-->
+        <activity android:name=".activity.BattlefieldReportActivity" />
         <!-- 写日总结 -->
         <activity android:name=".activity.WriteDaySumActivity"></activity>
 
@@ -67,7 +81,6 @@
         <activity android:name=".activity.WriteWeekPlanActivity" />
         <!-- 写周总结界面 -->
         <activity android:name=".activity.WriteWeekConclusionActivity" />
-
 
         <!-- 我的日志 -->
         <activity android:name=".activity.MyJournalActivity"></activity>
@@ -105,7 +118,7 @@
         <activity android:name=".activity.XsWriteDaysumActivity"></activity>
 
 
-        <!--百度地图可以-->
+        <!--百度地图key-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WMFitVpylrtAuTgFPbltCkoP6SRY7zIE" />
