@@ -12,6 +12,7 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.JournalManagerActivity;
 import com.wtcrmandroid.activity.MainActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
@@ -84,7 +85,7 @@ public class HomeFragment extends BaseFragmengt {
 
     }
 
-    @OnClick({R.id.tv_log_management, R.id.tv_field})
+    @OnClick({R.id.tv_log_management, R.id.tv_field,R.id.rl_battlefield_report})
     public void onClick(View view) {
         switch (view.getId()) {
             //日志管理点击事件
@@ -94,6 +95,11 @@ public class HomeFragment extends BaseFragmengt {
             //外勤点击事件
             case R.id.tv_field:
                 startActivity(new Intent(getActivity(), FieldActivity.class));
+                break;
+            //战报点击事件
+            case R.id.rl_battlefield_report:
+//                startActivity(new Intent(getActivity(), FieldActivity.class));
+                startActivity(new Intent(getActivity(), BattlefieldReportActivity.class));
                 break;
         }
     }
@@ -109,11 +115,14 @@ public class HomeFragment extends BaseFragmengt {
             }
         });
         mPopWindow = new PopupWindow(contentView,
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, false);
         mPopWindow.setContentView(contentView);
-        mPopWindow.setFocusable(false); // 设置PopupWindow可获得焦点
-        //设置各个控件的点击响应
+//        mPopWindow.setFocusable(false); // 设置PopupWindow可获得焦点
+//        设置各个控件的点击响应
         mPopWindow.showAsDropDown(titlebar);
+//        mPopWindow=new MyPopupWindow(contentView,
+//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, false,titlebar);
+//        mPopWindow=new MyPopupWindow(getContext(),titlebar);
 
     }
 
