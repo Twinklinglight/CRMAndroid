@@ -62,13 +62,24 @@
         <!--客户拜访统计-->
         <activity android:name=".activity.field.CustomerCallStatisticsAcrivity" />
         <!--————————————————————————————————————————————————————————————————-->
-        <!--通讯录模块-->
+
+                                           <!--######-->
+                                           <!--######-->
+                                           <!--######-->
+
+        <!--————————————————————————  通讯录模块  ————————————————————————————————————-->
         <!--通讯录部门界面-->
         <activity android:name=".activity.addressbook.AddressBookDepartmentActivity"/>
         <!--通讯录群组界面-->
         <activity android:name=".activity.addressbook.AddressBookGroupsActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
-        <!-- 日志管理 -->
+
+                                           <!--######-->
+                                           <!--######-->
+                                           <!--######-->
+
+        <!-- ————————————————————————————— 日志管理 —————————————————————————————————-->
+        <!--日志管理-->
         <activity android:name=".activity.JournalManagerActivity"></activity>
         <!-- 写日计划 -->
         <activity android:name=".activity.WriteDayPlanActivity"></activity>
