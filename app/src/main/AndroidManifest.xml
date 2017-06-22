@@ -136,9 +136,13 @@
         <activity android:name=".activity.WeekplanDetailsActivity"></activity>
         <!-- 周总结详情 -->
         <activity android:name=".activity.WeeksumDetailsActivity"></activity>
+
         <activity android:name=".activity.XsWriteDayplanActivity"></activity>
+
         <activity android:name=".activity.XsWriteDaysumActivity"></activity>
 
+        <!--我的名片-->
+        <activity android:name=".aboutmy.MycardActivity"/>
 
         <!--百度地图可以-->
         <meta-data

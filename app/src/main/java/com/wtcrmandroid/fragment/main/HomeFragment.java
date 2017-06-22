@@ -1,7 +1,6 @@
 package com.wtcrmandroid.fragment.main;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +37,8 @@ public class HomeFragment extends BaseFragmengt {
     TitleBar titlebar;
     @BindView(R.id.tv_pullintocustomer)
     TextView mTvPullintocustomer;       //录入客户
-    Unbinder unbinder;
 
     private boolean isSale = true; //是销售 或 食品
-
 
     private boolean window;
     private PopupWindow mPopWindow;
