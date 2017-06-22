@@ -10,6 +10,7 @@ import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.FieldStatisticaAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.custompricing.TopChooseMenuBar;
+import com.wtcrmandroid.dialog.popupwindow.TitlePopupWindow;
 
 import butterknife.BindView;
 
@@ -27,7 +28,7 @@ public class CustomerCallStatisticsAcrivity extends BaseActivity {
     RecyclerView rvView;
 
     private BaseRecycleAdapter adapter;
-
+    private TitlePopupWindow titleLeftPopupWindow;
     @Override
     public void returnData(int key, Object data) {
 
@@ -47,7 +48,7 @@ public class CustomerCallStatisticsAcrivity extends BaseActivity {
                 finish();
             }
         });
-        tcmbBar.setStrings(new String[]{"我的客户库","会员类型"});
+
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {

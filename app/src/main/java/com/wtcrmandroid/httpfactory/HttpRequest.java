@@ -158,10 +158,8 @@ public class HttpRequest {
      * @param resultCallBack 请求回调
      */
 
-    public void sendPost(String url, Map<String, Object> params, Object tag, StringCallBack resultCallBack) {
-        if (params == null) {
-            params = new HashMap<>();
-        }
+    public void sendPost(String url, Object params, Object tag, StringCallBack resultCallBack) {
+
 //        params.put("ver_version", VERSION_CODE + "");//版本
         PostRequest postRequest = new PostRequest(url, null, params, tag);
         Request request = postRequest.getRequest();

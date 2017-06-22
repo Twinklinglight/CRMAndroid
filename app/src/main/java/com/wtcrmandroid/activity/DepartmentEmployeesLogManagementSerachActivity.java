@@ -5,13 +5,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.httpfactory.HttpRequest;
-import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.iat.Iat;
 import com.wtcrmandroid.utils.L;
-import com.wtcrmandroid.utils.MD5Utils;
-
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -67,26 +62,26 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
 
     @OnClick(R.id.tv_right)
     public void onClick() {
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("userName", "shenzhongjia");
-        params.put("userPass", MD5Utils.MD5("shen123456"));
-        L.e(MD5Utils.MD5("shen123456"));
-        HttpRequest.instance().sendPost("http://192.168.0.7/api/Login/UserLogin", params, null, new StringCallBack() {
-            @Override
-            public void onError(int errorRet, String errorMsg) {
-
-            }
-
-            @Override
-            public void onResponse(String response) {
-
-            }
-
-            @Override
-            public void onNetError(Exception e) {
-
-            }
-        });
+//        HashMap<String, Object> params = new HashMap<>();
+//        params.put("userName", "shenzhongjia");
+//        params.put("userPass", MD5Utils.MD5("shen123456"));
+//        L.e(MD5Utils.MD5("shen123456"));
+//        HttpRequest.instance().sendPost("http://192.168.0.7/api/Login/UserLogin", params, null, new StringCallBack() {
+//            @Override
+//            public void onError(int errorRet, String errorMsg) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(String response) {
+//
+//            }
+//
+//            @Override
+//            public void onNetError(Exception e) {
+//
+//            }
+//        });
 //     HashMap<String, String> params = new HashMap<>();
 //        params.put("userName", "shenzhongjia");
 //        params.put("userPass", MD5Utils.MD5("shen123456"));
