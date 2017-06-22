@@ -19,7 +19,7 @@ public class WriteWeekPlanPresenter extends BasePresenter{
 
     }
     public void submit(HashMap<String, Object> params){
-        post("http://192.168.0.7/api/WorkPlan/saveWorkPlan",params,0);
+//        post("http://192.168.0.7/api/WorkPlan/saveWorkPlan",params,0);
 
     }
 }

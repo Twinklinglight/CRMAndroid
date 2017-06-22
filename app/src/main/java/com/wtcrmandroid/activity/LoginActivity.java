@@ -15,7 +15,7 @@ import butterknife.OnClick;
  * Created by 1363655717 on 2017-06-12.
  */
 
-public class LoginActivity extends BaseActivity<LoginPresenter,List<LoginData>>{
+public class LoginActivity extends BaseActivity<LoginPresenter,LoginData>{
 
 
     @Override
@@ -36,9 +36,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter,List<LoginData>>{
     }
 
     @Override
-    public void returnData(int key, List<LoginData> data) {
+    public void returnData(int key, LoginData data) {
         L.e("返回数据"+key+data.toString());
-        L.e(data.get(0).getUserName());
+        L.e(data.getUserName());
         startActivity(new Intent(this,MainActivity.class));
 
     }

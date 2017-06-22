@@ -1,11 +1,10 @@
 package com.wtcrmandroid.presenter;
 
+import com.wtcrmandroid.Const;
 import com.wtcrmandroid.httpfactory.HttpRequest;
 import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.AllView;
-
-import java.util.Map;
 
 /**
  * Created by 1363655717 on 2017-06-12.
@@ -13,14 +12,14 @@ import java.util.Map;
  *
  */
 
-public abstract class BasePresenter<T> {
-    protected AllView<T> view;
-    public BasePresenter(AllView<T> view) {
+public abstract class BasePresenter {
+    protected AllView view;
+    public BasePresenter(AllView view) {
         this.view=view;
     }
     protected abstract void returnData(int key,String response);
-    protected void post(String url, Map<String, Object> params, final int key){
-        HttpRequest.instance().sendPost(url, params,null, new StringCallBack() {
+    protected void post(String url,  Object params, final int key){
+        HttpRequest.instance().sendPost(Const.http+url, params,null, new StringCallBack() {
             @Override
             public void onError(int errorRet, String errorMsg) {
                 L.e(errorMsg);

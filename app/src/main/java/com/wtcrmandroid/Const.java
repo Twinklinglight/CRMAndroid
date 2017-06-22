@@ -9,6 +9,7 @@ import java.io.File;
  * Created by Mr-Zhang on 2016/3/12.
  */
 public class Const {
+    public final static  String http ="http://192.168.0.7/api/";
     public final static String httpString = "http://";
     public final static String httpsString = "http://";
     //       public final static String wtServerString = "192.168.0.9:8091";//刘亚轲测试服务器地址
