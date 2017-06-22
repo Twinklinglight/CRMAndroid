@@ -15,8 +15,8 @@
         android:layout_height="160dp"
         android:clickable="true" />
 
-    <ListView
-        android:id="@+id/lv_time_smoke"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

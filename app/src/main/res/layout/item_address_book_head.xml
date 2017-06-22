@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F7F7"
+        android:padding="10dp"
+        android:text="组织架构"
+        android:textColor="#939699"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_department"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical">
+
+        <com.thinkcool.circletextimageview.CircleTextImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="10dp"
+            app:citv_fill_color="#3C9DFF"
+            app:citv_text_color="#fff"
+            app:citv_text_size="13sp"
+            app:citv_text_text="部门" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:text="部门"
+            android:textColor="#2b2f33"
+            android:textSize="18sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_grayright_arrow"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E9EDF3" />
+
+    <LinearLayout
+        android:id="@+id/ll_group"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical">
+
+        <com.thinkcool.circletextimageview.CircleTextImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="10dp"
+            app:citv_fill_color="#3C9DFF"
+            app:citv_text_color="#fff"
+            app:citv_text_size="13sp"
+            app:citv_text_text="群组" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:text="群组"
+            android:textColor="#2b2f33"
+            android:textSize="18sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_grayright_arrow"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E9EDF3" />
+</LinearLayout>
