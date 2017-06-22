@@ -3,8 +3,8 @@ package com.wtcrmandroid.fragment;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
-import com.wtcrmandroid.model.HtDayplanDetailsData;
+import com.wtcrmandroid.adapter.listview.SingleFragmentAdapter;
+import com.wtcrmandroid.model.SingleCustomerData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ public class SingleCustomerFragment extends BaseFragmengt {
     @BindView(R.id.lv_single_fragment)
     ListView mLvSingleFragment;
 
-    private List<HtDayplanDetailsData> mData;
-    private HtDayplanDetailsAdapter mAdapter;
+    private List<SingleCustomerData> mData;
+    private SingleFragmentAdapter mAdapter;
 
 
     @Override
@@ -35,21 +35,21 @@ public class SingleCustomerFragment extends BaseFragmengt {
 
         mData = new ArrayList<>();
         getData();
-        mAdapter = new HtDayplanDetailsAdapter(getActivity(),mData);
+        mAdapter = new SingleFragmentAdapter(getActivity(),mData);
         mLvSingleFragment.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
 
     public void getData() {
         mData = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            HtDayplanDetailsData htDayplanDetailsData = new HtDayplanDetailsData();
-            htDayplanDetailsData.setWorkSort("A");
-            htDayplanDetailsData.setWorkPerson("张三");
-            htDayplanDetailsData.setWorkPercent("50%");
-            htDayplanDetailsData.setWorkContent("就是个这");
+        for (int i = 0; i < 3; i++) {
+            SingleCustomerData mDatas = new SingleCustomerData();
+            mDatas.setWorkSort("A");
+            mDatas.setWorkName("张三");
+            mDatas.setWorkPercent("50%");
+            mDatas.setWorkAnalysis("就是个这");
 
-            mData.add(htDayplanDetailsData);
+            mData.add(mDatas);
         }
     }
 

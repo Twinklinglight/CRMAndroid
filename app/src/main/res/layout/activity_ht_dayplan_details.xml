@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context="com.wtcrmandroid.activity.HtDayplanDetails">
 
     <com.wtcrmandroid.custompricing.TitleBar
@@ -19,7 +20,8 @@
         android:layout_height="48dp"
         android:gravity="center_vertical"
         android:paddingRight="10dp"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/iv_journal_type"
@@ -43,7 +45,5 @@
         android:layout_height="wrap_content">
 
     </ListView>
-
-
 
 </LinearLayout>

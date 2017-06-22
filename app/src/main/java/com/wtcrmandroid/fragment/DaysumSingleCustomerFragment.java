@@ -1,7 +1,13 @@
 package com.wtcrmandroid.fragment;
 
+import android.widget.ListView;
+
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.view.MyListView;
+import com.wtcrmandroid.adapter.listview.IfgetSingleDetailsAdapter;
+import com.wtcrmandroid.model.GetSingleCustomerData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -12,7 +18,10 @@ import butterknife.BindView;
 public class DaysumSingleCustomerFragment extends BaseFragmengt {
 
     @BindView(R.id.lv_single_fragment)
-    MyListView mLvSingleFragment;
+    ListView mLvSingleFragment;
+
+    private IfgetSingleDetailsAdapter mAdapter;
+    private List<GetSingleCustomerData> mDataList;
 
     @Override
     protected int Rlayout() {
@@ -22,6 +31,15 @@ public class DaysumSingleCustomerFragment extends BaseFragmengt {
     @Override
     protected void init() {
 
+        mDataList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            GetSingleCustomerData getSingleCustomerData = new GetSingleCustomerData();
+            getSingleCustomerData.setWorkSort("B类");
+            mDataList.add(getSingleCustomerData);
+        }
+        mAdapter = new IfgetSingleDetailsAdapter(getActivity(),mDataList);
+        mLvSingleFragment.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,12 +42,22 @@ public class HtDayplanDetails extends BaseActivity {
     @Override
     protected void initview() {
         mTitlebar.setTitletext("日志详情");
+
+        //返回
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         getData();
         mAdapter = new HtDayplanDetailsAdapter(this,mData);
+        mLvDayplanDetails.setDivider(null);
         mLvDayplanDetails.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
 
+    //测试数据
     public void getData() {
         mData = new ArrayList<>();
         for (int i = 0; i < 5; i++) {

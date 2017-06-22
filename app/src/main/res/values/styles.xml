@@ -75,6 +75,12 @@
         <item name="android:textSize">@dimen/Text32</item>
     </style>
 
+    <!--较黑 32-->
+    <style name="Content32">
+        <item name="android:textColor">@color/colorIconText</item>
+        <item name="android:textSize">@dimen/Text32</item>
+    </style>
+
     <!--Radiobutton-->
     <style name="RadiobtStyle">
         <item name="android:button">@null</item>

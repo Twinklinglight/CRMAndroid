@@ -2,22 +2,19 @@ package com.wtcrmandroid.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;
-import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.DaysumAddCustomerFragment;
 import com.wtcrmandroid.fragment.DaysumHkdzFragment;
 import com.wtcrmandroid.fragment.DaysumSingleCustomerFragment;
 import com.wtcrmandroid.fragment.DaysumWorkCountFragment;
 import com.wtcrmandroid.fragment.DaysumWorkPlanFragment;
-import com.wtcrmandroid.model.CommentData;
-import com.wtcrmandroid.view.MyListView;
-import com.wtcrmandroid.view.MyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,15 +40,11 @@ public class XsDaysumDetailsActivity extends BaseActivity {
     @BindView(R.id.tab_daysum_details)
     TabLayout mTabDaysumDetails;                //tab
     @BindView(R.id.vp_dayplan_details)
-    MyViewPager mVpDayplanDetails;              //vp
-    @BindView(R.id.lv_comment)
-    MyListView mLvComment;                      //评论列表
-    private CommentAdapter mCommentAdapter;
+    ViewPager mVpDayplanDetails;              //vp
     private XsDayplanAdapter mXsDayplanAdapter;
 
     private List<String> mStringList;
     private List<Fragment> mFragmentList;
-    private List<CommentData> mCommentDatas;
 
     @Override
     protected int layout() {
@@ -61,10 +54,9 @@ public class XsDaysumDetailsActivity extends BaseActivity {
     @Override
     protected void initview() {
         mStringList = new ArrayList<>();
-        mCommentDatas = new ArrayList<>();
         mFragmentList = new ArrayList<>();
-        getData();
-        mStringList.add("工作计划");
+
+        mStringList.add("工作总结");
         mStringList.add("今日工作量");
         mStringList.add("回款到单");
         mStringList.add("预测到单客户踩中");
@@ -77,26 +69,13 @@ public class XsDaysumDetailsActivity extends BaseActivity {
         mFragmentList.add(new DaysumAddCustomerFragment());
         mXsDayplanAdapter = new XsDayplanAdapter(getSupportFragmentManager(), mStringList, mFragmentList);
         mVpDayplanDetails.setAdapter(mXsDayplanAdapter);
-        mCommentAdapter = new CommentAdapter(this, mCommentDatas);
-        mLvComment.setAdapter(mCommentAdapter);
-        View view = LayoutInflater.from(this).inflate(R.layout.item_comment_head, null);
-        ViewHolder viewHolder = new ViewHolder(view);
-        viewHolder.mTvCommentCount.setText("评论("+mCommentDatas.size()+")");
-        mLvComment.addHeaderView(view);
+
         mTabDaysumDetails.setupWithViewPager(mVpDayplanDetails);    //关联vp
+        //设置指示器颜色
+        mTabDaysumDetails.setSelectedTabIndicatorColor(ContextCompat.getColor(this,R.color.colorPrimary));
         mTabDaysumDetails.setTabMode(MODE_SCROLLABLE);  //tab滚动模式
     }
 
-    public void getData() {
-        for (int i = 0; i < 8; i++) {
-            CommentData commentData = new CommentData();
-            commentData.setCommentPerson("总监");
-            commentData.setCommentTime("2017-6-12");
-            commentData.setCommentJob("弄着、弄那");
-            commentData.setCommentContent("除了这你还弄啥类");
-            mCommentDatas.add(commentData);
-        }
-    }
 
     @Override
     public void returnData(int key, Object data) {

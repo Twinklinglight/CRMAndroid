@@ -1,7 +1,13 @@
 package com.wtcrmandroid.fragment;
 
+import android.widget.ListView;
+
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.view.MyListView;
+import com.wtcrmandroid.adapter.listview.AddPurposeFragmentAdapter;
+import com.wtcrmandroid.model.AddPurpostCtAtData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -13,7 +19,9 @@ import butterknife.BindView;
 public class DaysumAddCustomerFragment extends BaseFragmengt {
 
     @BindView(R.id.lv_daysum_addcustomer)
-    MyListView mLvDaysumAddcustomer;
+    ListView mLvDaysumAddcustomer;
+    private AddPurposeFragmentAdapter mAdapter;
+    private List<AddPurpostCtAtData> mDataList;
 
     @Override
     protected int Rlayout() {
@@ -23,6 +31,15 @@ public class DaysumAddCustomerFragment extends BaseFragmengt {
     @Override
     protected void init() {
 
+        mDataList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            AddPurpostCtAtData addPurpostCtAtData = new AddPurpostCtAtData();
+            addPurpostCtAtData.setWorkSort("A类");
+            mDataList.add(addPurpostCtAtData);
+        }
+        mAdapter = new AddPurposeFragmentAdapter(getActivity(),mDataList);
+        mLvDaysumAddcustomer.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

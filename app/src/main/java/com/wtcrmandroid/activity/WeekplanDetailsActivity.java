@@ -40,11 +40,14 @@ public class WeekplanDetailsActivity extends BaseActivity {
     protected void initview() {
         mTitleBar.setTitletext("日志详情");
         mDataList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
+            writerWeekPlaneData.setWorkNumber("本周计划"+(i+1));
+            mDataList.add(writerWeekPlaneData);
+        }
         mAdapter = new WeekDayplanAdapter(this,mDataList);
         mLvWeekplan.setAdapter(mAdapter);
     }
-
-
 
     @Override
     public void returnData(int key, Object data) {

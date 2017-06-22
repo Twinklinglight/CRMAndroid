@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <com.wtcrmandroid.view.MyListView
-        android:id="@+id/lv_work_plan"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.wtcrmandroid.view.MyListView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.wtcrmandroid.view.MyListView
+                android:id="@+id/lv_work_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+            </com.wtcrmandroid.view.MyListView>
+
+            <com.wtcrmandroid.view.MyListView
+                android:id="@+id/iv_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.wtcrmandroid.view.MyListView>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 
 </LinearLayout>

@@ -4,110 +4,119 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_weekpsum_title"
-        style="@style/ContentText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
 
         <TextView
-            style="@style/HintText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hint_dayplan_content"/>
-
-        <TextView
-            android:id="@+id/tv_weeksum_content"
+            android:id="@+id/tv_weekpsum_title"
             style="@style/ContentText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
+            android:padding="10dp"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
-
-        <TextView
-            style="@style/HintText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hint_weekplan_mb"/>
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tv_week_target"
-            style="@style/ContentText"
-            android:layout_width="wrap_content"
+            <TextView
+                style="@style/HintText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_dayplan_content"/>
+
+            <TextView
+                android:id="@+id/tv_weeksum_content"
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
+            android:padding="10dp">
 
-    </LinearLayout>
+            <TextView
+                style="@style/HintText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_weekplan_mb"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+            <TextView
+                android:id="@+id/tv_week_target"
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
 
-        <TextView
-            style="@style/HintText"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hint_dayplan_percent"/>
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tv_weeksum_percent"
-            style="@style/ContentText"
-            android:layout_width="wrap_content"
+            <TextView
+                style="@style/HintText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_dayplan_percent"/>
+
+            <TextView
+                android:id="@+id/tv_weeksum_percent"
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
+            android:padding="10dp">
 
-    </LinearLayout>
+            <TextView
+                style="@style/HintText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_daysum_wcqk"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+            <TextView
+                android:id="@+id/tv_weeksum_complete"
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
 
-        <TextView
-            style="@style/HintText"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hint_daysum_wcqk"/>
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tv_weeksum_complete"
-            style="@style/ContentText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
+            <TextView
+                style="@style/HintText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_daysum_xxfx"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_weeksum_study"
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
-
-        <TextView
-            style="@style/HintText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hint_daysum_xxfx"/>
-
-        <TextView
-            android:id="@+id/tv_weeksum_study"
-            style="@style/ContentText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 

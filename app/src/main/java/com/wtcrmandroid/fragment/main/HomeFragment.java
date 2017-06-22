@@ -1,6 +1,7 @@
 package com.wtcrmandroid.fragment.main;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +10,22 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.JournalManagerActivity;
 import com.wtcrmandroid.activity.MainActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
+import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
+import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 import static android.view.View.GONE;
 
@@ -31,6 +36,11 @@ import static android.view.View.GONE;
 public class HomeFragment extends BaseFragmengt {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
+    @BindView(R.id.tv_pullintocustomer)
+    TextView mTvPullintocustomer;       //录入客户
+    Unbinder unbinder;
+
+    private boolean isSale = true; //是销售 或 食品
 
 
     private boolean window;
@@ -75,7 +85,6 @@ public class HomeFragment extends BaseFragmengt {
             }
         });
 
-
     }
 
 
@@ -84,7 +93,7 @@ public class HomeFragment extends BaseFragmengt {
 
     }
 
-    @OnClick({R.id.tv_log_management, R.id.tv_field})
+    @OnClick({R.id.tv_log_management, R.id.tv_field,R.id.tv_pullintocustomer})
     public void onClick(View view) {
         switch (view.getId()) {
             //日志管理点击事件
@@ -95,13 +104,21 @@ public class HomeFragment extends BaseFragmengt {
             case R.id.tv_field:
                 startActivity(new Intent(getActivity(), FieldActivity.class));
                 break;
+            //录入客户
+            case R.id.tv_pullintocustomer:
+                if (!isSale){
+                    startActivity(new Intent(getContext(), PullintoCustomerActivity.class));
+                }else {
+                    startActivity(new Intent(getContext(), SalePullintoCustomerActivity.class));
+                }
+                break;
         }
     }
 
     private void showPopupWindow() {
         //设置contentView
         View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.popupwindow_home, null);
-        ViewHolder holder= new ViewHolder(contentView);
+        ViewHolder holder = new ViewHolder(contentView);
         holder.llControlFragmentOrderMetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +132,20 @@ public class HomeFragment extends BaseFragmengt {
         //设置各个控件的点击响应
         mPopWindow.showAsDropDown(titlebar);
 
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     static class ViewHolder {

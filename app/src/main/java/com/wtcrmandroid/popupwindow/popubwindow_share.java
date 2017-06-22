@@ -74,8 +74,8 @@ public class popubwindow_share extends PopupWindow {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.linear_wechat:            //分享到到微信好友
-//                showShare(Wechat.NAME);
-                show(Wechat.NAME);
+                showShare(Wechat.NAME);
+//                show(Wechat.NAME);
                 dismiss();
                 break;
             case R.id.linear_wechatmoments:     //分享到微信朋友圈

@@ -11,6 +11,7 @@
     <color name="colorContext">#939699</color>
 
     <color name="pulltorefresh_bg">#BCBCBC</color>
+    <color name="lineColor">#c4c8cc</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

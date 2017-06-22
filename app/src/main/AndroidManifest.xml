@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wtcrmandroid">
+          package="com.wtcrmandroid">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
@@ -15,29 +15,30 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <!-- SD卡读写的权限（如果需要保存音频文件到本地的话） -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <!-- shareSDK -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /><!--动态权限-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 
+    <!-- 动态权限 -->
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -46,7 +47,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -54,72 +55,72 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!--——————————————————————-外勤模块——————————————————————————-->
-        <!--外勤-->
+        <!-- ——————————————————————-外勤模块—————————————————————————— -->
+        <!-- 外勤 -->
         <activity android:name=".activity.field.FieldActivity"/>
-        <!--外勤打卡-->
+        <!-- 外勤打卡 -->
         <activity android:name=".activity.field.FieldClockActivity"/>
-        <!--打卡记录-->
+        <!-- 打卡记录 -->
         <activity android:name=".activity.field.ClockRecordActivity"/>
-        <!--外勤统计-->
+        <!-- 外勤统计 -->
         <activity android:name=".activity.field.FieldStatisticsAcrivity"/>
-        <!--客户拜访-->
+        <!-- 客户拜访 -->
         <activity android:name=".activity.field.CustomerCallActivity"/>
-        <!--————————————————————————————————————————————————————————————————-->
+        <!-- ———————————————————————————————————————————————————————————————— -->
         <!-- 日志管理 -->
-        <activity android:name=".activity.JournalManagerActivity"></activity>
+        <activity android:name=".activity.JournalManagerActivity"/>
         <!-- 写日计划 -->
-        <activity android:name=".activity.WriteDayPlanActivity"></activity>
+        <activity android:name=".activity.WriteDayPlanActivity"/>
 
         <!-- 写日总结 -->
-        <activity android:name=".activity.WriteDaySumActivity"></activity>
+        <activity android:name=".activity.WriteDaySumActivity"/>
 
         <!-- 写周计划界面 -->
-        <activity android:name=".activity.WriteWeekPlanActivity" />
+        <activity android:name=".activity.WriteWeekPlanActivity"/>
         <!-- 写周总结界面 -->
-        <activity android:name=".activity.WriteWeekConclusionActivity" />
+        <activity android:name=".activity.WriteWeekConclusionActivity"/>
 
         <!-- 我的日志 -->
-        <activity android:name=".activity.MyJournalActivity"></activity>
+        <activity android:name=".activity.MyJournalActivity"/>
         <!-- 预测到单客户 -->
-        <activity android:name=".activity.SingleCustomer"></activity>
+        <activity android:name=".activity.SingleCustomer"/>
 
         <!-- 重点意向客户 -->
-        <activity android:name=".activity.MajorCustomerActivity"></activity>
+        <activity android:name=".activity.MajorCustomerActivity"/>
         <!-- 回款到单 -->
-        <activity android:name=".activity.GetMoneyActivity"></activity>
+        <activity android:name=".activity.GetMoneyActivity"/>
         <!-- 今日工作量 -->
-        <activity android:name=".activity.TodayWorkLoadActivity"
-                  android:windowSoftInputMode="stateHidden">
+        <activity
+            android:name=".activity.TodayWorkLoadActivity"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <!-- 预测单客户踩中 -->
-        <activity android:name=".activity.GetSingleCustomerActivity"></activity>
+        <activity android:name=".activity.GetSingleCustomerActivity"/>
         <!-- 新增意向客户 -->
-        <activity android:name=".activity.AddPurposeCustomerActivity"></activity>
+        <activity android:name=".activity.AddPurposeCustomerActivity"/>
         <!-- 部门员工日志管理首页 -->
-        <activity android:name=".activity.DepartmentEmployeesLogManagementMainActivity" />
+        <activity android:name=".activity.DepartmentEmployeesLogManagementMainActivity"/>
         <!-- 部门员工日志管理搜索页 -->
-        <activity android:name=".activity.DepartmentEmployeesLogManagementSerachActivity" />
-        <activity android:name=".activity.HtDayplanDetails"></activity>
+        <activity android:name=".activity.DepartmentEmployeesLogManagementSerachActivity"/>
+        <activity android:name=".activity.HtDayplanDetails"/>
         <!-- 后台日总结详情 -->
-        <activity android:name=".activity.HtDaysumDetailsActivity"></activity>
+        <activity android:name=".activity.HtDaysumDetailsActivity"/>
         <!-- 销售日计划详情 -->
-        <activity android:name=".activity.XsDayplanDetailsActivity"></activity>
+        <activity android:name=".activity.XsDayplanDetailsActivity"/>
         <!-- 销售日总结详情 -->
-        <activity android:name=".activity.XsDaysumDetailsActivity"></activity>
+        <activity android:name=".activity.XsDaysumDetailsActivity"/>
         <!-- 周计划详情 -->
-        <activity android:name=".activity.WeekplanDetailsActivity"></activity>
+        <activity android:name=".activity.WeekplanDetailsActivity"/>
         <!-- 周总结详情 -->
-        <activity android:name=".activity.WeeksumDetailsActivity"></activity>
+        <activity android:name=".activity.WeeksumDetailsActivity"/>
+        <activity android:name=".activity.XsWriteDayplanActivity"/>
+        <activity android:name=".activity.XsWriteDaysumActivity"/>
+        <activity android:name=".aboutmy.MycardActivity"/>
 
-        <activity android:name=".activity.XsWriteDayplanActivity"></activity>
-        <activity android:name=".activity.XsWriteDaysumActivity"></activity>
-        <activity android:name=".aboutmy.MycardActivity"></activity>
-
-        <!--百度地图可以-->
+        <!-- 百度地图可以 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="WMFitVpylrtAuTgFPbltCkoP6SRY7zIE" />
+            android:value="WMFitVpylrtAuTgFPbltCkoP6SRY7zIE"/>
 
         <!-- shareSDK 的activity -->
         <activity
@@ -129,19 +130,19 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
-                <data android:scheme="tencent1105662792" />
+                <data android:scheme="tencent1105662792"/>
 
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
 
             <!-- 调用新浪原生SDK，需要注册的回调activity -->
             <intent-filter>
-                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
@@ -151,8 +152,15 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".activity.foodpullcustomer.PullintoCustomerActivity">
+        </activity>
+        <activity android:name=".activity.foodpullcustomer.FoodSelectActivity">
+        </activity>
+        <activity android:name=".activity.salepullcustomer.SalePullintoCustomerActivity">
+        </activity>
+        <activity android:name=".activity.salepullcustomer.SaleSelectActivity">
+        </activity>
     </application>
 
 </manifest>

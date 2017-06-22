@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context="com.wtcrmandroid.activity.XsDaysumDetailsActivity">
 
     <com.wtcrmandroid.custompricing.TitleBar
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:gravity="center_vertical"
+        android:background="@color/white"
         android:paddingRight="10dp"
         android:paddingLeft="10dp">
 
@@ -37,40 +39,22 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_daysum_details"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextAppearance="@style/ContentText"
+        android:layout_marginTop="10dp">
+    </android.support.design.widget.TabLayout>
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tab_daysum_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-            </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_dayplan_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <com.wtcrmandroid.view.MyViewPager
-                android:id="@+id/vp_dayplan_details"
-                android:layout_width="match_parent"
-                android:layout_height="250dp">
-
-            </com.wtcrmandroid.view.MyViewPager>
-
-            <com.wtcrmandroid.view.MyListView
-                android:id="@+id/lv_comment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </com.wtcrmandroid.view.MyListView>
-
-        </LinearLayout>
-
-    </ScrollView>
-
+    </android.support.v4.view.ViewPager>
 
 
 </LinearLayout>

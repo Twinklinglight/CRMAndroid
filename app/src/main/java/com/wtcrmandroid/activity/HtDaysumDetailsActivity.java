@@ -52,8 +52,17 @@ public class HtDaysumDetailsActivity extends BaseActivity {
         mDtailsList = new ArrayList<>();
         mCommentList = new ArrayList<>();
         mTitlebar.setTitletext("日志详情");
+
+        //返回
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         getData();
         mDetailsAdapter = new HtDaysumDetailsAdapter(this, mDtailsList);
+        mLvWork.setDivider(null);       //去除分割线
         mLvWork.setAdapter(mDetailsAdapter);
         mDetailsAdapter.notifyDataSetChanged();
 

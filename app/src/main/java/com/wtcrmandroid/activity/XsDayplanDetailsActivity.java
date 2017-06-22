@@ -2,7 +2,9 @@ package com.wtcrmandroid.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
@@ -42,6 +44,12 @@ public class XsDayplanDetailsActivity extends BaseActivity {
     protected void initview() {
 
         mTitlebar.setTitletext("日志详情");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         initVp();
 
     }
@@ -60,8 +68,7 @@ public class XsDayplanDetailsActivity extends BaseActivity {
         mAdapter = new XsDayplanAdapter(getSupportFragmentManager(),mTitleList,mFragmentList);
         mVpDayplanDetails.setAdapter(mAdapter);
         mTabDayplanDetails.setupWithViewPager(mVpDayplanDetails);
-
-
+        mTabDayplanDetails.setSelectedTabIndicatorColor(ContextCompat.getColor(this,R.color.colorPrimary));
     }
 
 

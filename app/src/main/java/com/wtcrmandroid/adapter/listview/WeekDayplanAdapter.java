@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  * Created by zxd on 2017/6/12
  */
 
-public class WeekDayplanAdapter extends BaseAdapter<WriterWeekPlaneData, WeekDayplanAdapter.ViewHolder> {
+public class WeekDayplanAdapter extends MySmallBaseAdapter<WriterWeekPlaneData, WeekDayplanAdapter.ViewHolder> {
 
     public WeekDayplanAdapter(Activity activity, List<WriterWeekPlaneData> list) {
         super(activity, list);
@@ -33,10 +33,10 @@ public class WeekDayplanAdapter extends BaseAdapter<WriterWeekPlaneData, WeekDay
     }
 
     @Override
-    protected View onCreateViewHolder(int position) {
+    protected View onCreateViewHolder() {
         View view = LayoutInflater.from(activity).inflate(R.layout.item_weekplan_details, null);
         ViewHolder viewHolder = new ViewHolder(view);
-        view.setTag(position,viewHolder);
+        view.setTag(viewHolder);
         return view;
     }
 
