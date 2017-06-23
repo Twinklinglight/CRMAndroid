@@ -1,4 +1,4 @@
-package com.wtcrmandroid.httpfactory.requestdata;
+package com.wtcrmandroid.model.requestdata;
 
 import com.google.gson.annotations.SerializedName;
 

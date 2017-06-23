@@ -1,4 +1,4 @@
-package com.wtcrmandroid.httpfactory.reponsedata;
+package com.wtcrmandroid.model.reponsedata;
 
 import java.io.Serializable;
 

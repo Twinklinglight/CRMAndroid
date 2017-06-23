@@ -13,7 +13,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseMapActivity;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.httpfactory.requestdata.PlaceSaveRequestData;
+import com.wtcrmandroid.model.requestdata.PlaceSaveRequestData;
 import com.wtcrmandroid.presenter.activity.FieldClockPresenter;
 import com.wtcrmandroid.utils.DensityUtils;
 

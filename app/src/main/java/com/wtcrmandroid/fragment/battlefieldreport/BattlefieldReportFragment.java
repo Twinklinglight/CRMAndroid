@@ -1,19 +1,22 @@
 package com.wtcrmandroid.fragment.battlefieldreport;
 
-import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 
 import butterknife.BindView;
+import butterknife.Unbinder;
 
 /**
  * Created by wt-pc on 2017/6/20.
  */
 
 public class BattlefieldReportFragment extends BaseFragmengt {
-    @BindView(R.id.tl_tabs)
-    TabLayout tlTabs;
+
+    @BindView(R.id.viewpager)
+    ViewPager viewpager;
+    Unbinder unbinder;
 
     @Override
     public void returnData(int key, Object data) {
@@ -28,6 +31,8 @@ public class BattlefieldReportFragment extends BaseFragmengt {
     @Override
     protected void init() {
 
+
     }
+
 
 }

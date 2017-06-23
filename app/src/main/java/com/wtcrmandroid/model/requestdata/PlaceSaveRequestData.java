@@ -1,4 +1,4 @@
-package com.wtcrmandroid.httpfactory.requestdata;
+package com.wtcrmandroid.model.requestdata;
 
 /**
  * Created by wt-pc on 2017/6/22.
