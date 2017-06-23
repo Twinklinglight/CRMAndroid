@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context="com.wtcrmandroid.activity.XsDaysumDetailsActivity">
+    tools:context="com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity">
 
     <com.wtcrmandroid.custompricing.TitleBar
         android:id="@id/titlebar"
@@ -41,12 +41,13 @@
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_daysum_details"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextAppearance="@style/ContentText"
-        android:layout_marginTop="10dp">
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabMode="scrollable">
     </android.support.design.widget.TabLayout>
 
     <android.support.v4.view.ViewPager

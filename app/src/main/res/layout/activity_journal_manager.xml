@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context="com.wtcrmandroid.activity.JournalManagerActivity">
+    tools:context="com.wtcrmandroid.activity.journalmanager.JournalManagerActivity">
 
     <com.wtcrmandroid.custompricing.TitleBar
         android:id="@+id/titlebar"

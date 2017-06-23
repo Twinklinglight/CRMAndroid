@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context="com.wtcrmandroid.activity.XsWriteDayplanActivity">
+    tools:context="com.wtcrmandroid.activity.journalmanager.XsWriteDayplanActivity">
 
 
     <com.wtcrmandroid.custompricing.TitleBar
