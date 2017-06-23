@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="营销中心团队排名"
+        android:textColor="@color/colorIconText"
+        android:textSize="18sp" />
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignLeft="@+id/tv_text"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/tv_text"
+        android:background="@color/colorPrimary" />
+</RelativeLayout>

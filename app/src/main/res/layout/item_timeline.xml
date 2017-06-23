@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:paddingBottom="15dp"
-            android:text="13:20:45"
+            android:text="郑州市御玺大厦附近"
             android:textColor="@color/colorContext"
             android:textSize="14sp" />
     </LinearLayout>

@@ -68,7 +68,8 @@
         <View
             android:layout_width="20dp"
             android:layout_height="1dp"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="15dp"
+            android:background="@color/colorContext"/>
 
         <TextView
             android:layout_width="wrap_content"
