@@ -12,7 +12,7 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.data.LoginData;
+import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
 import com.wtcrmandroid.model.MyJournalData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
 import com.wtcrmandroid.pulltorefresh.OnLoadMoreListener;

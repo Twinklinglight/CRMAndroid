@@ -1,10 +1,15 @@
 package com.wtcrmandroid.httpfactory.requestdata;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by wt-pc on 2017/6/22.
+ * 登录接口上传参数实体类
  */
 
-public class LogoRequestData {
+public class LoginRequestData {
+    //将java对象的属性转换成指定的json名字
+    @SerializedName("userName")
     private String userName;
     private String userPass;
 

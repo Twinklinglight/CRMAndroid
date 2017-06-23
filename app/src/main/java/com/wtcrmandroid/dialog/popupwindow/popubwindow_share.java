@@ -1,4 +1,4 @@
-package com.wtcrmandroid.popupwindow;
+package com.wtcrmandroid.dialog.popupwindow;
 
 import android.content.Context;
 import android.content.res.AssetManager;

@@ -1,0 +1,51 @@
+package com.wtcrmandroid.httpfactory.requestdata;
+
+/**
+ * Created by wt-pc on 2017/6/22.
+ * 位置数据保存
+ */
+
+public class PlaceSaveRequestData {
+   //用户Id
+    private String userId;
+    //经度
+    private Double lat;
+    //维度
+    private Double lng ;
+    //数据类型(1打卡、2与员工位置)
+    private String positionType ;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+    /**
+     * 维度
+     */
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public String getPositionType() {
+        return positionType;
+    }
+
+    public void setPositionType(String positionType) {
+        this.positionType = positionType;
+    }
+}

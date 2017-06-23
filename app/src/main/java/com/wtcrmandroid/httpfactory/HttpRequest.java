@@ -14,19 +14,15 @@ import com.wtcrmandroid.httpfactory.callback.FileCallBack;
 import com.wtcrmandroid.httpfactory.callback.RetCallBack;
 import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.httpfactory.https.SslUtils;
-import com.wtcrmandroid.httpfactory.request.GetRequest;
 import com.wtcrmandroid.httpfactory.request.PingUtils;
 import com.wtcrmandroid.httpfactory.request.PostRequest;
-import com.wtcrmandroid.utils.DESUtils;
 import com.wtcrmandroid.utils.L;
-import com.wtcrmandroid.utils.MD5Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -104,13 +100,13 @@ public class HttpRequest {
      * @param resultCallBack 请求回调
      */
     public void sendGet(String url, Map<String, Object> params, Object tag, StringCallBack resultCallBack) {
-        if (params == null) {
-            params = new HashMap<>();
-        }
-        params.put("ver_version", VERSION_CODE + "");
-        GetRequest getBuilder = new GetRequest(url, app.getUserAgent(), params, tag);
-        Request request = getBuilder.getRequest();
-        deliverResult(url, request, resultCallBack);
+//        if (params == null) {
+//            params = new HashMap<>();
+//        }
+//        params.put("ver_version", VERSION_CODE + "");
+//        GetRequest getBuilder = new GetRequest(url, app.getUserAgent(), params, tag);
+//        Request request = getBuilder.getRequest();
+//        deliverResult(url, request, resultCallBack);
     }
 
     /**
@@ -123,30 +119,30 @@ public class HttpRequest {
      * @param retCallBack 请求回调
      */
     public void sendGet(final String url, Map<String, Object> params, Object tag, final RetCallBack retCallBack) {
-        if (params == null) {
-            params = new HashMap<>();
-        }
-        params.put("ver_version", VERSION_CODE + "");
-        GetRequest getBuilder = new GetRequest(url, app.getUserAgent(), params, tag);
-        Request request = getBuilder.getRequest();
-
-        getOkHttpClient().newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                retCallBack.onNetError(e);
-                pingAndSendEmail(url);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.body().toString() != null && !"".equals(response.body().toString())) {
-                    String string = response.body().string();
-                    retCallBack.onResponse(string);
-                } else {
-                    retCallBack.onError(-1, "没有数据返回");
-                }
-            }
-        });
+//        if (params == null) {
+//            params = new HashMap<>();
+//        }
+//        params.put("ver_version", VERSION_CODE + "");
+//        GetRequest getBuilder = new GetRequest(url, app.getUserAgent(), params, tag);
+//        Request request = getBuilder.getRequest();
+//
+//        getOkHttpClient().newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                retCallBack.onNetError(e);
+//                pingAndSendEmail(url);
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                if (response.body().toString() != null && !"".equals(response.body().toString())) {
+//                    String string = response.body().string();
+//                    retCallBack.onResponse(string);
+//                } else {
+//                    retCallBack.onError(-1, "没有数据返回");
+//                }
+//            }
+//        });
     }
 
     /**
@@ -268,9 +264,9 @@ public class HttpRequest {
                     editor.putString("key", key).commit();
                     String ciphertext = "Android&"
                             + WtHeader.getIMEI(app);
-                    app.setUserAgent(DESUtils.encrypt(
-                            ciphertext,
-                            MD5Utils._MD5(key)));
+//                    app.setUserAgent(DESUtils.encrypt(
+//                            ciphertext,
+//                            MD5Utils._MD5(key)));
                     callBack.onError(2, "身份验证失败！请重新操作");
                 } else {
                     callBack.onError(2, "无法获取身份验证");
