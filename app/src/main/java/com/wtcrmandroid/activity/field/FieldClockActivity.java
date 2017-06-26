@@ -2,7 +2,7 @@ package com.wtcrmandroid.activity.field;
 
 import android.content.Intent;
 import android.hardware.Sensor;
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +14,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseMapActivity;
+import com.wtcrmandroid.adapter.recycleview.FieldClockAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.presenter.activity.FieldClockPresenter;
 import com.wtcrmandroid.utils.DensityUtils;
@@ -35,7 +36,7 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
     RecyclerView rvView;
     private Double latitude;
     private Double longitude;
-
+    private FieldClockAdapter adapter;
     @Override
     public void returnData(int key, Object data) {
 
@@ -62,7 +63,10 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
                 startActivity(new Intent(FieldClockActivity.this, ClockRecordActivity.class));
             }
         });
+
         presenter = new FieldClockPresenter(this);
+        rvView.setLayoutManager(new LinearLayoutManager(this));
+        rvView.setAdapter(adapter=new FieldClockAdapter(this));
     }
 
     @Override
@@ -94,13 +98,6 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
 

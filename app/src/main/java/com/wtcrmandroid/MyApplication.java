@@ -23,7 +23,7 @@ public class MyApplication extends Application {
     /**
      * 登录返回数据
      */
-    public LoginData loginData;
+    public LoginData loginData =new LoginData();
     public static MyApplication application;
 
     @Override
