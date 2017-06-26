@@ -7,9 +7,9 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.ClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.custompricing.TopChooseMenuBar;
-import com.wtcrmandroid.dialog.popupwindow.TitlePopupWindow;
+import com.wtcrmandroid.view.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
+import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 
 import java.util.ArrayList;
 import java.util.List;

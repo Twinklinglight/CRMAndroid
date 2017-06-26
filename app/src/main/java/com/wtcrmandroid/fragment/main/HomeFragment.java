@@ -22,7 +22,7 @@ import com.wtcrmandroid.activity.crm.PublicSeaActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
 import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
 import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 
 import butterknife.BindView;

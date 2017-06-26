@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.pulltorefresh.SwipeLoadMoreFooterLayout;
+import com.wtcrmandroid.view.pulltorefresh.SwipeLoadMoreFooterLayout;
 
 /**
  * Created by zxd on 2017/6/9

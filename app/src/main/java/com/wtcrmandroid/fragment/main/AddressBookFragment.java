@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.AddressBookAdapter;
-import com.wtcrmandroid.custompricing.QuickIndexView;
+import com.wtcrmandroid.view.custompricing.QuickIndexView;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 
 import butterknife.BindView;

@@ -10,13 +10,13 @@
         android:layout_height="45dp"
         android:background="#fff">
 
-        <com.wtcrmandroid.custompricing.TitleSwitchItem
+        <com.wtcrmandroid.view.custompricing.TitleSwitchItem
             android:id="@+id/tsi_right"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.wtcrmandroid.custompricing.TitleSwitchItem
+        <com.wtcrmandroid.view.custompricing.TitleSwitchItem
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />

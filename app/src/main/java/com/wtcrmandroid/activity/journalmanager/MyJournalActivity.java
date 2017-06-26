@@ -12,13 +12,13 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.MyJournalData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
-import com.wtcrmandroid.pulltorefresh.OnLoadMoreListener;
-import com.wtcrmandroid.pulltorefresh.OnRefreshListener;
-import com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout;
+import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
+import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
+import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 

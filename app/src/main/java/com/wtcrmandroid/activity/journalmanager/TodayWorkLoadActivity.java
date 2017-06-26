@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import butterknife.BindView;
 

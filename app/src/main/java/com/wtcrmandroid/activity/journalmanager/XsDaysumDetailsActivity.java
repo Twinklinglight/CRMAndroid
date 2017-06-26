@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.journalmanager.DaysumAddCustomerFragment;
 import com.wtcrmandroid.fragment.journalmanager.DaysumHkdzFragment;
 import com.wtcrmandroid.fragment.journalmanager.DaysumSingleCustomerFragment;

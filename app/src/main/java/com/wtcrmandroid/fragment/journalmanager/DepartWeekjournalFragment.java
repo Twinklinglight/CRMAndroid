@@ -9,12 +9,12 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
-import com.wtcrmandroid.dialog.CommentDialog;
+import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.WeeksumDetailsData;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
-import com.wtcrmandroid.view.MyListView;
+import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;

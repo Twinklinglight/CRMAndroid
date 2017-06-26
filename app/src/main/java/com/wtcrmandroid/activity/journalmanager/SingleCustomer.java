@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.listview.SingleCustomerAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.SingleCustomerData;
 
 import java.util.ArrayList;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.FragmentAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
-import com.wtcrmandroid.dialog.popupwindow.TitlePopupWindow;
+import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 import com.wtcrmandroid.fragment.battlefieldreport.BattlefieldReportFragment;
 import com.wtcrmandroid.fragment.battlefieldreport.TotalAchievementsFragment;

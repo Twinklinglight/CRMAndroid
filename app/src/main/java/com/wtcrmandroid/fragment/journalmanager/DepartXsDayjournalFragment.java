@@ -4,9 +4,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.dialog.CommentDialog;
+import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.fragment.BaseFragmengt;
-import com.wtcrmandroid.view.MyListView;
+import com.wtcrmandroid.view.listview.MyListView;
 
 import butterknife.BindView;
 import butterknife.OnClick;

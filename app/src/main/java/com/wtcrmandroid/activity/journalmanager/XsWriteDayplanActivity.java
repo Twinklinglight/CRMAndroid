@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriteDayplanData;
 
 import java.util.ArrayList;

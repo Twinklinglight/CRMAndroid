@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height" />
 
-    <com.wtcrmandroid.custompricing.TopChooseMenuBar
+    <com.wtcrmandroid.view.custompricing.TopChooseMenuBar
         android:id="@+id/tcmb_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp" />

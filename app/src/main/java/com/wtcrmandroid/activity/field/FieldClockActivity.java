@@ -15,7 +15,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseMapActivity;
 import com.wtcrmandroid.adapter.recycleview.FieldClockAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.presenter.activity.FieldClockPresenter;
 import com.wtcrmandroid.utils.DensityUtils;
 

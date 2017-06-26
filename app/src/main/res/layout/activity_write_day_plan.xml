@@ -9,12 +9,12 @@
     android:orientation="vertical"
     tools:context="com.wtcrmandroid.activity.journalmanager.WriteDayPlanActivity">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="45dp">
 
-    </com.wtcrmandroid.custompricing.TitleBar>
+    </com.wtcrmandroid.view.custompricing.TitleBar>
 
     <RelativeLayout
         android:id="@+id/rl_head"

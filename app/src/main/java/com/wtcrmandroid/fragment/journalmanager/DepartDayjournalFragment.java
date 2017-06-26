@@ -9,12 +9,12 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
-import com.wtcrmandroid.dialog.CommentDialog;
+import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
 import com.wtcrmandroid.model.HtDaysumDetailsData;
-import com.wtcrmandroid.view.MyListView;
+import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;

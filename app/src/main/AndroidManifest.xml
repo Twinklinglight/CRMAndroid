@@ -177,7 +177,7 @@
 
         <!-- 微信分享回调 -->
         <activity
-            android:name=".sharesdk.demo.wxapi.WXEntryActivity"
+            android:name=".utils.sharesdk.demo.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"

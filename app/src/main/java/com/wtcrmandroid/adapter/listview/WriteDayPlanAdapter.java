@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.dialog.WorkSortDialog;
+import com.wtcrmandroid.view.dialog.WorkSortDialog;
 import com.wtcrmandroid.model.WriteDayplanData;
 
 import java.util.List;
