@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.wtcrmandroid">
+    package="com.wtcrmandroid">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 读取网络信息状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 获取当前wifi状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 允许程序改变网络连接状态 -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <!-- 读取手机信息权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- SD卡读写的权限（如果需要保存音频文件到本地的话） -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
@@ -47,32 +47,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+        </activity>
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- ——————————————————————-外勤模块—————————————————————————— -->
-        <!-- 外勤 -->
-        <activity android:name=".activity.field.FieldActivity"/>
-        <!-- 外勤打卡 -->
-        <activity android:name=".activity.field.FieldClockActivity"/>
-        <!-- 打卡记录 -->
-        <activity android:name=".activity.field.ClockRecordActivity"/>
-        <!-- 外勤统计 -->
-        <activity android:name=".activity.field.FieldStatisticsAcrivity"/>
-        <!-- 客户拜访 -->
-        <activity android:name=".activity.field.CustomerCallActivity"/>
-        <!-- 我的拜访记录 -->
-        <activity android:name=".activity.field.MyCallRecordActivity"/>
-        <!-- 客户拜访情况 -->
-        <activity android:name=".activity.field.CustomerCallSituationActivity"/>
-        <!-- 客户拜访统计 -->
-        <activity android:name=".activity.field.CustomerCallStatisticsAcrivity"/>
-        <!-- ———————————————————————————————————————————————————————————————— -->
+        <!--——————————————————————-外勤模块——————————————————————————-->
+        <!--外勤-->
+        <activity android:name=".activity.field.FieldActivity" />
+        <!--外勤打卡-->
+        <activity android:name=".activity.field.FieldClockActivity" />
+        <!--打卡记录-->
+        <activity android:name=".activity.field.ClockRecordActivity" />
+        <!--外勤统计-->
+        <activity android:name=".activity.field.FieldStatisticsAcrivity" />
+        <!--客户拜访-->
+        <activity android:name=".activity.field.CustomerCallActivity" />
+        <!--我的拜访记录-->
+        <activity android:name=".activity.field.MyCallRecordActivity" />
+        <!--客户拜访情况-->
+        <activity android:name=".activity.field.CustomerCallSituationActivity" />
+        <!--客户拜访统计-->
+        <activity android:name=".activity.field.CustomerCallStatisticsAcrivity" />
+        <!--————————————————————————————————————————————————————————————————-->
 
 
         <!-- ###### -->
@@ -118,6 +120,16 @@
         <!-- 回款到单 -->
         <activity android:name=".activity.journalmanager.GetMoneyActivity"/>
         <!-- 今日工作量 -->
+       <!--————————————————————————————————CRM——————————————————————————————————————-->
+        <activity android:name=".activity.crm.MainClientLibrary"/>
+        <activity android:name=".activity.crm.MyClientLibrary"/>
+        <activity android:name=".activity.crm.PublicSeaActivity"/>
+        <!--————————————————————————————————————————————————————————————————-->
+
+        <!--######-->
+        <!--######-->
+        <!--######-->
+
         <activity
             android:name=".activity.journalmanager.TodayWorkLoadActivity"
             android:windowSoftInputMode="stateHidden"/>
@@ -144,7 +156,7 @@
         <activity android:name=".activity.journalmanager.XsWriteDaysumActivity"/>
 
         <!-- 我的名片 -->
-        <activity android:name=".aboutmy.MycardActivity"/>
+
 
         <!-- 百度地图可以 -->
         <meta-data

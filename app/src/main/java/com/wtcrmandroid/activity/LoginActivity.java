@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.WTDataBaseManager;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;
 import com.wtcrmandroid.utils.L;
@@ -27,6 +28,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData>{
         presenter=new LoginPresenter(this);
         TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
         L.e(tm.getDeviceId()+"--");
+        WTDataBaseManager.getsInstance().initDatabase(this);
 
     }
 
