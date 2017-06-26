@@ -14,14 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:clickable="true" />
-<Button
-    android:id="@+id/bt_clock"
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:text="打卡"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"/>
 
 </LinearLayout>
