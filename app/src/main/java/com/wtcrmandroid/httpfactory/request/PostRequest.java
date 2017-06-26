@@ -1,6 +1,9 @@
 package com.wtcrmandroid.httpfactory.request;
 
 import com.google.gson.Gson;
+import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
+import com.wtcrmandroid.utils.L;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -31,7 +34,14 @@ public class PostRequest extends OkHttpRequest{
 
         Gson gson=new Gson();
         String json=gson.toJson(params);
-		builder.url(url).post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json));
+
+		L.e(json);
+		LoginData loginData =MyApplication.application.getLoginData();
+		if(loginData !=null) {
+			L.e("添加头部");
+			builder.url(url).header("token", loginData.getToken()).addHeader("userid", loginData.getUserID() + "").addHeader("imei", "920984323092997").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json));
+		}else
+			builder.url(url).post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json));
 	}
 
 

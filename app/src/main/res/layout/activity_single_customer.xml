@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context="com.wtcrmandroid.activity.SingleCustomer">
+    tools:context="com.wtcrmandroid.activity.journalmanager.SingleCustomer">
 
     <com.wtcrmandroid.custompricing.TitleBar
         android:id="@+id/titlebar"

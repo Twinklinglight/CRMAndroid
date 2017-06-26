@@ -2,8 +2,9 @@ package com.wtcrmandroid.presenter.activity;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.data.LoginData;
-import com.wtcrmandroid.httpfactory.requestdata.LogoRequestData;
+import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
+import com.wtcrmandroid.httpfactory.requestdata.LoginRequestData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.MD5Utils;
@@ -29,6 +30,7 @@ public class LoginPresenter extends BasePresenter{
         }.getType();
         LoginData loginData = new Gson().fromJson(response, listType);
         L.e("成功" + loginData.toString());
+        MyApplication.application.setLoginData(loginData);
         view.showToast("登录成功");
         view.returnData(key, loginData);
     }
@@ -37,11 +39,11 @@ public class LoginPresenter extends BasePresenter{
      * 登录
      */
     public void login() {
-        LogoRequestData logoRequestData= new LogoRequestData();
-        logoRequestData.setUserName("shenzhongjia");
-        logoRequestData.setUserPass(MD5Utils.MD5("shen123456"));
-        L.e(logoRequestData.toString());
-        post("Login/UserLogin",logoRequestData,0);
+        LoginRequestData loginRequestData = new LoginRequestData();
+        loginRequestData.setUserName("shenzhongjia");
+        loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
+        L.e(loginRequestData.toString());
+        post("Login/UserLogin", loginRequestData,0);
 
     }
 }

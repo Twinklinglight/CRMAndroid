@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.wtcrmandroid.activity.XsWriteDaysumActivity">
+    tools:context="com.wtcrmandroid.activity.journalmanager.XsWriteDaysumActivity">
 
     <com.wtcrmandroid.custompricing.TitleBar
         android:id="@+id/titlebar"
