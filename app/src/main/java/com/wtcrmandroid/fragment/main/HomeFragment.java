@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BattlefieldReportActivity;
-import com.wtcrmandroid.activity.JournalManagerActivity;
+import com.wtcrmandroid.activity.journalmanager.JournalManagerActivity;
 import com.wtcrmandroid.activity.MainActivity;
 import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;

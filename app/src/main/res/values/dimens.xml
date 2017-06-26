@@ -8,4 +8,6 @@
     <dimen name="load_more_footer_height">60dp</dimen>
 
     <dimen name="ViewWith">1dp</dimen>
+
+    <dimen name="TextHeight">42dp</dimen>
 </resources>
