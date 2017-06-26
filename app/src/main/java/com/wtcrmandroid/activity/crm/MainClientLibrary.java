@@ -2,6 +2,7 @@ package com.wtcrmandroid.activity.crm;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
@@ -10,6 +11,11 @@ import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
+import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
+import com.wtcrmandroid.dialog.popupwindow.addressselection.AreaPopUpWindow;
+import com.wtcrmandroid.model.requestdata.SearchCustomerRequestData;
+import com.wtcrmandroid.presenter.activity.MainClientLibraryPresenter;
+import com.wtcrmandroid.utils.L;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +27,7 @@ import butterknife.BindView;
  * 主客户库界面
  */
 
-public class MainClientLibrary extends BaseActivity {
+public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, Object> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
@@ -32,7 +38,7 @@ public class MainClientLibrary extends BaseActivity {
     private TitlePopupWindow titleCenterPopupWindow;
     private TitlePopupWindow titleRightPopupWindow;
     private ClientLibraryAdapter adapter;
-
+    private AreaPopUpWindow toWindow;
     @Override
     public void returnData(int key, Object data) {
 
@@ -104,7 +110,10 @@ public class MainClientLibrary extends BaseActivity {
                         titleCenterPopupWindow.show();
                         break;
                     case 3:
-
+                        if (toWindow == null) {
+                            initToWindow(tcmbBar);
+                        }
+                        toWindow.showPopWindow(tcmbBar);
                         break;
                 }
 
@@ -120,6 +129,7 @@ public class MainClientLibrary extends BaseActivity {
                         titleCenterPopupWindow.dismiss();
                         break;
                     case 3:
+                        toWindow.disMissPopWindow();
 
                         break;
                 }
@@ -129,7 +139,21 @@ public class MainClientLibrary extends BaseActivity {
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new ClientLibraryAdapter(this));
+        presenter = new MainClientLibraryPresenter(this);
+        SearchCustomerRequestData data=new SearchCustomerRequestData();
+        presenter.getData(data);
     }
 
+    private Area toArea;
 
+    private void initToWindow(View view) {
+      toWindow = new AreaPopUpWindow(this, view);
+        toWindow.setSelectAreaListener(new AreaPopUpWindow.SelectAreaListener() {
+            @Override
+            public void selectAreaOk(Area area, View parentView) {
+                L.e(area.toString());
+                tcmbBar.NoCheckStyle(3);
+            }
+        });
+    }
 }

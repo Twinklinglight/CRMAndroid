@@ -15,7 +15,9 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-
-
-
+    <color name="select_area_city_bg">#EFEFEF</color>
+    <color name="color_title_bg">#0d79ff</color>
+    <color name="color_divider">#c3c4c6</color>
+    <color name="color_text_black">#222222</color>
+    <color name="black_alpha">#55333333</color>
 </resources>
