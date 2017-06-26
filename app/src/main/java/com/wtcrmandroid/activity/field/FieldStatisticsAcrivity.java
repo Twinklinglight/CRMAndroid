@@ -8,8 +8,13 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.FieldStatisticaAdapter;
+import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.custompricing.TopChooseMenuBar;
+import com.wtcrmandroid.dialog.popupwindow.TitlePopupWindow;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -27,7 +32,7 @@ public class FieldStatisticsAcrivity extends BaseActivity {
     RecyclerView rvView;
 
     private BaseRecycleAdapter adapter;
-
+    private TitlePopupWindow titleLeftPopupWindow;
     @Override
     public void returnData(int key, Object data) {
 
@@ -47,16 +52,40 @@ public class FieldStatisticsAcrivity extends BaseActivity {
                 finish();
             }
         });
+        tcmbBar.setStrings(new String[]{"部门","今天"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
+                switch (i) {
+                    case 1:
+                        //左边弹窗
+                        if (titleLeftPopupWindow == null) {
+                            List list = new ArrayList();
+                            list.add("物通市场部");
+                            titleLeftPopupWindow = new TitlePopupWindow(FieldStatisticsAcrivity.this, tcmbBar, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
+                                @Override
+                                public void oNclicklistner(String data, int position) {
+                                    titleLeftPopupWindow.dismiss();
+                                    tcmbBar.setLeftText(data);
+                                    tcmbBar.NoCheckStyle(1);
+                                }
+                            });
 
+                        }
+                        titleLeftPopupWindow.show();
+                        break;
+                }
 
             }
 
             @Override
             public void isNoSelected(int i) {
+                switch (i){
+                    case 1:
+                        titleLeftPopupWindow.dismiss();
+                        break;
 
+                }
 
             }
         });
