@@ -45,10 +45,9 @@
 
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:text="日计划"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/Text36"/>
@@ -98,10 +97,9 @@
 
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
                 android:text="日总结"
                 android:textColor="@color/colorPrimary"
@@ -397,7 +395,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout

@@ -7,6 +7,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
 import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.fragment.journalmanager.DepartWeekjournalFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartXsDayjournalFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartXsWeekjournalFragment;
 
@@ -40,7 +41,7 @@ public class XsJournalDetails extends BaseActivity {
 
         mfragmentList = new ArrayList<>();
         mfragmentList.add(new DepartXsDayjournalFragment());
-        mfragmentList.add(new DepartXsWeekjournalFragment());
+        mfragmentList.add(new DepartWeekjournalFragment());
 
         mFragmentTabAdapter = new FragmentTabAdapter(this, mfragmentList, R.id.frame_xs_journal,mRgDayweek);
 

@@ -8,7 +8,11 @@ import com.wtcrmandroid.custompricing.TitleBar;
 import com.wtcrmandroid.dialog.popupwindow.popubwindow_share;
 
 import butterknife.BindView;
-
+/**
+*
+* @author Create by zxd on 2017/6/21
+*
+*/
 
 public class MycardActivity extends BaseActivity {
 

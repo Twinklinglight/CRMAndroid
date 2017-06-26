@@ -144,7 +144,7 @@
         <activity android:name=".activity.journalmanager.XsWriteDaysumActivity"/>
 
         <!-- 我的名片 -->
-        <activity android:name=".aboutmy.MycardActivity"/>
+        <activity android:name=".activity.aboutmy.MycardActivity"/>
 
         <!-- 百度地图可以 -->
         <meta-data

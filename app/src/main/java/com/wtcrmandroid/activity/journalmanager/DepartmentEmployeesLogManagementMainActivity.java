@@ -95,7 +95,8 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
                     startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,
                             HtJournalDetails.class));
                 }else if (position == 1){
-
+                    startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,
+                            XsJournalDetails.class));
                 }
             }
         });
