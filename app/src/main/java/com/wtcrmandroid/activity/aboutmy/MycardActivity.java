@@ -9,6 +9,7 @@ import com.wtcrmandroid.dialog.popupwindow.popubwindow_share;
 
 import butterknife.BindView;
 
+
 public class MycardActivity extends BaseActivity {
 
     @BindView(R.id.titlebar)
