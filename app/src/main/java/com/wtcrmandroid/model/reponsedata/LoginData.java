@@ -1,4 +1,4 @@
-package com.wtcrmandroid.httpfactory.reponsedata;
+package com.wtcrmandroid.model.reponsedata;
 
 /**
  * Created by 1363655717 on 2017-06-12.

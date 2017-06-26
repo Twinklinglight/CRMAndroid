@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
+import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;
 import com.wtcrmandroid.utils.L;
 

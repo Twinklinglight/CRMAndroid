@@ -188,39 +188,57 @@
                         android:text="录入客户"
                         android:textSize="15dp" />
 
-                    <TextView
+                    <RelativeLayout
+                        android:id="@+id/rl_main_client_library"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@mipmap/ic_home_main_customer_library"
-                        android:gravity="center"
-                        android:text="主客户库"
-                        android:textSize="15dp" />
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@mipmap/ic_home_main_customer_library"
+                            android:gravity="center"
+                            android:text="主客户库"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
 
                 </TableRow>
 
                 <TableRow android:paddingTop="25dp">
 
-                    <TextView
+                    <RelativeLayout
+                        android:id="@+id/rl_my_client_library"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@mipmap/ic_home_my_customer_library"
-                        android:gravity="center"
-                        android:text="我的客户库"
-                        android:textSize="15dp" />
+                        android:layout_weight="1">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@mipmap/ic_home_my_customer_library"
+                            android:gravity="center"
+                            android:text="我的客户库"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_public_sea"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="10dp"
-                        android:drawableTop="@mipmap/ic_home_continue_to_single_high_seas"
-                        android:gravity="center"
-                        android:text="续单公海"
-                        android:textSize="15dp" />
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@mipmap/ic_home_continue_to_single_high_seas"
+                            android:gravity="center"
+                            android:text="续单公海"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
 
                     <TextView
                         android:layout_width="0dp"

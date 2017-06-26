@@ -2,7 +2,7 @@ package com.wtcrmandroid.httpfactory.request;
 
 import com.google.gson.Gson;
 import com.wtcrmandroid.MyApplication;
-import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
+import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.utils.L;
 
 import okhttp3.MediaType;

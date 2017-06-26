@@ -74,13 +74,13 @@ public class TopChooseMenuBar extends LinearLayout {
     public void setStrings(String[] strings) {
         switch (strings.length) {
             case 2:
-                tvLeft.setText(strings[0]);
-                tvRight.setText(strings[1]);
+                setText(tvLeft,strings[0]);
+                setText(tvRight,strings[1]);
                 break;
             case 3:
-                tvLeft.setText(strings[0]);
-                tvRight.setText(strings[1]);
-                tvRight.setText(strings[2]);
+                setText(tvLeft,strings[0]);
+                setText(tvCenter,strings[1]);
+                setText(tvRight,strings[2]);
                 rlCenter.setVisibility(VISIBLE);
                 vCenter.setVisibility(VISIBLE);
                 break;
@@ -89,17 +89,17 @@ public class TopChooseMenuBar extends LinearLayout {
     }
 
     public void setLeftText(String text) {
-        tvLeft.setText(text);
+        setText(tvLeft,text);
 
     }
 
     public void setCenterText(String text) {
-        tvCenter.setText(text);
+        setText(tvCenter,text);
 
     }
 
     public void setRightText(String text) {
-        tvCenter.setText(text);
+        setText(tvCenter,text);
 
     }
 
@@ -140,7 +140,7 @@ public class TopChooseMenuBar extends LinearLayout {
                     IsCheckStyle(2);
                     NoCheckStyle(isCheck_number);
                     isCheck_number = 2;
-                    onCheckedChangedListener.isSelected(3);
+                    onCheckedChangedListener.isSelected(2);
                 }
 
                 break;
@@ -152,14 +152,14 @@ public class TopChooseMenuBar extends LinearLayout {
                     IsCheckStyle(3);
                     NoCheckStyle(isCheck_number);
                     isCheck_number = 3;
-                    onCheckedChangedListener.isSelected(2);
+                    onCheckedChangedListener.isSelected(3);
                 }
 
                 break;
         }
     }
 
-    private void IsCheckStyle(int i) {
+    public void IsCheckStyle(int i) {
         switch (i) {
             case 1:
                 tvLeft.setTextColor(Color.parseColor("#3b9cff"));
@@ -176,11 +176,11 @@ public class TopChooseMenuBar extends LinearLayout {
             default:
                 break;
         }
-        onCheckedChangedListener.isNoSelected(i);
+
 
     }
 
-    private void NoCheckStyle(int i) {
+    public void NoCheckStyle(int i) {
         switch (i) {
             case 0:
 
@@ -200,10 +200,18 @@ public class TopChooseMenuBar extends LinearLayout {
             default:
                 break;
         }
-
+        onCheckedChangedListener.isNoSelected(i);
 
     }
 
+    private void setText(TextView view, String text ){
+        if(text.length()>4){
+             text=text.substring(0,4);
+            text=text+"...";
+        }
+        view.setText(text);
+
+    }
     public interface OnCheckedChangedListener {
         void isSelected(int i);
 

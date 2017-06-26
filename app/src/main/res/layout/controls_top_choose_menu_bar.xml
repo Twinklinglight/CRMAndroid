@@ -23,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:text="部门"
                 android:textColor="#2b2f33"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                />
 
             <ImageView
                 android:id="@+id/iv_left"
@@ -61,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="部门"
                 android:textColor="#2b2f33"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/iv_center"
@@ -95,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="今天"
                 android:textColor="#2b2f33"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/iv_right"

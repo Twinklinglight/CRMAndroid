@@ -3,8 +3,8 @@ package com.wtcrmandroid.presenter.activity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.MyApplication;
-import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
-import com.wtcrmandroid.httpfactory.requestdata.LoginRequestData;
+import com.wtcrmandroid.model.reponsedata.LoginData;
+import com.wtcrmandroid.model.requestdata.LoginRequestData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.MD5Utils;
@@ -42,6 +42,7 @@ public class LoginPresenter extends BasePresenter{
         LoginRequestData loginRequestData = new LoginRequestData();
         loginRequestData.setUserName("shenzhongjia");
         loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
+        loginRequestData.setImei("920984323092997");
         L.e(loginRequestData.toString());
         post("Login/UserLogin", loginRequestData,0);
 

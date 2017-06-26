@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 
@@ -20,15 +19,18 @@ import butterknife.ButterKnife;
 public class FieldClockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int HEAD = 0;
     private final int WORD = 1;
+    private final int BOTTOM = 2;
 
     private Context context;
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0 || position == 3 || position == 6)
-            return HEAD;
+        if (position == 4)
+            return  WORD;
+        else if (position == 5)
+            return  BOTTOM;
         else
-            return WORD;
+            return HEAD;
     }
 
     public FieldClockAdapter(Context context) {
@@ -40,12 +42,13 @@ public class FieldClockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         View v;
         RecyclerView.ViewHolder holder;
         if (viewType == HEAD) {
-            v = LayoutInflater.from(context).inflate(R.layout.item_header_time_text, parent, false);
+            v = LayoutInflater.from(context).inflate(R.layout.item_timeline, parent, false);
             holder = new HeadViewHolder(v);
         } else {
-            v = LayoutInflater.from(context).inflate(R.layout.item_timeline, parent, false);
+            v = LayoutInflater.from(context).inflate(R.layout.item_clock_bottom, parent, false);
             holder = new ViewHolder(v);
         }
+
         return holder;
     }
 
@@ -53,28 +56,26 @@ public class FieldClockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(getItemViewType(position)==HEAD){
             HeadViewHolder headViewHolder= (HeadViewHolder) holder;
+            if(position==0)
+                headViewHolder.vTop.setVisibility(View.INVISIBLE);
+            else
+                headViewHolder.vTop.setVisibility(View.VISIBLE);
         }else {
-            ViewHolder viewHolder= (ViewHolder) holder;
-            if(position==1||position==4||position==7)
-                viewHolder.vTop.setVisibility(View.INVISIBLE);
-            else
-                viewHolder.vTop.setVisibility(View.VISIBLE);
-            if(position==2||position==5||position==8)
-                viewHolder.vBottom.setVisibility(View.INVISIBLE);
-            else
-                viewHolder.vBottom.setVisibility(View.VISIBLE);
+
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return 9;
+        return 5;
     }
 
     static class HeadViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_time)
-        TextView tvTime;
+        @BindView(R.id.v_top)
+        View vTop;
+        @BindView(R.id.v_bottom)
+        View vBottom;
 
         public HeadViewHolder(View itemView) {
             super(itemView);
@@ -83,10 +84,7 @@ public class FieldClockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.v_top)
-        View vTop;
-        @BindView(R.id.v_bottom)
-        View vBottom;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

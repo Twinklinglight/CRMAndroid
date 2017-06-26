@@ -11,7 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.iflytek.cloud.SpeechUtility;
-import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
+import com.wtcrmandroid.model.reponsedata.LoginData;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class MyApplication extends Application {
     /**
      * 登录返回数据
      */
-    public LoginData loginData;
+    public LoginData loginData =new LoginData();
     public static MyApplication application;
 
     @Override

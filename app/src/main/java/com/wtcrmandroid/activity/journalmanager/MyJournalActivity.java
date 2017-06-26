@@ -13,7 +13,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.custompricing.TitleBar;
-import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
+import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.MyJournalData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
 import com.wtcrmandroid.pulltorefresh.OnLoadMoreListener;

@@ -2,14 +2,14 @@ package com.wtcrmandroid.custompricing;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 
 /**
  * Created by 1363655717 on 2017-06-14.
  * 自适应宽度的正方形RelativeLayout
  */
 
-public class SquareImageView extends RelativeLayout {
+public class SquareImageView extends ImageView{
     public SquareImageView(Context context) {
         super(context);
     }

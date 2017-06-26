@@ -16,6 +16,9 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.journalmanager.JournalManagerActivity;
 import com.wtcrmandroid.activity.MainActivity;
+import com.wtcrmandroid.activity.crm.MainClientLibrary;
+import com.wtcrmandroid.activity.crm.MyClientLibrary;
+import com.wtcrmandroid.activity.crm.PublicSeaActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
 import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
 import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
@@ -38,7 +41,7 @@ public class HomeFragment extends BaseFragmengt {
     @BindView(R.id.tv_pullintocustomer)
     TextView mTvPullintocustomer;       //录入客户
 
-    private boolean isSale = true; //是销售 或 食品
+    private boolean isSale = false ; //是销售 或 食品
 
     private boolean window;
     private PopupWindow mPopWindow;
@@ -90,7 +93,8 @@ public class HomeFragment extends BaseFragmengt {
 
     }
 
-    @OnClick({R.id.tv_log_management, R.id.tv_field,R.id.rl_battlefield_report,R.id.tv_pullintocustomer})
+    @OnClick({R.id.tv_log_management, R.id.tv_field,R.id.rl_battlefield_report,R.id.tv_pullintocustomer,R.id.rl_main_client_library
+            ,R.id.rl_my_client_library,R.id.rl_public_sea})
     public void onClick(View view) {
         switch (view.getId()) {
             //日志管理点击事件
@@ -101,6 +105,12 @@ public class HomeFragment extends BaseFragmengt {
             case R.id.tv_field:
                 startActivity(new Intent(getActivity(), FieldActivity.class));
                 break;
+
+            //战报点击事件
+            case R.id.rl_battlefield_report:
+//                startActivity(new Intent(getActivity(), FieldActivity.class));
+                startActivity(new Intent(getActivity(), BattlefieldReportActivity.class));
+                break;
             //录入客户
             case R.id.tv_pullintocustomer:
                 if (!isSale){
@@ -109,10 +119,17 @@ public class HomeFragment extends BaseFragmengt {
                     startActivity(new Intent(getContext(), SalePullintoCustomerActivity.class));
                 }
                 break;
-            //战报点击事件
-            case R.id.rl_battlefield_report:
-//                startActivity(new Intent(getActivity(), FieldActivity.class));
-                startActivity(new Intent(getActivity(), BattlefieldReportActivity.class));
+            //主客户库
+            case R.id.rl_main_client_library:
+                    startActivity(new Intent(getContext(), MainClientLibrary.class));
+                break;
+            //主客户库
+            case R.id.rl_my_client_library:
+                startActivity(new Intent(getContext(), MyClientLibrary.class));
+                break;
+            //主客户库
+            case R.id.rl_public_sea:
+                startActivity(new Intent(getContext(), PublicSeaActivity.class));
                 break;
         }
     }

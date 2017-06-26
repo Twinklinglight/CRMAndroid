@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wtcrmandroid.httpfactory.reponsedata.BaseData;
+import com.wtcrmandroid.model.reponsedata.BaseData;
 import com.wtcrmandroid.view.AllView;
 
 import butterknife.ButterKnife;
