@@ -21,12 +21,10 @@
                 android:id="@+id/tv_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="部门ewqrwqwqer"
+                android:text="部门"
                 android:textColor="#2b2f33"
                 android:textSize="16sp"
-                android:maxEms="4"
-                android:maxLines="1"
-                android:ellipsize="end"/>
+                />
 
             <ImageView
                 android:id="@+id/iv_left"
@@ -64,11 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="部门"
                 android:textColor="#2b2f33"
-                android:textSize="16sp"
-                android:maxEms="4"
-                android:maxLines="1"
-                android:ellipsize="end"
-                />
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/iv_center"
@@ -102,10 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="今天"
                 android:textColor="#2b2f33"
-                android:textSize="16sp"
-                android:maxEms="4"
-                android:maxLines="1"
-                android:ellipsize="end"/>
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/iv_right"
