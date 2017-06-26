@@ -1,4 +1,4 @@
-package com.wtcrmandroid.aboutmy;
+package com.wtcrmandroid.activity.aboutmy;
 
 import android.view.View;
 

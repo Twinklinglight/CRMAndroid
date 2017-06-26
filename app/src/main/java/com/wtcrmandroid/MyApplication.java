@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.iflytek.cloud.SpeechUtility;
+import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
 
 import java.io.IOException;
 
@@ -19,7 +20,10 @@ import java.io.IOException;
  */
 
 public class MyApplication extends Application {
-    public String userAgent;
+    /**
+     * 登录返回数据
+     */
+    public LoginData loginData;
     public static MyApplication application;
 
     @Override
@@ -36,12 +40,12 @@ public class MyApplication extends Application {
         application = this;
     }
 
-    public String getUserAgent() {
-        return userAgent;
+    public LoginData getLoginData() {
+        return loginData;
     }
 
-    public void setUserAgent(String userAgent) {
-        this.userAgent = userAgent;
+    public void setLoginData(LoginData loginData) {
+        this.loginData = loginData;
     }
 
     private final static class SafeTypeAdapterFactory<T> implements TypeAdapterFactory {

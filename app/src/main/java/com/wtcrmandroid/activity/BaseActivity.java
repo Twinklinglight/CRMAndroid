@@ -2,6 +2,7 @@ package com.wtcrmandroid.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
@@ -30,6 +31,7 @@ public abstract class BaseActivity<T extends BasePresenter,T1> extends AppCompat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(layout());
         ButterKnife.bind(this);
         initview();

@@ -1,13 +1,12 @@
 package com.wtcrmandroid.activity;
 
 import android.content.Intent;
+import android.telephony.TelephonyManager;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.data.LoginData;
+import com.wtcrmandroid.httpfactory.reponsedata.LoginData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;
 import com.wtcrmandroid.utils.L;
-
-import java.util.List;
 
 import butterknife.OnClick;
 
@@ -26,6 +25,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData>{
     @Override
     protected void initview() {
         presenter=new LoginPresenter(this);
+        TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+        L.e(tm.getDeviceId()+"--");
 
     }
 
