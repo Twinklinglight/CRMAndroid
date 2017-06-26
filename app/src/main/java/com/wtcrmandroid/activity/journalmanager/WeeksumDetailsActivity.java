@@ -8,10 +8,10 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.WeeksumDetailsData;
-import com.wtcrmandroid.view.MyListView;
+import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;

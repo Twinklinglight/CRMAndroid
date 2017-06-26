@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.aboutmy.MycardActivity;
-import com.wtcrmandroid.dialog.MyPhoneNumberDialog;
+import com.wtcrmandroid.view.dialog.MyPhoneNumberDialog;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 
 import butterknife.BindView;

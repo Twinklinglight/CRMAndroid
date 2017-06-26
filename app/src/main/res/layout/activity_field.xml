@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height" />
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.wtcrmandroid.custompricing.SquareRelativeLayout
+        <com.wtcrmandroid.view.custompricing.SquareRelativeLayout
             android:id="@+id/srl_field_clock"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -34,14 +34,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="75dp"
                 android:text="外勤打卡" />
-        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
+        </com.wtcrmandroid.view.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="#e9edf2" />
 
-        <com.wtcrmandroid.custompricing.SquareRelativeLayout
+        <com.wtcrmandroid.view.custompricing.SquareRelativeLayout
             android:id="@+id/srl_field_statistical"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -61,14 +61,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="75dp"
                 android:text="外勤统计" />
-        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
+        </com.wtcrmandroid.view.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="#e9edf2" />
 
-        <com.wtcrmandroid.custompricing.SquareRelativeLayout
+        <com.wtcrmandroid.view.custompricing.SquareRelativeLayout
             android:id="@+id/srl_customer_call"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -88,7 +88,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="75dp"
                 android:text="客户拜访" />
-        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
+        </com.wtcrmandroid.view.custompricing.SquareRelativeLayout>
     </LinearLayout>
 
     <View
@@ -102,7 +102,7 @@
 
         android:orientation="horizontal">
 
-        <com.wtcrmandroid.custompricing.SquareRelativeLayout
+        <com.wtcrmandroid.view.custompricing.SquareRelativeLayout
             android:id="@+id/srl_my_call_record"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -122,14 +122,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="75dp"
                 android:text="我的拜访记录" />
-        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
+        </com.wtcrmandroid.view.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="#e9edf2" />
 
-        <com.wtcrmandroid.custompricing.SquareRelativeLayout
+        <com.wtcrmandroid.view.custompricing.SquareRelativeLayout
             android:id="@+id/srl_customer_call_statistics"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -149,14 +149,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="75dp"
                 android:text="客户拜访统计" />
-        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
+        </com.wtcrmandroid.view.custompricing.SquareRelativeLayout>
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="#e9edf2" />
 
-        <com.wtcrmandroid.custompricing.SquareRelativeLayout
+        <com.wtcrmandroid.view.custompricing.SquareRelativeLayout
             android:id="@+id/srl_employees_location"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -176,7 +176,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="75dp"
                 android:text="员工位置" />
-        </com.wtcrmandroid.custompricing.SquareRelativeLayout>
+        </com.wtcrmandroid.view.custompricing.SquareRelativeLayout>
 
 
     </LinearLayout>

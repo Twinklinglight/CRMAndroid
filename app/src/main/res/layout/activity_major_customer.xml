@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     tools:context="com.wtcrmandroid.activity.journalmanager.MajorCustomerActivity">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height">
-    </com.wtcrmandroid.custompricing.TitleBar>
+    </com.wtcrmandroid.view.custompricing.TitleBar>
 
     <TextView
         android:id="@+id/tv_major_save"

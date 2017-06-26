@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/btn_item_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:gravity="center"
+        android:background="@drawable/shape_area_button"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_size_13"
+        android:layout_margin="2dp"
+        />
+</FrameLayout>

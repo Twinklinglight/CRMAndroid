@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
-import com.wtcrmandroid.iat.Iat;
+import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.utils.L;
 
 import butterknife.BindView;

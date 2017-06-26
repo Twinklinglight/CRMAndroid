@@ -10,7 +10,7 @@ import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.HtDaysumDetailsData;
-import com.wtcrmandroid.view.MyListView;
+import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;

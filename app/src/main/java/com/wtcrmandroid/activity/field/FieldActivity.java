@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

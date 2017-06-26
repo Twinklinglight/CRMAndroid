@@ -9,11 +9,11 @@
     android:background="@color/colorBackground"
     tools:context="com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height">
-    </com.wtcrmandroid.custompricing.TitleBar>
+    </com.wtcrmandroid.view.custompricing.TitleBar>
 
     <LinearLayout
         android:layout_width="match_parent"

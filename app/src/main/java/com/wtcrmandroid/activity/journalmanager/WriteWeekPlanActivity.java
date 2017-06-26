@@ -6,7 +6,7 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.listview.WriterWeekPlaneAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.presenter.activity.WriteWeekPlanPresenter;
 import com.wtcrmandroid.utils.L;

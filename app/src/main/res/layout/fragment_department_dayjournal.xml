@@ -52,11 +52,11 @@
                 android:text="日计划"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/Text36"/>
-            <com.wtcrmandroid.view.MyListView
+            <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_dayplan_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            </com.wtcrmandroid.view.MyListView>
+            </com.wtcrmandroid.view.listview.MyListView>
 
             <TextView
                 android:layout_marginLeft="10dp"
@@ -67,18 +67,18 @@
                 android:text="日总结"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/Text36"/>
-            <com.wtcrmandroid.view.MyListView
+            <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_daysum_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp">
-            </com.wtcrmandroid.view.MyListView>
+            </com.wtcrmandroid.view.listview.MyListView>
 
-            <com.wtcrmandroid.view.MyListView
+            <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            </com.wtcrmandroid.view.MyListView>
+            </com.wtcrmandroid.view.listview.MyListView>
 
         </LinearLayout>
 

@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.pulltorefresh.SwipeRefreshHeaderLayout;
+import com.wtcrmandroid.view.pulltorefresh.SwipeRefreshHeaderLayout;
 import com.wtcrmandroid.utils.SharedPreferencesUtil;
 
 import java.text.SimpleDateFormat;

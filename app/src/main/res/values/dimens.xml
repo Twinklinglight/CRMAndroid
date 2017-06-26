@@ -10,4 +10,6 @@
     <dimen name="ViewWith">1dp</dimen>
 
     <dimen name="TextHeight">42dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
 </resources>

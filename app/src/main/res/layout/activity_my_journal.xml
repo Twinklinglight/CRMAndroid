@@ -8,11 +8,11 @@
     android:orientation="vertical"
     tools:context="com.wtcrmandroid.activity.journalmanager.MyJournalActivity">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height">
-    </com.wtcrmandroid.custompricing.TitleBar>
+    </com.wtcrmandroid.view.custompricing.TitleBar>
 
     <LinearLayout
         android:id="@+id/ll_below_titlebar"
@@ -70,7 +70,7 @@
 
     </LinearLayout>
 
-    <com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout
+    <com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout
         android:id="@+id/swipeToLoadLayout"
         android:layout_below="@id/ll_below_titlebar"
         android:layout_width="match_parent"
@@ -94,7 +94,7 @@
             android:id="@id/swipe_load_more_footer"
             layout="@layout/layout_loadmore_footer" />
 
-    </com.wtcrmandroid.pulltorefresh.SwipeToLoadLayout>
+    </com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout>
 
     <FrameLayout
         android:layout_below="@id/ll_below_titlebar"

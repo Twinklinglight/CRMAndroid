@@ -8,7 +8,7 @@ import android.view.View;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.FoodSelectAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.DividerItemDecoration;
 
 import java.util.ArrayList;

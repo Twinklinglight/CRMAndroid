@@ -10,11 +10,11 @@
     android:animateLayoutChanges="true"
     tools:context="com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height">
-    </com.wtcrmandroid.custompricing.TitleBar>
+    </com.wtcrmandroid.view.custompricing.TitleBar>
 
     <TextView
         android:id="@+id/tv_submit"

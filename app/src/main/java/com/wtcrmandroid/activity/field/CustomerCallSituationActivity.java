@@ -8,7 +8,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.CustomerCallSituationAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import butterknife.BindView;
 

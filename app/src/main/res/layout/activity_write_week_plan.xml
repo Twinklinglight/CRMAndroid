@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="#f5f6f7">
 
-    <com.wtcrmandroid.custompricing.TitleBar
+    <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="45dp" />

@@ -10,7 +10,7 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.BaseActivity;
 import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;
-import com.wtcrmandroid.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriteDaysumData;
 
 import java.util.ArrayList;

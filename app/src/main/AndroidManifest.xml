@@ -118,6 +118,16 @@
         <!-- 回款到单 -->
         <activity android:name=".activity.journalmanager.GetMoneyActivity"/>
         <!-- 今日工作量 -->
+       <!--————————————————————————————————CRM——————————————————————————————————————-->
+        <activity android:name=".activity.crm.MainClientLibrary"/>
+        <activity android:name=".activity.crm.MyClientLibrary"/>
+        <activity android:name=".activity.crm.PublicSeaActivity"/>
+        <!--————————————————————————————————————————————————————————————————-->
+
+        <!--######-->
+        <!--######-->
+        <!--######-->
+
         <activity
             android:name=".activity.journalmanager.TodayWorkLoadActivity"
             android:windowSoftInputMode="stateHidden"/>
@@ -177,7 +187,7 @@
 
         <!-- 微信分享回调 -->
         <activity
-            android:name=".sharesdk.demo.wxapi.WXEntryActivity"
+            android:name=".utils.sharesdk.demo.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
