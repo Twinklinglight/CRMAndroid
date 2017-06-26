@@ -40,7 +40,7 @@ public class FieldClockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         View v;
         RecyclerView.ViewHolder holder;
         if (viewType == HEAD) {
-            v = LayoutInflater.from(context).inflate(R.layout.item_header_time_text, parent, false);
+            v = LayoutInflater.from(context).inflate(R.layout.item_timeline, parent, false);
             holder = new HeadViewHolder(v);
         } else {
             v = LayoutInflater.from(context).inflate(R.layout.item_timeline, parent, false);

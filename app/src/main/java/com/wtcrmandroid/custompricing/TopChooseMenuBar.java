@@ -74,13 +74,13 @@ public class TopChooseMenuBar extends LinearLayout {
     public void setStrings(String[] strings) {
         switch (strings.length) {
             case 2:
-                tvLeft.setText(strings[0]);
-                tvRight.setText(strings[1]);
+                setText(tvLeft,strings[0]);
+                setText(tvRight,strings[1]);
                 break;
             case 3:
-                tvLeft.setText(strings[0]);
-                tvCenter.setText(strings[1]);
-                tvRight.setText(strings[2]);
+                setText(tvLeft,strings[0]);
+                setText(tvCenter,strings[1]);
+                setText(tvRight,strings[2]);
                 rlCenter.setVisibility(VISIBLE);
                 vCenter.setVisibility(VISIBLE);
                 break;
@@ -89,17 +89,17 @@ public class TopChooseMenuBar extends LinearLayout {
     }
 
     public void setLeftText(String text) {
-        tvLeft.setText(text);
+        setText(tvLeft,text);
 
     }
 
     public void setCenterText(String text) {
-        tvCenter.setText(text);
+        setText(tvCenter,text);
 
     }
 
     public void setRightText(String text) {
-        tvCenter.setText(text);
+        setText(tvCenter,text);
 
     }
 
@@ -204,6 +204,14 @@ public class TopChooseMenuBar extends LinearLayout {
 
     }
 
+    private void setText(TextView view, String text ){
+        if(text.length()>4){
+             text=text.substring(0,4);
+            text=text+"...";
+        }
+        view.setText(text);
+
+    }
     public interface OnCheckedChangedListener {
         void isSelected(int i);
 

@@ -12,6 +12,7 @@ public class LoginRequestData {
     @SerializedName("userName")
     private String userName;
     private String userPass;
+    private String imei;
 
     public String getUserName() {
         return userName;
@@ -29,11 +30,11 @@ public class LoginRequestData {
         this.userPass = userPass;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "userName='" + userName + '\'' +
-                ", userPass='" + userPass + '\'' +
-                '}';
+    public String getImei() {
+        return imei;
+    }
+
+    public void setImei(String imei) {
+        this.imei = imei;
     }
 }
