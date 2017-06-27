@@ -22,6 +22,7 @@ public class AddressBookDepartmentActivity extends BaseActivity {
     @BindView(R.id.rv_view)
     RecyclerView rvView;
     private ExpandableRecycleViewAdapter adapter;
+
     @Override
     public void returnData(int key, Object data) {
 

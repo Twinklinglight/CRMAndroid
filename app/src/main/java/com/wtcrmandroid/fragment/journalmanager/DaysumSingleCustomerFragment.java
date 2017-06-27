@@ -4,7 +4,7 @@ import android.widget.ListView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.IfgetSingleDetailsAdapter;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.GetSingleCustomerData;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import butterknife.BindView;
  * Created by zxd on 2017/6/12
  */
 
-public class DaysumSingleCustomerFragment extends BaseFragmengt {
+public class DaysumSingleCustomerFragment extends BaseFragment {
 
     @BindView(R.id.lv_single_fragment)
     ListView mLvSingleFragment;

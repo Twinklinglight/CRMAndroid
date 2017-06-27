@@ -3,7 +3,7 @@ package com.wtcrmandroid.fragment.battlefieldreport;
 import android.support.v4.view.ViewPager;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.Unbinder;
@@ -12,7 +12,7 @@ import butterknife.Unbinder;
  * Created by wt-pc on 2017/6/20.
  */
 
-public class BattlefieldReportFragment extends BaseFragmengt {
+public class BattlefieldReportFragment extends BaseFragment {
 
     @BindView(R.id.viewpager)
     ViewPager viewpager;

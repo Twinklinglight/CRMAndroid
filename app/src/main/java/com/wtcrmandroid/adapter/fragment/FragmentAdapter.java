@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.utils.L;
 
 /**
@@ -13,12 +13,12 @@ import com.wtcrmandroid.utils.L;
  */
 
 public class FragmentAdapter {
-    private BaseFragmengt[] fragments; // 一个tab页面对应一个Fragment
+    private BaseFragment[] fragments; // 一个tab页面对应一个Fragment
     private int fragmentContentId; // Activity中所要被替换的区域的id
     private AppCompatActivity fragmentActivity; // Fragment所属的Activity
 
     private int currentTab=0; // 当前Tab页面索引
-    public FragmentAdapter(AppCompatActivity fragmentActivity, BaseFragmengt[] fragments, int fragmentContentId) {
+    public FragmentAdapter(AppCompatActivity fragmentActivity, BaseFragment[] fragments, int fragmentContentId) {
         this.fragments = fragments;
         this.fragmentActivity = fragmentActivity;
         this.fragmentContentId=fragmentContentId;

@@ -10,7 +10,7 @@ import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.view.dialog.CommentDialog;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
 import com.wtcrmandroid.model.HtDaysumDetailsData;
@@ -29,7 +29,7 @@ import butterknife.Unbinder;
  * Created by zxd on 2017/6/23
  */
 
-public class DepartDayjournalFragment extends BaseFragmengt {
+public class DepartDayjournalFragment extends BaseFragment {
 
     @BindView(R.id.tv_date)
     TextView mTvDate;           //日志时间

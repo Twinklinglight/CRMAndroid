@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.AddressBookAdapter;
 import com.wtcrmandroid.view.custompricing.QuickIndexView;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 
 import butterknife.BindView;
 
@@ -14,7 +14,7 @@ import butterknife.BindView;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public class AddressBookFragment extends BaseFragmengt {
+public class AddressBookFragment extends BaseFragment {
     @BindView(R.id.rv_view)
     RecyclerView rvView;
     @BindView(R.id.qiv_view)

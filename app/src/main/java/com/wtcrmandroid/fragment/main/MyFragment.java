@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.aboutmy.MycardActivity;
 import com.wtcrmandroid.view.dialog.MyPhoneNumberDialog;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 
 import butterknife.BindView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -18,7 +18,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public class MyFragment extends BaseFragmengt implements MyPhoneNumberDialog.MyPhoneNumber {
+public class MyFragment extends BaseFragment implements MyPhoneNumberDialog.MyPhoneNumber {
     @BindView(R.id.ib_head_picture)
     ImageView mIbHeadPicture;         //头像按钮
     @BindView(R.id.tv_name)

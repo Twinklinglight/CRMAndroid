@@ -4,7 +4,7 @@ import android.widget.ListView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.AddPurposeFragmentAdapter;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.AddPurpostCtAtData;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import butterknife.BindView;
  * Created by zxd on 2017/6/12
  */
 
-public class DaysumAddCustomerFragment extends BaseFragmengt {
+public class DaysumAddCustomerFragment extends BaseFragment {
 
     @BindView(R.id.lv_daysum_addcustomer)
     ListView mLvDaysumAddcustomer;

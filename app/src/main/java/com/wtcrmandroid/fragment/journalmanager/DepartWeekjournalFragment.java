@@ -10,7 +10,7 @@ import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
 import com.wtcrmandroid.view.dialog.CommentDialog;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.WeeksumDetailsData;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
@@ -29,7 +29,7 @@ import butterknife.Unbinder;
  * Created by zxd on 2017/6/23
  */
 
-public class DepartWeekjournalFragment extends BaseFragmengt {
+public class DepartWeekjournalFragment extends BaseFragment {
 
     @BindView(R.id.tv_date)
     TextView mTvDate;

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.CommentData;
 import com.wtcrmandroid.model.HtDaysumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  * Created by zxd on 2017/6/12
  */
 
-public class DaysumWorkPlanFragment extends BaseFragmengt {
+public class DaysumWorkPlanFragment extends BaseFragment {
 
     @BindView(R.id.lv_work_plan)
     MyListView mLvWorkPlan;
