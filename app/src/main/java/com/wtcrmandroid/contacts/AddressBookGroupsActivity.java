@@ -32,7 +32,7 @@ public class AddressBookGroupsActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("群组");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

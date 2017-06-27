@@ -54,7 +54,7 @@ public class BattlefieldReportActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         fragmentAdapter= new FragmentAdapter(this,fragments,R.id.fl_view);
 
     }

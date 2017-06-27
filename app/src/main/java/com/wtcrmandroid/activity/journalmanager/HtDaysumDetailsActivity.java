@@ -49,7 +49,7 @@ public class HtDaysumDetailsActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         mDtailsList = new ArrayList<>();
         mCommentList = new ArrayList<>();
         mTitlebar.setTitletext("日志详情");

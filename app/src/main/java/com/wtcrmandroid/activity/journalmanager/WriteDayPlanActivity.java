@@ -50,7 +50,7 @@ public class WriteDayPlanActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("写日计划");
         mList = new ArrayList<>();

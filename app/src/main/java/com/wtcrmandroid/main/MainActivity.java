@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         fragments.add(new HomeFragment());
         fragments.add(new FoundFragment());
         fragments.add(new AddressBookFragment());

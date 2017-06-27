@@ -70,7 +70,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         mTitlebar.setTitletext("我的日志");
         presenter = new MyJournalPresenter(this);
 

@@ -43,7 +43,7 @@ public class TodayWorkLoadActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("今日工作量");
 

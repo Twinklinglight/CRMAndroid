@@ -46,7 +46,7 @@ public class MajorCustomerActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("重点意向客户");
         mDataList = new ArrayList<>();

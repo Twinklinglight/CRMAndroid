@@ -43,7 +43,7 @@ public class GetSingleCustomerActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("预测单客户踩中");
         mGetList = new ArrayList<>();

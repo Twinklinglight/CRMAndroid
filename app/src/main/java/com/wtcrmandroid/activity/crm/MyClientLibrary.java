@@ -47,7 +47,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("我的客户库");
         tcmbBar.setStrings(new String[]{"会员类型", "入库来源", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {

@@ -34,7 +34,7 @@ public class AddressBookDepartmentActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("部门");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

@@ -42,7 +42,7 @@ public class WriteDaySumActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("写日总结");
         mDataList = new ArrayList<>();

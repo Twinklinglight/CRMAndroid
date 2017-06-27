@@ -42,7 +42,7 @@ public class XsDayplanDetailsActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("日志详情");
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {

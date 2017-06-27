@@ -36,7 +36,7 @@ public class XsJournalDetails extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mfragmentList = new ArrayList<>();
         mfragmentList.add(new DepartXsDayjournalFragment());

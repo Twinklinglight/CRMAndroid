@@ -37,7 +37,7 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter,Objec
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("打卡记录");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

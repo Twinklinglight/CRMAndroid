@@ -40,7 +40,7 @@ public class CustomerCallStatisticsAcrivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("客户拜访统计");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

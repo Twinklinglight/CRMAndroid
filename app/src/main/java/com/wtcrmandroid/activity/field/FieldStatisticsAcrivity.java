@@ -44,7 +44,7 @@ public class FieldStatisticsAcrivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("外勤统计");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

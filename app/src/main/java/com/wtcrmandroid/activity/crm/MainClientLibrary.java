@@ -48,7 +48,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("主客户库");
         tcmbBar.setStrings(new String[]{"会员类型", "主库状态", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {

@@ -44,7 +44,7 @@ public class GetMoneyActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         mTitlebar.setTitletext("回款到单");
         mDataList = new ArrayList<>();
         GetMoneyData getMoneyData = new GetMoneyData();

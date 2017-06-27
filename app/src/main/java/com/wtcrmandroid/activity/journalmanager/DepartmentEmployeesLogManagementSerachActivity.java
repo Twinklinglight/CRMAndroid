@@ -32,7 +32,7 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         ivLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

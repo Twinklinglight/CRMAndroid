@@ -34,7 +34,7 @@ public class MyCallRecordActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("我的拜访记录");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

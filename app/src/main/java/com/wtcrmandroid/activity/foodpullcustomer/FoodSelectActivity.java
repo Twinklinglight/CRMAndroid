@@ -35,7 +35,7 @@ public class FoodSelectActivity extends BaseActivity implements FoodSelectAdapte
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mType = getIntent().getIntExtra("TYPE", 0);
         mpositon = getIntent().getIntExtra("POSITION",0);
