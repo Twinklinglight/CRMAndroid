@@ -18,7 +18,6 @@ import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
-
     @Override
     protected int layout() {
         return R.layout.activity_login;

@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,6 +13,7 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriteDayplanData;
+import com.wtcrmandroid.view.dialog.CalendarDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,7 @@ import butterknife.ButterKnife;
  * @date 2017/6/8
  */
 
-public class WriteDayPlanActivity extends BaseActivity {
+public class WriteDayPlanActivity extends BaseActivity implements CalendarDialog.CalendarListener{
 
 
     @BindView(R.id.lv_write_dayplan)
@@ -80,11 +82,24 @@ public class WriteDayPlanActivity extends BaseActivity {
                 }
             });
         }
+
+        mIbDayplanCalender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CalendarDialog(WriteDayPlanActivity.this,WriteDayPlanActivity.this).show();
+            }
+        });
     }
 
     @Override
     public void returnData(int key, Object data) {
 
+    }
+
+    @Override
+    public void CalendarSelcet(String date) {
+
+        mTvDayplanDate.setText(date);
     }
 
 
