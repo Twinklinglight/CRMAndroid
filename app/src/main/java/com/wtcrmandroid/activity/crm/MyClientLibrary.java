@@ -79,6 +79,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
                                     titleLeftPopupWindow.dismiss();
                                     tcmbBar.setLeftText(data);
                                     tcmbBar.NoCheckStyle(1);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
@@ -99,6 +100,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
                                     tcmbBar.setCenterText(data);
                                     titleCenterPopupWindow.dismiss();
                                     tcmbBar.NoCheckStyle(2);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
