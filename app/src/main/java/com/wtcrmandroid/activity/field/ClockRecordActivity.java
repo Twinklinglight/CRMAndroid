@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.ClockRecordAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.requestdata.ListPersonSignInRequestData;

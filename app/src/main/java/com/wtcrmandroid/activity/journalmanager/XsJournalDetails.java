@@ -4,12 +4,11 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 import com.wtcrmandroid.fragment.journalmanager.DepartWeekjournalFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartXsDayjournalFragment;
-import com.wtcrmandroid.fragment.journalmanager.DepartXsWeekjournalFragment;
 
 import java.util.ArrayList;
 import java.util.List;

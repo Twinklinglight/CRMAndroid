@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseMapActivity;
+import com.wtcrmandroid.BaseMapActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import butterknife.BindView;

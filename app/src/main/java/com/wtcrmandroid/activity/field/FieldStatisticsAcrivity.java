@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.FieldStatisticaAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;

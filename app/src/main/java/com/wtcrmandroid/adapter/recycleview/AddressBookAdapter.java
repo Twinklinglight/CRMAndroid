@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.addressbook.AddressBookDepartmentActivity;
-import com.wtcrmandroid.activity.addressbook.AddressBookGroupsActivity;
+import com.wtcrmandroid.contacts.AddressBookDepartmentActivity;
+import com.wtcrmandroid.contacts.AddressBookGroupsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

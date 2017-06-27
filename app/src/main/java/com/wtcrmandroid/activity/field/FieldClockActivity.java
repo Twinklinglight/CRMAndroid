@@ -13,7 +13,7 @@ import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseMapActivity;
+import com.wtcrmandroid.BaseMapActivity;
 import com.wtcrmandroid.adapter.recycleview.FieldClockAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.presenter.activity.FieldClockPresenter;

@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.reponsedata.LoginData;

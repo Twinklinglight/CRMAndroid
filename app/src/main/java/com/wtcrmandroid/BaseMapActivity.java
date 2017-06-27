@@ -1,4 +1,4 @@
-package com.wtcrmandroid.activity;
+package com.wtcrmandroid;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
