@@ -25,6 +25,7 @@ public class MainClientLibraryPresenter extends BasePresenter {
         }.getType();
         List<SearchCustomerReponseData> list = new Gson().fromJson(response, listType);
         L.e("成功" + list.get(0).getSite());
+        view.returnData(0,list);
 
     }
     public void getData(Object object){
