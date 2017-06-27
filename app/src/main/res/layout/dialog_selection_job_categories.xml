@@ -15,12 +15,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RadioGroup
             android:id="@+id/rgp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
             <RadioButton
@@ -31,7 +31,7 @@
                 android:drawableRight="@drawable/selector_radiobutton_background"
                 android:text="A类"
                 android:textSize="16dp"
-                android:textColor="#35393D"/>
+                android:textColor="@drawable/selector_text_blue_realblack"/>
 
             <RadioButton
                 android:id="@+id/rb_B"
@@ -41,7 +41,7 @@
                 android:drawableRight="@drawable/selector_radiobutton_background"
                 android:text="B类"
                 android:textSize="16dp"
-                android:textColor="#35393D"/>
+                android:textColor="@drawable/selector_text_blue_realblack"/>
 
             <RadioButton
                 android:id="@+id/rb_C"
@@ -51,7 +51,7 @@
                 android:drawableRight="@drawable/selector_radiobutton_background"
                 android:text="C类"
                 android:textSize="16dp"
-                android:textColor="#35393D"/>
+                android:textColor="@drawable/selector_text_blue_realblack"/>
 
             <RadioButton
                 android:id="@+id/rb_D"
@@ -59,9 +59,9 @@
                 android:layout_height="50dp"
                 android:button="@null"
                 android:drawableRight="@drawable/selector_radiobutton_background"
-                android:text="C类"
+                android:text="D类"
                 android:textSize="16dp"
-                android:textColor="#35393D"/>
+                android:textColor="@drawable/selector_text_blue_realblack"/>
         </RadioGroup>
 
         <LinearLayout
@@ -104,6 +104,19 @@
                 android:text="次重要"/>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rgp"
+            android:layout_alignParentRight="true"
+            android:text="@string/ssdk_oks_cancel"/>
+
+
 
 
     </RelativeLayout>

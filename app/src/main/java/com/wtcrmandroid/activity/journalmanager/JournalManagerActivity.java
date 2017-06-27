@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -53,6 +54,7 @@ public class JournalManagerActivity extends BaseActivity {
                 finish();
             }
         });
+//        isSales = MyApplication.application.getLoginData().isIsSaler();
     }
 
 

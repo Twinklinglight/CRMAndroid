@@ -7,10 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.view.dialog.WorkSortDialog;
+import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 import com.wtcrmandroid.model.WriteDayplanData;
 
 import java.util.List;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
  * Created by zxd on 2017/6/3.
  */
 
-public class WriteDayPlanAdapter extends MySmallBaseAdapter<WriteDayplanData, WriteDayPlanAdapter.ViewHolder> {
+public class WriteDayPlanAdapter extends MySmallBaseAdapter<WriteDayplanData, WriteDayPlanAdapter.ViewHolder> implements SelectionJobCategoriesDialog.WorkLinstener {
 
 
     public WriteDayPlanAdapter(Activity activity, List<WriteDayplanData> list) {
@@ -30,13 +31,40 @@ public class WriteDayPlanAdapter extends MySmallBaseAdapter<WriteDayplanData, Wr
     }
 
     @Override
-    protected void convert(ViewHolder holder, int position) {
+    protected void convert(ViewHolder holder, final int position) {
+
+        if (list.size()>1){
+            holder.mIvDelete.setVisibility(View.VISIBLE);
+            holder.mIvDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }
         WriteDayplanData writeDayplanData = list.get(position);
         holder.mTvDayplanSort.setText(writeDayplanData.getWorkSort());
         holder.mTvDayplanSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new WorkSortDialog(activity).show();
+                String workSort = list.get(position).getWorkSort();
+                int tag = 1;
+                switch (workSort){
+                    case "A类 紧急又重要":
+                        tag = 1;
+                        break;
+                    case "B类 较重要":
+                        tag = 2;
+                        break;
+                    case "C类 重要":
+                        tag = 3;
+                        break;
+                    case "D类 次重要":
+                        tag = 4;
+                        break;
+                }
+                new SelectionJobCategoriesDialog(activity,WriteDayPlanAdapter.this,position,tag).show();
             }
         });
         holder.mTvDayplanContent.setText(writeDayplanData.getWorkContent());
@@ -63,9 +91,17 @@ public class WriteDayPlanAdapter extends MySmallBaseAdapter<WriteDayplanData, Wr
         return view;
     }
 
+    @Override
+    public void WorkSelect(String workSort,int position) {
+        list.get(position).setWorkSort(workSort);
+        notifyDataSetChanged();
+    }
+
     class ViewHolder {
         @BindView(R.id.tv_dayplan_sort)
         TextView mTvDayplanSort;
+        @BindView(R.id.iv_delete)
+        ImageView mIvDelete;
         @BindView(R.id.tv_dayplan_content)
         EditText mTvDayplanContent;
         @BindView(R.id.ib_dayplan_yy)

@@ -55,7 +55,7 @@ public class CalendarDialog extends Dialog {
         ButterKnife.bind(this);
 
         Calendar instance = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd EEEE");
         DateTime = simpleDateFormat.format(instance.getTime());
 
         calender.setSelectedDate(instance.getTime());
