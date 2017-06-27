@@ -22,6 +22,7 @@ public class AddressBookDepartmentActivity extends BaseActivity {
     @BindView(R.id.rv_view)
     RecyclerView rvView;
     private ExpandableRecycleViewAdapter adapter;
+
     @Override
     public void returnData(int key, Object data) {
 
@@ -33,7 +34,7 @@ public class AddressBookDepartmentActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("部门");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

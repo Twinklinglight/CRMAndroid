@@ -1,12 +1,12 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 
 /**
  * Created by zxd on 2017/6/23
  */
 
-public class DepartXsWeekjournalFragment extends BaseFragmengt {
+public class DepartXsWeekjournalFragment extends BaseFragment {
     @Override
     public void returnData(int key, Object data) {
 

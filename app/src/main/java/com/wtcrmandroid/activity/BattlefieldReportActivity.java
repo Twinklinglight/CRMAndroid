@@ -11,7 +11,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.FragmentAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.fragment.battlefieldreport.BattlefieldReportFragment;
 import com.wtcrmandroid.fragment.battlefieldreport.TotalAchievementsFragment;
 import com.wtcrmandroid.utils.L;
@@ -42,7 +42,7 @@ public class BattlefieldReportActivity extends BaseActivity {
     private boolean window;
     private TitlePopupWindow titlePopupWindow;
     private FragmentAdapter fragmentAdapter;
-    private BaseFragmengt[] fragments=new BaseFragmengt[]{new BattlefieldReportFragment(),new BattlefieldReportFragment(),new TotalAchievementsFragment()};
+    private BaseFragment[] fragments=new BaseFragment[]{new BattlefieldReportFragment(),new BattlefieldReportFragment(),new TotalAchievementsFragment()};
     @Override
     public void returnData(int key, Object data) {
 
@@ -54,7 +54,7 @@ public class BattlefieldReportActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         fragmentAdapter= new FragmentAdapter(this,fragments,R.id.fl_view);
 
     }

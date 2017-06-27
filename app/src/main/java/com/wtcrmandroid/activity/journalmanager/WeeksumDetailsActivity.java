@@ -49,7 +49,7 @@ public class WeeksumDetailsActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         mDetailsDatas = new ArrayList<>();
         mCommentDatas = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

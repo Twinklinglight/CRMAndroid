@@ -13,6 +13,7 @@ import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.AreaPopUpWindow;
+import com.wtcrmandroid.model.reponsedata.SearchCustomerReponseData;
 import com.wtcrmandroid.model.requestdata.SearchCustomerRequestData;
 import com.wtcrmandroid.presenter.activity.MainClientLibraryPresenter;
 import com.wtcrmandroid.utils.L;
@@ -27,7 +28,7 @@ import butterknife.BindView;
  * 主客户库界面
  */
 
-public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, Object> {
+public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, List<SearchCustomerReponseData>> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
@@ -39,10 +40,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     private TitlePopupWindow titleRightPopupWindow;
     private ClientLibraryAdapter adapter;
     private AreaPopUpWindow toWindow;
-    @Override
-    public void returnData(int key, Object data) {
 
-    }
 
     @Override
     protected int layout() {
@@ -50,7 +48,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("主客户库");
         tcmbBar.setStrings(new String[]{"会员类型", "主库状态", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
@@ -82,6 +80,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                                     titleLeftPopupWindow.dismiss();
                                     tcmbBar.setLeftText(data);
                                     tcmbBar.NoCheckStyle(1);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
@@ -103,6 +102,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                                     tcmbBar.setCenterText(data);
                                     titleCenterPopupWindow.dismiss();
                                     tcmbBar.NoCheckStyle(2);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
@@ -127,6 +127,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                         break;
                     case 2:
                         titleCenterPopupWindow.dismiss();
+
                         break;
                     case 3:
                         toWindow.disMissPopWindow();
@@ -153,7 +154,13 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
             public void selectAreaOk(Area area, View parentView) {
                 L.e(area.toString());
                 tcmbBar.NoCheckStyle(3);
+                tcmbBar.setIsCheck_number(0);
             }
         });
+    }
+
+    @Override
+    public void returnData(int key, List<SearchCustomerReponseData> data) {
+
     }
 }

@@ -47,7 +47,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("我的客户库");
         tcmbBar.setStrings(new String[]{"会员类型", "入库来源", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
@@ -79,6 +79,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
                                     titleLeftPopupWindow.dismiss();
                                     tcmbBar.setLeftText(data);
                                     tcmbBar.NoCheckStyle(1);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
@@ -99,6 +100,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
                                     tcmbBar.setCenterText(data);
                                     titleCenterPopupWindow.dismiss();
                                     tcmbBar.NoCheckStyle(2);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 

@@ -60,7 +60,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         presenter = new WriteDayPlanPresenter(this);
         mTitlebar.setTitletext("写日计划");

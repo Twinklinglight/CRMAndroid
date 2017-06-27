@@ -34,7 +34,7 @@ public class CustomerCallSituationActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("客户拜访情况");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

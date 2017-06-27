@@ -6,7 +6,7 @@ import android.widget.RadioGroup;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartDayjournalFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartWeekjournalFragment;
 
@@ -27,7 +27,7 @@ public class HtJournalDetails extends BaseActivity {
     @BindView(R.id.rg_dayweek)
     RadioGroup mRgDayweek;
 
-    public List<BaseFragmengt> mfragmentList;
+    public List<BaseFragment> mfragmentList;
 
 
     @Override
@@ -36,7 +36,7 @@ public class HtJournalDetails extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mfragmentList = new ArrayList<>();
         mfragmentList.add(new DepartDayjournalFragment());

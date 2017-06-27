@@ -38,7 +38,7 @@ public class WeekplanDetailsActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         mTitleBar.setTitletext("日志详情");
         mDataList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

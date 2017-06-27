@@ -23,7 +23,7 @@ import com.wtcrmandroid.activity.field.FieldActivity;
 import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
 import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +35,7 @@ import static android.view.View.GONE;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public class HomeFragment extends BaseFragmengt {
+public class HomeFragment extends BaseFragment {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tv_pullintocustomer)

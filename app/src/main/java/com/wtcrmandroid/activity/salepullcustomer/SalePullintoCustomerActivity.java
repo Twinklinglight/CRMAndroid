@@ -72,7 +72,7 @@ public class SalePullintoCustomerActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitle.setTitletext("录入客户");
 

@@ -6,7 +6,7 @@ import android.widget.RadioGroup;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.fragment.main.AddressBookFragment;
 import com.wtcrmandroid.fragment.main.FoundFragment;
 import com.wtcrmandroid.fragment.main.HomeFragment;
@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.rg_bottom)
     RadioGroup rgBottom;
-    public List<BaseFragmengt> fragments = new ArrayList<BaseFragmengt>();
+    public List<BaseFragment> fragments = new ArrayList<BaseFragment>();
     @BindView(R.id.title_window)
     LinearLayout titleWindow;
 
@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         fragments.add(new HomeFragment());
         fragments.add(new FoundFragment());
         fragments.add(new AddressBookFragment());

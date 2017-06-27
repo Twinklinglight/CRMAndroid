@@ -51,7 +51,7 @@ public class XsDaysumDetailsActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         mStringList = new ArrayList<>();
         mFragmentList = new ArrayList<>();
 

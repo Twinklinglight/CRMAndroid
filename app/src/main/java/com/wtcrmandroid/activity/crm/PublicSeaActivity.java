@@ -41,7 +41,7 @@ public class PublicSeaActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("续单公海");
         tcmbBar.setStrings(new String[]{"会员类型", "主库状态", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {

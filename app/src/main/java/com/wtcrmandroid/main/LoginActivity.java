@@ -24,7 +24,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         presenter=new LoginPresenter(this);
         TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
         L.e(tm.getDeviceId()+"--");

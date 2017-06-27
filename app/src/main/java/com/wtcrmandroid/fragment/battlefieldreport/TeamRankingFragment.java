@@ -1,14 +1,14 @@
 package com.wtcrmandroid.fragment.battlefieldreport;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 
 /**
  * Created by wt-pc on 2017/6/20.
  * 销售战报团队排名
  */
 
-public class TeamRankingFragment extends BaseFragmengt {
+public class TeamRankingFragment extends BaseFragment {
     @Override
     public void returnData(int key, Object data) {
 

@@ -44,6 +44,9 @@ public class TopChooseMenuBar extends LinearLayout {
     //当前选中位置
     private int isCheck_number = 0;
 
+    public void setIsCheck_number(int isCheck_number) {
+        this.isCheck_number = isCheck_number;
+    }
 
     private OnCheckedChangedListener onCheckedChangedListener;
 

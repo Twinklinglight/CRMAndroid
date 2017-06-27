@@ -39,7 +39,7 @@ public class SingleCustomer extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("预测到单客户");
         mDataList = new ArrayList<>();

@@ -31,7 +31,7 @@ public class WriteWeekConclusionActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         titlebar.setTitletext("写周总结");
         WriterWeekPlaneData writerWeekPlaneData=new WriterWeekPlaneData();
         writerWeekPlaneData.setWorkNumber("本周总结");

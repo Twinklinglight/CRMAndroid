@@ -25,7 +25,7 @@ public class MycardActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("我的名片");
         mTitlebar.setrighttext("分享");

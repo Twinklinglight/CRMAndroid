@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  *
  */
 public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener{
-    private List<BaseFragmengt> fragments; // 一个tab页面对应一个Fragment
+    private List<BaseFragment> fragments; // 一个tab页面对应一个Fragment
     private RadioGroup rgs; // 用于切换tab
     private FragmentActivity fragmentActivity; // Fragment所属的Activity
     private int fragmentContentId; // Activity中所要被替换的区域的id
@@ -25,7 +25,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener{
 
     private OnRgsExtraCheckedChangedListener onRgsExtraCheckedChangedListener; // 用于让调用者在切换tab时候增加新的功能
 
-    public FragmentTabAdapter(FragmentActivity fragmentActivity, List<BaseFragmengt> fragments, int fragmentContentId, RadioGroup rgs) {
+    public FragmentTabAdapter(FragmentActivity fragmentActivity, List<BaseFragment> fragments, int fragmentContentId, RadioGroup rgs) {
         this.fragments = fragments;
         this.rgs = rgs;
         this.fragmentActivity = fragmentActivity;

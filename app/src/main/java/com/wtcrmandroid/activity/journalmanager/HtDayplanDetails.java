@@ -41,7 +41,7 @@ public class HtDayplanDetails extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
         mTitlebar.setTitletext("日志详情");
 
         //返回

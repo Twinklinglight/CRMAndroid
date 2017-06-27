@@ -44,7 +44,7 @@ public class AddPurposeCustomerActivity extends BaseActivity {
     }
 
     @Override
-    protected void initview() {
+    protected void initView() {
 
         mTitlebar.setTitletext("新增意向客户");
         mDataList = new ArrayList<>();

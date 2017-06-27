@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.dialog.CommentDialog;
-import com.wtcrmandroid.fragment.BaseFragmengt;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.view.listview.MyListView;
 
 import butterknife.BindView;
@@ -17,7 +17,7 @@ import butterknife.Unbinder;
  * Created by zxd on 2017/6/23
  */
 
-public class DepartXsDayjournalFragment extends BaseFragmengt {
+public class DepartXsDayjournalFragment extends BaseFragment {
 
 
     @BindView(R.id.tv_date)
