@@ -1,4 +1,4 @@
-package com.wtcrmandroid.activity;
+package com.wtcrmandroid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

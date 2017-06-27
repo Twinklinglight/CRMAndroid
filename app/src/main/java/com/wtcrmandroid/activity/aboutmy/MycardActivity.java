@@ -3,7 +3,7 @@ package com.wtcrmandroid.activity.aboutmy;
 import android.view.View;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.popupwindow.popubwindow_share;
 

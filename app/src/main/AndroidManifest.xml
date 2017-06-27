@@ -47,8 +47,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".main.LoginActivity"/>
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -82,9 +82,9 @@
 
         <!-- ————————————————————————  通讯录模块  ———————————————————————————————————— -->
         <!-- 通讯录部门界面 -->
-        <activity android:name=".activity.addressbook.AddressBookDepartmentActivity"/>
+        <activity android:name=".contacts.AddressBookDepartmentActivity"/>
         <!-- 通讯录群组界面 -->
-        <activity android:name=".activity.addressbook.AddressBookGroupsActivity"/>
+        <activity android:name=".contacts.AddressBookGroupsActivity"/>
         <!-- ———————————————————————————————————————————————————————————————— -->
 
 

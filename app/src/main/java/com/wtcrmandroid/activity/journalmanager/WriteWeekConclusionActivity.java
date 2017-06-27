@@ -3,7 +3,7 @@ package com.wtcrmandroid.activity.journalmanager;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.listview.WriterWeekConclusionAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriterWeekPlaneData;

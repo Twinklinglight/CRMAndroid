@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.FragmentAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;

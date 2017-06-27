@@ -1,10 +1,11 @@
-package com.wtcrmandroid.activity;
+package com.wtcrmandroid.main;
 
 import android.content.Intent;
 import android.telephony.TelephonyManager;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.WTDataBaseManager;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;
 import com.wtcrmandroid.utils.L;
@@ -15,7 +16,7 @@ import butterknife.OnClick;
  * Created by 1363655717 on 2017-06-12.
  */
 
-public class LoginActivity extends BaseActivity<LoginPresenter,LoginData>{
+public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
 
     @Override

@@ -5,7 +5,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BaseActivity;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.utils.L;
 

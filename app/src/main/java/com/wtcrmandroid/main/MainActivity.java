@@ -1,9 +1,10 @@
-package com.wtcrmandroid.activity;
+package com.wtcrmandroid.main;
 
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
 import com.wtcrmandroid.fragment.BaseFragmengt;
 import com.wtcrmandroid.fragment.main.AddressBookFragment;
