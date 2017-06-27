@@ -5,13 +5,14 @@ package com.wtcrmandroid.model.reponsedata;
  */
 
 public class LoginData {
+
     /**
      * UserID : 3066
      * UserName : 申中佳
      * Attribution : WT
      * DepartmentID : 34
-     * Token : 9A7DCA02DC90B62E
-     * Element : null
+     * Token : 4879BD23AAA7FA31
+     * IsSaler : false
      */
 
     private int UserID;
@@ -19,7 +20,7 @@ public class LoginData {
     private String Attribution;
     private int DepartmentID;
     private String Token;
-    private Object Element;
+    private boolean IsSaler;
 
     public int getUserID() {
         return UserID;
@@ -61,13 +62,11 @@ public class LoginData {
         this.Token = Token;
     }
 
-    public Object getElement() {
-        return Element;
+    public boolean isIsSaler() {
+        return IsSaler;
     }
 
-    public void setElement(Object Element) {
-        this.Element = Element;
+    public void setIsSaler(boolean IsSaler) {
+        this.IsSaler = IsSaler;
     }
-
-
 }
