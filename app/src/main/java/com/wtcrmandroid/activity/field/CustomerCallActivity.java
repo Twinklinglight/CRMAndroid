@@ -1,13 +1,19 @@
 package com.wtcrmandroid.activity.field;
 
 import android.hardware.Sensor;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseMapActivity;
+import com.wtcrmandroid.R;
+import com.wtcrmandroid.adapter.recycleview.PhotoChooseAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -21,7 +27,11 @@ public class CustomerCallActivity extends BaseMapActivity {
     TitleBar titlebar;
     @BindView(R.id.tv_address)
     TextView tvAddress;
+    @BindView(R.id.rv_view)
+    RecyclerView rvView;
+    private PhotoChooseAdapter adapter;
 
+    private List<String> photo_list=new ArrayList<>();
     @Override
     public void returnData(int key, Object data) {
 
@@ -41,7 +51,10 @@ public class CustomerCallActivity extends BaseMapActivity {
                 finish();
             }
         });
-
+        rvView.setLayoutManager(new GridLayoutManager(this, 4));
+        rvView.setAdapter(adapter = new PhotoChooseAdapter());
+        photo_list.add("");
+        adapter.setList(photo_list);
     }
 
     @Override

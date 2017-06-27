@@ -1,15 +1,13 @@
 package com.wtcrmandroid.activity.field;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -43,12 +41,7 @@ public class FieldActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 
     @OnClick({R.id.srl_field_clock, R.id.srl_field_statistical, R.id.srl_customer_call,R.id.srl_my_call_record, R.id.srl_customer_call_statistics, R.id.srl_employees_location})
     public void onViewClicked(View view) {
