@@ -1,4 +1,4 @@
-package com.wtcrmandroid.fragment.main;
+package com.wtcrmandroid.main;
 
 import android.content.Intent;
 import android.view.LayoutInflater;

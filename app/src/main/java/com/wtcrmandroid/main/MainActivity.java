@@ -7,10 +7,6 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
 import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.fragment.main.AddressBookFragment;
-import com.wtcrmandroid.fragment.main.FoundFragment;
-import com.wtcrmandroid.fragment.main.HomeFragment;
-import com.wtcrmandroid.fragment.main.MyFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +36,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         fragments.add(new HomeFragment());
-        fragments.add(new FoundFragment());
-        fragments.add(new AddressBookFragment());
-        fragments.add(new MyFragment());
+        fragments.add(new DiscoveryFragment());
+        fragments.add(new ContactsFragment());
+        fragments.add(new MineFragment());
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.fl_main, rgBottom);
     }
 

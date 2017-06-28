@@ -1,4 +1,4 @@
-package com.wtcrmandroid.fragment.main;
+package com.wtcrmandroid.main;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseFragment;
@@ -7,7 +7,7 @@ import com.wtcrmandroid.BaseFragment;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public class FoundFragment extends BaseFragment {
+public class DiscoveryFragment extends BaseFragment {
     @Override
     protected int Rlayout() {
         return R.layout.fragment_found;

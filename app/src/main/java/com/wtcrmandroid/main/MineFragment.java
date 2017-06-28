@@ -1,4 +1,4 @@
-package com.wtcrmandroid.fragment.main;
+package com.wtcrmandroid.main;
 
 import android.content.Intent;
 import android.view.View;
@@ -18,7 +18,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public class MyFragment extends BaseFragment implements MyPhoneNumberDialog.MyPhoneNumber {
+public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.MyPhoneNumber {
     @BindView(R.id.ib_head_picture)
     ImageView mIbHeadPicture;         //头像按钮
     @BindView(R.id.tv_name)
@@ -65,7 +65,7 @@ public class MyFragment extends BaseFragment implements MyPhoneNumberDialog.MyPh
             @Override
             public void onClick(View v) {
 
-                new MyPhoneNumberDialog(getContext(),MyFragment.this,"签名",
+                new MyPhoneNumberDialog(getContext(),MineFragment.this,"签名",
                         mTvMottoModify.getText().toString(),Motto).show();
             }
         });
@@ -74,7 +74,7 @@ public class MyFragment extends BaseFragment implements MyPhoneNumberDialog.MyPh
         mTvMyPhonenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MyPhoneNumberDialog(getContext(),MyFragment.this,"联系方式",
+                new MyPhoneNumberDialog(getContext(),MineFragment.this,"联系方式",
                         mTvMyPhonenumber.getText().toString(),PhoneNumber).show();
             }
         });
