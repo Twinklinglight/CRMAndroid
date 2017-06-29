@@ -80,6 +80,7 @@
                 android:textColorHint="#c4c8cc"
                 android:textSize="16dp" />
             <CheckBox
+                android:id="@+id/cb_passstyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/eye_checkbox_style" />

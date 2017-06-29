@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.crm;
 
 import android.support.v7.widget.RecyclerView;
+import android.widget.PopupWindow;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
@@ -66,18 +67,22 @@ public class PublicSeaActivity extends BaseActivity {
                             titleLeftPopupWindow = new TitlePopupWindow(PublicSeaActivity.this, tcmbBar, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
                                 @Override
                                 public void oNclicklistner(String data, int position) {
-//                            tvCenter.setText(data);
-//                            titleLeftPopupWindow.dismiss();
-//                            fragmentAdapter.Changed(position);
-//                            L.e(position+"yemian");
                                     titleLeftPopupWindow.dismiss();
                                     tcmbBar.setLeftText(data);
                                     tcmbBar.NoCheckStyle(1);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
                         }
                         titleLeftPopupWindow.show();
+                        titleLeftPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                            @Override
+                            public void onDismiss() {
+                                tcmbBar.NoCheckStyle(1);
+                                tcmbBar.setIsCheck_number(0);
+                            }
+                        });
                         break;
                     case 2:
                         //右边弹窗
@@ -94,11 +99,19 @@ public class PublicSeaActivity extends BaseActivity {
                                     tcmbBar.setCenterText(data);
                                     titleCenterPopupWindow.dismiss();
                                     tcmbBar.NoCheckStyle(2);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
                         }
                         titleCenterPopupWindow.show();
+                        titleCenterPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                            @Override
+                            public void onDismiss() {
+                                tcmbBar.NoCheckStyle(2);
+                                tcmbBar.setIsCheck_number(0);
+                            }
+                        });
                         break;
                     case 3:
 

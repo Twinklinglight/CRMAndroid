@@ -2,6 +2,7 @@ package com.wtcrmandroid.activity.crm;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
@@ -85,6 +86,13 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
 
                         }
                         titleLeftPopupWindow.show();
+                        titleLeftPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                            @Override
+                            public void onDismiss() {
+                                tcmbBar.NoCheckStyle(1);
+                                tcmbBar.setIsCheck_number(0);
+                            }
+                        });
                         break;
                     case 2:
                         //右边弹窗
@@ -106,6 +114,13 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, Obje
 
                         }
                         titleCenterPopupWindow.show();
+                        titleCenterPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                            @Override
+                            public void onDismiss() {
+                                tcmbBar.NoCheckStyle(2);
+                                tcmbBar.setIsCheck_number(0);
+                            }
+                        });
                         break;
                     case 3:
                         if (toWindow == null) {
