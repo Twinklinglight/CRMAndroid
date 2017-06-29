@@ -10,7 +10,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
@@ -23,19 +27,34 @@ import butterknife.OnClick;
  * Created by zxd on 2017/6/3.
  */
 
-public class CompleteConditionDialog extends Dialog implements CompleteDetailsDialog.CompleteListener {
+public class CompleteConditionDialog extends Dialog {
 
-    @BindView(R.id.rb_done)
-    RadioButton rbDone;
-    @BindView(R.id.rb_undone)
-    RadioButton rbUndone;
-    @BindView(R.id.tv_worksort_dialog_sure)
-    TextView tvWorksortDialogSure;
+    @BindView(R.id.et_nocomplete_reason)
+    EditText etNocompleteReason;
+    @BindView(R.id.et_nocomplete_time)
+    EditText etNocompleteTime;
+    @BindView(R.id.ll_undone)
+    LinearLayout llUndone;          //未完成布局
+    @BindView(R.id.et_complete_details)
+    EditText etCompleteDetails;
+    @BindView(R.id.ll_done)
+    LinearLayout llDone;            //完成布局
+    @BindView(R.id.rg_complete)
+    RadioGroup rgComplete;          //选择布局
+    @BindView(R.id.rl_click)
+    RelativeLayout rlClick;         //确定按钮
+
     private Context mContext;
 
-    public CompleteConditionDialog(@NonNull Context context) {
-        super(context, R.style.WorkSortDialog);
+    private CompeleteListener  completeListener;
+
+    private int position;
+
+    public CompleteConditionDialog(@NonNull Context context, CompeleteListener listener,int position) {
+        super(context, R.style.Dialog);
         mContext = context;
+        this.completeListener = listener;
+        this.position = position;
     }
 
     @Override
@@ -62,23 +81,42 @@ public class CompleteConditionDialog extends Dialog implements CompleteDetailsDi
     }
 
 
-    @OnClick({R.id.rb_done, R.id.rb_undone})
+    @OnClick({R.id.rb_done, R.id.rb_undone,R.id.tv_sure,R.id.tv_cancle})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rb_done:
-                new CompleteDetailsDialog(mContext,this).show();
-                dismiss();
+                if (rgComplete.getVisibility() == View.VISIBLE) {
+                    llDone.setVisibility(View.VISIBLE);
+                    rgComplete.setVisibility(View.INVISIBLE);
+                    rlClick.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.rb_undone:
-                new NoCompeleteDialog(mContext).show();
+                llUndone.setVisibility(View.VISIBLE);
+                rgComplete.setVisibility(View.INVISIBLE);
+                rlClick.setVisibility(View.VISIBLE);
+                break;
+            case R.id.tv_sure:
+
+                if (llDone.getVisibility() == View.VISIBLE){
+                    String doneText = etCompleteDetails.getText().toString();
+                    completeListener.completeCondition(doneText,position);
+                }else {
+                    String reasonText = etNocompleteReason.getText().toString();
+                    String nextTime = etNocompleteTime.getText().toString();
+                    completeListener.completeCondition(reasonText +" "+ nextTime,position);
+                }
+                dismiss();
+                break;
+            case R.id.tv_cancle:
                 dismiss();
                 break;
         }
     }
 
-    //原因回调
-    @Override
-    public void CompleteReason(String text) {
-
+    public interface CompeleteListener{
+        void completeCondition(String text,int position);
     }
+
+
 }

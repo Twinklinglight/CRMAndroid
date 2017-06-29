@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:text="@string/complete_condition"
-        android:textSize="15sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/ll_undone"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="invisible">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -30,14 +34,13 @@
 
                 <EditText
                     android:id="@+id/et_nocomplete_reason"
-                    android:textCursorDrawable="@drawable/edittext_cursor_shap"
-                    android:background="@color/colorBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
                     android:hint="@string/nocomplete_reason"
-                    android:textSize="@dimen/Text36"
                     android:padding="5dp"
-                    />
+                    android:textCursorDrawable="@drawable/edittext_cursor_shap"
+                    android:textSize="@dimen/Text36" />
 
             </LinearLayout>
 
@@ -51,37 +54,35 @@
 
                 <EditText
                     android:id="@+id/et_nocomplete_time"
-                    android:textCursorDrawable="@drawable/edittext_cursor_shap"
-                    android:background="@color/colorBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
                     android:hint="@string/nocompelete_time"
                     android:padding="5dp"
-                    android:textSize="@dimen/Text36"
-                    />
+                    android:textCursorDrawable="@drawable/edittext_cursor_shap"
+                    android:textSize="@dimen/Text36" />
 
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_done"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@color/colorBackground">
+            android:background="@color/colorBackground"
+            android:visibility="invisible">
 
             <EditText
                 android:id="@+id/et_complete_details"
-                android:padding="5dp"
-                android:background="@color/colorBackground"
-                android:textCursorDrawable="@drawable/edittext_cursor_shap"
-                android:textSize="@dimen/text_size_13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorBackground"
                 android:hint="@string/complete_details"
-                />
+                android:padding="5dp"
+                android:textCursorDrawable="@drawable/edittext_cursor_shap"
+                android:textSize="@dimen/text_size_13" />
 
         </LinearLayout>
 
@@ -91,44 +92,39 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
+
             <RadioButton
                 android:id="@+id/rb_done"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:button ="@null"
+                android:button="@null"
                 android:drawableRight="@drawable/selector_radiobutton_background"
                 android:text="已完成"
-                android:textColor="@drawable/selector_text_blue_realblack"
-                />
+                android:textColor="@drawable/selector_text_blue_realblack" />
 
             <RadioButton
                 android:id="@+id/rb_undone"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:button ="@null"
+                android:layout_marginTop="20dp"
+                android:button="@null"
                 android:drawableRight="@drawable/selector_radiobutton_background"
                 android:text="未完成"
-                android:textColor="@drawable/selector_text_blue_realblack"
-                />
+                android:textColor="@drawable/selector_text_blue_realblack" />
 
         </RadioGroup>
 
     </FrameLayout>
 
-
-
-
-
-
-
     <RelativeLayout
+        android:id="@+id/rl_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:visibility="invisible">
 
         <TextView
-            android:id="@+id/tv_worksort_dialog_sure"
+            android:id="@+id/tv_sure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -136,17 +132,18 @@
             android:background="@null"
             android:text="确定"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/Text36"/>
+            android:textSize="@dimen/Text36" />
 
         <TextView
+            android:id="@+id/tv_cancle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
-            android:layout_toLeftOf="@id/tv_worksort_dialog_sure"
+            android:layout_toLeftOf="@id/tv_sure"
             android:background="@null"
             android:text="取消"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/Text36"/>
+            android:textSize="@dimen/Text36" />
     </RelativeLayout>
 
 </LinearLayout>
