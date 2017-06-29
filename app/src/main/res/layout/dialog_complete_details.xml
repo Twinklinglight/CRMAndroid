@@ -23,8 +23,10 @@
 
         <EditText
             android:id="@+id/et_complete_details"
-            style="@style/EditTextStyle"
-            android:paddingTop="5dp"
+            android:padding="5dp"
+            android:background="@color/colorBackground"
+            android:textCursorDrawable="@drawable/edittext_cursor_shap"
+            android:textSize="@dimen/text_size_13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/complete_details"
@@ -35,26 +37,28 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
 
-        <Button
-            android:id="@+id/bt_worksort_dialog_sure"
+        <TextView
+            android:id="@+id/tv_worksort_dialog_sure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:background="@null"
             android:text="确定"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/Text36"/>
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@id/bt_worksort_dialog_sure"
+            android:layout_marginRight="40dp"
+            android:layout_toLeftOf="@id/tv_worksort_dialog_sure"
             android:background="@null"
             android:text="取消"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/Text36"/>
     </RelativeLayout>
 
 </LinearLayout>

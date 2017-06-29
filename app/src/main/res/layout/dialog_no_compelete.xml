@@ -22,11 +22,13 @@
 
         <EditText
             android:id="@+id/et_nocomplete_reason"
-            style="@style/EditTextStyle"
+            android:textCursorDrawable="@drawable/edittext_cursor_shap"
+            android:background="@color/colorBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nocomplete_reason"
-            android:paddingTop="5dp"
+            android:textSize="@dimen/Text36"
+            android:padding="5dp"
             />
 
     </LinearLayout>
@@ -41,11 +43,13 @@
 
         <EditText
             android:id="@+id/et_nocomplete_time"
-            style="@style/EditTextStyle"
+            android:textCursorDrawable="@drawable/edittext_cursor_shap"
+            android:background="@color/colorBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nocompelete_time"
-            android:paddingTop="5dp"
+            android:padding="5dp"
+            android:textSize="@dimen/Text36"
             />
 
     </LinearLayout>
@@ -53,26 +57,28 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
 
-        <Button
-            android:id="@+id/bt_worksort_dialog_sure"
+        <TextView
+            android:id="@+id/tv_worksort_dialog_sure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:background="@null"
             android:text="确定"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/Text36"/>
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@id/bt_worksort_dialog_sure"
+            android:layout_marginRight="40dp"
+            android:layout_toLeftOf="@id/tv_worksort_dialog_sure"
             android:background="@null"
             android:text="取消"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/Text36"/>
     </RelativeLayout>
 
 </LinearLayout>

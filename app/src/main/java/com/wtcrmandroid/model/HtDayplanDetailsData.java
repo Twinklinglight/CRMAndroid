@@ -42,4 +42,6 @@ public class HtDayplanDetailsData {
     public void setWorkContent(String workContent) {
         WorkContent = workContent;
     }
+
+
 }

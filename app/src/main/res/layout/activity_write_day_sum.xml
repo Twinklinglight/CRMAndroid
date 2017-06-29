@@ -24,14 +24,14 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/tv_dayplan_date"
+            android:id="@+id/tv_daysum_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/app_name"/>
 
         <ImageButton
-            android:id="@+id/ib_dayplan_calender"
+            android:id="@+id/ib_daysum_calender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

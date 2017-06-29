@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 
 import java.util.List;
 
@@ -22,15 +23,49 @@ import butterknife.ButterKnife;
  * Created by zxd on 2017/6/13
  */
 
-public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, WriteDaySumAdapter.ViewHolder> {
+public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, WriteDaySumAdapter.ViewHolder> implements SelectionJobCategoriesDialog.WorkLinstener {
 
     public WriteDaySumAdapter(Activity activity, List<WriteDaysumData> list) {
         super(activity, list);
     }
 
     @Override
-    protected void convert(ViewHolder holder, int position) {
+    protected void convert(ViewHolder holder, final int position) {
+
+        if (list.size()>1){     //条目数量大于一，删除按钮显示
+            holder.mIvDelete.setVisibility(View.VISIBLE);
+            holder.mIvDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }
+
         holder.mTvDaysumSort.setText(list.get(position).getWorkSort());
+        holder.mTvDaysumSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String workSort = list.get(position).getWorkSort();
+                int tag = 0;
+                switch (workSort){
+                    case "A类 紧急又重要":
+                        tag = 1;
+                        break;
+                    case "B类 较重要":
+                        tag = 2;
+                        break;
+                    case "C类 重要":
+                        tag = 3;
+                        break;
+                    case "D类 次重要":
+                        tag = 4;
+                        break;
+                }
+                new SelectionJobCategoriesDialog(activity,WriteDaySumAdapter.this,position,tag).show();
+            }
+        });
         holder.mTvDaysumContent.setText(list.get(position).getWorkContent());
         holder.mEtDaysumPerson.setText(list.get(position).getWorkPerson());
         holder.mTvDaysumComplete.setText(list.get(position).getWorkComplete());
@@ -46,6 +81,13 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
         ViewHolder viewHolder  = new ViewHolder(view);
         view.setTag(viewHolder);
         return view;
+    }
+
+    //工作等级选择回调
+    @Override
+    public void WorkSelect(String workSort, int position) {
+        list.get(position).setWorkSort(workSort);
+        notifyDataSetChanged();
     }
 
     static class ViewHolder {

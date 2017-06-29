@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -135,6 +136,8 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
     //提交日计划
     @OnClick(R.id.tv_dayplan_submit)
     public void onClick() {
+
+        Log.i("WriteDayPlanActivity","mlist = "+mList.toString());
         presenter.SubDayPlan(mList);
     }
 

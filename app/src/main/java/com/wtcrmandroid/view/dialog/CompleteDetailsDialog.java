@@ -9,20 +9,33 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.wtcrmandroid.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by zxd on 2017/6/6
  */
 
-public class CompleteDetailsDialog extends Dialog{
+public class CompleteDetailsDialog extends Dialog {
 
+    @BindView(R.id.et_complete_details)
+    EditText etCompleteDetails;
+    @BindView(R.id.tv_worksort_dialog_sure)
+    TextView tvWorksortDialogSure;
     private Context mContext;
 
-    public CompleteDetailsDialog(@NonNull Context context) {
-        super(context,R.style.WorkSortDialog);
+    private CompleteListener listener;
+
+    public CompleteDetailsDialog(@NonNull Context context,CompleteListener listener) {
+        super(context, R.style.WorkSortDialog);
         this.mContext = context;
+        this.listener = listener;
     }
 
     @Override
@@ -30,6 +43,7 @@ public class CompleteDetailsDialog extends Dialog{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_complete_details);
         initWindowParams();
+        ButterKnife.bind(this);
     }
 
     private void initWindowParams() {
@@ -45,5 +59,15 @@ public class CompleteDetailsDialog extends Dialog{
 
         dialogWindow.setGravity(Gravity.CENTER);
         dialogWindow.setAttributes(lp);
+    }
+
+    @OnClick(R.id.tv_worksort_dialog_sure)
+    public void onClick() {
+        String text = etCompleteDetails.getText().toString();
+        listener.CompleteReason(text);
+    }
+
+    public interface CompleteListener{
+        void CompleteReason(String text);
     }
 }

@@ -1,32 +1,31 @@
 package com.wtcrmandroid.activity.journalmanager;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
-import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.reponsedata.LoginData;
+import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.model.MyJournalData;
+import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
+import com.wtcrmandroid.view.RefreshHeaderView;
+import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
+import com.wtcrmandroid.view.custompricing.TitleBar;
+import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
+import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
 import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
 import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
-import com.wtcrmandroid.view.RefreshHeaderView;
-import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * 我的日志Activity
@@ -39,24 +38,18 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
-    @BindView(R.id.ll_myjournal_type)
-    LinearLayout mLlMyjournalType;  //类型筛选按钮
-    @BindView(R.id.ll_myjournal_time)
-    LinearLayout mLlMyjournalTime;  //时间筛选按钮
     @BindView(R.id.swipe_target)
     ListView mLvMyjournal;          //我的日志列表
     @BindView(R.id.swipe_refresh_header)
     RefreshHeaderView mHeaderView;
     @BindView(R.id.swipe_load_more_footer)
     RefreshLoadMoreFooterView mFooterView;
-    @BindView(R.id.ll_xiala_type)
-    LinearLayout mLlXialaType;      //类型弹框
-    @BindView(R.id.iv_type_arrow)
-    ImageView mIvTypeArrow;
-    @BindView(R.id.iv_time_arrow)
-    ImageView mIvTimeArrow;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout mSwipeToLoadLayout;
+    @BindView(R.id.tcmb_bar)
+    TopChooseMenuBar tcmbBar;
+
+    private TitlePopupWindow TypeWindows;
 
     private MyJournalAdapter mMyJournalAdapter;
 
@@ -72,6 +65,50 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
     @Override
     protected void initView() {
         mTitlebar.setTitletext("我的日志");
+        tcmbBar.setStrings(new String[]{"类型","时间"});
+
+        tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
+            @Override
+            public void isSelected(int i) {
+                switch (i){
+                    case 1:
+                        if (TypeWindows == null){
+                            List list = new ArrayList();
+                            list.add("全部");
+                            list.add("日计划");
+                            list.add("日总结");
+                            list.add("周计划");
+                            list.add("周总结");
+                            TypeWindows = new TitlePopupWindow(MyJournalActivity.this,tcmbBar,list,0,0,
+                                    new PoppupWindowTitleAdapter.oNclicklistner() {
+                                        @Override
+                                        public void oNclicklistner(String data, int position) {
+
+                                            TypeWindows.dismiss();
+                                            tcmbBar.NoCheckStyle(1);
+                                            tcmbBar.setIsCheck_number(0);
+
+                                        }
+                                    });
+                        }
+                        TypeWindows.show();
+                        break;
+                    case 2:
+                        break;
+                }
+
+            }
+
+            @Override
+            public void isNoSelected(int i) {
+                switch (i){
+                    case 1:
+                        TypeWindows.dismiss();
+                        break;
+                }
+
+            }
+        });
         presenter = new MyJournalPresenter(this);
 
         mDatas = new ArrayList<>();
@@ -98,12 +135,12 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
                 if (position == 0) {
 
-//                    startActivity(new Intent(MyJournalActivity.this,HtDayplanDetails.class));
-                    startActivity(new Intent(MyJournalActivity.this, XsDayplanDetailsActivity.class));
+                    startActivity(new Intent(MyJournalActivity.this, HtDayplanDetails.class));
+//                    startActivity(new Intent(MyJournalActivity.this, XsDayplanDetailsActivity.class));
 
                 } else if (position == 1) {
-//                    startActivity(new Intent(MyJournalActivity.this,HtDaysumDetailsActivity.class));
-                    startActivity(new Intent(MyJournalActivity.this, XsDaysumDetailsActivity.class));
+                    startActivity(new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class));
+//                    startActivity(new Intent(MyJournalActivity.this, XsDaysumDetailsActivity.class));
                 } else if (position == 2) {
 
                     startActivity(new Intent(MyJournalActivity.this, WeekplanDetailsActivity.class));
@@ -113,25 +150,6 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
                 }
             }
         });
-
-    }
-
-
-    @OnClick(R.id.ll_myjournal_type)
-    public void onViewClicked() {
-        presenter.getData();
-
-        if (mLlXialaType.getVisibility() == View.VISIBLE) {
-            mLlXialaType.setVisibility(View.INVISIBLE);
-            ObjectAnimator anim = ObjectAnimator.ofFloat(mIvTypeArrow, "rotation", 180f, 0f);
-            anim.setDuration(200);
-            anim.start();
-        } else {
-            mLlXialaType.setVisibility(View.VISIBLE);
-            ObjectAnimator anim = ObjectAnimator.ofFloat(mIvTypeArrow, "rotation", 0f, 180f);
-            anim.setDuration(200);
-            anim.start();
-        }
 
     }
 

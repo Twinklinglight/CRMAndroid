@@ -6,18 +6,24 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;
-import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.view.custompricing.TitleBar;
+import com.wtcrmandroid.view.dialog.CalendarDialog;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 写日总结activity
@@ -26,12 +32,16 @@ import butterknife.ButterKnife;
  * @date 2017/6/6
  */
 
-public class WriteDaySumActivity extends BaseActivity {
+public class WriteDaySumActivity extends BaseActivity implements CalendarDialog.CalendarListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
     @BindView(R.id.lv_write_daysum)
     ListView mLvDaysum;
+    @BindView(R.id.tv_daysum_date)
+    TextView tvDaySumDate;                 //显示所选日期
+
+    private String SelectDate = "";
     private WriteDaySumAdapter mDaySumAdapter;
     private List<WriteDaysumData> mDataList;
 
@@ -45,6 +55,10 @@ public class WriteDaySumActivity extends BaseActivity {
     protected void initView() {
 
         mTitlebar.setTitletext("写日总结");
+        Date time = Calendar.getInstance().getTime();
+        SelectDate = new SimpleDateFormat("yyyy-MM-dd EEEE").format(time); //默认为当天
+        SetDateText(SelectDate);
+
         mDataList = new ArrayList<>();
         WriteDaysumData writeDaysumData = new WriteDaysumData();
         writeDaysumData.setWorkSort("B类");
@@ -66,11 +80,43 @@ public class WriteDaySumActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 返回的日期格式为：2017-6-27 星期二
+     * 字符串拆封 合并；
+     * @param date
+     */
+    //设置选中日期
+    private void SetDateText(String date) {
+        String[] split = date.split("-");
+        String DateText = split[0] + "年" + split[1] + "月" +
+                split[2].split(" ")[0] + "日" + " " + split[2].split(" ")[1];
+
+        tvDaySumDate.setText(DateText);
+    }
 
     @Override
     public void returnData(int key, Object data) {
 
     }
+
+    @OnClick({R.id.ib_daysum_calender, R.id.tv_daysum_submit})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ib_daysum_calender:      //日历
+                new CalendarDialog(this,this).show();
+                break;
+            case R.id.tv_daysum_submit:         //提交
+                break;
+        }
+    }
+
+    //日历选择的回调
+    @Override
+    public void CalendarSelcet(String date) {
+        SelectDate = date;
+        SetDateText(date);
+    }
+
 
     static class ViewHolder {
         @BindView(R.id.ll_daysum_addjob)

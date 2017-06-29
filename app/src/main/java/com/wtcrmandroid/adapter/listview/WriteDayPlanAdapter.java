@@ -49,7 +49,7 @@ public class WriteDayPlanAdapter extends MySmallBaseAdapter<WriteDayplanData, Wr
             @Override
             public void onClick(View v) {
                 String workSort = list.get(position).getWorkSort();
-                int tag = 1;
+                int tag = 0;
                 switch (workSort){
                     case "A类 紧急又重要":
                         tag = 1;
