@@ -23,7 +23,6 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.AllView;
@@ -198,7 +197,7 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
 
     protected abstract void getAddress(BDLocation location);
     @Override
-    public void showToast(String text) {
+    public void showShortToast(String text) {
         L.e(text);
 
     }

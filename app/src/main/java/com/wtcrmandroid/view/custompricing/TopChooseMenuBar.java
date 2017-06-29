@@ -166,15 +166,15 @@ public class TopChooseMenuBar extends LinearLayout {
         switch (i) {
             case 1:
                 tvLeft.setTextColor(Color.parseColor("#3b9cff"));
-                ivLeft.setBackgroundResource(R.mipmap.ic_graytop_arrow);
+                ivLeft.setBackgroundResource(R.mipmap.ic_arrow_up);
                 break;
             case 2:
                 tvCenter.setTextColor(Color.parseColor("#3b9cff"));
-                ivCenter.setBackgroundResource(R.mipmap.ic_graytop_arrow);
+                ivCenter.setBackgroundResource(R.mipmap.ic_arrow_up);
                 break;
             case 3:
                 tvRight.setTextColor(Color.parseColor("#3b9cff"));
-                ivRight.setBackgroundResource(R.mipmap.ic_graytop_arrow);
+                ivRight.setBackgroundResource(R.mipmap.ic_arrow_up);
                 break;
             default:
                 break;
@@ -190,15 +190,15 @@ public class TopChooseMenuBar extends LinearLayout {
                 break;
             case 1:
                 tvLeft.setTextColor(Color.parseColor("#2b2f33"));
-                ivLeft.setBackgroundResource(R.mipmap.ic_graydown_arrow);
+                ivLeft.setBackgroundResource(R.mipmap.ic_arrow_down);
                 break;
             case 2:
                 tvCenter.setTextColor(Color.parseColor("#2b2f33"));
-                ivCenter.setBackgroundResource(R.mipmap.ic_graydown_arrow);
+                ivCenter.setBackgroundResource(R.mipmap.ic_arrow_down);
                 break;
             case 3:
                 tvRight.setTextColor(Color.parseColor("#2b2f33"));
-                ivRight.setBackgroundResource(R.mipmap.ic_graydown_arrow);
+                ivRight.setBackgroundResource(R.mipmap.ic_arrow_down);
                 break;
             default:
                 break;

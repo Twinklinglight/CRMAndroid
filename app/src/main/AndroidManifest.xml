@@ -84,9 +84,9 @@
 
         <!-- ————————————————————————  通讯录模块  ———————————————————————————————————— -->
         <!-- 通讯录部门界面 -->
-        <activity android:name=".contacts.AddressBookDepartmentActivity" />
+        <activity android:name=".contacts.DepartmentActivity" />
         <!-- 通讯录群组界面 -->
-        <activity android:name=".contacts.AddressBookGroupsActivity" />
+        <activity android:name=".contacts.GroupsActivity" />
         <!-- ———————————————————————————————————————————————————————————————— -->
 
 

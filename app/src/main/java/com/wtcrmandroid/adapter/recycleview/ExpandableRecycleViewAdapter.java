@@ -30,10 +30,10 @@ public class ExpandableRecycleViewAdapter extends RecyclerView.Adapter<RecyclerV
         View v;
         RecyclerView.ViewHolder holder;
         if (viewType == VIEW_TYPE_GROUPITEM) {
-            v = LayoutInflater.from(context).inflate(R.layout.item_address_book_group, parent, false);
+            v = LayoutInflater.from(context).inflate(R.layout.item_contacts_group, parent, false);
             holder = new GroupViewHolder(v);
         } else {
-            v = LayoutInflater.from(context).inflate(R.layout.item_address_book_subitem, parent, false);
+            v = LayoutInflater.from(context).inflate(R.layout.item_contacts_child, parent, false);
             holder = new SubitemViewHolder(v);
         }
         return holder;

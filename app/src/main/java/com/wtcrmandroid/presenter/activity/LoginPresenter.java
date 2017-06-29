@@ -31,7 +31,7 @@ public class LoginPresenter extends BasePresenter{
         LoginData loginData = new Gson().fromJson(response, listType);
         L.e("成功" + loginData.toString());
         MyApplication.application.setLoginData(loginData);
-        view.showToast("登录成功");
+        view.showShortToast("登录成功");
         view.returnData(key, loginData);
     }
 

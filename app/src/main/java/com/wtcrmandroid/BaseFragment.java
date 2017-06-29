@@ -43,7 +43,7 @@ public abstract class BaseFragment<T extends BaseData> extends Fragment implemen
     protected abstract void init();
 
     @Override
-    public void showToast(String text) {
+    public void showShortToast(String text) {
 
     }
 

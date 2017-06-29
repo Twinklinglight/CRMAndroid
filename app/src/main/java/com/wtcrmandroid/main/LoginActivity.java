@@ -16,7 +16,7 @@ import butterknife.OnClick;
  * Created by 1363655717 on 2017-06-12.
  */
 
-public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
+public class LoginActivity extends BaseActivity<LoginPresenter, LoginData> {
 
     @Override
     protected int layout() {
@@ -25,9 +25,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
     @Override
     protected void initView() {
-        presenter=new LoginPresenter(this);
+        presenter = new LoginPresenter(this);
         TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
-        L.e(tm.getDeviceId()+"--");
+        L.e(tm.getDeviceId() + "--");
         WTDataBaseManager.getsInstance().initDatabase(this);
 
     }
@@ -39,9 +39,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
     @Override
     public void returnData(int key, LoginData data) {
-        L.e("返回数据"+key+data.toString());
+        L.e("返回数据" + key + data.toString());
         L.e(data.getUserName());
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
 
     }
 }

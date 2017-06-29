@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.contacts.AddressBookDepartmentActivity;
-import com.wtcrmandroid.contacts.AddressBookGroupsActivity;
+import com.wtcrmandroid.contacts.DepartmentActivity;
+import com.wtcrmandroid.contacts.GroupsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,14 +56,14 @@ public class AddressBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 headViewHolder.llDepartment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        context.startActivity(new Intent(context, AddressBookDepartmentActivity.class));
+                        context.startActivity(new Intent(context, DepartmentActivity.class));
 
                     }
                 });
                 headViewHolder.llGroup.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        context.startActivity(new Intent(context, AddressBookGroupsActivity.class));
+                        context.startActivity(new Intent(context, GroupsActivity.class));
                     }
                 });
             case INDEX:

@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@mipmap/ic_graydown_arrow" />
+                android:background="@mipmap/ic_arrow_down" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@mipmap/ic_graydown_arrow" />
+                android:background="@mipmap/ic_arrow_down" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@mipmap/ic_graydown_arrow" />
+                android:background="@mipmap/ic_arrow_down" />
         </LinearLayout>
     </RelativeLayout>
 

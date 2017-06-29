@@ -2,6 +2,8 @@ package com.wtcrmandroid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
@@ -17,13 +19,15 @@ import butterknife.ButterKnife;
  */
 
 
-public abstract class BaseActivity<T extends BasePresenter,T1> extends AppCompatActivity implements AllView<T1> {
+public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompatActivity implements AllView<T1> {
     protected T presenter;
 
     @Override
-    public void showToast(String text) {
+    public void showShortToast(String text) {
         L.e(text);
-
+        if (!TextUtils.isEmpty(text)) {
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        }
     }
 
 

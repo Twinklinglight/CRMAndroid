@@ -34,7 +34,7 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo_choose, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_add_ppcustomer, null);
         return new ViewHolder(view);
 
     }
@@ -46,7 +46,7 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
             holder.ivDelete.setVisibility(View.GONE);
         }
         else{
-            holder.ivPhoto.setImageResource(R.mipmap.ic_dog);
+//            holder.ivPhoto.setImageResource(R.mipmap.ic_dog);
             holder.ivDelete.setVisibility(View.VISIBLE);
         }
 
@@ -61,7 +61,7 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.iv_photo)
+//        @BindView(R.id.iv_photo)
         SquareImageView ivPhoto;
         @BindView(R.id.iv_delete)
         ImageView ivDelete;
