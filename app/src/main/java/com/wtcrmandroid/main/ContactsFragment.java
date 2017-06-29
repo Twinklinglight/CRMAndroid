@@ -1,4 +1,4 @@
-package com.wtcrmandroid.fragment.main;
+package com.wtcrmandroid.main;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +14,7 @@ import butterknife.BindView;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public class AddressBookFragment extends BaseFragment {
+public class ContactsFragment extends BaseFragment {
     @BindView(R.id.rv_view)
     RecyclerView rvView;
     @BindView(R.id.qiv_view)
