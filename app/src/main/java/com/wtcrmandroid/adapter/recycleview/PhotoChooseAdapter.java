@@ -44,9 +44,8 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
         if (position == size) {
             holder.ivPhoto.setImageResource(R.mipmap.ic_photo_upload);
             holder.ivDelete.setVisibility(View.GONE);
-        }
-        else{
-//            holder.ivPhoto.setImageResource(R.mipmap.ic_dog);
+        } else {
+            holder.ivPhoto.setImageResource(R.mipmap.ic_dog);
             holder.ivDelete.setVisibility(View.VISIBLE);
         }
 
@@ -61,10 +60,11 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-//        @BindView(R.id.iv_photo)
+        @BindView(R.id.iv_photo)
         SquareImageView ivPhoto;
         @BindView(R.id.iv_delete)
         ImageView ivDelete;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
