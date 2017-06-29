@@ -8,13 +8,13 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-
         android:layout_marginTop="80dp"
-        android:background="@mipmap/ic_xrz_workrank" />
+        android:background="@mipmap/ic_app" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="物通CRM"
         android:textColor="#2b2f33"
         android:textSize="18sp" />
@@ -42,14 +42,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
+                android:hint="请输入登录名"
+                android:textColorHint="#c4c8cc"
                 android:textSize="16dp" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/login_arrow_checkbox_style" />
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#939699"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:background="#939699" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,23 +76,30 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
+                android:hint="请输入密码"
+                android:textColorHint="#c4c8cc"
                 android:textSize="16dp" />
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:background="@mipmap/ic_open_eyes"
-                android:layout_gravity="center_vertical"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/eye_checkbox_style" />
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#939699"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:background="#939699" />
+
         <Button
             android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="登录" />
+            android:layout_marginTop="27dp"
+            android:background="@drawable/shape_rounded_rectangle_blue_bg"
+            android:text="登录"
+            android:textColor="#fff"
+            android:textSize="@dimen/text_size_18" />
     </LinearLayout>
 </LinearLayout>
