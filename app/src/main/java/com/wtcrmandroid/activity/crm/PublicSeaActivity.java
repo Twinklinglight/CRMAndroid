@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.crm;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -72,6 +73,13 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                 finish();
             }
         });
+        titlebar.setRightImageResource(R.mipmap.ic_white_search);
+        titlebar.setrightLayoutClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PublicSeaActivity.this,SearchClientLibraryActivity.class).putExtra("kind",1));
+            }
+        });
         tcmbBar.setStrings(new String[]{"会员类型", "主库状态", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
@@ -100,6 +108,8 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                                     tcmbBar.NoCheckStyle(1);
                                     tcmbBar.setIsCheck_number(0);
                                     data.setCustomerKind(text);
+                                    page=1;
+                                    data.setPageSize(page);
                                     presenter.getData(data,0);
 
                                 }
@@ -131,6 +141,8 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                                     tcmbBar.NoCheckStyle(2);
                                     tcmbBar.setIsCheck_number(0);
                                     data.setCurrentStatus(text);
+                                    page=1;
+                                    data.setPageSize(page);
                                     presenter.getData(data,0);
                                 }
                             });
@@ -232,6 +244,8 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                 data.setProvince(area.getSheng());
                 data.setCity(area.getShi());
                 data.setArea(area.getXian());
+                page=1;
+                data.setPageSize(page);
                 presenter.getData(data,0);
             }
         });

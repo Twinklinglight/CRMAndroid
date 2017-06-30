@@ -12,18 +12,17 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.BattlefieldReportActivity;
-import com.wtcrmandroid.activity.journalmanager.JournalManagerActivity;
-import com.wtcrmandroid.main.MainActivity;
+import com.wtcrmandroid.activity.crm.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
 import com.wtcrmandroid.activity.crm.PublicSeaActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
 import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
+import com.wtcrmandroid.activity.journalmanager.JournalManagerActivity;
 import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +40,7 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.tv_pullintocustomer)
     TextView mTvPullintocustomer;       //录入客户
 
-    private boolean isSale = false ; //是销售 或 食品
+    private boolean isSale = true ; //是销售 或 食品
 
     private boolean window;
     private PopupWindow mPopWindow;

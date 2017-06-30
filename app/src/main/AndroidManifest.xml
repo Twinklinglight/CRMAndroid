@@ -48,15 +48,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".main.LoginActivity">
-
-        </activity>
-
-        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity android:name=".main.MainActivity">
+
         </activity>
         <!-- ——————————————————————-外勤模块—————————————————————————— -->
         <!-- 外勤 -->
@@ -102,7 +102,6 @@
         <!-- 写日计划 -->
         <activity android:name=".activity.journalmanager.WriteDayPlanActivity"/>
         <!-- 战报 -->
-        <activity android:name=".activity.BattlefieldReportActivity"/>
         <!-- 写日总结 -->
         <activity android:name=".activity.journalmanager.WriteDaySumActivity"/>
 
@@ -125,6 +124,8 @@
         <activity android:name=".activity.crm.MainClientLibrary"/>
         <activity android:name=".activity.crm.MyClientLibrary"/>
         <activity android:name=".activity.crm.PublicSeaActivity"/>
+        <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
+        <activity android:name=".activity.crm.BattlefieldReportActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 
         <!--######-->

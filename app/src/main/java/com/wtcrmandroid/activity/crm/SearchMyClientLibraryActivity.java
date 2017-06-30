@@ -7,8 +7,8 @@ import android.widget.EditText;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.recycleview.ClientLibraryAdapter;
-import com.wtcrmandroid.model.reponsedata.SearchCustomerReponseData;
+import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;
+import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerReponseData;
 import com.wtcrmandroid.model.requestdata.CompanyNameRetrievalRequestData;
 import com.wtcrmandroid.presenter.activity.SearchClientLibraryPresenter;
 import com.wtcrmandroid.view.RefreshHeaderView;
@@ -27,7 +27,7 @@ import butterknife.OnClick;
  * CRM搜索页面
  */
 
-public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibraryPresenter, List<SearchCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
+public class SearchMyClientLibraryActivity extends BaseActivity<SearchClientLibraryPresenter, List<SearchSalerCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.et_search)
     EditText etSearch;
     @BindView(R.id.swipe_target)
@@ -39,11 +39,10 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
     RefreshLoadMoreFooterView mFooterView;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout mSwipeToLoadLayout;
-    private ClientLibraryAdapter adapter;
+    private MyClientLibraryAdapter adapter;
 
     private CompanyNameRetrievalRequestData data;
 
-    private int kind;
 
     private int page = 1;
 
@@ -56,17 +55,11 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
     protected void initView() {
         presenter = new SearchClientLibraryPresenter(this);
         data = new CompanyNameRetrievalRequestData();
-        kind = getIntent().getIntExtra("kind", 0);
-        rvView.setLayoutManager(new LinearLayoutManager(this));
-        rvView.setLayoutManager(new LinearLayoutManager(this));
-        switch (kind) {
-            case 0:
 
-                break;
-            case 1:
-                adapter.setStyle(1);
-                break;
-        }
+        rvView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        rvView.setAdapter(adapter = new MyClientLibraryAdapter(this));
         mSwipeToLoadLayout.setRefreshHeaderView(mHeaderView);
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
@@ -81,28 +74,15 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
                 finish();
                 break;
             case R.id.tv_right:
-                page = 1;
-                data.setPageSize(page);
                 data.setCompanyName(etSearch.getText().toString());
-                switch (kind) {
-                    //主客户库
-                    case 0:
-                        presenter.searchCompany(data, 0);
-                        break;
-                    //续单公海
-                    case 1:
-                        presenter.searchCompany(data, 0);
-                        break;
-                }
-
-
+                presenter.searchCompany(data, 0);
                 break;
         }
     }
 
 
     @Override
-    public void returnData(int key, List<SearchCustomerReponseData> data) {
+    public void returnData(int key, List<SearchSalerCustomerReponseData> data) {
         switch (key) {
             //刷新返回数据
             case 0:
@@ -111,7 +91,7 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
                 break;
             //加载更多返回数据
             case 1:
-                List<SearchCustomerReponseData> list = adapter.getList();
+                List<SearchSalerCustomerReponseData> list = adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);
@@ -132,5 +112,6 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
         page = page + 1;
         data.setPageSize(page);
         presenter.searchCompany(data, 1);
+
     }
 }

@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wt-pc on 2017/6/26.
+ * Created by wt-pc on 2017/6/30.
  */
 
-public class MyClientLibraryPresenter extends BasePresenter {
-    public MyClientLibraryPresenter(AllView view) {
+public class SearchMyClientLibraryPresenter extends BasePresenter {
+    public SearchMyClientLibraryPresenter(AllView view) {
         super(view);
     }
 
@@ -30,7 +30,8 @@ public class MyClientLibraryPresenter extends BasePresenter {
             list = new Gson().fromJson(response, listType);
         view.returnData(key,list);
     }
-    public void getData(Object object,int key){
-        post("SalerCustomer/searchSalerCustomer",object,key);
+    public void searchCompany(Object object,int key){
+        post("SalerCustomer/searchSalerCustomerByCompany",object,key);
     }
+
 }

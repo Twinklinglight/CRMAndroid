@@ -39,7 +39,7 @@ public class PostRequest extends OkHttpRequest{
 		LoginData loginData =MyApplication.application.getLoginData();
 		if(loginData !=null) {
 			L.e("添加头部");
-			builder.url(url).header("token", loginData.getToken()).addHeader("userid", loginData.getUserID() + "").addHeader("imei", "9209843230929971").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json));
+			builder.url(url).header("token", loginData.getToken()).addHeader("userid", loginData.getUserID() + "").addHeader("imei", "9209843230929972").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json));
 		}else
 			builder.url(url).post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json));
 	}

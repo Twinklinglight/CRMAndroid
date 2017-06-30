@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.crm;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -56,7 +57,6 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     private AreaPopUpWindow toWindow;
 
     private SearchCustomerRequestData data;
-
     private int page=1;
     @Override
     protected int layout() {
@@ -76,7 +76,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         titlebar.setrightLayoutClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MainClientLibrary.this,SearchClientLibraryActivity.class).putExtra("kind",0));
             }
         });
 
@@ -108,6 +108,8 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                                     tcmbBar.NoCheckStyle(1);
                                     tcmbBar.setIsCheck_number(0);
                                     data.setCustomerKind(text);
+                                    page=1;
+                                    data.setPageSize(page);
                                     presenter.getData(data,0);
 
                                 }
@@ -140,6 +142,8 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                                     tcmbBar.NoCheckStyle(2);
                                     tcmbBar.setIsCheck_number(0);
                                     data.setCurrentStatus(text);
+                                    page=1;
+                                    data.setPageSize(page);
                                     presenter.getData(data,0);
                                 }
                             });
@@ -207,6 +211,8 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                 data.setProvince(area.getSheng());
                 data.setCity(area.getShi());
                 data.setArea(area.getXian());
+                page=1;
+                data.setPageSize(page);
                 presenter.getData(data,0);
             }
         });
