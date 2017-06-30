@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/shape_rounded_rectangle_white_bg"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -12,7 +12,7 @@
         android:padding="20dp"
         android:text="@string/complete_condition"
         android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        android:textSize="@dimen/text_size_16" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -40,6 +40,7 @@
                     android:hint="@string/nocomplete_reason"
                     android:padding="5dp"
                     android:textCursorDrawable="@drawable/edittext_cursor_shap"
+                    android:textColor="@color/colorIconText"
                     android:textSize="@dimen/Text36" />
 
             </LinearLayout>
@@ -60,6 +61,7 @@
                     android:hint="@string/nocompelete_time"
                     android:padding="5dp"
                     android:textCursorDrawable="@drawable/edittext_cursor_shap"
+                    android:textColor="@color/colorIconText"
                     android:textSize="@dimen/Text36" />
 
             </LinearLayout>
@@ -82,6 +84,7 @@
                 android:hint="@string/complete_details"
                 android:padding="5dp"
                 android:textCursorDrawable="@drawable/edittext_cursor_shap"
+                android:textColor="@color/colorIconText"
                 android:textSize="@dimen/text_size_13" />
 
         </LinearLayout>
@@ -100,6 +103,7 @@
                 android:button="@null"
                 android:drawableRight="@drawable/selector_radiobutton_background"
                 android:text="已完成"
+                android:textSize="@dimen/Text36"
                 android:textColor="@drawable/selector_text_blue_realblack" />
 
             <RadioButton
@@ -110,6 +114,7 @@
                 android:button="@null"
                 android:drawableRight="@drawable/selector_radiobutton_background"
                 android:text="未完成"
+                android:textSize="@dimen/Text36"
                 android:textColor="@drawable/selector_text_blue_realblack" />
 
         </RadioGroup>
@@ -121,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:visibility="invisible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_sure"

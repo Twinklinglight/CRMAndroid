@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/shape_rounded_rectangle_white_bg"
+    android:padding="20dp">
+
+    <RadioGroup
+        android:id="@+id/rgp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/befor_week"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@drawable/selector_radiobutton_background"
+            android:text=""
+            android:textSize="16dp"
+            android:textColor="@drawable/selector_text_blue_realblack"/>
+
+        <RadioButton
+            android:id="@+id/now_week"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@drawable/selector_radiobutton_background"
+            android:text=""
+            android:textSize="16dp"
+            android:textColor="@drawable/selector_text_blue_realblack"/>
+
+        <RadioButton
+            android:id="@+id/next_week"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@drawable/selector_radiobutton_background"
+            android:text=""
+            android:textSize="16dp"
+            android:textColor="@drawable/selector_text_blue_realblack"/>
+
+        <RadioButton
+            android:id="@+id/last_week"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@drawable/selector_radiobutton_background"
+            android:text=""
+            android:textSize="16dp"
+            android:textColor="@drawable/selector_text_blue_realblack"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_cancle"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="right"
+        android:textSize="@dimen/text_size_16"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/ssdk_oks_cancel"/>
+
+</LinearLayout>

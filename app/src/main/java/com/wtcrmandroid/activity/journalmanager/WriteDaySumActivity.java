@@ -9,9 +9,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.present.WriteDaySumPresenter;
 import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;
 import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.model.reponsedata.WjournalData;
+import com.wtcrmandroid.model.requestdata.WDaySumRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
 
@@ -32,7 +36,7 @@ import butterknife.OnClick;
  * @date 2017/6/6
  */
 
-public class WriteDaySumActivity extends BaseActivity implements CalendarDialog.CalendarListener {
+public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,WjournalData> implements CalendarDialog.CalendarListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -54,6 +58,7 @@ public class WriteDaySumActivity extends BaseActivity implements CalendarDialog.
     @Override
     protected void initView() {
 
+        presenter = new WriteDaySumPresenter(this);
         mTitlebar.setTitletext("写日总结");
         Date time = Calendar.getInstance().getTime();
         SelectDate = new SimpleDateFormat("yyyy-MM-dd EEEE").format(time); //默认为当天
@@ -95,7 +100,9 @@ public class WriteDaySumActivity extends BaseActivity implements CalendarDialog.
     }
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, WjournalData data) {
+
+        showShortToast(data.getMsg());
 
     }
 
@@ -106,6 +113,15 @@ public class WriteDaySumActivity extends BaseActivity implements CalendarDialog.
                 new CalendarDialog(this,this).show();
                 break;
             case R.id.tv_daysum_submit:         //提交
+                WDaySumRequestData wDaySumRequestData = new WDaySumRequestData();
+                wDaySumRequestData.setTime(SelectDate);
+                wDaySumRequestData.setType("day");
+                wDaySumRequestData.setPlan(false);
+                wDaySumRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
+                wDaySumRequestData.setWork(mDataList);
+                wDaySumRequestData.setLearningAndReflection("");
+
+                presenter.SubDaySum(wDaySumRequestData);
                 break;
         }
     }

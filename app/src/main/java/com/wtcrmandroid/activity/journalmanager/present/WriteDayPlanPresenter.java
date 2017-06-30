@@ -1,4 +1,4 @@
-package com.wtcrmandroid.presenter.activity;
+package com.wtcrmandroid.activity.journalmanager.present;
 
 import com.wtcrmandroid.model.WriteDayplanData;
 import com.wtcrmandroid.presenter.BasePresenter;
@@ -24,7 +24,7 @@ public class WriteDayPlanPresenter extends BasePresenter {
     /**
      * 提交后台日计划
      */
-    public void SubDayPlan(List<WriteDayplanData> list){
+    public void SubDayPlan(Object list){
         post("WorkPlan/saveWorkPlan",list,0);
     }
 }

@@ -8,16 +8,32 @@
     android:orientation="vertical"
     android:paddingBottom="20dp">
 
-    <TextView
-        android:id="@+id/tv_plan"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#ffffff"
-        android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:text="本周计划"
-        android:textColor="#2b2f33"
-        android:textSize="16dp" />
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/tv_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="本周总结"
+            android:textColor="#2b2f33"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_xrz_delete"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,32 +122,37 @@
             android:textColorHint="#C5C9CD"
             android:textSize="18dp" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/ll_complete"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="0.5dp"
-        android:background="#ffffff"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:background="@android:color/white">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_proportion" />
-
-        <EditText
-            android:id="@+id/et_result"
+            android:src="@mipmap/ic_xrz_wcqk"/>
+        <TextView
+            android:id="@+id/tv_complete"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@null"
-            android:hint="实际完成结果和进度"
-            android:textColor="#2b2f33"
-            android:textColorHint="#C5C9CD"
-            android:textSize="18dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            style="@style/ContentText"
+            android:hint="@string/hint_daysum_wcqk"
+            android:textColorHint="#C5C9CD"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_grayright_arrow"/>
+
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_add"
         android:layout_width="match_parent"
@@ -150,4 +171,5 @@
             android:textColor="#3B9CFF"
             android:textSize="18dp" />
     </RelativeLayout>
+
 </LinearLayout>

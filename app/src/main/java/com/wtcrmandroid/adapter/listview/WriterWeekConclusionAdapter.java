@@ -7,13 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.utils.iat.Iat;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
+import com.wtcrmandroid.model.WriterWeekSumData;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.iat.Iat;
+import com.wtcrmandroid.view.dialog.CompleteConditionDialog;
 
 import java.util.List;
 
@@ -25,19 +27,40 @@ import butterknife.ButterKnife;
  * 写周计划适配器
  */
 
-public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPlaneData, WriterWeekConclusionAdapter.ViewHolder> {
+public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekSumData, WriterWeekConclusionAdapter.ViewHolder> implements CompleteConditionDialog.CompeleteListener {
+
     public WriterWeekConclusionAdapter(Activity activity, List list) {
         super(activity, list);
     }
 
-
     @Override
-    protected void convert(final ViewHolder holder, int position) {
-        final WriterWeekPlaneData data = list.get(position);
-        holder.tvPlan.setText(data.getWorkNumber() + (position + 1));
+    protected void convert(final ViewHolder holder, final int position) {
+        final WriterWeekSumData data = list.get(position);
+        holder.tvPlan.setText(data.getWorkNumber());
+
+        if (list.size() > 1) {
+            holder.ivDelete.setVisibility(View.VISIBLE);
+            holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }
         holder.etWorkPlane.setText(data.getWorkContent());
         holder.etPlaneTarget.setText(data.getWorkPlanning());
         holder.etProportion.setText(data.getWorkPercentage());
+        holder.tvComplete.setText(data.getWorkComplete());
+
+        holder.llComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CompleteConditionDialog(activity,WriterWeekConclusionAdapter.this,position).show();
+            }
+        });
+
+
         holder.etWorkPlane.addTextChangedListener(new MyTextWatcher(data, position, 0));
         holder.etPlaneTarget.addTextChangedListener(new MyTextWatcher(data, position, 1));
         holder.etProportion.addTextChangedListener(new MyTextWatcher(data, position, 2));
@@ -53,11 +76,7 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
             holder.rlAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    data.setEtWorkPlane(holder.etWorkPlane.getText().toString());
-//                    data.setEtPlaneTarget(holder.etPlaneTarget.getText().toString());
-//                    data.setEtProportion(holder.etProportion.getText().toString());
-//                    list.set(position,data);
-                    WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
+                    WriterWeekSumData writerWeekPlaneData = new WriterWeekSumData();
                     writerWeekPlaneData.setWorkNumber("本周总结");
                     list.add(writerWeekPlaneData);
                     L.e(list.size() + "" + list.get(0).getWorkContent());
@@ -66,9 +85,6 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
             });
         } else {
             holder.rlAdd.setVisibility(View.GONE);
-//            holder.etWorkPlane.setKeyListener(null);
-//            holder.etPlaneTarget.setKeyListener(null);
-//            holder.etProportion.setKeyListener(null);
         }
     }
 
@@ -81,14 +97,20 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
         return view;
     }
 
+    //完成情况
+    @Override
+    public void completeCondition(String text, int position) {
+        list.get(position).setWorkComplete(text);
+        notifyDataSetChanged();
+    }
 
 
     class MyTextWatcher implements TextWatcher {
-        private WriterWeekPlaneData data;
+        private WriterWeekSumData data;
         private int position;
         private int type;
 
-        public MyTextWatcher(WriterWeekPlaneData data, int position, int type) {
+        public MyTextWatcher(WriterWeekSumData data, int position, int type) {
             this.data = data;
             this.position = position;
             this.type = type;
@@ -124,7 +146,7 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
     }
 
     static class ViewHolder {
-        @BindView(R.id.tv_plan)
+        @BindView(R.id.tv_sum)
         TextView tvPlan;
         @BindView(R.id.et_work_plane)
         EditText etWorkPlane;
@@ -132,16 +154,22 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekPl
         EditText etPlaneTarget;
         @BindView(R.id.et_proportion)
         EditText etProportion;
-        @BindView(R.id.et_result)
-        EditText etResult;
         @BindView(R.id.rl_add)
         RelativeLayout rlAdd;
         @BindView(R.id.iv_microphone)
         ImageView ivMicrophone;
+        @BindView(R.id.iv_delete)
+        ImageView ivDelete;
+        @BindView(R.id.tv_complete)
+        TextView tvComplete;
+        @BindView(R.id.ll_complete)
+        LinearLayout llComplete;
+
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
     public void doVoice(final EditText etWorkPlane) {
 
         Iat iat = new Iat(activity);

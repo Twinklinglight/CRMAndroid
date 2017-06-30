@@ -11,9 +11,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.iat.Iat;
 
 import java.util.List;
 
@@ -26,24 +26,37 @@ import butterknife.ButterKnife;
  */
 
 public class WriterWeekPlaneAdapter extends MySmallBaseAdapter<WriterWeekPlaneData, WriterWeekPlaneAdapter.ViewHolder> {
+
+
     public WriterWeekPlaneAdapter(Activity activity, List list) {
         super(activity, list);
     }
 
 
     @Override
-    protected void convert(final ViewHolder holder, int position) {
+    protected void convert(final ViewHolder holder, final int position) {
         final WriterWeekPlaneData data = list.get(position);
-        holder.tvPlan.setText(data.getWorkNumber() + (position + 1));
+        holder.tvPlan.setText(data.getWorkNumber());
         holder.etWorkPlane.setText(data.getWorkContent());
         holder.etPlaneTarget.setText(data.getWorkPlanning());
         holder.etProportion.setText(data.getWorkPercentage());
         holder.ivMicrophone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    doVoice(holder.etWorkPlane);
+                doVoice(holder.etWorkPlane);
             }
         });
+
+        if (list.size()>1){
+            holder.ivDelete.setVisibility(View.VISIBLE);
+            holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }
         holder.etWorkPlane.addTextChangedListener(new MyTextWatcher(data, position, 0));
         holder.etPlaneTarget.addTextChangedListener(new MyTextWatcher(data, position, 1));
         holder.etProportion.addTextChangedListener(new MyTextWatcher(data, position, 2));
@@ -59,7 +72,7 @@ public class WriterWeekPlaneAdapter extends MySmallBaseAdapter<WriterWeekPlaneDa
 //                    data.setEtProportion(holder.etProportion.getText().toString());
 //                    list.set(position,data);
                     WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
-                    writerWeekPlaneData.setWorkNumber("1");
+                    writerWeekPlaneData.setWorkNumber("本周计划");
                     list.add(writerWeekPlaneData);
                     L.e(list.size() + "" + list.get(0).getWorkContent());
                     WriterWeekPlaneAdapter.this.notifyDataSetChanged();
@@ -137,6 +150,8 @@ public class WriterWeekPlaneAdapter extends MySmallBaseAdapter<WriterWeekPlaneDa
         EditText etProportion;
         @BindView(R.id.rl_add)
         RelativeLayout rlAdd;
+        @BindView(R.id.iv_delete)
+        ImageView ivDelete;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

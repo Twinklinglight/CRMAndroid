@@ -1,6 +1,5 @@
 package com.wtcrmandroid.activity.journalmanager;
 
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +9,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
 import com.wtcrmandroid.model.WriteDayplanData;
-import com.wtcrmandroid.presenter.activity.WriteDayPlanPresenter;
+import com.wtcrmandroid.model.requestdata.WDayPlanRequstData;
+import com.wtcrmandroid.activity.journalmanager.present.WriteDayPlanPresenter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
-import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
 
         mList = new ArrayList<>();
         WriteDayplanData writeDayplanData = new WriteDayplanData();
-        writeDayplanData.setWorkSort("A类");
+        writeDayplanData.setWorkSort("");
         mList.add(writeDayplanData);
         mDayPlanAdapter = new WriteDayPlanAdapter(this, mList);
         mLvWriteDayplan.setAdapter(mDayPlanAdapter);
@@ -91,7 +91,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
                 public void onClick(View v) {
 
                     WriteDayplanData writeDayplanData1 = new WriteDayplanData();
-                    writeDayplanData1.setWorkSort("B类");
+                    writeDayplanData1.setWorkSort("");
                     mList.add(writeDayplanData1);
                     mDayPlanAdapter.notifyDataSetChanged();
                 }
@@ -138,7 +138,15 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
     public void onClick() {
 
         Log.i("WriteDayPlanActivity","mlist = "+mList.toString());
-        presenter.SubDayPlan(mList);
+        WDayPlanRequstData wDayPlanRequstData = new WDayPlanRequstData();
+        wDayPlanRequstData.setUserId(3066);
+        wDayPlanRequstData.setType("day");
+        wDayPlanRequstData.setTime(DateSelect);
+        wDayPlanRequstData.setLearningAndReflection("");
+        wDayPlanRequstData.setPlan(true);
+        wDayPlanRequstData.setWork(mList);
+
+        presenter.SubDayPlan(wDayPlanRequstData);
     }
 
     static class ViewHolder1 {

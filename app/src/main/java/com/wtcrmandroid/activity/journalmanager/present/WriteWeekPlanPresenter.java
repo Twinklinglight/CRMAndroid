@@ -1,5 +1,7 @@
-package com.wtcrmandroid.presenter.activity;
+package com.wtcrmandroid.activity.journalmanager.present;
 
+import com.google.gson.Gson;
+import com.wtcrmandroid.model.reponsedata.WjournalData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
@@ -17,9 +19,12 @@ public class WriteWeekPlanPresenter extends BasePresenter{
     @Override
     protected void returnData(int key, String response) {
 
+        WjournalData wjournalData = new Gson().fromJson(response, WjournalData.class);
+        view.returnData(0,wjournalData);
+
     }
-    public void submit(HashMap<String, Object> params){
-//        post("http://192.168.0.7/api/WorkPlan/saveWorkPlan",params,0);
+    public void submit(Object params){
+        post("WorkPlan/saveWorkPlan",params,0);
 
     }
 }

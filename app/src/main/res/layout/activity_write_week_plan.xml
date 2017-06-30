@@ -13,6 +13,7 @@
         android:layout_height="45dp" />
 
     <LinearLayout
+        android:id="@+id/ll_select_date"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:paddingLeft="10dp"
@@ -27,6 +28,7 @@
             android:textColor="#95979A"
            />
         <TextView
+            android:id="@+id/tv_date_show"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
