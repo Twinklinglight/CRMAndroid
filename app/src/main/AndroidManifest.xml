@@ -125,6 +125,7 @@
         <activity android:name=".activity.crm.MyClientLibrary"/>
         <activity android:name=".activity.crm.PublicSeaActivity"/>
         <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
+        <activity android:name=".activity.crm.SearchMyClientLibraryActivity"/>
         <activity android:name=".activity.crm.BattlefieldReportActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 

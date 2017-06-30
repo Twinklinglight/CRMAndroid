@@ -58,7 +58,7 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
         data = new CompanyNameRetrievalRequestData();
         kind = getIntent().getIntExtra("kind", 0);
         rvView.setLayoutManager(new LinearLayoutManager(this));
-        rvView.setLayoutManager(new LinearLayoutManager(this));
+        rvView.setAdapter(adapter = new ClientLibraryAdapter(this));
         switch (kind) {
             case 0:
 

@@ -6,11 +6,12 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;
 import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerReponseData;
 import com.wtcrmandroid.model.requestdata.CompanyNameRetrievalRequestData;
-import com.wtcrmandroid.presenter.activity.SearchClientLibraryPresenter;
+import com.wtcrmandroid.presenter.activity.SearchMyClientLibraryPresenter;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
@@ -27,7 +28,7 @@ import butterknife.OnClick;
  * CRM搜索页面
  */
 
-public class SearchMyClientLibraryActivity extends BaseActivity<SearchClientLibraryPresenter, List<SearchSalerCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
+public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLibraryPresenter, List<SearchSalerCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.et_search)
     EditText etSearch;
     @BindView(R.id.swipe_target)
@@ -53,8 +54,9 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchClientLibr
 
     @Override
     protected void initView() {
-        presenter = new SearchClientLibraryPresenter(this);
+        presenter = new SearchMyClientLibraryPresenter(this);
         data = new CompanyNameRetrievalRequestData();
+        data.setUserId(MyApplication.application.getLoginData().getUserID());
 
         rvView.setLayoutManager(new LinearLayoutManager(this));
 

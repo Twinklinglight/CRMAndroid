@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.crm;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -64,6 +65,13 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
     @Override
     protected void initView() {
         titlebar.setTitletext("我的客户库");
+        titlebar.setRightImageResource(R.mipmap.ic_white_search);
+        titlebar.setrightLayoutClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyClientLibrary.this,SearchMyClientLibraryActivity.class).putExtra("kind",0));
+            }
+        });
         tcmbBar.setStrings(new String[]{"会员类型", "入库来源", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
