@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wtcrmandroid.utils.L;
+
 import java.util.List;
 
 /**
@@ -32,7 +34,14 @@ public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> e
     }
     public void addList(List <T> list){
         this.list = list;
+        notifyDataSetChanged();
+
     }
+
+    public List<T> getList() {
+        return list;
+    }
+
     @Override
     public T1 onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(layoutId, parent, false);
@@ -63,11 +72,10 @@ public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> e
 
     @Override
     public void onBindViewHolder(T1 holder, int position) {
-//        convert(holder, list.get(position));
         if(list!=null){
             convert(holder, list.get(position),position);
-        }else
-        convert(holder, null,position);
+            L.e("youshuju");
+        }
     }
 
     protected abstract  void convert(T1 holder, T bean, int position);
@@ -77,7 +85,7 @@ public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> e
         if(list!=null) {
             return list.size();
         }
-        return 5;
+        return 1;
     }
 
     @Override

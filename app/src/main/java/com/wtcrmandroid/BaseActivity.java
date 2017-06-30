@@ -14,7 +14,6 @@ import butterknife.ButterKnife;
 /**
  * Activity基类
  * 申中佳 2017-05-31
- *
  * @param <T> 网络返回实体类对象
  */
 
@@ -23,11 +22,14 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
     protected T presenter;
 
     @Override
-    public void showShortToast(String text) {
+    public void showShortToast(final String text) {
         L.e(text);
+
         if (!TextUtils.isEmpty(text)) {
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(BaseActivity.this, text, Toast.LENGTH_SHORT).show();
         }
+
+
     }
 
 
@@ -51,9 +53,5 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
      * 初始化方法
      */
     protected abstract void initView();
-//    @Override
-//    public void returnBean(int key, String data) {
-//
-//        returnData(key,list);
-//    }
+
 }

@@ -4,10 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.model.reponsedata.SearchCustomerReponseData;
 import com.wtcrmandroid.presenter.BasePresenter;
-import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.AllView;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,14 +21,15 @@ public class MainClientLibraryPresenter extends BasePresenter {
 
     @Override
     protected void returnData(int key, String response) {
+        List<SearchCustomerReponseData> list=new ArrayList<>();
         Type listType = new TypeToken<List<SearchCustomerReponseData>>() {
         }.getType();
-        List<SearchCustomerReponseData> list = new Gson().fromJson(response, listType);
-        L.e("成功" + list.get(0).getSite());
-        view.returnData(0,list);
+        if(response!=null||!response.equals(""))
+        list = new Gson().fromJson(response, listType);
+        view.returnData(key,list);
 
     }
-    public void getData(Object object){
-        post("AllCustomerList/seachCustomer",object,0);
+    public void getData(Object object,int key){
+        post("AllCustomerList/seachCustomer",object,key);
     }
 }
