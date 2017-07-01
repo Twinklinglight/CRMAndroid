@@ -6,7 +6,7 @@ import java.util.Calendar;
  * Created by wt-pc on 2017/7/1.
  */
 
-public class DateUtils {
+public class DateUtil {
     /**
      * 获取当月的 天数
      * */
