@@ -60,6 +60,12 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
 
         presenter = new WriteDaySumPresenter(this);
         mTitlebar.setTitletext("写日总结");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WriteDaySumActivity.this.finish();
+            }
+        });
         Date time = Calendar.getInstance().getTime();
         SelectDate = new SimpleDateFormat("yyyy-MM-dd EEEE").format(time); //默认为当天
         SetDateText(SelectDate);
@@ -101,9 +107,7 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
 
     @Override
     public void returnData(int key, WjournalData data) {
-
-        showShortToast(data.getMsg());
-
+        this.finish();
     }
 
     @OnClick({R.id.ib_daysum_calender, R.id.tv_daysum_submit})

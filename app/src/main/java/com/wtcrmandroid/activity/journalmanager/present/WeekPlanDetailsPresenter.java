@@ -2,7 +2,7 @@ package com.wtcrmandroid.activity.journalmanager.present;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.model.HtDayplanDetailsData;
+import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
@@ -13,28 +13,27 @@ import java.util.List;
  * Created by ZSC on 2017/7/1.
  */
 
-public class HtDayplanDetailsPresenter extends BasePresenter {
+public class WeekPlanDetailsPresenter extends BasePresenter {
 
-    public HtDayplanDetailsPresenter(AllView view) {
+    public WeekPlanDetailsPresenter(AllView view) {
         super(view);
     }
 
     @Override
     protected void returnData(int key, String response) {
 
-        Type listType = new TypeToken<List<HtDayplanDetailsData>>(){}.getType();
-        List<HtDayplanDetailsData> DdDetailsRd = new Gson().fromJson(response, listType);
-        view.returnData(0,DdDetailsRd);
+        Type type = new TypeToken<List<WriterWeekPlaneData>>() {
+        }.getType();
+        List<WriterWeekPlaneData> list = new Gson().fromJson(response, type);
+
+        view.returnData(0,list);
     }
 
     /**
-     * 获取日计划列表
+     * 周计划详情数据获取
      */
-
-    public void getDayPlanData(Object o){
+    public void GetWeekPlanData(Object o){
 
         post("WorkPlan/getUserWorkPlan",o,0);
-
     }
-
 }

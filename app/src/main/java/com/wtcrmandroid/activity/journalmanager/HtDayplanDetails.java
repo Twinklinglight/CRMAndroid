@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -14,7 +15,6 @@ import com.wtcrmandroid.model.requestdata.DayDetailsRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,7 +25,7 @@ import butterknife.BindView;
  * @author zxd
  * @date 2017/6/9
  */
-public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Object> {
+public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,List<HtDayplanDetailsData>> {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -48,7 +48,7 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Obj
         presenter = new HtDayplanDetailsPresenter(this);
 
         DayDetailsRequestData dayDetailsRequestData = new DayDetailsRequestData();
-        dayDetailsRequestData.setNowDate("");
+        dayDetailsRequestData.setNowDate("2017/6/13");
         dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRequestData.setType("day");
         dayDetailsRequestData.setIsPlan(true);
@@ -63,14 +63,10 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Obj
                 finish();
             }
         });
-        getData();
-        mAdapter = new HtDayplanDetailsAdapter(this,mData);
-        mLvDayplanDetails.setDivider(null);
-        mLvDayplanDetails.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+
     }
 
-    //测试数据
+    /*//测试数据
     public void getData() {
         mData = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -82,10 +78,16 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Obj
 
             mData.add(htDayplanDetailsData);
         }
-    }
+    }*/
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, List<HtDayplanDetailsData> data) {
+        Log.i("returnData","data="+data.toString());
+        mData = data;
+        mAdapter = new HtDayplanDetailsAdapter(this,mData);
+        mLvDayplanDetails.setDivider(null);
+        mLvDayplanDetails.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
 
     }
 }

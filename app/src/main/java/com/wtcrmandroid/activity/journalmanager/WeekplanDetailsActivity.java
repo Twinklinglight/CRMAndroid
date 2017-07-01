@@ -3,9 +3,12 @@ package com.wtcrmandroid.activity.journalmanager;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.activity.journalmanager.present.WeekPlanDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
+import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 
@@ -19,7 +22,7 @@ import butterknife.BindView;
 *  @date 2017/6/12
 */
 
-public class WeekplanDetailsActivity extends BaseActivity {
+public class WeekplanDetailsActivity extends BaseActivity<WeekPlanDetailsPresenter,List<WriterWeekPlaneData>> {
 
     @BindView(R.id.titlebar)
     TitleBar mTitleBar;
@@ -39,19 +42,30 @@ public class WeekplanDetailsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        presenter = new WeekPlanDetailsPresenter(this);
+        WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
+        weekDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
+        weekDetailsRequestData.setType("week");
+        weekDetailsRequestData.setPlan(true);
+        weekDetailsRequestData.setWeekBegin("2017/6/12");
+        weekDetailsRequestData.setWeekEnd("2017/6/18");
+
+        presenter.GetWeekPlanData(weekDetailsRequestData);
         mTitleBar.setTitletext("日志详情");
+
         mDataList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
-            writerWeekPlaneData.setWorkNumber("本周计划"+(i+1));
-            mDataList.add(writerWeekPlaneData);
-        }
-        mAdapter = new WeekDayplanAdapter(this,mDataList);
-        mLvWeekplan.setAdapter(mAdapter);
+//        for (int i = 0; i < 3; i++) {
+//            WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
+//            writerWeekPlaneData.setWorkNumber("本周计划"+(i+1));
+//            mDataList.add(writerWeekPlaneData);
+//        }
+
     }
 
     @Override
-    public void returnData(int key, Object data) {
-
+    public void returnData(int key, List<WriterWeekPlaneData> data) {
+        mDataList = data;
+        mAdapter = new WeekDayplanAdapter(this,mDataList);
+        mLvWeekplan.setAdapter(mAdapter);
     }
 }

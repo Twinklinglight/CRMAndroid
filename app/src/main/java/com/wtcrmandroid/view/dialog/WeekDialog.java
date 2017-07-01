@@ -119,7 +119,7 @@ public class WeekDialog extends Dialog {
                 calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, +(5));
                 endDay = format.format(calendar.getTime());
-                calendar.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+                calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, -(1));
                 startDay = format.format(calendar.getTime());
                 break;
@@ -127,7 +127,7 @@ public class WeekDialog extends Dialog {
                 calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, +(4));
                 endDay = format.format(calendar.getTime());
-                calendar.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+                calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, -(2));
                 startDay = format.format(calendar.getTime());
                 break;
@@ -135,7 +135,7 @@ public class WeekDialog extends Dialog {
                 calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, +(3));
                 endDay = format.format(calendar.getTime());
-                calendar.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+                calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, -(3));
                 startDay = format.format(calendar.getTime());
                 break;
@@ -153,7 +153,7 @@ public class WeekDialog extends Dialog {
                 calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, +(1));
                 endDay = format.format(calendar.getTime());
-                calendar.set(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+                calendar.set(Year,Month-1,Day);
                 calendar.add(Calendar.DAY_OF_MONTH, -(5));
                 startDay = format.format(calendar.getTime());
                 break;

@@ -17,6 +17,7 @@ import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
+import com.wtcrmandroid.view.dialog.CalendarDialog;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
 import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
@@ -34,7 +35,7 @@ import butterknife.BindView;
  * @date 2017/6/6
  */
 
-public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<LoginData>> implements OnLoadMoreListener, OnRefreshListener {
+public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<LoginData>> implements OnLoadMoreListener, OnRefreshListener, CalendarDialog.CalendarListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -65,12 +66,18 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
     @Override
     protected void initView() {
         mTitlebar.setTitletext("我的日志");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyJournalActivity.this.finish();
+            }
+        });
         tcmbBar.setStrings(new String[]{"类型","时间"});
 
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
-                switch (i){
+                switch (i){         //选择类型
                     case 1:
                         if (TypeWindows == null){
                             List list = new ArrayList();
@@ -93,7 +100,8 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
                         }
                         TypeWindows.show();
                         break;
-                    case 2:
+                    case 2:     //选择日期
+                        new CalendarDialog(MyJournalActivity.this,MyJournalActivity.this).show();
                         break;
                 }
 
@@ -161,6 +169,13 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
     }
 
+    //日期选中的回调
+    @Override
+    public void CalendarSelcet(String date) {
+
+
+    }
+
     @Override
     public void onLoadMore() {
         mHandler.postDelayed(new Runnable() {
@@ -180,4 +195,6 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
             }
         }, 2000);
     }
+
+
 }

@@ -1,9 +1,11 @@
 package com.wtcrmandroid.adapter.listview;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.*;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
@@ -19,12 +21,14 @@ import butterknife.ButterKnife;
 
 public class HtDayplanDetailsAdapter extends MySmallBaseAdapter<HtDayplanDetailsData, HtDayplanDetailsAdapter.ViewHolder> {
 
+
     public HtDayplanDetailsAdapter(Activity activity, List<HtDayplanDetailsData> list) {
         super(activity, list);
     }
 
     @Override
     protected void convert(ViewHolder holder, int position) {
+
 
         HtDayplanDetailsData htDayplanDetailsData = list.get(position);
         holder.mTvWorkSort.setText(htDayplanDetailsData.getWorkSort());

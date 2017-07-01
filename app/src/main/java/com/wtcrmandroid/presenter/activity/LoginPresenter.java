@@ -7,6 +7,7 @@ import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.requestdata.LoginRequestData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.MD5Utils;
 import com.wtcrmandroid.view.AllView;
 
 import java.lang.reflect.Type;
@@ -39,12 +40,12 @@ public class LoginPresenter extends BasePresenter{
      */
     public void login() {
         LoginRequestData loginRequestData = new LoginRequestData();
-//        loginRequestData.setUserName("shenzhongjia");
-//        loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
-//        loginRequestData.setImei("9209843230929971");
-        loginRequestData.setUserName("like");
+        loginRequestData.setUserName("shenzhongjia");
+        loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
+        loginRequestData.setImei("9209843230929971");
+        /*loginRequestData.setUserName("like");
         loginRequestData.setUserPass("766aed991c06fd48");
-        loginRequestData.setImei("9209843230929972");
+        loginRequestData.setImei("9209843230929972");*/
         L.e(loginRequestData.toString());
         post("Login/UserLogin", loginRequestData,0);
 

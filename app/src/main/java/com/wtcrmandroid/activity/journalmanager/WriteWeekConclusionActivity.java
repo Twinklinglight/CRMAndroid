@@ -46,7 +46,16 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
 
     @Override
     protected void initView() {
+        presenter = new WriteWeekSumPresenter(this);
+
         titlebar.setTitletext("写周总结");
+        titlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WriteWeekConclusionActivity.this.finish();
+            }
+        });
+
         nowWeek = new DateUtils().getNowWeek();
         tvDateShow.setText(nowWeek);
         WriterWeekSumData writerWeekPlaneData = new WriterWeekSumData();
@@ -60,7 +69,7 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
     @Override
     public void returnData(int key, WjournalData data) {
 
-        showShortToast(data.getMsg());
+        this.finish();
 
     }
 

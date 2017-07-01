@@ -21,7 +21,6 @@ public class WriteDaySumPresenter extends BasePresenter {
     protected void returnData(int key, String response) {
 
         WjournalData wjournalData = new Gson().fromJson(response, WjournalData.class);
-        L.e("成功" + wjournalData.toString());
         view.returnData(key, wjournalData);
 
     }

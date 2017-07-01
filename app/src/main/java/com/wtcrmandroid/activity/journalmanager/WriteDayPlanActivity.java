@@ -67,7 +67,12 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
 
         presenter = new WriteDayPlanPresenter(this);
         mTitlebar.setTitletext("写日计划");
-
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WriteDayPlanActivity.this.finish();
+            }
+        });
         Date time = Calendar.getInstance().getTime();
         DateSelect = new SimpleDateFormat("yyyy-MM-dd EEEE").format(time);
         SetDateText(DateSelect);
@@ -111,13 +116,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
     @Override
     public void returnData(int key, WjournalData data) {
 
-        Log.i("returnData",data.getMsg()+key);
-
-        if (key == 0){
-
-            Toast.makeText(this, data.getMsg(), Toast.LENGTH_SHORT).show();
-            WriteDayPlanActivity.this.finish();
-        }
+        WriteDayPlanActivity.this.finish();
 
     }
 

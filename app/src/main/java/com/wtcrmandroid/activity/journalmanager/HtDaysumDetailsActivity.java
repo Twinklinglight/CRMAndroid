@@ -58,7 +58,7 @@ public class HtDaysumDetailsActivity extends BaseActivity {
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                HtDaysumDetailsActivity.this.finish();
             }
         });
         getData();

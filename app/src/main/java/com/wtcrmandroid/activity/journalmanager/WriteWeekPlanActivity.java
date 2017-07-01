@@ -49,7 +49,14 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
 
     @Override
     protected void initView() {
+        presenter = new WriteWeekPlanPresenter(this);
         titlebar.setTitletext("写周计划");
+        titlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WriteWeekPlanActivity.this.finish();
+            }
+        });
         nowWeek = new DateUtils().getNowWeek();
         tvDateShow.setText(nowWeek);
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
@@ -64,7 +71,7 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
         list.add(writerWeekPlaneData);
         adapter = new WriterWeekPlaneAdapter(this, list);
         lvWriteWorkPlan.setAdapter(adapter);
-        presenter = new WriteWeekPlanPresenter(this);
+
 
     }
 
@@ -93,7 +100,7 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
     @Override
     public void returnData(int key, WjournalData data) {
 
-        showShortToast(data.getMsg());
+        WriteWeekPlanActivity.this.finish();
     }
 
     /**
