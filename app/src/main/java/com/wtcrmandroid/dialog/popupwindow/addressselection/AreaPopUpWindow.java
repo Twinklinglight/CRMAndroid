@@ -63,6 +63,7 @@ public class AreaPopUpWindow {
         tvSelectedArea = (TextView) contentView.findViewById(R.id.tv_area_pop_window_selected);
         tvBackUp = (TextView) contentView.findViewById(R.id.tv_area_pop_window_backup);
         backUp();
+        tvBackUp.setText("全国");
         popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, false);
 
 //        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
@@ -91,13 +92,16 @@ public class AreaPopUpWindow {
         mAdapter.setOnAreaClickListener(new SelectAreaRecyclerAdapter.OnAreaClickListener() {
             @Override
             public void onAreaClick(Area area, int whichToShow) {
-                toShow = whichToShow;
+
                 switch (whichToShow) {
                     case SelectAreaRecyclerAdapter.SHOW_PROVINCE:
                         showCity(area);
+                        tvBackUp.setText("返回上一级");
+                        toShow = SelectAreaRecyclerAdapter.SHOW_CITY;
                         break;
                     case SelectAreaRecyclerAdapter.SHOW_CITY:
                         showTown(area);
+                        toShow = SelectAreaRecyclerAdapter.SHOW_TOWN;
                         break;
                     case SelectAreaRecyclerAdapter.SHOW_TOWN:
                         selectAreaListener.selectAreaOk(area, parentView);
@@ -116,13 +120,21 @@ public class AreaPopUpWindow {
             public void onClick(View view) {
                 switch (toShow) {
                     case SelectAreaRecyclerAdapter.SHOW_PROVINCE:
-                        showProvince();
+                        Area area=new Area();
+                        area.setSheng("");
+                        area.setShi("");
+                        area.setXian("");
+                        selectAreaListener.selectAreaOk(area, parentView);
+                        disMissPopWindow();
+
                         break;
                     case SelectAreaRecyclerAdapter.SHOW_CITY:
-                        showCity(areaProvince);
+                        showProvince();
+                        tvBackUp.setText("全国");
                         toShow = SelectAreaRecyclerAdapter.SHOW_PROVINCE;
                         break;
                     case SelectAreaRecyclerAdapter.SHOW_TOWN:
+                        showCity(areaProvince);
                         toShow=SelectAreaRecyclerAdapter.SHOW_CITY;
                         break;
                 }

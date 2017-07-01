@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.field;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,10 +18,10 @@ import butterknife.BindView;
 
 /**
  * Created by wt-pc on 2017/6/19.
- * 我的拜访记录
+ * 客户拜访详情
  */
 
-public class MyCallRecordActivity extends BaseActivity {
+public class CustomerVisitDetailsListActivity extends BaseActivity {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.rv_view)
@@ -38,7 +39,14 @@ public class MyCallRecordActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        titlebar.setTitletext("我的拜访记录");
+        titlebar.setTitletext("客户拜访详情");
+        titlebar.setRightText("地图模式");
+        titlebar.setRightOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CustomerVisitDetailsListActivity.this,CustomerVisitDetailsMapActivity.class));
+            }
+        });
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

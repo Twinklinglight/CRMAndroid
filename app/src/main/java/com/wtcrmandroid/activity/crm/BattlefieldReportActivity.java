@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.crm;
 
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,7 +43,8 @@ public class BattlefieldReportActivity extends BaseActivity {
     private boolean window;
     private TitlePopupWindow titlePopupWindow;
     private FragmentAdapter fragmentAdapter;
-    private BaseFragment[] fragments=new BaseFragment[]{new BattlefieldReportFragment(),new BattlefieldReportFragment(),new TotalAchievementsFragment()};
+    private BaseFragment[] fragments = new BaseFragment[]{new BattlefieldReportFragment(), new TotalAchievementsFragment()};
+
     @Override
     public void returnData(int key, Object data) {
 
@@ -55,37 +57,75 @@ public class BattlefieldReportActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        fragmentAdapter= new FragmentAdapter(this,fragments,R.id.fl_view);
+        fragmentAdapter = new FragmentAdapter(this, fragments, R.id.fl_view);
+
 
     }
 
-    @OnClick(R.id.ll_center)
-    public void onViewClicked() {
-        if(titlePopupWindow==null) {
-            List list = new ArrayList();
-            list.add("销售战报");
-            list.add("总业绩");
-            titlePopupWindow = new TitlePopupWindow(this, rlTitle, list, 0, -1, new PoppupWindowTitleAdapter.oNclicklistner() {
-                @Override
-                public void oNclicklistner(String data, int position) {
-                    tvCenter.setText(data);
-                    titlePopupWindow.dismiss();
-                    fragmentAdapter.Changed(position);
-                    L.e(position+"yemian");
 
+    @OnClick({R.id.iv_left, R.id.ll_center})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_left:
+                finish();
+                break;
+            case R.id.ll_center:
+                if (titlePopupWindow == null) {
+                    List list = new ArrayList();
+                    list.add("销售战报");
+                    list.add("总业绩");
+                    titlePopupWindow = new TitlePopupWindow(this, rlTitle, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
+                        @Override
+                        public void oNclicklistner(String data, int position) {
+                            tvCenter.setText(data);
+                            titlePopupWindow.dismiss();
+                            window = false;
+                            fragmentAdapter.Changed(position);
+                            L.e(position + "yemian");
+
+                        }
+                    });
                 }
-            });
-        }
-        if(!window) {
-            titlePopupWindow.show();
-            window=true;
-        }
-        else {
-            titlePopupWindow.dismiss();
-            window=false;
-        }
+                if (!window) {
+                    titlePopupWindow.show();
+                    window = true;
+                } else {
+                    titlePopupWindow.dismiss();
+                    window = false;
+                }
+//
 
+                break;
+        }
     }
+
+//    @OnClick(R.id.ll_center)
+//    public void onViewClicked() {
+//        if (titlePopupWindow == null) {
+//            List list = new ArrayList();
+//            list.add("销售战报");
+//            list.add("总业绩");
+//            titlePopupWindow = new TitlePopupWindow(this, rlTitle, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
+//                @Override
+//                public void oNclicklistner(String data, int position) {
+//                    tvCenter.setText(data);
+//                    titlePopupWindow.dismiss();
+//                    window = false;
+//                    fragmentAdapter.Changed(position);
+//                    L.e(position + "yemian");
+//
+//                }
+//            });
+//        }
+//        if (!window) {
+//            titlePopupWindow.show();
+//            window = true;
+//        } else {
+//            titlePopupWindow.dismiss();
+//            window = false;
+//        }
+//
+//    }
 
 
 }

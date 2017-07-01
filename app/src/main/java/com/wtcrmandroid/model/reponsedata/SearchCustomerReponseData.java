@@ -1,5 +1,7 @@
 package com.wtcrmandroid.model.reponsedata;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by wt-pc on 2017/6/26.
  */
@@ -17,7 +19,7 @@ public class SearchCustomerReponseData {
      * CompanyName : 1583105
      * rowid : 1
      */
-
+    @SerializedName("site")
     private String site;
     private String Attribution;
     private String DataBaseID;

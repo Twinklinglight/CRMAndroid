@@ -122,10 +122,10 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
 
     //日期选择回调
     @Override
-    public void CalendarSelcet(String date) {
+    public void CalendarSelcet(String datetext,Date data) {
 
-        SetDateText(date);
-        DateSelect = date;
+        SetDateText(datetext);
+        DateSelect = datetext;
     }
 
     /**
@@ -157,6 +157,8 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
 
         presenter.SubDayPlan(wDayPlanRequstData);
     }
+
+
 
     static class ViewHolder1 {
         @BindView(R.id.rl_addjob)

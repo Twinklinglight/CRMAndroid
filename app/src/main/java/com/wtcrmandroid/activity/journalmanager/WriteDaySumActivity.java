@@ -132,9 +132,9 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
 
     //日历选择的回调
     @Override
-    public void CalendarSelcet(String date) {
-        SelectDate = date;
-        SetDateText(date);
+    public void CalendarSelcet(String datetext,Date date) {
+        SelectDate = datetext;
+        SetDateText(datetext);
     }
 
 

@@ -68,6 +68,7 @@ public class FieldStatisticsAcrivity extends BaseActivity {
                                     titleLeftPopupWindow.dismiss();
                                     tcmbBar.setLeftText(data);
                                     tcmbBar.NoCheckStyle(1);
+                                    tcmbBar.setIsCheck_number(0);
                                 }
                             });
 
@@ -91,6 +92,11 @@ public class FieldStatisticsAcrivity extends BaseActivity {
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter=new FieldStatisticaAdapter(this));
+        List list= new ArrayList();
+        list.add("dsfas");
+        list.add("dsfas");
+        list.add("dsfa");
+        adapter.addList(list);
     }
 
 

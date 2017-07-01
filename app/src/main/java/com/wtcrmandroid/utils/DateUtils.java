@@ -1,5 +1,13 @@
 package com.wtcrmandroid.utils;
 
+import java.util.Calendar;
+
+/**
+ * Created by wt-pc on 2017/7/1.
+ */
+
+public class DateUtils {
+
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
@@ -9,7 +17,6 @@ import java.util.Calendar;
  * Created by ZSC on 2017/6/30.
  */
 
-public class DateUtils {
     private Calendar calendar;
     private int Year,Month,Day;
     private String startDay;    //起始日期
@@ -88,5 +95,16 @@ public class DateUtils {
                 break;
         }
         return startDay + "-" + endDay;
+    }
+    /**
+     * 获取当月的 天数
+     * */
+    public static int getCurrentMonthDay() {
+
+        Calendar a = Calendar.getInstance();
+        a.set(Calendar.DATE, 1);
+        a.roll(Calendar.DATE, -1);
+        int maxDate = a.get(Calendar.DATE);
+        return maxDate;
     }
 }

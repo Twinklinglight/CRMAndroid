@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by wt-pc on 2017/6/19.
+ * 客户拜访情况
  */
 
 public class CustomerCallSituationAdapter extends BaseRecycleAdapter<String,CustomerCallSituationAdapter.ViewHolder> {
@@ -32,7 +33,7 @@ public class CustomerCallSituationAdapter extends BaseRecycleAdapter<String,Cust
         }else {
             holder.vTop.setVisibility(View.VISIBLE);
         }
-        if(position==4)
+        if(position==list.size()-1)
             holder.vBottom.setVisibility(View.INVISIBLE);
         else
             holder.vBottom.setVisibility(View.VISIBLE);
