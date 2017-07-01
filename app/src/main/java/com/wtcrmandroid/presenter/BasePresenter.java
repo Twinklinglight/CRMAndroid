@@ -1,5 +1,8 @@
 package com.wtcrmandroid.presenter;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.wtcrmandroid.Const;
 import com.wtcrmandroid.httpfactory.HttpRequest;
 import com.wtcrmandroid.httpfactory.callback.StringCallBack;
@@ -13,9 +16,11 @@ import com.wtcrmandroid.view.AllView;
 
 public abstract class BasePresenter {
     protected AllView view;
-
+    Handler mainHandler;
     public BasePresenter(AllView view) {
         this.view = view;
+        mainHandler = new Handler(Looper.getMainLooper());
+
     }
 
     protected abstract void returnData(int key, String response);
@@ -28,8 +33,15 @@ public abstract class BasePresenter {
             }
 
             @Override
-            public void onResponse(String response) {
-                returnData(key, response);
+            public void onResponse(final String response) {
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //已在主线程中，可以更新UI
+                        returnData(key, response);
+                    }
+                });
+
 
             }
 

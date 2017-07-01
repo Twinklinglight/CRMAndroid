@@ -5,14 +5,13 @@ package com.wtcrmandroid.model.requestdata;
  */
 
 public class SearchCustomerRequestData {
-    private int pageSize=1;
-    private String attribution ="WT";
-    private String customerKind="";
-    private String currentStatus ="";
-    private String province="" ;
-    private String city ="";
-    private String area ="";
-
+    private int pageSize = 1;
+    private String attribution = "WT";
+    private String customerKind = "";
+    private String currentStatus = "";
+    private String province = "";
+    private String city = "";
+    private String area = "";
 
 
     public int getPageSize() {
@@ -28,9 +27,11 @@ public class SearchCustomerRequestData {
     }
 
     public void setCustomerKind(String customerKind) {
-        this.customerKind = customerKind;
+        if (customerKind.equals("全部")) {
+            this.customerKind = "";
+        } else
+            this.customerKind = customerKind;
     }
-
 
 
     public String getProvince() {
@@ -70,6 +71,15 @@ public class SearchCustomerRequestData {
     }
 
     public void setCurrentStatus(String currentStatus) {
-        this.currentStatus = currentStatus;
+        if (currentStatus.equals("全部")) {
+            this.currentStatus = "";
+        } else if (currentStatus.equals("公海")) {
+            this.currentStatus = "free";
+        } else if (currentStatus.equals("销售库")) {
+            this.currentStatus = "Sale";
+        } else if (currentStatus.equals("成单库")) {
+            this.currentStatus = "Order";
+        } else
+            this.currentStatus = "VerifyIsOne";
     }
 }

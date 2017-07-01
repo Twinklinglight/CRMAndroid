@@ -41,6 +41,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
         presenter=new LoginPresenter(this);
         TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
         L.e(tm.getDeviceId()+"--");
+        presenter=new LoginPresenter(this);
         WTDataBaseManager.getsInstance().initDatabase(this);
         etPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
 

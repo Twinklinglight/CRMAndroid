@@ -48,7 +48,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".main.LoginActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -103,7 +102,6 @@
         <!-- 写日计划 -->
         <activity android:name=".activity.journalmanager.WriteDayPlanActivity"/>
         <!-- 战报 -->
-        <activity android:name=".activity.BattlefieldReportActivity"/>
         <!-- 写日总结 -->
         <activity android:name=".activity.journalmanager.WriteDaySumActivity"/>
 
@@ -126,6 +124,9 @@
         <activity android:name=".activity.crm.MainClientLibrary"/>
         <activity android:name=".activity.crm.MyClientLibrary"/>
         <activity android:name=".activity.crm.PublicSeaActivity"/>
+        <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
+        <activity android:name=".activity.crm.SearchMyClientLibraryActivity"/>
+        <activity android:name=".activity.crm.BattlefieldReportActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 
         <!--######-->

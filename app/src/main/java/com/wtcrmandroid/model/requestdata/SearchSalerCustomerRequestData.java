@@ -35,7 +35,10 @@ public class SearchSalerCustomerRequestData {
     }
 
     public void setCustomerKind(String customerKind) {
-        this.customerKind = customerKind;
+        if (customerKind.equals("全部")) {
+            this.customerKind = "";
+        } else
+            this.customerKind = customerKind;
     }
 
     public String getPersonalRecord() {
@@ -43,7 +46,14 @@ public class SearchSalerCustomerRequestData {
     }
 
     public void setPersonalRecord(String personalRecord) {
-        this.personalRecord = personalRecord;
+        if(personalRecord.equals("全部")) {
+            this.personalRecord = "";
+        }else if(personalRecord.equals("主库挑选")){
+            this.personalRecord = "SelectA";
+        }else if(personalRecord.equals("自己添加")){
+            this.personalRecord = "Hand";
+        }else
+            this.personalRecord = "Assign";
     }
 
     public String getProvince() {

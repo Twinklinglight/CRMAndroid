@@ -1,4 +1,4 @@
-package com.wtcrmandroid.activity;
+package com.wtcrmandroid.activity.crm;
 
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -7,14 +7,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.FragmentAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
-import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
-import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.fragment.battlefieldreport.BattlefieldReportFragment;
 import com.wtcrmandroid.fragment.battlefieldreport.TotalAchievementsFragment;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 
 import java.util.ArrayList;
 import java.util.List;

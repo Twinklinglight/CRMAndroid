@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/bt_view"
             android:layout_width="75dp"
             android:layout_height="25dp"
             android:layout_centerVertical="true"
@@ -49,6 +50,7 @@
                 android:gravity="center_vertical">
 
                 <TextView
+                    android:id="@+id/tv_kind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -62,6 +64,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tv_source"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -75,6 +78,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tv_library_kind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -84,6 +88,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -93,6 +98,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_company_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
