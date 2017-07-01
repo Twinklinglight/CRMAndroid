@@ -7,12 +7,14 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
 import com.wtcrmandroid.model.WriteDayplanData;
+import com.wtcrmandroid.model.reponsedata.WjournalData;
 import com.wtcrmandroid.model.requestdata.WDayPlanRequstData;
 import com.wtcrmandroid.activity.journalmanager.present.WriteDayPlanPresenter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -35,7 +37,7 @@ import butterknife.OnClick;
  * @date 2017/6/8
  */
 
-public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Object> implements CalendarDialog.CalendarListener{
+public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,WjournalData> implements CalendarDialog.CalendarListener{
 
 
     @BindView(R.id.lv_write_dayplan)
@@ -107,7 +109,15 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
     }
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, WjournalData data) {
+
+        Log.i("returnData",data.getMsg()+key);
+
+        if (key == 0){
+
+            Toast.makeText(this, data.getMsg(), Toast.LENGTH_SHORT).show();
+            WriteDayPlanActivity.this.finish();
+        }
 
     }
 

@@ -135,7 +135,9 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
                 if (position == 0) {
 
-                    startActivity(new Intent(MyJournalActivity.this, HtDayplanDetails.class));
+                    Intent intent = new Intent(MyJournalActivity.this, HtDayplanDetails.class);
+                    intent.putExtra("date","");
+                    startActivity(intent);
 //                    startActivity(new Intent(MyJournalActivity.this, XsDayplanDetailsActivity.class));
 
                 } else if (position == 1) {

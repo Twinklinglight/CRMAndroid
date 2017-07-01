@@ -5,9 +5,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.activity.journalmanager.present.HtDayplanDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
+import com.wtcrmandroid.model.requestdata.DayDetailsRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
 
@@ -22,14 +25,14 @@ import butterknife.BindView;
  * @author zxd
  * @date 2017/6/9
  */
-public class HtDayplanDetails extends BaseActivity {
+public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Object> {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
     @BindView(R.id.iv_journal_type)
     ImageView mIvJournalType;       //日志类型图标
     @BindView(R.id.tv_journal_type)
-    TextView mTvJournalType;        //日志类型图标
+    TextView mTvJournalType;        //日志类型内容
     @BindView(R.id.lv_dayplan_details)
     ListView mLvDayplanDetails;     //日志详情列表
     private HtDayplanDetailsAdapter mAdapter;
@@ -42,6 +45,15 @@ public class HtDayplanDetails extends BaseActivity {
 
     @Override
     protected void initView() {
+        presenter = new HtDayplanDetailsPresenter(this);
+
+        DayDetailsRequestData dayDetailsRequestData = new DayDetailsRequestData();
+        dayDetailsRequestData.setNowDate("");
+        dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
+        dayDetailsRequestData.setType("day");
+        dayDetailsRequestData.setIsPlan(true);
+        presenter.getDayPlanData(dayDetailsRequestData);
+
         mTitlebar.setTitletext("日志详情");
 
         //返回
