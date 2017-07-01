@@ -10,6 +10,9 @@ import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.CustomerCallSituationAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 
 /**
@@ -44,6 +47,11 @@ public class CustomerCallSituationActivity extends BaseActivity {
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new CustomerCallSituationAdapter(this));
+        List list= new ArrayList();
+        list.add("dsfas");
+        list.add("dsfas");
+        list.add("dsfa");
+        adapter.addList(list);
     }
 
 

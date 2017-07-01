@@ -4,13 +4,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
-import com.wtcrmandroid.adapter.recycleview.FieldStatisticaAdapter;
+import com.wtcrmandroid.adapter.recycleview.CustomerCallStatisticaAdapter;
+import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -42,6 +46,7 @@ public class CustomerCallStatisticsAcrivity extends BaseActivity {
     @Override
     protected void initView() {
         titlebar.setTitletext("客户拜访统计");
+
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,18 +57,47 @@ public class CustomerCallStatisticsAcrivity extends BaseActivity {
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
+                switch (i) {
+                case 1:
+                //左边弹窗
+                if (titleLeftPopupWindow == null) {
+                    List list = new ArrayList();
+                    list.add("物通市场部");
+                    titleLeftPopupWindow = new TitlePopupWindow(CustomerCallStatisticsAcrivity.this, tcmbBar, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
+                        @Override
+                        public void oNclicklistner(String data, int position) {
+                            titleLeftPopupWindow.dismiss();
+                            tcmbBar.setLeftText(data);
+                            tcmbBar.NoCheckStyle(1);
+                            tcmbBar.setIsCheck_number(0);
+                        }
+                    });
 
+                }
+                    titleLeftPopupWindow.show();
+                    break;
+                }
 
             }
 
             @Override
             public void isNoSelected(int i) {
+                switch (i){
+                    case 1:
+                        titleLeftPopupWindow.dismiss();
+                        break;
 
+                }
 
             }
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
-        rvView.setAdapter(adapter=new FieldStatisticaAdapter(this));
+        rvView.setAdapter(adapter=new CustomerCallStatisticaAdapter(this));
+        List list= new ArrayList();
+        list.add("dsfas");
+        list.add("dsfas");
+        list.add("dsfa");
+        adapter.addList(list);
     }
 
 

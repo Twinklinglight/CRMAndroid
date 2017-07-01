@@ -17,7 +17,7 @@ public class ClockRecordPresenter extends BasePresenter {
     protected void returnData(int key, String response) {
         L.e("成功" + response);
     }
-    public void sedPost(Object object){
+    public void sedPost(Object object,int key){
         post("OutSide/listPersonSignIn",object,0);
     }
 }

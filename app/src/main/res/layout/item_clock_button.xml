@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <Button
+    <com.wtcrmandroid.view.custompricing.WaveRipView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="打卡"
+        android:layout_height="130dp"
         />
+
 
 
 </RelativeLayout>

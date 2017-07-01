@@ -66,6 +66,12 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
     protected void initView() {
         titlebar.setTitletext("我的客户库");
         titlebar.setRightImageResource(R.mipmap.ic_white_search);
+        titlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         titlebar.setrightLayoutClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

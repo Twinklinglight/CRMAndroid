@@ -1,6 +1,5 @@
 package com.wtcrmandroid.activity.journalmanager;
 
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.wtcrmandroid.model.WriteDayplanData;
 import com.wtcrmandroid.presenter.activity.WriteDayPlanPresenter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
-import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -113,10 +111,10 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
 
     //日期选择回调
     @Override
-    public void CalendarSelcet(String date) {
+    public void CalendarSelcet(String datetext,Date data) {
 
-        SetDateText(date);
-        DateSelect = date;
+        SetDateText(datetext);
+        DateSelect = datetext;
     }
 
     /**
@@ -140,6 +138,8 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
         Log.i("WriteDayPlanActivity","mlist = "+mList.toString());
         presenter.SubDayPlan(mList);
     }
+
+
 
     static class ViewHolder1 {
         @BindView(R.id.rl_addjob)

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eef"
+    android:background="#F5F6F7"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -30,7 +30,7 @@
                 android:id="@+id/tv_center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="部门"
+                android:text="销售战报"
                 android:textColor="#fff"
                 android:textSize="18sp" />
 
@@ -47,7 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#fff"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,6 +59,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_start_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -72,6 +74,7 @@
             android:background="@color/colorContext"/>
 
         <TextView
+            android:id="@+id/tv_end_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -84,6 +87,6 @@
         android:id="@+id/fl_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp" />
+         />
 
 </LinearLayout>

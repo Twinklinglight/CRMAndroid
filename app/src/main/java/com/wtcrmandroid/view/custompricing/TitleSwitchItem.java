@@ -50,7 +50,13 @@ public class TitleSwitchItem extends RelativeLayout {
     private void init(Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.widget_title_switch_item, this);
         ButterKnife.bind(view);
+
     }
+
+    public void setText(String text){
+        tvText.setText(text);
+    }
+
     public void changeState(boolean checkstate){
         if(checkstate){
             tvText.setTextColor(Color.alpha(R.color.colorPrimary));

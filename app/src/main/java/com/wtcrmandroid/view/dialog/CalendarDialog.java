@@ -19,6 +19,7 @@ import com.wtcrmandroid.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +40,7 @@ public class CalendarDialog extends Dialog {
     private Context context;
     private CalendarListener listener;
     String DateTime;
+    Date data;
     private SimpleDateFormat simpleDateFormat;
 
     public CalendarDialog(Context context, CalendarListener mlistener) {
@@ -55,9 +57,10 @@ public class CalendarDialog extends Dialog {
         ButterKnife.bind(this);
 
         Calendar instance = Calendar.getInstance();
+
         simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd EEEE");
         DateTime = simpleDateFormat.format(instance.getTime());
-
+        data=instance.getTime();
         calender.setSelectedDate(instance.getTime());
         calender.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -65,6 +68,7 @@ public class CalendarDialog extends Dialog {
 
                 if (selected) {
                     DateTime = simpleDateFormat.format(widget.getSelectedDate().getDate());
+                    data=date.getDate();
                 }
             }
         });
@@ -73,7 +77,7 @@ public class CalendarDialog extends Dialog {
         btSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.CalendarSelcet(DateTime);
+                listener.CalendarSelcet(DateTime,data);
                 dismiss();
             }
         });
@@ -107,6 +111,6 @@ public class CalendarDialog extends Dialog {
     //日期回调接口
     public interface CalendarListener {
 
-        void CalendarSelcet(String date);
+        void CalendarSelcet(String datetext, Date date);
     }
 }

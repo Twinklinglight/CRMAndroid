@@ -7,21 +7,21 @@ import android.view.View;
 
 import com.thinkcool.circletextimageview.CircleTextImageView;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.field.StatisticsDetailsActivity;
+import com.wtcrmandroid.activity.field.CustomerVisitDetailsListActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * Created by wt-pc on 2017/6/19.
- * 外勤统计
+ * 客户拜访统计
  */
 
-public class FieldStatisticaAdapter extends BaseRecycleAdapter<String,FieldStatisticaAdapter.ViewHolder> {
+public class CustomerCallStatisticaAdapter extends BaseRecycleAdapter<String,CustomerCallStatisticaAdapter.ViewHolder> {
     /**
      * @param context  //上下文
      */
-    public FieldStatisticaAdapter(Context context) {
+    public CustomerCallStatisticaAdapter(Context context) {
         super(context, R.layout.item_field);
     }
 
@@ -36,7 +36,7 @@ public class FieldStatisticaAdapter extends BaseRecycleAdapter<String,FieldStati
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,StatisticsDetailsActivity.class));
+                context.startActivity(new Intent(context,CustomerVisitDetailsListActivity.class));
             }
         });
 

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wtcrmandroid.model.reponsedata.BaseData;
+import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
 import butterknife.ButterKnife;
@@ -17,8 +17,8 @@ import butterknife.Unbinder;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public abstract class BaseFragment<T extends BaseData> extends Fragment implements AllView {
-
+public abstract class BaseFragment<T extends BasePresenter, T1> extends Fragment implements AllView<T1> {
+    protected T presenter;
     Unbinder unbinder;
 
     @Nullable

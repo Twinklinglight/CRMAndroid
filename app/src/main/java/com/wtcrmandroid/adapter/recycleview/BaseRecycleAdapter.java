@@ -16,7 +16,7 @@ import java.util.List;
 
 public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T1> {
     private int layoutId;
-    private List <T> list;
+    protected List <T> list;
     protected Context context;
     private OnItemClickListner onItemClickListner;//单击事件
     private OnItemLongClickListner onItemLongClickListner;//长按单击事件
@@ -85,7 +85,7 @@ public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> e
         if(list!=null) {
             return list.size();
         }
-        return 1;
+        return 5;
     }
 
     @Override

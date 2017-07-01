@@ -127,6 +127,9 @@
         <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
         <activity android:name=".activity.crm.SearchMyClientLibraryActivity"/>
         <activity android:name=".activity.crm.BattlefieldReportActivity"/>
+        <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
+        <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
+        <activity android:name=".activity.field.StatisticsDetailsActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 
         <!--######-->
