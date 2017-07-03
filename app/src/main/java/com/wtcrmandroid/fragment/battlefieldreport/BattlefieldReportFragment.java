@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;
-import com.wtcrmandroid.utils.DateUtils;
+import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
 
 import java.text.DateFormat;
@@ -60,7 +60,7 @@ public class BattlefieldReportFragment extends BaseFragment {
 //        int day = cal.get(Calendar.DATE);       //日
         int month = cal.get(Calendar.MONTH) + 1;//月
         int year = cal.get(Calendar.YEAR);      //年
-        int totalday= DateUtils.getCurrentMonthDay();
+        int totalday= DateUtil.getCurrentMonthDay();
         String startDate=year + "-" + month + "-01";
         tvStartData.setText(startDate);
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
