@@ -5,7 +5,7 @@ package com.wtcrmandroid.model.reponsedata;
  * 客户列表接口返回数据
  */
 
-public class SearchSalerCustomerReponseData {
+public class SearchSalerCustomerRP {
 
     /**
      * rowid : 9

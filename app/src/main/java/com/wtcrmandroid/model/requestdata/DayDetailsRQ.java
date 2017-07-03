@@ -4,7 +4,7 @@ package com.wtcrmandroid.model.requestdata;
  * Created by ZSC on 2017/7/1.
  */
 
-public class DayDetailsRequestData {
+public class DayDetailsRQ {
 
     private int userId;
     private String type;

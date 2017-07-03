@@ -4,7 +4,7 @@ package com.wtcrmandroid.model.requestdata;
  * Created by wt-pc on 2017/6/26.
  */
 
-public class SearchCustomerRequestData {
+public class SearchCustomerRQ {
     private int pageSize = 1;
     private String attribution = "WT";
     private String customerKind = "";

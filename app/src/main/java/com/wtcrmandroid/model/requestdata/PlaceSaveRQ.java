@@ -5,9 +5,9 @@ package com.wtcrmandroid.model.requestdata;
  * 位置数据保存
  */
 
-public class PlaceSaveRequestData {
+public class PlaceSaveRQ {
    //用户Id
-    private String userId;
+    private int userId;
     //经度
     private Double lat;
     //维度
@@ -15,11 +15,11 @@ public class PlaceSaveRequestData {
     //数据类型(1打卡、2与员工位置)
     private String positionType ;
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
