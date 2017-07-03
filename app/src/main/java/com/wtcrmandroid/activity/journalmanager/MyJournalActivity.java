@@ -24,6 +24,7 @@ import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
 import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -171,8 +172,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
     //日期选中的回调
     @Override
-    public void CalendarSelcet(String date) {
-
+    public void CalendarSelcet(String datetext, Date date) {
 
     }
 
@@ -195,6 +195,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
             }
         }, 2000);
     }
+
 
 
 }
