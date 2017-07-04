@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager.present;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.wtcrmandroid.model.reponsedata.WjournalData;
 import com.wtcrmandroid.presenter.BasePresenter;
@@ -11,8 +13,9 @@ import com.wtcrmandroid.view.AllView;
 
 public class WriteWeekSumPresenter extends BasePresenter {
 
-    public WriteWeekSumPresenter(AllView view) {
-        super(view);
+
+    public WriteWeekSumPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

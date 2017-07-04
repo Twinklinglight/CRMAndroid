@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ZoomControls;
 
 import com.baidu.location.BDLocation;
@@ -59,9 +60,6 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
     boolean isFirstLoc = true; // 是否首次定位
     private MyLocationData locData;
     private float direction;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,7 +196,7 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
     protected abstract void getAddress(BDLocation location);
     @Override
     public void showShortToast(String text) {
-        L.e(text);
+        Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
 
     }
     //    @Override

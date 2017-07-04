@@ -8,7 +8,7 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.ClockRecordAdapter;
-import com.wtcrmandroid.model.requestdata.ListPersonSignInRequestData;
+import com.wtcrmandroid.model.requestdata.ListPersonSignInRQ;
 import com.wtcrmandroid.presenter.activity.ClockRecordPresenter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
@@ -48,8 +48,8 @@ public class StatisticsDetailsActivity extends BaseActivity<ClockRecordPresenter
         rvView.setLayoutManager(new LinearLayoutManager(this));
 
         rvView.setAdapter(adapter = new ClockRecordAdapter(this));
-        presenter = new ClockRecordPresenter(this);
-        ListPersonSignInRequestData data=new ListPersonSignInRequestData();
+        presenter = new ClockRecordPresenter(this,this);
+        ListPersonSignInRQ data=new ListPersonSignInRQ();
 
         data.setUserId(MyApplication.application.getLoginData().getUserID());
         data.setPageSize(1);

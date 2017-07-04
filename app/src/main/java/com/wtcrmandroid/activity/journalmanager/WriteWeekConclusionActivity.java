@@ -46,7 +46,7 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
 
     @Override
     protected void initView() {
-        presenter = new WriteWeekSumPresenter(this);
+        presenter = new WriteWeekSumPresenter(this,this);
 
         titlebar.setTitletext("写周总结");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {

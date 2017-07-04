@@ -118,7 +118,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
             }
         });
-        presenter = new MyJournalPresenter(this);
+        presenter = new MyJournalPresenter(this,this);
 
         mDatas = new ArrayList<>();
         for (int i = 0; i < 5; i++) {

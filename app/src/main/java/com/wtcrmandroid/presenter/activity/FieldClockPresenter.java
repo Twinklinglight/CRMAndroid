@@ -1,7 +1,8 @@
 package com.wtcrmandroid.presenter.activity;
 
+import android.content.Context;
+
 import com.wtcrmandroid.presenter.BasePresenter;
-import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.AllView;
 
 /**
@@ -9,15 +10,31 @@ import com.wtcrmandroid.view.AllView;
  */
 
 public class FieldClockPresenter extends BasePresenter {
-    public FieldClockPresenter(AllView view) {
-        super(view);
+
+
+    public FieldClockPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override
     protected void returnData(int key, String response) {
-        L.e("成功" + response);
+        view.returnData(key,response);
     }
-    public void sedPost(Object object){
-        post("OutSide/savePosition",object,0);
+
+    /**
+     * 打卡
+     * @param object
+     * @param key 返回数据标记
+     */
+    public void clock(Object object,int key){
+        post("OutSide/savePosition",object,key);
+    }
+    /**
+     * 打卡记录
+     * @param object
+     * @param key 返回数据标记
+     */
+    public void clockRecord(Object object,int key){
+        post("OutSide/listPersonTodaySignIn",object,key);
     }
 }

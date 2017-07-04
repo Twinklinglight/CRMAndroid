@@ -12,8 +12,8 @@ import com.wtcrmandroid.adapter.recycleview.ClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.AreaPopUpWindow;
-import com.wtcrmandroid.model.reponsedata.SearchCustomerReponseData;
-import com.wtcrmandroid.model.requestdata.SearchCustomerRequestData;
+import com.wtcrmandroid.model.reponsedata.SearchCustomerRP;
+import com.wtcrmandroid.model.requestdata.SearchCustomerRQ;
 import com.wtcrmandroid.presenter.activity.MainClientLibraryPresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.RefreshHeaderView;
@@ -35,7 +35,7 @@ import butterknife.BindView;
  * 续单公海界面
  */
 
-public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, List<SearchCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
+public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, List<SearchCustomerRP>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
@@ -56,7 +56,7 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
     private AreaPopUpWindow toWindow;
 
     private ClientLibraryAdapter adapter;
-    private SearchCustomerRequestData data;
+    private SearchCustomerRQ data;
 
     private int page=1;
     @Override
@@ -190,8 +190,8 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
         mSwipeToLoadLayout.setOnRefreshListener(this);
-        presenter = new MainClientLibraryPresenter(this);
-        data=new SearchCustomerRequestData();
+        presenter = new MainClientLibraryPresenter(this,this);
+        data=new SearchCustomerRQ();
         presenter.getData(data,0);
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new ClientLibraryAdapter(this));
@@ -215,7 +215,7 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
     }
 
     @Override
-    public void returnData(int key, List<SearchCustomerReponseData> data) {
+    public void returnData(int key, List<SearchCustomerRP> data) {
         switch(key){
             //刷新返回数据
             case 0:
@@ -223,7 +223,7 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
             case 1:
-                List<SearchCustomerReponseData> list=adapter.getList();
+                List<SearchCustomerRP> list=adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);

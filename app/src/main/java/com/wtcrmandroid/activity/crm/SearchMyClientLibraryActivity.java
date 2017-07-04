@@ -9,8 +9,8 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;
-import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerReponseData;
-import com.wtcrmandroid.model.requestdata.CompanyNameRetrievalRequestData;
+import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerRP;
+import com.wtcrmandroid.model.requestdata.CompanyNameRetrievalRQ;
 import com.wtcrmandroid.presenter.activity.SearchMyClientLibraryPresenter;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
@@ -28,7 +28,7 @@ import butterknife.OnClick;
  * CRM搜索页面
  */
 
-public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLibraryPresenter, List<SearchSalerCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
+public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLibraryPresenter, List<SearchSalerCustomerRP>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.et_search)
     EditText etSearch;
     @BindView(R.id.swipe_target)
@@ -42,7 +42,7 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLi
     SwipeToLoadLayout mSwipeToLoadLayout;
     private MyClientLibraryAdapter adapter;
 
-    private CompanyNameRetrievalRequestData data;
+    private CompanyNameRetrievalRQ data;
 
 
     private int page = 1;
@@ -54,8 +54,8 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLi
 
     @Override
     protected void initView() {
-        presenter = new SearchMyClientLibraryPresenter(this);
-        data = new CompanyNameRetrievalRequestData();
+        presenter = new SearchMyClientLibraryPresenter(this,this);
+        data = new CompanyNameRetrievalRQ();
         data.setUserId(MyApplication.application.getLoginData().getUserID());
 
         rvView.setLayoutManager(new LinearLayoutManager(this));
@@ -84,7 +84,7 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLi
 
 
     @Override
-    public void returnData(int key, List<SearchSalerCustomerReponseData> data) {
+    public void returnData(int key, List<SearchSalerCustomerRP> data) {
         switch (key) {
             //刷新返回数据
             case 0:
@@ -93,7 +93,7 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLi
                 break;
             //加载更多返回数据
             case 1:
-                List<SearchSalerCustomerReponseData> list = adapter.getList();
+                List<SearchSalerCustomerRP> list = adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);

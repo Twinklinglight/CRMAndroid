@@ -58,7 +58,7 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
     @Override
     protected void initView() {
 
-        presenter = new WriteDaySumPresenter(this);
+        presenter = new WriteDaySumPresenter(this,this);
         mTitlebar.setTitletext("写日总结");
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

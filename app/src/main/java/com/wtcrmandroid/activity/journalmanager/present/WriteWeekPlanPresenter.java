@@ -1,19 +1,21 @@
 package com.wtcrmandroid.activity.journalmanager.present;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.wtcrmandroid.model.reponsedata.WjournalData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
-
-import java.util.HashMap;
 
 /**
  * Created by 1363655717 on 2017-06-13.
  */
 
 public class WriteWeekPlanPresenter extends BasePresenter{
-    public WriteWeekPlanPresenter(AllView view) {
-        super(view);
+
+
+    public WriteWeekPlanPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

@@ -49,7 +49,7 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
 
     @Override
     protected void initView() {
-        presenter = new WriteWeekPlanPresenter(this);
+        presenter = new WriteWeekPlanPresenter(this,this);
         titlebar.setTitletext("写周计划");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override

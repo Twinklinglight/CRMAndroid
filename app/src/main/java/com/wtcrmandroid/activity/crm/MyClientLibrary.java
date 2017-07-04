@@ -13,8 +13,8 @@ import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.AreaPopUpWindow;
-import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerReponseData;
-import com.wtcrmandroid.model.requestdata.SearchSalerCustomerRequestData;
+import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerRP;
+import com.wtcrmandroid.model.requestdata.SearchSalerCustomerRQ;
 import com.wtcrmandroid.presenter.activity.MyClientLibraryPresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.RefreshHeaderView;
@@ -36,7 +36,7 @@ import butterknife.BindView;
  * 我的客户库界面
  */
 
-public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List<SearchSalerCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
+public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List<SearchSalerCustomerRP>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
@@ -54,7 +54,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
     private TitlePopupWindow titleCenterPopupWindow;
     private AreaPopUpWindow toWindow;
     private MyClientLibraryAdapter adapter;
-    private SearchSalerCustomerRequestData data;
+    private SearchSalerCustomerRQ data;
 
     private int page=1;
     @Override
@@ -182,8 +182,8 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
 
             }
         });
-        presenter = new MyClientLibraryPresenter(this);
-        data = new SearchSalerCustomerRequestData();
+        presenter = new MyClientLibraryPresenter(this,this);
+        data = new SearchSalerCustomerRQ();
         data.setUserId(MyApplication.application.getLoginData().getUserID());
         presenter.getData(data,0);
         rvView.setLayoutManager(new LinearLayoutManager(this));
@@ -228,7 +228,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
     }
 
     @Override
-    public void returnData(int key, List<SearchSalerCustomerReponseData> data) {
+    public void returnData(int key, List<SearchSalerCustomerRP> data) {
         switch(key) {
             //刷新返回数据
             case 0:
@@ -236,7 +236,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
             case 1:
-                List<SearchSalerCustomerReponseData> list = adapter.getList();
+                List<SearchSalerCustomerRP> list = adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);

@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager.present;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
@@ -15,8 +17,9 @@ import java.util.List;
 
 public class HtDayplanDetailsPresenter extends BasePresenter {
 
-    public HtDayplanDetailsPresenter(AllView view) {
-        super(view);
+
+    public HtDayplanDetailsPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

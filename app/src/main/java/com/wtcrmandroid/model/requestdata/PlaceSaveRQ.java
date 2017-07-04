@@ -15,6 +15,16 @@ public class PlaceSaveRQ {
     //数据类型(1打卡、2与员工位置)
     private String positionType ;
 
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public int getUserId() {
         return userId;
     }

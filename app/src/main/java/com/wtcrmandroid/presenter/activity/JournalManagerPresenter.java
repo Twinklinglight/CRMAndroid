@@ -1,5 +1,7 @@
 package com.wtcrmandroid.presenter.activity;
 
+import android.content.Context;
+
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
@@ -10,8 +12,9 @@ import com.wtcrmandroid.view.AllView;
 
 public class JournalManagerPresenter extends BasePresenter{
 
-    public JournalManagerPresenter(AllView view) {
-        super(view);
+
+    public JournalManagerPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

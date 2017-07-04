@@ -25,6 +25,7 @@ public class ClockRecordRP {
     private String lat;
     private String userId;
     private String Row;
+    private String address;
 
     public String getPositionType() {
         return positionType;
@@ -80,5 +81,13 @@ public class ClockRecordRP {
 
     public void setRow(String Row) {
         this.Row = Row;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

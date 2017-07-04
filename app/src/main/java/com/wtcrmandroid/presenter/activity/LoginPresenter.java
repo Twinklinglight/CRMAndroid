@@ -1,5 +1,7 @@
 package com.wtcrmandroid.presenter.activity;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.MyApplication;
@@ -20,8 +22,8 @@ import java.lang.reflect.Type;
 public class LoginPresenter extends BasePresenter{
 
 
-    public LoginPresenter(AllView view) {
-        super(view);
+    public LoginPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

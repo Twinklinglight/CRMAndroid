@@ -8,7 +8,8 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.ClockRecordAdapter;
-import com.wtcrmandroid.model.requestdata.ListPersonSignInRequestData;
+import com.wtcrmandroid.model.dealdata.GroupingClockRecordDD;
+import com.wtcrmandroid.model.requestdata.ListPersonSignInRQ;
 import com.wtcrmandroid.presenter.activity.ClockRecordPresenter;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
@@ -17,6 +18,8 @@ import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
 import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
 import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
 
+import java.util.List;
+
 import butterknife.BindView;
 
 /**
@@ -24,7 +27,7 @@ import butterknife.BindView;
  * 打卡记录
  */
 
-public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, Object> implements OnLoadMoreListener, OnRefreshListener {
+public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, List<GroupingClockRecordDD>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.swipe_target)
@@ -38,12 +41,9 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, Obje
     SwipeToLoadLayout mSwipeToLoadLayout;
     private ClockRecordAdapter adapter;
     private int page = 1;//当前页码
-    ListPersonSignInRequestData data;
+    ListPersonSignInRQ data;
 
-    @Override
-    public void returnData(int key, Object data) {
 
-    }
 
     @Override
     protected int layout() {
@@ -61,22 +61,51 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, Obje
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new ClockRecordAdapter(this));
-        presenter = new ClockRecordPresenter(this);
-        data = new ListPersonSignInRequestData();
-
+        presenter = new ClockRecordPresenter(this,this);
+        data = new ListPersonSignInRQ();
         data.setUserId(MyApplication.application.getLoginData().getUserID());
         data.setPageSize(1);
         presenter.sedPost(data,0);
+        mSwipeToLoadLayout.setRefreshHeaderView(mHeaderView);
+        mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
+        mSwipeToLoadLayout.setOnLoadMoreListener(this);
+        mSwipeToLoadLayout.setOnRefreshListener(this);
     }
 
 
     @Override
     public void onRefresh() {
-
+        page=1;
+        data.setPageSize(page);
+        presenter.sedPost(data,0);
     }
 
     @Override
     public void onLoadMore() {
+        page=page+1;
+        data.setPageSize(page);
+        presenter.sedPost(data,1);
+    }
+
+    @Override
+    public void returnData(int key, List<GroupingClockRecordDD> data) {
+        switch(key) {
+            //刷新返回数据
+            case 0:
+                adapter.setList(data);
+                showShortToast("刷新成功！");
+                mSwipeToLoadLayout.setRefreshing(false);
+                break;
+            //加载更多数据
+            case 1:
+                mSwipeToLoadLayout.setLoadingMore(false);
+                showShortToast("加载成功！");
+                List<GroupingClockRecordDD> list=adapter.getList();
+                list.addAll(data);
+                adapter.setList(list);
+                break;
+        }
+
 
     }
 }
