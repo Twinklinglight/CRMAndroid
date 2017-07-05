@@ -98,26 +98,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <TextView
-                style="@style/HintText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hint_daysum_xxfx"/>
-
-            <TextView
-                android:id="@+id/tv_weeksum_study"
-                style="@style/ContentText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"/>
-
-        </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>

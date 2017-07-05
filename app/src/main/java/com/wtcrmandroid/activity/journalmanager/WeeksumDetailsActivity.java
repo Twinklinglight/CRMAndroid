@@ -6,10 +6,13 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.activity.journalmanager.present.HtWeekSumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
+import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
+import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.CommentData;
+import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.WeeksumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 
@@ -26,7 +29,7 @@ import butterknife.ButterKnife;
  * @date 2017/6/12
  */
 
-public class WeeksumDetailsActivity extends BaseActivity {
+public class WeeksumDetailsActivity extends BaseActivity<HtWeekSumDetailsPresenter,WeekSumDetailsRpData> {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -40,8 +43,8 @@ public class WeeksumDetailsActivity extends BaseActivity {
     private WeeksumDetailsAdapter mAdapter;
     private CommentAdapter mCommentAdapter;
 
-    private List<WeeksumDetailsData> mDetailsDatas;
-    private List<CommentData> mCommentDatas;
+//    private List<WeeksumDetailsData> mDetailsDatas;
+//    private List<CommentData> mCommentDatas;
 
     @Override
     protected int layout() {
@@ -50,36 +53,60 @@ public class WeeksumDetailsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mDetailsDatas = new ArrayList<>();
-        mCommentDatas = new ArrayList<>();
+        presenter = new HtWeekSumDetailsPresenter(this);
+        WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
+        weekDetailsRequestData.setUserId(3066);
+        weekDetailsRequestData.setType("week");
+        weekDetailsRequestData.setPlan(false);
+        weekDetailsRequestData.setWeekBegin("2017-06-12");
+        weekDetailsRequestData.setWeekEnd("2017-06-18");
+        presenter.GetWeeSumDeails(weekDetailsRequestData);
+//        mDetailsDatas = new ArrayList<>();
+//        mCommentDatas = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            CommentData commentData = new CommentData();
-            WeeksumDetailsData mWeekData = new WeeksumDetailsData();
-            mWeekData.setWeekTitle("本周总结"+(i+1));
-            commentData.setCommentPerson("总监");
-            commentData.setCommentTime("2017-6-12");
-            commentData.setCommentJob("弄着、弄那");
-            commentData.setCommentContent("除了这你还弄啥类");
-            mCommentDatas.add(commentData);
-            mDetailsDatas.add(mWeekData);
+//            CommentData commentData = new CommentData();
+//            WeeksumDetailsData mWeekData = new WeeksumDetailsData();
+//            mWeekData.setWeekTitle("本周总结"+(i+1));
+//            commentData.setCommentPerson("总监");
+//            commentData.setCommentTime("2017-6-12");
+//            commentData.setCommentJob("弄着、弄那");
+//            commentData.setCommentContent("除了这你还弄啥类");
+//            mCommentDatas.add(commentData);
+//            mDetailsDatas.add(mWeekData);
         }
-        mAdapter = new WeeksumDetailsAdapter(this, mDetailsDatas);
-        mLvWeeksum.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
 
-
-        mCommentAdapter = new CommentAdapter(this, mCommentDatas);
-        mLvComment.setAdapter(mCommentAdapter);
-        View headView = LayoutInflater.from(this).inflate(R.layout.item_comment_head, null);
-        ViewHolder viewHolder = new ViewHolder(headView);
-        headView.setTag(viewHolder);
-        viewHolder.mTvCommentCount.setText("评论("+mCommentDatas.size()+")");
-        mLvComment.addHeaderView(headView);
     }
 
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, WeekSumDetailsRpData data) {
+
+        List<WeeksumDetailsData> work = data.getWork();
+        List<CommentData> exam = data.getExam();
+        String leve = data.getLeve();
+        String learning = data.getLearning();
+
+        mAdapter = new WeeksumDetailsAdapter(this, work);
+        mLvWeeksum.setAdapter(mAdapter);
+        View footsum = LayoutInflater.from(this).inflate(R.layout.item_sum_foot,null);
+        TextView learnText = (TextView)footsum.findViewById(R.id.tv_daysum_xxfx);
+        learnText.setText(learning);
+        mLvWeeksum.addFooterView(footsum);
+        mAdapter.notifyDataSetChanged();
+
+        if (exam.size() > 0){
+
+            mCommentAdapter = new CommentAdapter(this, exam,leve);
+            mLvComment.setAdapter(mCommentAdapter);
+
+            View headView = LayoutInflater.from(this).inflate(R.layout.item_comment_head, null);
+            ViewHolder viewHolder = new ViewHolder(headView);
+            headView.setTag(viewHolder);
+            viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
+            mLvComment.addHeaderView(headView);
+
+        }
+
 
     }
 

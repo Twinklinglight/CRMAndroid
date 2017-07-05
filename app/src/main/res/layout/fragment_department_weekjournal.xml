@@ -86,13 +86,13 @@
 
     <TextView
         android:id="@+id/tv_write_comment"
+        android:padding="15dp"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:paddingLeft="10dp"
+        android:gravity="center"
         android:text="写评价"
-        style="@style/HintText"/>
+        android:textColor="@color/white"/>
 
 </LinearLayout>

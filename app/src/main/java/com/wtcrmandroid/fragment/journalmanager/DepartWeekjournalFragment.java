@@ -11,7 +11,7 @@ import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
 import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.model.CommentData;
+import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.WeeksumDetailsData;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.view.listview.MyListView;
@@ -84,7 +84,7 @@ public class DepartWeekjournalFragment extends BaseFragment {
 
         mWeekplanAdapter = new WeekDayplanAdapter(getActivity(), mWeekplanDataList);
         mWeeksumAdapter = new WeeksumDetailsAdapter(getActivity(), mWeeksumDataList);
-        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDataList);
+        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDataList,"");
 
         mLvWeekplanDetails.setAdapter(mWeekplanAdapter);
         mLvWeeksumDetails.setAdapter(mWeeksumAdapter);

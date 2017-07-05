@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.CommentData;
+import com.wtcrmandroid.model.reponsedata.CommentData;
 
 import java.util.List;
 
@@ -19,8 +19,11 @@ import butterknife.ButterKnife;
 
 public class CommentAdapter extends MySmallBaseAdapter<CommentData, CommentAdapter.ViewHolder> {
 
-    public CommentAdapter(Activity activity, List<CommentData> list) {
+    private String level;
+
+    public CommentAdapter(Activity activity, List<CommentData> list,String level) {
         super(activity, list);
+        this.level = level;
     }
 
     @Override
@@ -29,7 +32,7 @@ public class CommentAdapter extends MySmallBaseAdapter<CommentData, CommentAdapt
         holder.mTvCommentContent.setText(list.get(position).getCommentContent());
         holder.mTvCommentJob.setText("("+list.get(position).getCommentJob()+")");
         holder.mTvCommentPerson.setText(list.get(position).getCommentPerson());
-        holder.mTvCommentTime.setText(list.get(position).getCommentTime());
+        holder.mTvCommentTime.setText("日志等级 "+level+" "+"发表于 "+list.get(position).getCommentTime());
 
     }
 

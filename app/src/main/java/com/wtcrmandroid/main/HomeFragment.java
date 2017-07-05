@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.aboutdocument.DocumentProcessActivity;
 import com.wtcrmandroid.activity.crm.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
@@ -93,7 +94,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @OnClick({R.id.tv_log_management, R.id.tv_field,R.id.rl_battlefield_report,R.id.tv_pullintocustomer,R.id.rl_main_client_library
-            ,R.id.rl_my_client_library,R.id.rl_public_sea})
+            ,R.id.rl_my_client_library,R.id.rl_public_sea,R.id.tv_document_process})
     public void onClick(View view) {
         switch (view.getId()) {
             //日志管理点击事件
@@ -129,6 +130,10 @@ public class HomeFragment extends BaseFragment {
             //主客户库
             case R.id.rl_public_sea:
                 startActivity(new Intent(getContext(), PublicSeaActivity.class));
+                break;
+            //公文审批
+            case R.id.tv_document_process:
+//                startActivity(new Intent(getContext(), DocumentProcessActivity.class));
                 break;
         }
     }

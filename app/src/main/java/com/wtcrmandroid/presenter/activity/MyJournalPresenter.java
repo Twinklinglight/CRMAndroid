@@ -16,15 +16,12 @@ public class MyJournalPresenter extends BasePresenter{
     protected void returnData(int key, String response) {
 
     }
-    public void getData(){
-//        HashMap<String, Object> params = new HashMap<>();
-//        params.put("userName", "shenzhongjia");
-//        params.put("userPass", MD5Utils.MD5("shen123456"));
-//        params.put("type", "day");
-//        params.put("isPlan", "false");
-//        params.put("nowDate", "2017-06-12");
-//        L.e(MD5Utils.MD5("shen123456"));
-//        post("http://192.168.0.7/api/WorkPlan/getUserWorkPlan", params,0);
+
+    /**
+     * 获取部门员工日志列表
+     */
+    public void getData(Object o){
+        post("",o,0);
     }
 
 }

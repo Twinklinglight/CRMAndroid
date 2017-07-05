@@ -22,9 +22,11 @@ import butterknife.ButterKnife;
 public class MyJournalAdapter extends BaseAdapter {
 
     private List<MyJournalData> mDatas;
+    private ItemClickListener itemClickListener;
 
-    public MyJournalAdapter(List<MyJournalData> datas) {
+    public MyJournalAdapter(List<MyJournalData> datas,ItemClickListener listener) {
         mDatas = datas;
+        this.itemClickListener = listener;
     }
 
     @Override
@@ -55,8 +57,40 @@ public class MyJournalAdapter extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
+
+        MyJournalData myJournalData = mDatas.get(position);
+        viewHolder.mTvJournalTitle.setText(myJournalData.getJournalTitle());
+        viewHolder.mTvJournalContent.setText(myJournalData.getJournalContent());
+        switch (myJournalData.getType()){
+            case 1:
+                viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_dayplan);
+                itemClickListener.DayPlanClick(position);
+                break;
+            case 2:
+                viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_daysum);
+                itemClickListener.DaySumClick(position);
+                break;
+            case 3:
+                viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weekplan);
+                itemClickListener.WeekPlanClick(position);
+                break;
+            case 4:
+                viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weeksum);
+                itemClickListener.WeekSumClick(position);
+                break;
+
+        }
+
         return view;
     }
+
+    public interface ItemClickListener{
+        void DayPlanClick(int position);
+        void DaySumClick(int position);
+        void WeekPlanClick(int position);
+        void WeekSumClick(int position);
+    }
+
 
     static class ViewHolder {
         @BindView(R.id.tv_journal_title)

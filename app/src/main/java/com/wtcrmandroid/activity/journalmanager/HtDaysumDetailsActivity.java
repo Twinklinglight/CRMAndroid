@@ -6,11 +6,14 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.activity.journalmanager.present.HtDaysumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
+import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
+import com.wtcrmandroid.model.requestdata.DayDetailsRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.CommentData;
-import com.wtcrmandroid.model.HtDaysumDetailsData;
+import com.wtcrmandroid.model.reponsedata.CommentData;
+import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
@@ -26,7 +29,7 @@ import butterknife.ButterKnife;
  * @date 2017/6/9
  */
 
-public class HtDaysumDetailsActivity extends BaseActivity {
+public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresenter,DaySumDetailsRpData> {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -50,6 +53,15 @@ public class HtDaysumDetailsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        presenter = new HtDaysumDetailsPresenter(this);
+        DayDetailsRequestData dayDetailsRequestData = new DayDetailsRequestData();
+        dayDetailsRequestData.setUserId(3066);
+        dayDetailsRequestData.setType("day");
+        dayDetailsRequestData.setIsPlan(false);
+        dayDetailsRequestData.setNowDate("2017-06-13");
+
+        presenter.GetDaySumDetails(dayDetailsRequestData);
+
         mDtailsList = new ArrayList<>();
         mCommentList = new ArrayList<>();
         mTitlebar.setTitletext("日志详情");
@@ -62,30 +74,14 @@ public class HtDaysumDetailsActivity extends BaseActivity {
             }
         });
         getData();
-        mDetailsAdapter = new HtDaysumDetailsAdapter(this, mDtailsList);
-        mLvWork.setDivider(null);       //去除分割线
-        mLvWork.setAdapter(mDetailsAdapter);
-        mDetailsAdapter.notifyDataSetChanged();
-
-        if (mCommentList.size() > 0) {
-            View view = LayoutInflater.from(this).
-                    inflate(R.layout.item_comment_head, null);
-            ViewHolder viewHolder = new ViewHolder(view);
-            mLvComment.addHeaderView(view);
-            viewHolder.mTvCommentCount.setText("评论("+mCommentList.size()+")");
-        }
-        mCommentAdapter = new CommentAdapter(this, mCommentList);
-        mLvComment.setAdapter(mCommentAdapter);
-        mCommentAdapter.notifyDataSetChanged();
 
     }
 
     public void getData() {
-        for (int i = 0; i < 3; i++) {
+       /* for (int i = 0; i < 3; i++) {
             HtDaysumDetailsData htDaysumDetailsData = new HtDaysumDetailsData();
             htDaysumDetailsData.setWorkComplete("基本完成");
             htDaysumDetailsData.setWorkContent("你干了啥说就是啥");
-            htDaysumDetailsData.setWorkPercent("20%");
             htDaysumDetailsData.setWorkPerson("网二");
             htDaysumDetailsData.setWorkSort("A类");
             htDaysumDetailsData.setWorkStudy("今天收获很大，恩，都有沙雷");
@@ -98,11 +94,38 @@ public class HtDaysumDetailsActivity extends BaseActivity {
 
             mDtailsList.add(htDaysumDetailsData);
             mCommentList.add(commentData);
-        }
+        }*/
     }
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, DaySumDetailsRpData data) {
+
+        List<HtDaysumDetailsData> work = data.getWork();
+        List<CommentData> exam = data.getExam();
+        String leve = data.getLeve();
+        String learning = data.getLearning();
+
+        mDetailsAdapter = new HtDaysumDetailsAdapter(this, work);
+        mLvWork.setDivider(null);       //去除分割线
+        mLvWork.setAdapter(mDetailsAdapter);
+
+        View footview = LayoutInflater.from(this).inflate(R.layout.item_sum_foot,null);
+        TextView learnStudy = (TextView) footview.findViewById(R.id.tv_daysum_xxfx);
+        learnStudy.setText(learning);
+        mLvWork.addFooterView(footview);
+
+        mDetailsAdapter.notifyDataSetChanged();
+
+        if (exam.size() > 0) {
+            View view = LayoutInflater.from(this).
+                    inflate(R.layout.item_comment_head, null);
+            ViewHolder viewHolder = new ViewHolder(view);
+            mLvComment.addHeaderView(view);
+            viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
+        }
+        mCommentAdapter = new CommentAdapter(this, exam,leve);
+        mLvComment.setAdapter(mCommentAdapter);
+        mCommentAdapter.notifyDataSetChanged();
 
     }
 

@@ -1,16 +1,26 @@
 package com.wtcrmandroid.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by zxd on 2017/6/12
  */
 
 public class WeeksumDetailsData {
+
+    @SerializedName("workNumber")
     private String WeekTitle;       //总结标题
+    @SerializedName("workContent")
     private String WeekContent;     //工作内容
+    @SerializedName("workPlanning")
     private String WeekTarget;      //计划目标
+    @SerializedName("workPercentage")
     private String WeekPercent;     //所占比重
+    @SerializedName("workTarget")
     private String WeekComplete;    //完成情况
-    private String WeekStudy;       //学习反省
+
+    private String workUnfinishedReason;
+    private String workNextFinishTime;
 
     public String getWeekTitle() {
         return WeekTitle;
@@ -52,11 +62,19 @@ public class WeeksumDetailsData {
         WeekComplete = weekComplete;
     }
 
-    public String getWeekStudy() {
-        return WeekStudy;
+    public String getWorkUnfinishedReason() {
+        return workUnfinishedReason;
     }
 
-    public void setWeekStudy(String weekStudy) {
-        WeekStudy = weekStudy;
+    public void setWorkUnfinishedReason(String workUnfinishedReason) {
+        this.workUnfinishedReason = workUnfinishedReason;
+    }
+
+    public String getWorkNextFinishTime() {
+        return workNextFinishTime;
+    }
+
+    public void setWorkNextFinishTime(String workNextFinishTime) {
+        this.workNextFinishTime = workNextFinishTime;
     }
 }

@@ -11,9 +11,9 @@ import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.model.CommentData;
+import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
-import com.wtcrmandroid.model.HtDaysumDetailsData;
+import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
@@ -93,7 +93,7 @@ public class DepartDayjournalFragment extends BaseFragment {
         commentHead.setTag(viewHolder);
         viewHolder.mTvCommentCount.setText("评论(" + mCommentDataList.size() + ")");
         mLvComment.addHeaderView(commentHead);
-        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDataList);
+        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDataList,"");
         mLvComment.setAdapter(mCommentAdapter);
 
     }

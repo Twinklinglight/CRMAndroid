@@ -8,8 +8,8 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.model.CommentData;
-import com.wtcrmandroid.model.HtDaysumDetailsData;
+import com.wtcrmandroid.model.reponsedata.CommentData;
+import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class DaysumWorkPlanFragment extends BaseFragment {
         mLvWorkPlan.setAdapter(mDetailsAdapter);
         mDetailsAdapter.notifyDataSetChanged();
 
-        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDatas);
+        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDatas,"");
         mIvComment.setAdapter(mCommentAdapter);
         View view = LayoutInflater.from(getContext()).inflate(R.layout.item_comment_head, null);
         ViewHolder viewHolder = new ViewHolder(view);

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.HtDaysumDetailsData;
+import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
 
 import java.util.List;
 
@@ -28,10 +28,8 @@ public class HtDaysumDetailsAdapter extends MySmallBaseAdapter<HtDaysumDetailsDa
 
         holder.mTvWorkSort.setText(list.get(position).getWorkSort());
         holder.mTvDaysumContent.setText(list.get(position).getWorkContent());
-        holder.mTvDaysumPercent.setText(list.get(position).getWorkPercent());
         holder.mTvDaysumPerson.setText(list.get(position).getWorkPerson());
         holder.mTvDaysumWcqk.setText(list.get(position).getWorkComplete());
-        holder.mTvDaysumXxfx.setText(list.get(position).getWorkStudy());
 
     }
 
@@ -49,14 +47,10 @@ public class HtDaysumDetailsAdapter extends MySmallBaseAdapter<HtDaysumDetailsDa
         TextView mTvWorkSort;
         @BindView(R.id.tv_daysum_person)
         TextView mTvDaysumPerson;
-        @BindView(R.id.tv_daysum_percent)
-        TextView mTvDaysumPercent;
         @BindView(R.id.tv_daysum_content)
         TextView mTvDaysumContent;
         @BindView(R.id.tv_daysum_wcqk)
         TextView mTvDaysumWcqk;
-        @BindView(R.id.tv_daysum_xxfx)
-        TextView mTvDaysumXxfx;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

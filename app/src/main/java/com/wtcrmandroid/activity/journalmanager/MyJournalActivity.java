@@ -12,6 +12,7 @@ import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.model.MyJournalData;
 import com.wtcrmandroid.model.reponsedata.LoginData;
+import com.wtcrmandroid.model.requestdata.MyJournalRequestData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
@@ -36,7 +37,7 @@ import butterknife.BindView;
  * @date 2017/6/6
  */
 
-public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<LoginData>> implements OnLoadMoreListener, OnRefreshListener, CalendarDialog.CalendarListener {
+public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<LoginData>> implements OnLoadMoreListener, OnRefreshListener, CalendarDialog.CalendarListener, MyJournalAdapter.ItemClickListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -66,6 +67,9 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
     @Override
     protected void initView() {
+        presenter = new MyJournalPresenter(this);
+        MyJournalRequestData myJournalRequestData = new MyJournalRequestData();
+//        presenter.getData(myJournalRequestData);
         mTitlebar.setTitletext("我的日志");
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +137,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
         mSwipeToLoadLayout.setOnRefreshListener(this);
 
-        mMyJournalAdapter = new MyJournalAdapter(mDatas);
+        mMyJournalAdapter = new MyJournalAdapter(mDatas,this);
         mLvMyjournal.setAdapter(mMyJournalAdapter);
 
         mMyJournalAdapter.notifyDataSetChanged();
@@ -141,6 +145,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
         mLvMyjournal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
 
                 if (position == 0) {
 
@@ -196,6 +201,28 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
         }, 2000);
     }
 
+    /**
+     * 条目点击的回调
+     * @param position  条目位置
+     */
 
+    @Override
+    public void DayPlanClick(int position) {
 
+    }
+
+    @Override
+    public void DaySumClick(int position) {
+
+    }
+
+    @Override
+    public void WeekPlanClick(int position) {
+
+    }
+
+    @Override
+    public void WeekSumClick(int position) {
+
+    }
 }

@@ -18,7 +18,7 @@ public class WriteWeekSumPresenter extends BasePresenter {
     @Override
     protected void returnData(int key, String response) {
         WjournalData wjournalData = new Gson().fromJson(response, WjournalData.class);
-        view.returnData(0,wjournalData);
+        view.returnData(key,wjournalData);
     }
 
     /**

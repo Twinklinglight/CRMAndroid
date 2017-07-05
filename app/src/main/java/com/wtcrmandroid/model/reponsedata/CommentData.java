@@ -1,4 +1,6 @@
-package com.wtcrmandroid.model;
+package com.wtcrmandroid.model.reponsedata;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by zxd on 2017/6/9
@@ -6,10 +8,18 @@ package com.wtcrmandroid.model;
 
 public class CommentData {
 
+    @SerializedName("userName")
     private String CommentPerson;
+    @SerializedName("RoleName")
     private String CommentJob;
+    @SerializedName("time")
     private String CommentTime;
+    @SerializedName("content")
     private String CommentContent;
+
+    private String id;
+    private String LogID;
+    private String userId;
 
     public String getCommentPerson() {
         return CommentPerson;

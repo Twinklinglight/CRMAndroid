@@ -1,4 +1,6 @@
-package com.wtcrmandroid.model;
+package com.wtcrmandroid.model.reponsedata;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by zxd on 2017/6/9
@@ -6,12 +8,39 @@ package com.wtcrmandroid.model;
 
 public class HtDaysumDetailsData {
 
+    @SerializedName("workLevel")
     private String WorkSort;
+
+    @SerializedName("workUser")
     private String WorkPerson;
-    private String WorkPercent;
+
+    @SerializedName("workContent")
     private String WorkContent;
+
+    @SerializedName("workState")
     private String WorkComplete;
-    private String WorkStudy;
+
+   /* @SerializedName("workUnfinishedReason")
+    private String WorkStudy;*/
+
+    private String workUnfinishedReason;
+    private String workNextFinishTime;
+
+    public String getWorkUnfinishedReason() {
+        return workUnfinishedReason;
+    }
+
+    public void setWorkUnfinishedReason(String workUnfinishedReason) {
+        this.workUnfinishedReason = workUnfinishedReason;
+    }
+
+    public String getWorkNextFinishTime() {
+        return workNextFinishTime;
+    }
+
+    public void setWorkNextFinishTime(String workNextFinishTime) {
+        this.workNextFinishTime = workNextFinishTime;
+    }
 
     public String getWorkSort() {
         return WorkSort;
@@ -27,14 +56,6 @@ public class HtDaysumDetailsData {
 
     public void setWorkPerson(String workPerson) {
         WorkPerson = workPerson;
-    }
-
-    public String getWorkPercent() {
-        return WorkPercent;
-    }
-
-    public void setWorkPercent(String workPercent) {
-        WorkPercent = workPercent;
     }
 
     public String getWorkContent() {
@@ -53,11 +74,11 @@ public class HtDaysumDetailsData {
         WorkComplete = workComplete;
     }
 
-    public String getWorkStudy() {
+    /*public String getWorkStudy() {
         return WorkStudy;
     }
 
     public void setWorkStudy(String workStudy) {
         WorkStudy = workStudy;
-    }
+    }*/
 }

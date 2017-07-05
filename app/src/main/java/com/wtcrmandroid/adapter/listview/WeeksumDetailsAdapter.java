@@ -19,18 +19,21 @@ import butterknife.ButterKnife;
 
 public class WeeksumDetailsAdapter extends MySmallBaseAdapter<WeeksumDetailsData, WeeksumDetailsAdapter.ViewHolder> {
 
+
     public WeeksumDetailsAdapter(Activity activity, List<WeeksumDetailsData> list) {
         super(activity, list);
     }
 
     @Override
     protected void convert(ViewHolder holder, int position) {
-        holder.mTvWeekpsumTitle.setText(list.get(position).getWeekTitle());
-        holder.mTvWeeksumContent.setText(list.get(position).getWeekContent());
-        holder.mTvWeekTarget.setText(list.get(position).getWeekTarget());
-        holder.mTvWeeksumComplete.setText(list.get(position).getWeekComplete());
-        holder.mTvWeeksumPercent.setText(list.get(position).getWeekPercent());
-        holder.mTvWeeksumStudy.setText(list.get(position).getWeekStudy());
+        holder.mTvWeekpsumTitle.setText("本周总结"+position);
+
+        WeeksumDetailsData weeksumDetailsData = list.get(position);
+        holder.mTvWeeksumContent.setText(weeksumDetailsData.getWeekContent());
+        holder.mTvWeekTarget.setText(weeksumDetailsData.getWeekTarget());
+        holder.mTvWeeksumPercent.setText(weeksumDetailsData.getWeekPercent());
+        holder.mTvWeeksumComplete.setText(weeksumDetailsData.getWeekComplete());
+
     }
 
     @Override
@@ -52,8 +55,6 @@ public class WeeksumDetailsAdapter extends MySmallBaseAdapter<WeeksumDetailsData
         TextView mTvWeeksumPercent;
         @BindView(R.id.tv_weeksum_complete)
         TextView mTvWeeksumComplete;
-        @BindView(R.id.tv_weeksum_study)
-        TextView mTvWeeksumStudy;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
