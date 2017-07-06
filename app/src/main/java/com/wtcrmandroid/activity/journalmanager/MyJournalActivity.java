@@ -10,7 +10,7 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
-import com.wtcrmandroid.model.MyJournalData;
+import com.wtcrmandroid.model.MyjournalRponseData;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.requestdata.MyJournalRequestData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
@@ -37,7 +37,7 @@ import butterknife.BindView;
  * @date 2017/6/6
  */
 
-public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<LoginData>> implements OnLoadMoreListener, OnRefreshListener, CalendarDialog.CalendarListener, MyJournalAdapter.ItemClickListener {
+public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<MyjournalRponseData>> implements OnLoadMoreListener, OnRefreshListener, CalendarDialog.CalendarListener, MyJournalAdapter.ItemClickListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -52,11 +52,15 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
     @BindView(R.id.tcmb_bar)
     TopChooseMenuBar tcmbBar;
 
+    private String type = "";
+    private String todate = "";
+    private int index = 0;
+
     private TitlePopupWindow TypeWindows;
 
     private MyJournalAdapter mMyJournalAdapter;
 
-    private List<MyJournalData> mDatas;
+    private List<MyjournalRponseData> mDatas;
 
     private Handler mHandler = new Handler();
 
@@ -68,8 +72,8 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
     @Override
     protected void initView() {
         presenter = new MyJournalPresenter(this);
-        MyJournalRequestData myJournalRequestData = new MyJournalRequestData();
-//        presenter.getData(myJournalRequestData);
+        postData(index,type,todate,1);
+
         mTitlebar.setTitletext("我的日志");
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,15 +81,15 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
                 MyJournalActivity.this.finish();
             }
         });
+        mMyJournalAdapter = new MyJournalAdapter(this);
         tcmbBar.setStrings(new String[]{"类型","时间"});
-
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
                 switch (i){         //选择类型
                     case 1:
                         if (TypeWindows == null){
-                            List list = new ArrayList();
+                            final List<String> list = new ArrayList();
                             list.add("全部");
                             list.add("日计划");
                             list.add("日总结");
@@ -96,8 +100,33 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
                                         @Override
                                         public void oNclicklistner(String data, int position) {
 
+                                            index = 0;
+                                            todate = "";
+                                            switch (position){
+                                                case 0:
+                                                    type = "";
+                                                    postData(index,type,todate,1);
+                                                    break;
+                                                case 1:
+                                                    type = "dayPlan";
+                                                    postData(index,type,todate,1);
+                                                    break;
+                                                case 2:
+                                                    type = "dayWork";
+                                                    postData(index,type,todate,1);
+                                                    break;
+                                                case 3:
+                                                    type = "weekPlan";
+                                                    postData(0,type,todate,1);
+                                                    break;
+                                                case 4:
+                                                    type = "weekWork";
+                                                    postData(0,type,todate,1);
+                                                    break;
+                                            }
                                             TypeWindows.dismiss();
-                                            tcmbBar.NoCheckStyle(1);
+                                            tcmbBar.NoCheckStyle(1);         //tcmBar右边样式
+                                            tcmbBar.setLeftText(list.get(position));
                                             tcmbBar.setIsCheck_number(0);
 
                                         }
@@ -122,30 +151,17 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
 
             }
         });
-        presenter = new MyJournalPresenter(this);
 
         mDatas = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            MyJournalData myJournalData = new MyJournalData();
-            myJournalData.setJournalTitle("2017-5-13日计划");
-            myJournalData.setJournalContent("都干了这，干了那");
-            mDatas.add(myJournalData);
-        }
 
         mSwipeToLoadLayout.setRefreshHeaderView(mHeaderView);
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
         mSwipeToLoadLayout.setOnRefreshListener(this);
 
-        mMyJournalAdapter = new MyJournalAdapter(mDatas,this);
-        mLvMyjournal.setAdapter(mMyJournalAdapter);
-
-        mMyJournalAdapter.notifyDataSetChanged();
-
-        mLvMyjournal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*mLvMyjournal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
 
                 if (position == 0) {
 
@@ -165,13 +181,42 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
                     startActivity(new Intent(MyJournalActivity.this, WeeksumDetailsActivity.class));
                 }
             }
-        });
+        });*/
 
+    }
+
+    //数据请求
+    private void postData(int index,String type,String today,int key){
+        MyJournalRequestData myJournalRequestData = new MyJournalRequestData();
+        myJournalRequestData.setType(type);
+        myJournalRequestData.setUserId(3066);
+        myJournalRequestData.setWeekIndex(index);
+        myJournalRequestData.setToDay(today);
+        presenter.getData(myJournalRequestData,key);
     }
 
 
     @Override
-    public void returnData(int key, List<LoginData> data) {
+    public void returnData(int key, List<MyjournalRponseData> data) {
+
+        switch (key){
+            case 1:
+                mSwipeToLoadLayout.setRefreshing(false);
+                mMyJournalAdapter.setmDatas(data);
+                mLvMyjournal.setAdapter(mMyJournalAdapter);
+                mMyJournalAdapter.notifyDataSetChanged();
+                break;
+            case 2:
+                mSwipeToLoadLayout.setLoadingMore(false);
+                List<MyjournalRponseData> list = mMyJournalAdapter.getmDatas();
+                int selectPosition = list.size()-1;
+                list.addAll(data);
+                mMyJournalAdapter.setmDatas(list);
+                mLvMyjournal.setAdapter(mMyJournalAdapter);
+                mMyJournalAdapter.notifyDataSetChanged();
+                mLvMyjournal.setSelection(selectPosition);      //设置显示位置
+                break;
+        }
 
     }
 
@@ -179,26 +224,22 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
     @Override
     public void CalendarSelcet(String datetext, Date date) {
 
+        todate = datetext;
+        type = "";
+        index = 0;
+        postData(index,type,todate,1);
     }
 
     @Override
     public void onLoadMore() {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeToLoadLayout.setLoadingMore(false);
-            }
-        }, 2000);
+        index = index+1;
+        postData(index,type,todate,2);
     }
 
     @Override
     public void onRefresh() {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeToLoadLayout.setRefreshing(false);
-            }
-        }, 2000);
+        index = 0;
+        postData(index,type,todate,1);
     }
 
     /**
@@ -209,20 +250,35 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Log
     @Override
     public void DayPlanClick(int position) {
 
+        Intent intent = new Intent(MyJournalActivity.this, HtDayplanDetails.class);
+        intent.putExtra("dpdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
+        startActivity(intent);
+
     }
 
     @Override
     public void DaySumClick(int position) {
 
+        Intent intent = new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class);
+        intent.putExtra("dsdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
+        startActivity(intent);
     }
 
     @Override
     public void WeekPlanClick(int position) {
+        Intent intent = new Intent(MyJournalActivity.this, WeekplanDetailsActivity.class);
+        intent.putExtra("wpbegin",mMyJournalAdapter.getmDatas().get(position).getWeekBegin());
+        intent.putExtra("wpend",mMyJournalAdapter.getmDatas().get(position).getWeekEnd());
+        startActivity(intent);
 
     }
 
     @Override
     public void WeekSumClick(int position) {
 
+        Intent intent = new Intent(MyJournalActivity.this, WeeksumDetailsActivity.class);
+        intent.putExtra("wsbegin",mMyJournalAdapter.getmDatas().get(position).getWeekBegin());
+        intent.putExtra("wsend",mMyJournalAdapter.getmDatas().get(position).getWeekEnd());
+        startActivity(intent);
     }
 }

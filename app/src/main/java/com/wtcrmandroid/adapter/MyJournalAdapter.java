@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.MyJournalData;
+import com.wtcrmandroid.model.MyjournalRponseData;
 
 import java.util.List;
 
@@ -21,12 +21,19 @@ import butterknife.ButterKnife;
 
 public class MyJournalAdapter extends BaseAdapter {
 
-    private List<MyJournalData> mDatas;
+    private List<MyjournalRponseData> mDatas;
     private ItemClickListener itemClickListener;
 
-    public MyJournalAdapter(List<MyJournalData> datas,ItemClickListener listener) {
-        mDatas = datas;
+    public MyJournalAdapter(ItemClickListener listener) {
         this.itemClickListener = listener;
+    }
+
+    public List<MyjournalRponseData> getmDatas() {
+        return mDatas;
+    }
+
+    public void setmDatas(List<MyjournalRponseData> mDatas) {
+        this.mDatas = mDatas;
     }
 
     @Override
@@ -58,23 +65,29 @@ public class MyJournalAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        MyJournalData myJournalData = mDatas.get(position);
-        viewHolder.mTvJournalTitle.setText(myJournalData.getJournalTitle());
-        viewHolder.mTvJournalContent.setText(myJournalData.getJournalContent());
-        switch (myJournalData.getType()){
-            case 1:
+        MyjournalRponseData myjournalRponseData = mDatas.get(position);
+
+        viewHolder.mTvJournalContent.setText(myjournalRponseData.getContent());
+
+        switch (myjournalRponseData.getType()){
+            case "dayPlan":
+                viewHolder.mTvJournalTitle.setText(getDayTitle(myjournalRponseData.getShortRecordDate())+"日计划");
+
                 viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_dayplan);
                 itemClickListener.DayPlanClick(position);
                 break;
-            case 2:
+            case "dayWork":
+                viewHolder.mTvJournalTitle.setText(getDayTitle(myjournalRponseData.getShortRecordDate())+"日总结");
                 viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_daysum);
                 itemClickListener.DaySumClick(position);
                 break;
-            case 3:
+            case "weekPlan":
+                viewHolder.mTvJournalTitle.setText(getWeekTitle(myjournalRponseData.getWeekBegin(),myjournalRponseData.getWeekEnd()) +"周计划");
                 viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weekplan);
                 itemClickListener.WeekPlanClick(position);
                 break;
-            case 4:
+            case "weekWork":
+                viewHolder.mTvJournalTitle.setText(getWeekTitle(myjournalRponseData.getWeekBegin(),myjournalRponseData.getWeekEnd()) +"周总结");
                 viewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weeksum);
                 itemClickListener.WeekSumClick(position);
                 break;
@@ -82,6 +95,23 @@ public class MyJournalAdapter extends BaseAdapter {
         }
 
         return view;
+    }
+
+    private String getDayTitle(String time){
+        String title = "";
+        String[] split = time.split("-");
+        title = split[0]+"年"+split[1]+"月"+split[2]+"日";
+        return title;
+    }
+
+    private String getWeekTitle(String weekbegin,String weekEnd){
+        String weekTitle = "";
+        String[] splitbegin = weekbegin.split("-");
+        String[] splitend = weekbegin.split("-");
+
+        weekTitle = splitbegin[0]+"年"+splitbegin[1]+"月"+splitbegin[2]+"日"+"至"+splitend[0]+"年"+splitend[1]+"月"+splitend[2]+"日";
+
+        return weekTitle;
     }
 
     public interface ItemClickListener{
