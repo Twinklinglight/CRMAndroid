@@ -4,19 +4,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.HtWeekSumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
+import com.wtcrmandroid.model.WeeksumDetailsData;
+import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.reponsedata.CommentData;
-import com.wtcrmandroid.model.WeeksumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -53,7 +52,7 @@ public class WeeksumDetailsActivity extends BaseActivity<HtWeekSumDetailsPresent
 
     @Override
     protected void initView() {
-        presenter = new HtWeekSumDetailsPresenter(this);
+        presenter = new HtWeekSumDetailsPresenter(this,this);
         WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
         weekDetailsRequestData.setUserId(3066);
         weekDetailsRequestData.setType("week");

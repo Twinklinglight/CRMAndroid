@@ -1,6 +1,5 @@
 package com.wtcrmandroid.activity.aboutdocument;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -41,7 +40,7 @@ public class WaitMedealFragment extends BaseFragment<WaitMeDealPresenter,List<Do
 
     @Override
     protected void init() {
-        presenter = new WaitMeDealPresenter(this);
+        presenter = new WaitMeDealPresenter(this,getActivity());
         WaitMedealRqData waitMedealRqData = new WaitMedealRqData();
         waitMedealRqData.setUserId(1667);
         waitMedealRqData.setPageSize(1);

@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.journalmanager.present;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -16,8 +17,9 @@ import java.lang.reflect.Type;
 
 public class HtWeekSumDetailsPresenter extends BasePresenter {
 
-    public HtWeekSumDetailsPresenter(AllView view) {
-        super(view);
+
+    public HtWeekSumDetailsPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

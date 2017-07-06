@@ -40,7 +40,7 @@ public class MyHavedealFragment extends BaseFragment<MyhavedealPresenter,List<Do
 
     @Override
     protected void init() {
-        presenter = new MyhavedealPresenter(this);
+        presenter = new MyhavedealPresenter(this,getActivity());
         MyhaveDealRqData myhaveDealRqData = new MyhaveDealRqData();
         myhaveDealRqData.setUserId(1066);
         myhaveDealRqData.setPageSize(1);

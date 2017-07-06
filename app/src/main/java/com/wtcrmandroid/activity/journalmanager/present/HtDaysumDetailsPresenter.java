@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager.present;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
@@ -14,8 +16,9 @@ import java.lang.reflect.Type;
 
 public class HtDaysumDetailsPresenter extends BasePresenter {
 
-    public HtDaysumDetailsPresenter(AllView view) {
-        super(view);
+
+    public HtDaysumDetailsPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

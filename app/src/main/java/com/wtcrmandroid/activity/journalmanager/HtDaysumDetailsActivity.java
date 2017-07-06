@@ -4,16 +4,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.HtDaysumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
-import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
-import com.wtcrmandroid.model.requestdata.DayDetailsRequestData;
-import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.reponsedata.CommentData;
+import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
 import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
+import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.listview.MyListView;
 
 import java.util.ArrayList;
@@ -53,8 +53,8 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
 
     @Override
     protected void initView() {
-        presenter = new HtDaysumDetailsPresenter(this);
-        DayDetailsRequestData dayDetailsRequestData = new DayDetailsRequestData();
+        presenter = new HtDaysumDetailsPresenter(this,this);
+        DayDetailsRQ dayDetailsRequestData = new DayDetailsRQ();
         dayDetailsRequestData.setUserId(3066);
         dayDetailsRequestData.setType("day");
         dayDetailsRequestData.setIsPlan(false);

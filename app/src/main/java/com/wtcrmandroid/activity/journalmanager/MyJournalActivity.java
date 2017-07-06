@@ -3,7 +3,6 @@ package com.wtcrmandroid.activity.journalmanager;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.wtcrmandroid.BaseActivity;
@@ -11,7 +10,6 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.model.MyjournalRponseData;
-import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.requestdata.MyJournalRequestData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
 import com.wtcrmandroid.view.RefreshHeaderView;
@@ -71,7 +69,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
 
     @Override
     protected void initView() {
-        presenter = new MyJournalPresenter(this);
+        presenter = new MyJournalPresenter(this,this);
         postData(index,type,todate,1);
 
         mTitlebar.setTitletext("我的日志");

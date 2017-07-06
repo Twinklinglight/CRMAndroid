@@ -32,7 +32,7 @@ public class MyApplyDocFragment extends BaseFragment<MyApplyDocPresenter, List<D
 
     @Override
     protected void init() {
-        presenter = new MyApplyDocPresenter(this);
+        presenter = new MyApplyDocPresenter(this,getActivity());
         MyApplyDocRqData myApplyDocRqData = new MyApplyDocRqData();
         myApplyDocRqData.setUserId(1066);
         myApplyDocRqData.setPageSize(1);

@@ -1,5 +1,7 @@
 package com.wtcrmandroid.presenter.activity;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.model.MyjournalRponseData;
@@ -15,8 +17,10 @@ import java.util.List;
  */
 
 public class MyJournalPresenter extends BasePresenter{
-    public MyJournalPresenter(AllView view) {
-        super(view);
+
+
+    public MyJournalPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

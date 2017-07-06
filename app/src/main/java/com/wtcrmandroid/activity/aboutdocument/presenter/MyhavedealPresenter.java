@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.aboutdocument.presenter;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.model.reponsedata.DocumentListRpData;
@@ -16,8 +18,9 @@ import java.util.List;
 
 public class MyhavedealPresenter extends BasePresenter {
 
-    public MyhavedealPresenter(AllView view) {
-        super(view);
+
+    public MyhavedealPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override
