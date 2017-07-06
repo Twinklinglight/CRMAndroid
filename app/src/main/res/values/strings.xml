@@ -118,4 +118,9 @@
     <string name="hint_emil">请输入电子邮件</string>
     <string name="hint_qq">请输入QQ号</string>
     <string name="hint_message">请输入传真号</string>
+
+
+    <string name="select_province">选择省份</string>
+    <string name="select_city">选择市</string>
+    <string name="select_town">选择县/区</string>
 </resources>

@@ -42,9 +42,16 @@ public class LoginPresenter extends BasePresenter{
      */
     public void login() {
         LoginRequestData loginRequestData = new LoginRequestData();
-        loginRequestData.setUserName("shenzhongjia");
-        loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
-        loginRequestData.setImei("9209843230929971");
+        loginRequestData.setUserName("wt");
+        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
+        loginRequestData.setImei("9209843230929999");
+        MyApplication.application.setImei("9209843230929999");
+//        loginRequestData.setUserName("shenzhongjia");
+//        loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
+//        loginRequestData.setImei("9209843230929971");
+//        loginRequestData.setUserName("fanqiayun");
+//        loginRequestData.setUserPass("6ddedf54c788f57f");
+//        loginRequestData.setImei("920984323092997");
         /*loginRequestData.setUserName("like");
         loginRequestData.setUserPass("766aed991c06fd48");
         loginRequestData.setImei("9209843230929972");*/

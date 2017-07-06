@@ -55,7 +55,7 @@ public abstract class BasePresenter {
 
             @Override
             public void onNetError(Exception e) {
-                L.e("出错了");
+                L.e("BasePresenter.onNetError(Exception e)");
                 loadingDialog.dismiss();
             }
         });

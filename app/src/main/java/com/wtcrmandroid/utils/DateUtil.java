@@ -21,6 +21,11 @@ public class DateUtil {
         int maxDate = a.get(Calendar.DATE);
         return maxDate;
     }
+    public static String getToday(){
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        return df.format(new Date());
+
+    }
 
     /**
      * 判断俩个日期是否是同一天

@@ -20,4 +20,5 @@
     <color name="color_divider">#c3c4c6</color>
     <color name="color_text_black">#222222</color>
     <color name="black_alpha">#55333333</color>
+    <color name="color_gray_999">#999</color>
 </resources>

@@ -7,15 +7,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.wtcrmandroid.R;
+import com.google.gson.Gson;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.SelectAreaActivity;
+import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
+import com.wtcrmandroid.model.requestdata.SaveCustomerRQ;
+import com.wtcrmandroid.presenter.activity.SalePullintoCustomerPresenter;
+import com.wtcrmandroid.utils.TextUtils;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class SalePullintoCustomerActivity extends BaseActivity {
+public class SalePullintoCustomerActivity extends BaseActivity<SalePullintoCustomerPresenter, String > {
 
     @BindView(R.id.title)
     TitleBar mTitle;
@@ -65,7 +72,7 @@ public class SalePullintoCustomerActivity extends BaseActivity {
     public static final int RequestCode = 0;
     private int memberPosition = 0;       //默认选择第一项
     private int companyPosition = 0;
-
+    SaveCustomerRQ saveCustomerRQ;
     @Override
     protected int layout() {
         return R.layout.activity_sale_pullinto_customer;
@@ -75,11 +82,15 @@ public class SalePullintoCustomerActivity extends BaseActivity {
     protected void initView() {
 
         mTitle.setTitletext("录入客户");
+        presenter=new SalePullintoCustomerPresenter(this,this);
+        saveCustomerRQ=new SaveCustomerRQ();
 
     }
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, String data) {
+        finish();
+        showShortToast("录入成功");
 
     }
 
@@ -88,6 +99,7 @@ public class SalePullintoCustomerActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_submit:
+                submit();
                 break;
             case R.id.ll_member_sort:
 
@@ -98,6 +110,7 @@ public class SalePullintoCustomerActivity extends BaseActivity {
                 break;
 
             case R.id.ll_company_address:
+                startActivityForResult(new Intent(this, SelectAreaActivity.class), 1);
                 break;
             case R.id.ll_company_sort:
 
@@ -113,6 +126,8 @@ public class SalePullintoCustomerActivity extends BaseActivity {
         }
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RequestCode){
@@ -125,6 +140,11 @@ public class SalePullintoCustomerActivity extends BaseActivity {
                     mTvCompanySort.setText(data.getStringExtra("TEXT"));
                     companyPosition = data.getIntExtra("POSITION",0);
                     break;
+            }
+        }else if(requestCode == 1){
+            if (resultCode == RESULT_OK) {
+                Area area = new Gson().fromJson(data.getStringExtra("selectedArea"), Area.class);
+                mTvCompanyAddress.setText(area.getSheng() + "-" + area.getShi() + "-" + area.getXian());
             }
         }
     }
@@ -149,5 +169,101 @@ public class SalePullintoCustomerActivity extends BaseActivity {
             anim.start();
 
         }
+    }
+
+    private void submit() {
+        String sort=mTvSort.getText().toString();
+        if(TextUtils.isNull(sort)){
+            saveCustomerRQ.setDrpWTCustomerKind(sort);
+        }else {
+            Toast.makeText(this, "请选择会员类型！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String membersName =mEtMemberName.getText().toString();
+        if(TextUtils.isNull(membersName)){
+            saveCustomerRQ.setTbxUserName(membersName);
+        }else {
+            Toast.makeText(this, "请输入会员名称！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String companyName =mEtCompanyName.getText().toString();
+        if(TextUtils.isNull(companyName)){
+            saveCustomerRQ.setTbxCompanyName(companyName);
+        }else {
+            Toast.makeText(this, "请输入公司名称！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String phone =mEtPhoneNumber.getText().toString();
+        if(TextUtils.isNull(phone)){
+            saveCustomerRQ.setTbxCellNumber(phone);
+        }else {
+            Toast.makeText(this, "请输入手机号码！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String name =mEtCustomerName.getText().toString();
+        if(TextUtils.isNull(name)){
+            saveCustomerRQ.setTbxCustomerName(name);
+        }else {
+            Toast.makeText(this, "请输入客户姓名！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String companyAddress =mTvCompanyAddress.getText().toString();
+        if(TextUtils.isNull(companyAddress)){
+            saveCustomerRQ.setTxtCompAddress(companyAddress);
+        }else {
+            Toast.makeText(this, "请选择公司地址！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String detailsAddress =mEtAddrssDetails.getText().toString();
+        if(TextUtils.isNull(detailsAddress)){
+            saveCustomerRQ.setTbxDetailAdress(detailsAddress);
+        }else {
+            Toast.makeText(this, "请输入公司详细地址！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String companyKind =mTvCompanySort.getText().toString();
+        if(TextUtils.isNull(companyKind)){
+            saveCustomerRQ.setTbxCompanyKind(companyKind);
+        }else {
+            Toast.makeText(this, "请选择公司类型！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String customerPosition=mEtComstomerJob.getText().toString();
+        if(TextUtils.isNull(customerPosition)){
+            saveCustomerRQ.setTbxCompanyKind(customerPosition);
+        }else {
+            Toast.makeText(this, "请输入客户职位！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String TellNumber=mEtLinePhone.getText().toString();
+        if(TextUtils.isNull(TellNumber)){
+            saveCustomerRQ.setTbxTellNumber(TellNumber);
+        }else {
+            Toast.makeText(this, "请输入固定电话！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String emal=mEtEmail.getText().toString();
+        if(TextUtils.isNull(emal)){
+            saveCustomerRQ.setTbxEmailNumber(emal);
+        }else {
+            Toast.makeText(this, "请输入电子邮箱！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String QQ=mEtQQ.getText().toString();
+        if(TextUtils.isNull(QQ)){
+            saveCustomerRQ.setTbxQQNumber(QQ);
+        }else {
+            Toast.makeText(this, "请输入QQ号！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String FaxNumber=mEtMessage.getText().toString();
+//        if(TextUtils.isNull(FaxNumber)){
+            saveCustomerRQ.setTbxFaxNumber(FaxNumber);
+//        }else {
+//            Toast.makeText(this, "请输入传真号！", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+        presenter.sedPost(saveCustomerRQ,0);
     }
 }

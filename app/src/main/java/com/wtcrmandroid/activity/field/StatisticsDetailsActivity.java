@@ -5,12 +5,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.recycleview.ClockRecordAdapter;
-import com.wtcrmandroid.model.requestdata.ListPersonSignInRQ;
-import com.wtcrmandroid.presenter.activity.ClockRecordPresenter;
+import com.wtcrmandroid.adapter.recycleview.StatisticaDetailsAdapter;
+import com.wtcrmandroid.model.reponsedata.ClockRecordRP;
+import com.wtcrmandroid.model.requestdata.FieldStatisticsDetailsRQ;
+import com.wtcrmandroid.presenter.activity.FieldStatisticsDetailsPresenter;
+import com.wtcrmandroid.view.RefreshHeaderView;
+import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.custompricing.TitleBar;
+import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -19,15 +24,24 @@ import butterknife.BindView;
  * 外勤统计详情
  */
 
-public class StatisticsDetailsActivity extends BaseActivity<ClockRecordPresenter,Object> {
+public class StatisticsDetailsActivity extends BaseActivity<FieldStatisticsDetailsPresenter, List<ClockRecordRP>> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
-    @BindView(R.id.rv_view)
+    @BindView(R.id.swipe_target)
     RecyclerView rvView;
-    private ClockRecordAdapter adapter;
+
+    @BindView(R.id.swipe_refresh_header)
+    RefreshHeaderView mHeaderView;
+    @BindView(R.id.swipe_load_more_footer)
+    RefreshLoadMoreFooterView mFooterView;
+    @BindView(R.id.swipeToLoadLayout)
+    SwipeToLoadLayout mSwipeToLoadLayout;
+    private StatisticaDetailsAdapter adapter;
+    private FieldStatisticsDetailsRQ data;
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, List<ClockRecordRP> data) {
+        adapter.setList(data);
 
     }
 
@@ -38,6 +52,8 @@ public class StatisticsDetailsActivity extends BaseActivity<ClockRecordPresenter
 
     @Override
     protected void initView() {
+        String userId = getIntent().getStringExtra("userId");
+        String date = getIntent().getStringExtra("date");
         titlebar.setTitletext("外勤统计详情");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,16 +62,16 @@ public class StatisticsDetailsActivity extends BaseActivity<ClockRecordPresenter
             }
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
+        rvView.setAdapter(adapter = new StatisticaDetailsAdapter(this));
+        presenter = new FieldStatisticsDetailsPresenter(this, this);
+        data = new FieldStatisticsDetailsRQ();
+        data.setCreateTime(date);
+        data.setPageSize("1");
+        data.setUserId(userId);
+        presenter.sedPost(data, 0);
+        adapter.setDate(date);
 
-        rvView.setAdapter(adapter = new ClockRecordAdapter(this));
-        presenter = new ClockRecordPresenter(this,this);
-        ListPersonSignInRQ data=new ListPersonSignInRQ();
-
-        data.setUserId(MyApplication.application.getLoginData().getUserID());
-        data.setPageSize(1);
-        presenter.sedPost(data,0);
     }
-
 
 
 }

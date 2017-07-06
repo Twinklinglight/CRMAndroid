@@ -130,6 +130,7 @@
         <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
         <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
         <activity android:name=".activity.field.StatisticsDetailsActivity"/>
+        <activity android:name=".activity.SelectAreaActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 
         <!--######-->
