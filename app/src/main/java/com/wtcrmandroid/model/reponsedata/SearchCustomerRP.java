@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by wt-pc on 2017/6/26.
  */
 
-public class SearchCustomerReponseData {
+public class SearchCustomerRP {
 
     /**
      * site : 河北省-邯郸市-市辖区

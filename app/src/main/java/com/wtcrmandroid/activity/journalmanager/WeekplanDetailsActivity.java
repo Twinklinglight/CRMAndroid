@@ -42,7 +42,7 @@ public class WeekplanDetailsActivity extends BaseActivity<WeekPlanDetailsPresent
 
     @Override
     protected void initView() {
-        presenter = new WeekPlanDetailsPresenter(this);
+        presenter = new WeekPlanDetailsPresenter(this,this);
         WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
         weekDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         weekDetailsRequestData.setType("week");

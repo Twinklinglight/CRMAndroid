@@ -25,7 +25,7 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
     public void showShortToast(String text) {
         L.e(text);
         if (!TextUtils.isEmpty(text)) {
-//            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         }
     }
 

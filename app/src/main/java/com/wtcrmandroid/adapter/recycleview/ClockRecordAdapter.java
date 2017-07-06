@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.model.dealdata.GroupingClockRecordDD;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,11 +24,14 @@ public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private final int HEAD = 0;
     private final int WORD = 1;
 
+
+
     private Context context;
+    private List<GroupingClockRecordDD> list;
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0 || position == 3 || position == 6)
+        if (list.get(position).getType() == 0)
             return HEAD;
         else
             return WORD;
@@ -33,6 +39,15 @@ public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public ClockRecordAdapter(Context context) {
         this.context = context;
+    }
+
+    public void setList(List<GroupingClockRecordDD> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
+    public List<GroupingClockRecordDD> getList() {
+        return list;
     }
 
     @Override
@@ -51,25 +66,42 @@ public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(getItemViewType(position)==HEAD){
-            HeadViewHolder headViewHolder= (HeadViewHolder) holder;
-        }else {
-            ViewHolder viewHolder= (ViewHolder) holder;
-            if(position==1||position==4||position==7)
-                viewHolder.vTop.setVisibility(View.INVISIBLE);
-            else
-                viewHolder.vTop.setVisibility(View.VISIBLE);
-            if(position==2||position==5||position==8)
+        if (getItemViewType(position) == HEAD) {
+            HeadViewHolder headViewHolder = (HeadViewHolder) holder;
+            headViewHolder.tvTime.setText(list.get(position).getTime());
+
+        } else {
+            ViewHolder viewHolder = (ViewHolder) holder;
+            viewHolder.tvTime.setText(list.get(position).getTime());
+            viewHolder.tvAddress.setText(list.get(position).getAddress());
+            if (position != list.size() - 1) {
+                if (getItemViewType(position - 1) == HEAD)
+                    viewHolder.vTop.setVisibility(View.INVISIBLE);
+                else
+                    viewHolder.vTop.setVisibility(View.VISIBLE);
+                if (getItemViewType(position + 1) == HEAD)
+                    viewHolder.vBottom.setVisibility(View.INVISIBLE);
+                else
+                    viewHolder.vBottom.setVisibility(View.VISIBLE);
+
+            } else {
+                if (getItemViewType(position - 1) == HEAD)
+                    viewHolder.vTop.setVisibility(View.INVISIBLE);
+                else
+                    viewHolder.vTop.setVisibility(View.VISIBLE);
                 viewHolder.vBottom.setVisibility(View.INVISIBLE);
-            else
-                viewHolder.vBottom.setVisibility(View.VISIBLE);
+            }
+
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return 9;
+        if (list != null) {
+            return list.size();
+        } else
+            return 0;
     }
 
     static class HeadViewHolder extends RecyclerView.ViewHolder {
@@ -87,7 +119,10 @@ public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         View vTop;
         @BindView(R.id.v_bottom)
         View vBottom;
-
+        @BindView(R.id.tv_time)
+        TextView tvTime;
+        @BindView(R.id.tv_address)
+        TextView tvAddress;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

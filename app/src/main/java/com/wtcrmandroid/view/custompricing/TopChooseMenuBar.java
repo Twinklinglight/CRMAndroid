@@ -102,10 +102,13 @@ public class TopChooseMenuBar extends LinearLayout {
     }
 
     public void setRightText(String text) {
-        setText(tvCenter,text);
+        setText(tvRight,text);
 
     }
+    public void setRightTextNo(String text) {
+       tvRight.setText(text);
 
+    }
     private void init(Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.controls_top_choose_menu_bar, this);
         ButterKnife.bind(view);

@@ -17,8 +17,8 @@ import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.AreaPopUpWindow;
-import com.wtcrmandroid.model.reponsedata.SearchCustomerReponseData;
-import com.wtcrmandroid.model.requestdata.SearchCustomerRequestData;
+import com.wtcrmandroid.model.reponsedata.SearchCustomerRP;
+import com.wtcrmandroid.model.requestdata.SearchCustomerRQ;
 import com.wtcrmandroid.presenter.activity.MainClientLibraryPresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
@@ -35,7 +35,7 @@ import butterknife.BindView;
  * 主客户库界面
  */
 
-public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, List<SearchCustomerReponseData>> implements OnLoadMoreListener, OnRefreshListener {
+public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, List<SearchCustomerRP>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
@@ -56,7 +56,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     private ClientLibraryAdapter adapter;
     private AreaPopUpWindow toWindow;
 
-    private SearchCustomerRequestData data;
+    private SearchCustomerRQ data;
     private int page=1;
     @Override
     protected int layout() {
@@ -189,8 +189,8 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new ClientLibraryAdapter(this));
-        presenter = new MainClientLibraryPresenter(this);
-        data=new SearchCustomerRequestData();
+        presenter = new MainClientLibraryPresenter(this,this);
+        data=new SearchCustomerRQ();
         presenter.getData(data,0);
         mSwipeToLoadLayout.setRefreshHeaderView(mHeaderView);
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
@@ -219,7 +219,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     }
 
     @Override
-    public void returnData(int key, List<SearchCustomerReponseData> data) {
+    public void returnData(int key, List<SearchCustomerRP> data) {
         switch(key){
             //刷新返回数据
             case 0:
@@ -227,7 +227,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
             case 1:
-                List<SearchCustomerReponseData> list=adapter.getList();
+                List<SearchCustomerRP> list=adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);

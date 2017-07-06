@@ -7,15 +7,13 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
 import com.wtcrmandroid.model.WriteDayplanData;
 import com.wtcrmandroid.model.reponsedata.WjournalData;
-import com.wtcrmandroid.model.requestdata.WDayPlanRequstData;
+import com.wtcrmandroid.model.requestdata.WDayPlanRQ;
 import com.wtcrmandroid.activity.journalmanager.present.WriteDayPlanPresenter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
@@ -65,7 +63,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
     @Override
     protected void initView() {
 
-        presenter = new WriteDayPlanPresenter(this);
+        presenter = new WriteDayPlanPresenter(this,this);
         mTitlebar.setTitletext("写日计划");
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +145,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
     public void onClick() {
 
         Log.i("WriteDayPlanActivity","mlist = "+mList.toString());
-        WDayPlanRequstData wDayPlanRequstData = new WDayPlanRequstData();
+        WDayPlanRQ wDayPlanRequstData = new WDayPlanRQ();
         wDayPlanRequstData.setUserId(3066);
         wDayPlanRequstData.setType("day");
         wDayPlanRequstData.setTime(DateSelect);

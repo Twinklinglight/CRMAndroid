@@ -24,7 +24,19 @@ public class MyApplication extends Application {
      * 登录返回数据
      */
     public LoginData loginData ;
+    /**
+     * 设备标识
+     */
+    private String imei;
     public static MyApplication application;
+
+    public String getImei() {
+        return imei;
+    }
+
+    public void setImei(String imei) {
+        this.imei = imei;
+    }
 
     @Override
     public void onCreate() {

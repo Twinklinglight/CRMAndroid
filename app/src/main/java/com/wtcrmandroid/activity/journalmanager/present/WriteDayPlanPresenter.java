@@ -1,15 +1,14 @@
 package com.wtcrmandroid.activity.journalmanager.present;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.model.WriteDayplanData;
-import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.reponsedata.WjournalData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * Created by ZSC on 2017/6/27.
@@ -17,8 +16,9 @@ import java.util.List;
 
 public class WriteDayPlanPresenter extends BasePresenter {
 
-    public WriteDayPlanPresenter(AllView view) {
-        super(view);
+
+    public WriteDayPlanPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

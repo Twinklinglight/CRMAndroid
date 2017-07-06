@@ -1,7 +1,6 @@
 package com.wtcrmandroid.main;
 
 import android.content.Intent;
-import android.telephony.TelephonyManager;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.widget.CheckBox;
@@ -38,10 +37,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
     @Override
     protected void initView() {
-        presenter=new LoginPresenter(this);
-        TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
-        L.e(tm.getDeviceId()+"--");
-        presenter=new LoginPresenter(this);
+        presenter=new LoginPresenter(this,this);
+//        TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+//        L.e(tm.getDeviceId()+"--");
+        presenter=new LoginPresenter(this,this);
         WTDataBaseManager.getsInstance().initDatabase(this);
         etPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
 

@@ -3,17 +3,25 @@ package com.wtcrmandroid.activity.field;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.PopupWindow;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
+import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.FieldStatisticaAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
+import com.wtcrmandroid.model.reponsedata.FieldStatisticsRP;
+import com.wtcrmandroid.model.requestdata.FieldStatisticsRQ;
+import com.wtcrmandroid.presenter.activity.FieldStatisticsPresenter;
+import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
+import com.wtcrmandroid.view.dialog.CalendarDialog;
+import com.wtcrmandroid.view.popupwindow.CalendarPopupWindow;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,7 +31,7 @@ import butterknife.BindView;
  * 外勤统计
  */
 
-public class FieldStatisticsAcrivity extends BaseActivity {
+public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresenter,  List<FieldStatisticsRP>> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
@@ -31,12 +39,13 @@ public class FieldStatisticsAcrivity extends BaseActivity {
     @BindView(R.id.rv_view)
     RecyclerView rvView;
 
-    private BaseRecycleAdapter adapter;
+    private FieldStatisticaAdapter adapter;
     private TitlePopupWindow titleLeftPopupWindow;
-    @Override
-    public void returnData(int key, Object data) {
+    private CalendarPopupWindow calendarPopupWindow;
+    FieldStatisticsRQ fieldStatisticsRQ;
 
-    }
+
+
 
     @Override
     protected int layout() {
@@ -52,7 +61,7 @@ public class FieldStatisticsAcrivity extends BaseActivity {
                 finish();
             }
         });
-        tcmbBar.setStrings(new String[]{"部门","今天"});
+        tcmbBar.setStrings(new String[]{"部门", "今天"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
@@ -75,30 +84,67 @@ public class FieldStatisticsAcrivity extends BaseActivity {
                         }
                         titleLeftPopupWindow.show();
                         break;
+                    case 3:
+                        if (calendarPopupWindow == null) {
+                            calendarPopupWindow = new CalendarPopupWindow(FieldStatisticsAcrivity.this, tcmbBar, new CalendarDialog.CalendarListener() {
+                                @Override
+                                public void CalendarSelcet(String datetext, Date d) {
+                                    if(DateUtil.isSameDate(d,new Date())){
+                                        tcmbBar.setRightTextNo("今天");
+                                        fieldStatisticsRQ.setCreateTime(DateUtil.getToday());
+                                        adapter.setDate(DateUtil.getToday());
+                                        presenter.sedPost(fieldStatisticsRQ,0);
+                                    }else {
+                                        tcmbBar.setRightTextNo(datetext);
+                                        fieldStatisticsRQ.setCreateTime(datetext);
+                                        adapter.setDate(datetext);
+                                        presenter.sedPost(fieldStatisticsRQ,0);
+                                    }
+                                }
+                            });
+                            calendarPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                                @Override
+                                public void onDismiss() {
+                                    tcmbBar.NoCheckStyle(3);
+                                    tcmbBar.setIsCheck_number(0);
+                                }
+                            });
+                        }
+                        calendarPopupWindow.show();
+
+                        break;
                 }
 
             }
 
             @Override
             public void isNoSelected(int i) {
-                switch (i){
+                switch (i) {
                     case 1:
                         titleLeftPopupWindow.dismiss();
+                        break;
+                    case 3:
+                        calendarPopupWindow.dismiss();
                         break;
 
                 }
 
             }
         });
+        presenter=new FieldStatisticsPresenter(this,this);
         rvView.setLayoutManager(new LinearLayoutManager(this));
-        rvView.setAdapter(adapter=new FieldStatisticaAdapter(this));
-        List list= new ArrayList();
-        list.add("dsfas");
-        list.add("dsfas");
-        list.add("dsfa");
-        adapter.addList(list);
+        rvView.setAdapter(adapter = new FieldStatisticaAdapter(this));
+        fieldStatisticsRQ=new FieldStatisticsRQ();
+        fieldStatisticsRQ.setCreateTime(DateUtil.getToday());
+        fieldStatisticsRQ.setUserId(MyApplication.application.getLoginData().getUserID());
+        presenter.sedPost(fieldStatisticsRQ,0);
+        adapter.setDate(DateUtil.getToday());
     }
 
 
+    @Override
+    public void returnData(int key, List<FieldStatisticsRP> data) {
+        adapter.addList(data);
 
+    }
 }

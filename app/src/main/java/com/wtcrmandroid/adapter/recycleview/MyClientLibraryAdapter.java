@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerReponseData;
+import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerRP;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
  * Created by wt-pc on 2017/6/23.
  */
 
-public class MyClientLibraryAdapter extends BaseRecycleAdapter<SearchSalerCustomerReponseData, MyClientLibraryAdapter.ViewHolder> {
+public class MyClientLibraryAdapter extends BaseRecycleAdapter<SearchSalerCustomerRP, MyClientLibraryAdapter.ViewHolder> {
 
 
 
@@ -35,7 +35,7 @@ public class MyClientLibraryAdapter extends BaseRecycleAdapter<SearchSalerCustom
 
 
     @Override
-    protected void convert(ViewHolder holder, SearchSalerCustomerReponseData bean, int position) {
+    protected void convert(ViewHolder holder, SearchSalerCustomerRP bean, int position) {
         holder.tvCompanyName.setText(bean.getCompanyName());
         holder.tvCompanyAddress.setText("公司地址：" + bean.getSite());
         holder.tvTime.setText("入库时间：" + bean.getSelectTime());

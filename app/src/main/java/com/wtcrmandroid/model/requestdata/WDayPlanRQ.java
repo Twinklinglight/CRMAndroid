@@ -8,7 +8,7 @@ import java.util.List;
  * Created by ZSC on 2017/6/30.
  */
 
-public class WDayPlanRequstData {
+public class WDayPlanRQ {
 
     private int userId;
     private String time;

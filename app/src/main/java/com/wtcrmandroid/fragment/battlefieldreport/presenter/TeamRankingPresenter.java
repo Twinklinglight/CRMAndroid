@@ -1,5 +1,7 @@
 package com.wtcrmandroid.fragment.battlefieldreport.presenter;
 
+import android.content.Context;
+
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
@@ -10,8 +12,10 @@ import com.wtcrmandroid.view.AllView;
  */
 
 public class TeamRankingPresenter extends BasePresenter {
-    public TeamRankingPresenter(AllView view) {
-        super(view);
+
+
+    public TeamRankingPresenter(AllView view, Context context) {
+        super(view, context);
     }
 
     @Override

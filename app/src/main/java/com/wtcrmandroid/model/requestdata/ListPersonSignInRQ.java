@@ -4,7 +4,7 @@ package com.wtcrmandroid.model.requestdata;
  * Created by wt-pc on 2017/6/26.
  */
 
-public class ListPersonSignInRequestData {
+public class ListPersonSignInRQ {
     private int userId;
     private int pageSize;
 

@@ -1,5 +1,6 @@
 package com.wtcrmandroid.presenter;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -8,6 +9,7 @@ import com.wtcrmandroid.httpfactory.HttpRequest;
 import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.AllView;
+import com.wtcrmandroid.view.dialog.LoadingDialog;
 
 /**
  * Created by 1363655717 on 2017-06-12.
@@ -16,20 +18,25 @@ import com.wtcrmandroid.view.AllView;
 
 public abstract class BasePresenter {
     protected AllView view;
+    LoadingDialog loadingDialog;
     Handler mainHandler;
-    public BasePresenter(AllView view) {
+    public BasePresenter(AllView view, Context context) {
         this.view = view;
         mainHandler = new Handler(Looper.getMainLooper());
+        loadingDialog=new LoadingDialog(context);
 
     }
 
     protected abstract void returnData(int key, String response);
 
     protected void post(String url, Object params, final int key) {
+        loadingDialog.show();
+
         HttpRequest.instance().sendPost(Const.http + url, params, null, new StringCallBack() {
             @Override
             public void onError(int errorRet, String errorMsg) {
                 L.e(errorMsg);
+                loadingDialog.dismiss();
             }
 
             @Override
@@ -39,6 +46,7 @@ public abstract class BasePresenter {
                     public void run() {
                         //已在主线程中，可以更新UI
                         returnData(key, response);
+                        loadingDialog.dismiss();
                     }
                 });
 
@@ -47,7 +55,8 @@ public abstract class BasePresenter {
 
             @Override
             public void onNetError(Exception e) {
-                L.e("出错了");
+                L.e("BasePresenter.onNetError(Exception e)");
+                loadingDialog.dismiss();
             }
         });
     }

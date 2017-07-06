@@ -11,7 +11,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.activity.journalmanager.present.HtDayplanDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
-import com.wtcrmandroid.model.requestdata.DayDetailsRequestData;
+import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
 
@@ -45,9 +45,9 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
 
     @Override
     protected void initView() {
-        presenter = new HtDayplanDetailsPresenter(this);
+        presenter = new HtDayplanDetailsPresenter(this,this);
 
-        DayDetailsRequestData dayDetailsRequestData = new DayDetailsRequestData();
+        DayDetailsRQ dayDetailsRequestData = new DayDetailsRQ();
         dayDetailsRequestData.setNowDate("2017/6/13");
         dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRequestData.setType("day");

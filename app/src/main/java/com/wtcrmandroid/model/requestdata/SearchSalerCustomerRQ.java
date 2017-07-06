@@ -5,7 +5,7 @@ package com.wtcrmandroid.model.requestdata;
  * 客户列表
  */
 
-public class SearchSalerCustomerRequestData {
+public class SearchSalerCustomerRQ {
     private int userId;
     private int pageSize=1;
     private String customerKind="";
