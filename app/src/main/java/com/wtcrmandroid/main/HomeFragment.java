@@ -53,6 +53,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void init() {
+        isSale=MyApplication.application.getLoginData().isIsSaler();
         titlebar.serLeftImageVisibility(GONE);
         titlebar.setLeftText("工作台");
         titlebar.setRightImageResource(R.mipmap.ico_plus);
