@@ -60,7 +60,7 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                HtDayplanDetails.this.finish();
             }
         });
 

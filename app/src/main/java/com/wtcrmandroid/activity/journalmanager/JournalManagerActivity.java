@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -94,7 +93,7 @@ public class JournalManagerActivity extends BaseActivity {
                 break;
             //部门日志
             case R.id.rl_department_employees_log_management:
-                startActivity(new Intent(JournalManagerActivity.this,DepartmentEmployeesLogManagementMainActivity.class));
+                startActivity(new Intent(JournalManagerActivity.this,DepartmentMainActivity.class));
                 break;
 
         }

@@ -17,7 +17,7 @@ import butterknife.OnClick;
  * 部门员工日志管理搜索页
  */
 
-public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity {
+public class DepartmentSerachActivity extends BaseActivity {
     @BindView(R.id.et_search)
     EditText etSearch;
     @BindView(R.id.iv_left)
@@ -86,7 +86,7 @@ public class DepartmentEmployeesLogManagementSerachActivity extends BaseActivity
 //     HashMap<String, String> params = new HashMap<>();
 //        params.put("userName", "shenzhongjia");
 //        params.put("userPass", MD5Utils.MD5("shen123456"));
-//        new HttpUtils().post("UserLogin",params,DepartmentEmployeesLogManagementSerachActivity.this);
+//        new HttpUtils().post("UserLogin",params,DepartmentSerachActivity.this);
 ////        doVoice();
     }
 

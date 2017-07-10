@@ -7,8 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.thinkcool.circletextimageview.CircleTextImageView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.DepartmentData;
+import com.wtcrmandroid.model.reponsedata.DepartmentRponseData;
 
 import java.util.List;
 
@@ -20,22 +22,24 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by zxd on 2017/6/15
  */
 
-public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentData, DepartmentJournalAdapter.ViewHolder> {
+public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentRponseData, DepartmentJournalAdapter.ViewHolder> {
 
-    public DepartmentJournalAdapter(Activity activity, List<DepartmentData> list) {
+    public DepartmentJournalAdapter(Activity activity, List<DepartmentRponseData> list) {
         super(activity, list);
     }
 
     @Override
     protected void convert(ViewHolder holder, int position) {
 
-        DepartmentData departmentData = list.get(position);
-        holder.mTvName.setText(departmentData.getPersonName());
-        holder.mTvCommentCount.setText(departmentData.getCommentCount());
-        Glide.with(activity)
-                .load(R.mipmap.ic_home_scan)
-                .bitmapTransform(new CropCircleTransformation(activity))
-                .into(holder.mIvHeadpicture);
+        DepartmentRponseData departmentData = list.get(position);
+        holder.mTvName.setText(departmentData.getUsername());
+        holder.mTvCommentCount.setText("本月已被评论"+departmentData.getColumn1()+"条");
+        String username = departmentData.getUsername();
+        int begin = username.length()-2;
+        int end = username.length();
+        holder.mIvHeadpicture.setText(username.substring(begin,end));
+
+
     }
 
     @Override
@@ -48,7 +52,7 @@ public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentData,
 
     static class ViewHolder {
         @BindView(R.id.iv_headpicture)
-        ImageView mIvHeadpicture;
+        CircleTextImageView mIvHeadpicture;
         @BindView(R.id.tv_name)
         TextView mTvName;
         @BindView(R.id.tv_comment_count)

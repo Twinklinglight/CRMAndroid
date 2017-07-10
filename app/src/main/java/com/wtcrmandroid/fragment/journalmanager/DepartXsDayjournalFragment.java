@@ -17,7 +17,7 @@ import butterknife.Unbinder;
  * Created by zxd on 2017/6/23
  */
 
-public class DepartXsDayjournalFragment extends BaseFragment {
+public class DepartXsDayjournalFragment extends BaseFragment implements CommentDialog.submitListener {
 
 
     @BindView(R.id.tv_date)
@@ -82,8 +82,14 @@ public class DepartXsDayjournalFragment extends BaseFragment {
             case R.id.iv_calender:
                 break;
             case R.id.tv_write_comment:
-                new CommentDialog(getContext()).show();
+                new CommentDialog(getContext(),this).show();
                 break;
         }
+    }
+
+    //提交评论回调
+    @Override
+    public void clickOk(String leve, String context) {
+
     }
 }

@@ -42,9 +42,14 @@ public class CommentDialog extends Dialog {
     TextView mTvSure;
     private Context mContext;
 
-    public CommentDialog(@NonNull Context context) {
+    private String level="良好";
+    private String context = "";
+    private submitListener listener;
+
+    public CommentDialog(@NonNull Context context,submitListener submitListener) {
         super(context, R.style.Dialog);
         this.mContext = context;
+        this.listener = submitListener;
     }
 
     @Override
@@ -53,6 +58,36 @@ public class CommentDialog extends Dialog {
         setContentView(R.layout.dialog_comment);
         ButterKnife.bind(this);
         initWindowParams();
+    }
+
+    @OnClick({R.id.rb_best, R.id.rb_better, R.id.rb_ok, R.id.rb_bad, R.id.tv_cancle, R.id.tv_sure})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rb_best:
+                level = "优秀";
+                break;
+            case R.id.rb_better:
+                level = "良好";
+                break;
+            case R.id.rb_ok:
+                level = "一般";
+                break;
+            case R.id.rb_bad:
+                level = "差";
+                break;
+            case R.id.tv_cancle:
+                dismiss();
+                break;
+            case R.id.tv_sure:
+                context = mEtComment.getText().toString();
+                listener.clickOk(level,context);
+                dismiss();
+                break;
+        }
+    }
+
+    public interface submitListener{
+        void clickOk(String leve,String context);
     }
 
     private void initWindowParams() {
@@ -68,24 +103,5 @@ public class CommentDialog extends Dialog {
 
         dialogWindow.setGravity(Gravity.CENTER);
         dialogWindow.setAttributes(lp);
-    }
-
-    @OnClick({R.id.rb_best, R.id.rb_better, R.id.rb_ok, R.id.rb_bad, R.id.tv_cancle, R.id.tv_sure})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.rb_best:
-                break;
-            case R.id.rb_better:
-                break;
-            case R.id.rb_ok:
-                break;
-            case R.id.rb_bad:
-                break;
-            case R.id.tv_cancle:
-                dismiss();
-                break;
-            case R.id.tv_sure:
-                break;
-        }
     }
 }

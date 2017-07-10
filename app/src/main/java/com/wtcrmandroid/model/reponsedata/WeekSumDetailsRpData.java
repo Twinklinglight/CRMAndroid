@@ -10,7 +10,7 @@ import java.util.List;
 
 public class WeekSumDetailsRpData {
 
-
+    private int logId;
 
     private List<WeeksumDetailsData> work;
 
@@ -20,6 +20,14 @@ public class WeekSumDetailsRpData {
 
     private String learning;
 
+
+    public int getLogId() {
+        return logId;
+    }
+
+    public void setLogId(int logId) {
+        this.logId = logId;
+    }
 
     public List<WeeksumDetailsData> getWork() {
         return work;

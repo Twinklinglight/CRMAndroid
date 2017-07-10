@@ -8,6 +8,7 @@ import java.util.List;
 
 public class DaySumDetailsRpData {
 
+    private int logId;
     private List<HtDaysumDetailsData> work;
     private List<CommentData> exam;
 
@@ -44,6 +45,14 @@ public class DaySumDetailsRpData {
 
     public void setExam(List<CommentData> exam) {
         this.exam = exam;
+    }
+
+    public int getLogId() {
+        return logId;
+    }
+
+    public void setLogId(int logId) {
+        this.logId = logId;
     }
 
     /*public static class WorkBean {

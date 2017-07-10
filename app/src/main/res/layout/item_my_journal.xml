@@ -5,44 +5,53 @@
     android:background="@color/colorBackground"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="@color/white">
-
-        <TextView
-            android:id="@+id/tv_journal_title"
-            style="@style/ContentText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="@string/app_name" />
-
-        <ImageView
-            android:id="@+id/tv_journal_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_type_dayplan" />
-    </RelativeLayout>
-
     <LinearLayout
+        android:id="@+id/ll_item"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_journal_content"
-            style="@style/HintsText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gjfa" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_journal_title"
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/app_name" />
+
+            <ImageView
+                android:id="@+id/tv_journal_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_type_dayplan" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_journal_content"
+                style="@style/HintsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gjfa" />
+        </LinearLayout>
+
     </LinearLayout>
+
 
 </LinearLayout>

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="50dp"
-              android:orientation="horizontal"
-              android:gravity="center_vertical"
-              android:padding="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="10dp">
 
-    <ImageView
+    <com.thinkcool.circletextimageview.CircleTextImageView
         android:id="@+id/iv_headpicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        app:citv_fill_color="#F76129"
+        app:citv_text_color="#fff"
+        app:citv_text_size="18sp"
+        app:citv_text_text="晴朗"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,11 +25,11 @@
 
         <TextView
             android:id="@+id/tv_name"
-            style="@style/ContentText"
+            style="@style/Text18"
             android:paddingLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="heh"/>
+            android:text="dd"/>
 
         <TextView
             android:id="@+id/tv_comment_count"

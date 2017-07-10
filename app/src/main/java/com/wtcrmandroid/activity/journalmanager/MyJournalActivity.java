@@ -1,9 +1,9 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
@@ -17,6 +17,7 @@ import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
+import com.wtcrmandroid.view.popupwindow.CalendarPopupWindow;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
 import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
@@ -56,11 +57,11 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
 
     private TitlePopupWindow TypeWindows;
 
+    private CalendarPopupWindow calendarWindow;
+
     private MyJournalAdapter mMyJournalAdapter;
 
     private List<MyjournalRponseData> mDatas;
-
-    private Handler mHandler = new Handler();
 
     @Override
     protected int layout() {
@@ -132,8 +133,20 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
                         }
                         TypeWindows.show();
                         break;
-                    case 2:     //选择日期
-                        new CalendarDialog(MyJournalActivity.this,MyJournalActivity.this).show();
+                    case 3:     //选择日期
+                        if (calendarWindow != null){
+                            calendarWindow.show();
+                        }else {
+                            calendarWindow =  new CalendarPopupWindow(MyJournalActivity.this,tcmbBar,MyJournalActivity.this);
+                            calendarWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                                @Override
+                                public void onDismiss() {
+                                    tcmbBar.NoCheckStyle(3);
+                                    tcmbBar.setIsCheck_number(0);
+                                }
+                            });
+                        }
+
                         break;
                 }
 
@@ -145,6 +158,8 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
                     case 1:
                         TypeWindows.dismiss();
                         break;
+                    case 3:
+                        calendarWindow.dismiss();
                 }
 
             }
@@ -156,30 +171,6 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
         mSwipeToLoadLayout.setOnRefreshListener(this);
-
-        /*mLvMyjournal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position == 0) {
-
-                    Intent intent = new Intent(MyJournalActivity.this, HtDayplanDetails.class);
-                    intent.putExtra("date","");
-                    startActivity(intent);
-//                    startActivity(new Intent(MyJournalActivity.this, XsDayplanDetailsActivity.class));
-
-                } else if (position == 1) {
-                    startActivity(new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class));
-//                    startActivity(new Intent(MyJournalActivity.this, XsDaysumDetailsActivity.class));
-                } else if (position == 2) {
-
-                    startActivity(new Intent(MyJournalActivity.this, WeekplanDetailsActivity.class));
-                } else if (position == 3) {
-
-                    startActivity(new Intent(MyJournalActivity.this, WeeksumDetailsActivity.class));
-                }
-            }
-        });*/
 
     }
 

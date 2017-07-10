@@ -7,9 +7,11 @@ import android.widget.ListView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.activity.journalmanager.present.DepartmentMainPresenter;
 import com.wtcrmandroid.adapter.listview.DepartmentJournalAdapter;
+import com.wtcrmandroid.model.reponsedata.DepartmentRponseData;
+import com.wtcrmandroid.model.requestdata.DepartmentRquestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.DepartmentData;
 import com.wtcrmandroid.utils.L;
 
 import java.text.Collator;
@@ -25,13 +27,13 @@ import butterknife.BindView;
  * 部门员工日志管理首页
  */
 
-public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
+public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter,List<DepartmentRponseData>> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.lv_department)
     ListView listDepart;
 
-    List<DepartmentData> mDataList;
+//    List<DepartmentData> mDataList;
     private DepartmentJournalAdapter mAdapter;
 
     @Override
@@ -41,6 +43,12 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+        presenter = new DepartmentMainPresenter(this,this);
+        DepartmentRquestData departmentRquestData = new DepartmentRquestData();
+        departmentRquestData.setUserId(189);
+        presenter.postDepartment(departmentRquestData);
+
         titlebar.setTitletext("部门员工日志");
         titlebar.setRightImageResource(R.mipmap.ic_search);
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
@@ -72,19 +80,24 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
                 for(String i:newArray){
                     L.e(i);
                 }
-                startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,DepartmentEmployeesLogManagementSerachActivity.class));
+                startActivity(new Intent(DepartmentMainActivity.this,DepartmentSerachActivity.class));
             }
         });
 
-        mDataList = new ArrayList<>();
+       /* mDataList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             DepartmentData departmentData = new DepartmentData();
             departmentData.setPersonName("name"+i);
             departmentData.setCommentCount("count"+i);
             mDataList.add(departmentData);
-        }
+        }*/
 
-        mAdapter = new DepartmentJournalAdapter(this,mDataList);
+    }
+
+    @Override
+    public void returnData(int key, List<DepartmentRponseData> data) {
+
+        mAdapter = new DepartmentJournalAdapter(this,data);
         listDepart.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
@@ -92,19 +105,14 @@ public class DepartmentEmployeesLogManagementMainActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
-                    startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,
+                    startActivity(new Intent(DepartmentMainActivity.this,
                             HtJournalDetails.class));
                 }else if (position == 1){
-                    startActivity(new Intent(DepartmentEmployeesLogManagementMainActivity.this,
+                    startActivity(new Intent(DepartmentMainActivity.this,
                             XsJournalDetails.class));
                 }
             }
         });
-
-    }
-
-    @Override
-    public void returnData(int key, Object data) {
 
     }
 }
