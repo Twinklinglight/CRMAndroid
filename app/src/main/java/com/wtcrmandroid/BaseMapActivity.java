@@ -66,6 +66,7 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         super.onCreate(savedInstanceState);
         setContentView(layout());
         ButterKnife.bind(this);
+        getBundle(savedInstanceState);
 
 
 
@@ -199,6 +200,11 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
 
     }
+
+    public void getBundle(Bundle savedInstanceState) {
+
+    }
+
     //    @Override
 //    public void returnBean(int key, String data) {
 //

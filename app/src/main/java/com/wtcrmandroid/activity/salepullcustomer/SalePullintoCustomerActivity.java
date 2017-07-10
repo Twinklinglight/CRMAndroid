@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.SelectAreaActivity;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
@@ -82,6 +83,12 @@ public class SalePullintoCustomerActivity extends BaseActivity<SalePullintoCusto
     protected void initView() {
 
         mTitle.setTitletext("录入客户");
+        mTitle.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         presenter=new SalePullintoCustomerPresenter(this,this);
         saveCustomerRQ=new SaveCustomerRQ();
 
@@ -173,6 +180,8 @@ public class SalePullintoCustomerActivity extends BaseActivity<SalePullintoCusto
 
     private void submit() {
         String sort=mTvSort.getText().toString();
+        saveCustomerRQ.setAttribution(MyApplication.application.getLoginData().getAttribution());
+        saveCustomerRQ.setUserId(MyApplication.application.getLoginData().getUserID());
         if(TextUtils.isNull(sort)){
             saveCustomerRQ.setDrpWTCustomerKind(sort);
         }else {
@@ -215,48 +224,48 @@ public class SalePullintoCustomerActivity extends BaseActivity<SalePullintoCusto
             return;
         }
         String detailsAddress =mEtAddrssDetails.getText().toString();
-        if(TextUtils.isNull(detailsAddress)){
+//        if(TextUtils.isNull(detailsAddress)){
             saveCustomerRQ.setTbxDetailAdress(detailsAddress);
-        }else {
-            Toast.makeText(this, "请输入公司详细地址！", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        }else {
+//            Toast.makeText(this, "请输入公司详细地址！", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         String companyKind =mTvCompanySort.getText().toString();
-        if(TextUtils.isNull(companyKind)){
+//        if(TextUtils.isNull(companyKind)){
             saveCustomerRQ.setTbxCompanyKind(companyKind);
-        }else {
-            Toast.makeText(this, "请选择公司类型！", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        }else {
+//            Toast.makeText(this, "请选择公司类型！", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         String customerPosition=mEtComstomerJob.getText().toString();
-        if(TextUtils.isNull(customerPosition)){
+//        if(TextUtils.isNull(customerPosition)){
             saveCustomerRQ.setTbxCompanyKind(customerPosition);
-        }else {
-            Toast.makeText(this, "请输入客户职位！", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        }else {
+//            Toast.makeText(this, "请输入客户职位！", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         String TellNumber=mEtLinePhone.getText().toString();
-        if(TextUtils.isNull(TellNumber)){
+//        if(TextUtils.isNull(TellNumber)){
             saveCustomerRQ.setTbxTellNumber(TellNumber);
-        }else {
-            Toast.makeText(this, "请输入固定电话！", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        }else {
+//            Toast.makeText(this, "请输入固定电话！", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         String emal=mEtEmail.getText().toString();
-        if(TextUtils.isNull(emal)){
+//        if(TextUtils.isNull(emal)){
             saveCustomerRQ.setTbxEmailNumber(emal);
-        }else {
-            Toast.makeText(this, "请输入电子邮箱！", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        }else {
+//            Toast.makeText(this, "请输入电子邮箱！", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         String QQ=mEtQQ.getText().toString();
-        if(TextUtils.isNull(QQ)){
+//        if(TextUtils.isNull(QQ)){
             saveCustomerRQ.setTbxQQNumber(QQ);
-        }else {
-            Toast.makeText(this, "请输入QQ号！", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        }else {
+//            Toast.makeText(this, "请输入QQ号！", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         String FaxNumber=mEtMessage.getText().toString();
 //        if(TextUtils.isNull(FaxNumber)){
             saveCustomerRQ.setTbxFaxNumber(FaxNumber);

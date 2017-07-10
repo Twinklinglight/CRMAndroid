@@ -27,7 +27,7 @@ public class SaveCustomerRQ {
      * tbxDetailAdress : 资金上大沙发上
      */
 
-    private String userId;
+    private int userId;
     private String attribution;
     private String tbxUserName;
     private String tbxCompanyName;
@@ -45,11 +45,11 @@ public class SaveCustomerRQ {
     private String txtCompAddress;
     private String tbxDetailAdress;
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

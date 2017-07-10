@@ -34,9 +34,16 @@ public abstract class BasePresenter {
 
         HttpRequest.instance().sendPost(Const.http + url, params, null, new StringCallBack() {
             @Override
-            public void onError(int errorRet, String errorMsg) {
-                L.e(errorMsg);
+            public void onError(int errorRet, final String errorMsg) {
+
                 loadingDialog.dismiss();
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //已在主线程中，可以更新UI
+                        view.showShortToast(errorMsg);
+                    }
+                });
             }
 
             @Override
