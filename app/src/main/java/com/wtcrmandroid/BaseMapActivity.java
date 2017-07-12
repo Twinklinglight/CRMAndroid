@@ -64,9 +64,10 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getBundle(savedInstanceState);
         setContentView(layout());
         ButterKnife.bind(this);
-        getBundle(savedInstanceState);
+
 
 
 

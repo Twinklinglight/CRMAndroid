@@ -40,8 +40,10 @@ public abstract class BaseFragment<T extends BasePresenter, T1> extends Fragment
     /**
      * 初始化方法
      */
-    protected abstract void init();
+    public abstract void init();
+     public void load(Object data){
 
+     }
     @Override
     public void showShortToast(String text) {
 

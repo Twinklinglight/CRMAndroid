@@ -63,7 +63,7 @@ public class DepartWeekjournalFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         mWeekplanDataList = new ArrayList<>();
         mWeeksumDataList = new ArrayList<>();
         mCommentDataList = new ArrayList<>();

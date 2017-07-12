@@ -89,7 +89,7 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
     @Override
     public void getBundle(Bundle savedInstanceState) {
         super.getBundle(savedInstanceState);
-        getTakePhoto().onSaveInstanceState(savedInstanceState);
+        getTakePhoto().onCreate(savedInstanceState);
 
     }
 

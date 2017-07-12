@@ -45,7 +45,7 @@ public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.My
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
         //圆形图片
         Glide.with(this).load(R.mipmap.ic_my_headpicture)

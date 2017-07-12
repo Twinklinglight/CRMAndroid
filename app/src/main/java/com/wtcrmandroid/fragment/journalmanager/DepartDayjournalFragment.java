@@ -64,7 +64,7 @@ public class DepartDayjournalFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         mDayplansDataList = new ArrayList<>();
         mDaysumDataList = new ArrayList<>();
         mCommentDataList = new ArrayList<>();

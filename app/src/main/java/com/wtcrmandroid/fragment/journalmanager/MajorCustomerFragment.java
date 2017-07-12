@@ -29,7 +29,7 @@ public class MajorCustomerFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         mDatas = new ArrayList<>();
         getData();
         mAdapter = new MajorCustomerAdapter(getActivity(),mDatas);

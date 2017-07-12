@@ -18,7 +18,7 @@ public class DepartXsWeekjournalFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
     }
 }

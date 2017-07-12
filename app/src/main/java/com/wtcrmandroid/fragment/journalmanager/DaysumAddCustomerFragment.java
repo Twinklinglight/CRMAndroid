@@ -30,7 +30,7 @@ public class DaysumAddCustomerFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
         mDataList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

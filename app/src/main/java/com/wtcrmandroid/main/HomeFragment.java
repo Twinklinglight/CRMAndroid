@@ -52,7 +52,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         isSale=MyApplication.application.getLoginData().isIsSaler();
         titlebar.serLeftImageVisibility(GONE);
         titlebar.setLeftText("工作台");
