@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  * Created by zxd on 2017/6/9
  */
 
-public class CommentAdapter extends MySmallBaseAdapter<CommentData, CommentAdapter.ViewHolder> {
+public class CommentAdapter extends CommentBaseAdapter<CommentData, CommentAdapter.ViewHolder> {
 
     private String level;
 
@@ -44,7 +44,8 @@ public class CommentAdapter extends MySmallBaseAdapter<CommentData, CommentAdapt
         return view;
     }
 
-     class ViewHolder {
+
+    class ViewHolder {
         @BindView(R.id.tv_comment_person)
         TextView mTvCommentPerson;
         @BindView(R.id.tv_comment_job)

@@ -42,6 +42,11 @@ public class IfgetSingleDetailsAdapter extends MySmallBaseAdapter<GetSingleCusto
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     static class ViewHolder {
         @BindView(R.id.tv_work_sort)
         TextView mTvWorkSort;

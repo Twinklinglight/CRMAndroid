@@ -44,6 +44,12 @@ public class WeeksumDetailsAdapter extends MySmallBaseAdapter<WeeksumDetailsData
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_list_null,null);
+        return view;
+    }
+
     static class ViewHolder {
         @BindView(R.id.tv_weekpsum_title)
         TextView mTvWeekpsumTitle;

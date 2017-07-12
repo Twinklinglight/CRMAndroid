@@ -2,6 +2,7 @@ package com.wtcrmandroid.utils;
 
 import android.util.Log;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -17,6 +18,9 @@ public class DateUtils {
     private String nowDay;      //当前日期
     private int whichday;
     private SimpleDateFormat format;
+
+    private String StartTime;
+    private String EndTime;
 
     public DateUtils() {
         calendar = Calendar.getInstance();
@@ -86,7 +90,22 @@ public class DateUtils {
                 calendar.add(Calendar.DAY_OF_MONTH, -(5));
                 startDay = format.format(calendar.getTime());
                 break;
+            default:
+                StartTime = startDay;
+                EndTime = endDay;
+                break;
         }
         return startDay + "-" + endDay;
+    }
+
+    public String getWantDate(String daytime){
+        String dateTime= "";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            dateTime = simpleDateFormat.format(format.parse(daytime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateTime;
     }
 }

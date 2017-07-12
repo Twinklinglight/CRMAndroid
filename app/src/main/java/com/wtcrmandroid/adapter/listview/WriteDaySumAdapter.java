@@ -92,6 +92,11 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     //工作等级选择回调
     @Override
     public void WorkSelect(String workSort, int position) {

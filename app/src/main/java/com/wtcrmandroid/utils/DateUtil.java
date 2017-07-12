@@ -27,6 +27,14 @@ public class DateUtil {
 
     }
 
+    public static String getTodayString(){
+        DateFormat df = new SimpleDateFormat("yyyy年M月d日");
+        return df.format(new Date());
+
+    }
+
+
+
     /**
      * 判断俩个日期是否是同一天
      * @param date1
@@ -56,5 +64,15 @@ public class DateUtil {
     {
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         return df.parse(strDate);
+    }
+
+    //把字符串yyyy.M.d 转化为 yyyy-MM-dd
+    public static String  ConverToDate2(String strDate) throws Exception
+    {
+        DateFormat df = new SimpleDateFormat("yyyy.M.d");
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        return simpleDateFormat.format(df.parse(strDate));
     }
 }

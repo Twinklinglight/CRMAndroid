@@ -4,11 +4,12 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.model.reponsedata.WjournalData;
+import com.iflytek.cloud.thirdparty.T;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * Created by ZSC on 2017/6/27.
@@ -24,11 +25,11 @@ public class WriteDayPlanPresenter extends BasePresenter {
     @Override
     protected void returnData(int key, String response) {
 
-        Type listType = new TypeToken<WjournalData>() {
+        Type listType = new TypeToken<List<T>>() {
         }.getType();
-        WjournalData wjournalData = new Gson().fromJson(response, listType);
+        List mlsit = new Gson().fromJson(response, listType);
 
-        view.returnData(key,wjournalData);
+        view.returnData(key,mlsit);
 
     }
 

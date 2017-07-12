@@ -1,7 +1,11 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
@@ -26,8 +30,13 @@ public class HtJournalDetails extends BaseActivity {
 
     @BindView(R.id.rg_dayweek)
     RadioGroup mRgDayweek;
+    @BindView(R.id.rb_week)
+    RadioButton Rbweek;
+    DepartDayjournalFragment Dayfragment;
+    DepartWeekjournalFragment Weekfragment;
 
     public List<BaseFragment> mfragmentList;
+    public int userid = 0;
 
 
     @Override
@@ -37,10 +46,27 @@ public class HtJournalDetails extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        userid = getIntent().getIntExtra("userid",0);
         mfragmentList = new ArrayList<>();
-        mfragmentList.add(new DepartDayjournalFragment());
-        mfragmentList.add(new DepartWeekjournalFragment());
+
+        Dayfragment = new DepartDayjournalFragment();
+        Weekfragment = new DepartWeekjournalFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("userid",userid);
+        Dayfragment.setArguments(bundle);
+        Weekfragment.setArguments(bundle);
+        mfragmentList.add(Dayfragment);
+        mfragmentList.add(Weekfragment);
+
+        Rbweek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HtJournalDetails.this, "rbweek出发了", Toast.LENGTH_SHORT).show();
+                Dayfragment.cancleWindows();
+            }
+        });
+
         FragmentTabAdapter fragmentTabAdapter = new FragmentTabAdapter(this,mfragmentList,
                 R.id.frame_journal,mRgDayweek);
 

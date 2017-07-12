@@ -6,6 +6,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.MyJournalAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
@@ -178,7 +179,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     private void postData(int index,String type,String today,int key){
         MyJournalRequestData myJournalRequestData = new MyJournalRequestData();
         myJournalRequestData.setType(type);
-        myJournalRequestData.setUserId(3066);
+        myJournalRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         myJournalRequestData.setWeekIndex(index);
         myJournalRequestData.setToDay(today);
         presenter.getData(myJournalRequestData,key);
@@ -221,6 +222,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
 
     @Override
     public void onLoadMore() {
+        todate = "";
         index = index+1;
         postData(index,type,todate,2);
     }

@@ -52,6 +52,11 @@ public class GetMoneyAtAdapter extends MySmallBaseAdapter<GetMoneyData, GetMoney
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     static class ViewHolder {
         @BindView(R.id.et_get_backmoney_name)
         EditText mEtGetBackmoneyName;

@@ -46,6 +46,12 @@ public class HtDayplanDetailsAdapter extends MySmallBaseAdapter<HtDayplanDetails
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_list_null, null);
+        return view;
+    }
+
     static class ViewHolder {
         @BindView(R.id.tv_work_sort)
         TextView mTvWorkSort;

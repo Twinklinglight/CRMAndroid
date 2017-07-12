@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -12,9 +13,12 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.activity.journalmanager.present.HtDayplanDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
+import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.HtDayplanDetailsData;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,7 +40,8 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
     @BindView(R.id.lv_dayplan_details)
     ListView mLvDayplanDetails;     //日志详情列表
     private HtDayplanDetailsAdapter mAdapter;
-    private List<HtDayplanDetailsData>mData;
+
+    private String DateTime;
 
     @Override
     protected int layout() {
@@ -47,8 +52,11 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
     protected void initView() {
         presenter = new HtDayplanDetailsPresenter(this,this);
 
+        DateTime = getIntent().getStringExtra("dpdate");    //获取日志时间
+        mTvJournalType.setText(setTitleString(DateTime));
+
         DayDetailsRQ dayDetailsRequestData = new DayDetailsRQ();
-        dayDetailsRequestData.setNowDate("2017/6/13");
+        dayDetailsRequestData.setNowDate(DateTime);
         dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRequestData.setType("day");
         dayDetailsRequestData.setIsPlan(true);
@@ -66,28 +74,27 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
 
     }
 
-    /*//测试数据
-    public void getData() {
-        mData = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            HtDayplanDetailsData htDayplanDetailsData = new HtDayplanDetailsData();
-            htDayplanDetailsData.setWorkSort("A");
-            htDayplanDetailsData.setWorkPerson("张三");
-            htDayplanDetailsData.setWorkPercent("50%");
-            htDayplanDetailsData.setWorkContent("就是个这");
-
-            mData.add(htDayplanDetailsData);
-        }
-    }*/
-
     @Override
     public void returnData(int key, List<HtDayplanDetailsData> data) {
         Log.i("returnData","data="+data.toString());
-        mData = data;
-        mAdapter = new HtDayplanDetailsAdapter(this,mData);
+        mAdapter = new HtDayplanDetailsAdapter(this,data);
         mLvDayplanDetails.setDivider(null);
         mLvDayplanDetails.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+
+    }
+
+    private String setTitleString(String dateTime) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy年M月d日");
+
+        String TitleString = null;
+        try {
+            TitleString = format.format(simpleDateFormat.parse(dateTime))+"计划";
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return TitleString;
 
     }
 }

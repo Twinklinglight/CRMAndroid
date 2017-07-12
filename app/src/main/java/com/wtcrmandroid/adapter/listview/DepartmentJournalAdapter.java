@@ -50,6 +50,11 @@ public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentRpons
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     static class ViewHolder {
         @BindView(R.id.iv_headpicture)
         CircleTextImageView mIvHeadpicture;

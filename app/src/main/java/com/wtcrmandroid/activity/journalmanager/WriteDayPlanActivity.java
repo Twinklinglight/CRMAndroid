@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
 import com.wtcrmandroid.model.WriteDayplanData;
@@ -35,7 +36,7 @@ import butterknife.OnClick;
  * @date 2017/6/8
  */
 
-public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,WjournalData> implements CalendarDialog.CalendarListener{
+public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Object> implements CalendarDialog.CalendarListener{
 
 
     @BindView(R.id.lv_write_dayplan)
@@ -50,6 +51,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
     TitleBar mTitlebar;             //标题
 
     private String DateSelect = "";  //显示日期
+    private String subTime = "";
 
     private WriteDayPlanAdapter mDayPlanAdapter;
     private List<WriteDayplanData> mList;
@@ -73,6 +75,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
         });
         Date time = Calendar.getInstance().getTime();
         DateSelect = new SimpleDateFormat("yyyy-MM-dd EEEE").format(time);
+        subTime = new SimpleDateFormat("yyyy-MM-dd").format(time);
         SetDateText(DateSelect);
 
         mList = new ArrayList<>();
@@ -112,7 +115,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
     }
 
     @Override
-    public void returnData(int key, WjournalData data) {
+    public void returnData(int key, Object data) {
 
         WriteDayPlanActivity.this.finish();
 
@@ -124,6 +127,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
 
         SetDateText(datetext);
         DateSelect = datetext;
+        subTime = new SimpleDateFormat("yyyy-MM-dd").format(data);
     }
 
     /**
@@ -146,17 +150,15 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Wjo
 
         Log.i("WriteDayPlanActivity","mlist = "+mList.toString());
         WDayPlanRQ wDayPlanRequstData = new WDayPlanRQ();
-        wDayPlanRequstData.setUserId(3066);
+        wDayPlanRequstData.setUserId(MyApplication.application.getLoginData().getUserID());
         wDayPlanRequstData.setType("day");
-        wDayPlanRequstData.setTime(DateSelect);
+        wDayPlanRequstData.setTime(subTime);
         wDayPlanRequstData.setLearningAndReflection("");
         wDayPlanRequstData.setPlan(true);
         wDayPlanRequstData.setWork(mList);
 
         presenter.SubDayPlan(wDayPlanRequstData);
     }
-
-
 
     static class ViewHolder1 {
         @BindView(R.id.rl_addjob)

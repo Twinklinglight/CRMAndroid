@@ -34,15 +34,14 @@
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/ContentText"
-            android:text="@string/A_customer"/>
+            style="@style/ContentText" />
 
     </LinearLayout>
 
     <ListView
         android:id="@+id/lv_dayplan_details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     </ListView>
 

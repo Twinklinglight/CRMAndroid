@@ -25,6 +25,9 @@ public class MyJournalAdapter extends BaseAdapter {
     private List<MyjournalRponseData> mDatas;
     private ItemClickListener itemClickListener;
 
+    public static final int NomalType = 1;
+    public static final int NullType = 2;
+
     public MyJournalAdapter(ItemClickListener listener) {
         this.itemClickListener = listener;
     }
@@ -54,56 +57,75 @@ public class MyJournalAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        View view = convertView;
+        View view = null;
+        view = convertView;
         ViewHolder viewHolder = null;
         if (view == null || !(view.getTag() instanceof ViewHolder)){
-
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_journal, null);
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
-
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-
         final MyjournalRponseData myjournalRponseData = mDatas.get(position);
-
         viewHolder.mTvJournalContent.setText(myjournalRponseData.getContent());
-
         final ViewHolder finalViewHolder = viewHolder;
+        setJournalType(finalViewHolder,myjournalRponseData);    //设置日志类型图标，title
+
         viewHolder.llitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 switch (myjournalRponseData.getType()){
                     case "dayPlan":
-                        finalViewHolder.mTvJournalTitle.setText(getDayTitle(myjournalRponseData.getShortRecordDate())+"日计划");
-
-                        finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_dayplan);
                         itemClickListener.DayPlanClick(position);
                         break;
                     case "dayWork":
-                        finalViewHolder.mTvJournalTitle.setText(getDayTitle(myjournalRponseData.getShortRecordDate())+"日总结");
-                        finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_daysum);
                         itemClickListener.DaySumClick(position);
                         break;
                     case "weekPlan":
-                        finalViewHolder.mTvJournalTitle.setText(getWeekTitle(myjournalRponseData.getWeekBegin(),myjournalRponseData.getWeekEnd()) +"周计划");
-                        finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weekplan);
                         itemClickListener.WeekPlanClick(position);
                         break;
                     case "weekWork":
-                        finalViewHolder.mTvJournalTitle.setText(getWeekTitle(myjournalRponseData.getWeekBegin(),myjournalRponseData.getWeekEnd()) +"周总结");
-                        finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weeksum);
                         itemClickListener.WeekSumClick(position);
                         break;
-
                 }
-
             }
         });
+        /*switch (getItemViewType(position)){
+            case NomalType:
+
+                break;
+            case NullType:
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_null,null);
+                TextView tvNull = (TextView)view.findViewById(R.id.tv_listnull);
+                tvNull.setText("本周暂无，上拉查看上一周");
+                break;
+        }*/
 
         return view;
+    }
+    
+    private void setJournalType(ViewHolder finalViewHolder, MyjournalRponseData myjournalRponseData){
+        switch (myjournalRponseData.getType()){
+            case "dayPlan":
+                finalViewHolder.mTvJournalTitle.setText(getDayTitle(myjournalRponseData.getShortRecordDate())+"日计划");
+                finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_dayplan);
+                break;
+            case "dayWork":
+                finalViewHolder.mTvJournalTitle.setText(getDayTitle(myjournalRponseData.getShortRecordDate())+"日总结");
+                finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_daysum);
+                break;
+            case "weekPlan":
+                finalViewHolder.mTvJournalTitle.setText(getWeekTitle(myjournalRponseData.getWeekBegin(),myjournalRponseData.getWeekEnd()) +"周计划");
+                finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weekplan);
+                break;
+            case "weekWork":
+                finalViewHolder.mTvJournalTitle.setText(getWeekTitle(myjournalRponseData.getWeekBegin(),myjournalRponseData.getWeekEnd()) +"周总结");
+                finalViewHolder.mTvJournalType.setImageResource(R.mipmap.ic_type_weeksum);
+                break;
+
+        }
     }
 
     private String getDayTitle(String time){

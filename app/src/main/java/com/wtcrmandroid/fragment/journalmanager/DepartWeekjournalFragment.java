@@ -15,6 +15,7 @@ import com.wtcrmandroid.fragment.journalmanager.presenter.DepartWeekPresenter;
 import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
+import com.wtcrmandroid.utils.DateUtils;
 import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.CommentData;
@@ -23,7 +24,6 @@ import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.view.dialog.WeekDialog;
 import com.wtcrmandroid.view.listview.MyListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,7 +36,7 @@ import butterknife.Unbinder;
  * Created by zxd on 2017/6/23
  */
 
-public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,Object> implements CommentDialog.submitListener, WeekDialog.WeekListener {
+public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter, Object> implements CommentDialog.submitListener, WeekDialog.WeekListener {
 
     @BindView(R.id.tv_date)
     TextView mTvDate;
@@ -50,6 +50,11 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
     MyListView mLvComment;
     Unbinder unbinder;
 
+    TextView learnStudy;
+    ViewHolder viewHolder;
+    View commenthead;
+    View footview;
+
     private List<WriterWeekPlaneData> mWeekplanDataList;
     private WeekDayplanAdapter mWeekplanAdapter;
 
@@ -60,47 +65,52 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
     private CommentAdapter mCommentAdapter;
     private int logId;
 
-    private int position;
+    private int userId;
+    private String titleTime;
+    DateUtils dateUtils;
+    private int position = 2;
 
     @Override
     public void returnData(int key, Object data) {
 
-        switch (key){
+        switch (key) {
             case 1:
-                mWeekplanDataList = (List<WriterWeekPlaneData>)data;
+                mWeekplanDataList = (List<WriterWeekPlaneData>) data;
                 mWeekplanAdapter = new WeekDayplanAdapter(getActivity(), mWeekplanDataList);
                 mLvWeekplanDetails.setAdapter(mWeekplanAdapter);
                 mWeekplanAdapter.notifyDataSetChanged();
                 break;
             case 2:
-                WeekSumDetailsRpData weeksumData = (WeekSumDetailsRpData)data;
+                WeekSumDetailsRpData weeksumData = (WeekSumDetailsRpData) data;
                 mWeeksumDataList = weeksumData.getWork();
                 mCommentDataList = weeksumData.getExam();
                 String learning = weeksumData.getLearning();
                 String leve = weeksumData.getLeve();
                 logId = weeksumData.getLogId();
+
+                if (mWeeksumDataList.size() > 0) {
+                    footview.setVisibility(View.VISIBLE);
+                } else {
+                    footview.setVisibility(View.GONE);
+                }
                 mWeeksumAdapter = new WeeksumDetailsAdapter(getActivity(), mWeeksumDataList);
                 mLvWeeksumDetails.setAdapter(mWeeksumAdapter);
+                learnStudy.setText(learning);
                 mWeeksumAdapter.notifyDataSetChanged();
 
-                View footview = LayoutInflater.from(getContext()).inflate(R.layout.item_sum_foot,null);
-                TextView learnStudy = (TextView) footview.findViewById(R.id.tv_daysum_xxfx);
-                learnStudy.setText(learning);
-                mLvWeeksumDetails.addFooterView(footview);
 
-                if (mCommentDataList.size()>0){
-                    View commenthead = LayoutInflater.from(getActivity()).inflate(R.layout.item_comment_head, null);
-                    ViewHolder viewHolder = new ViewHolder(commenthead);
-                    commenthead.setTag(viewHolder);
-                    viewHolder.mTvCommentCount.setText("评价(" + mCommentDataList.size() + ")");
-                    mLvComment.addHeaderView(commenthead);
-
-                    mCommentAdapter = new CommentAdapter(getActivity(), mCommentDataList,leve);
-                    mLvComment.setAdapter(mCommentAdapter);
+                if (mCommentDataList.size() > 0) {
+                    commenthead.setVisibility(View.VISIBLE);
+                } else {
+                    commenthead.setVisibility(View.GONE);
                 }
+                mCommentAdapter = new CommentAdapter(getActivity(), mCommentDataList, leve);
+                mLvComment.setAdapter(mCommentAdapter);
+                viewHolder.mTvCommentCount.setText("评价(" + mCommentDataList.size() + ")");
+                mCommentAdapter.notifyDataSetChanged();
                 break;
             case 3:
-                Toast.makeText(getContext(),"成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "成功", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -113,8 +123,24 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
 
     @Override
     protected void init() {
-        presenter = new DepartWeekPresenter(this,getContext());
-        postData(3066,"2017-06-12","2017-06-18");
+        presenter = new DepartWeekPresenter(this, getContext());
+        dateUtils = new DateUtils();
+        titleTime = dateUtils.getNowWeek();
+        mTvDate.setText(titleTime);
+
+        footview = LayoutInflater.from(getContext()).inflate(R.layout.item_sum_foot, null);
+        learnStudy = (TextView) footview.findViewById(R.id.tv_daysum_xxfx);
+        mLvWeeksumDetails.addFooterView(footview);
+
+        commenthead = LayoutInflater.from(getActivity()).inflate(R.layout.item_comment_head, null);
+        viewHolder = new ViewHolder(commenthead);
+        commenthead.setTag(viewHolder);
+        mLvComment.addHeaderView(commenthead);
+
+        userId = getArguments().getInt("userid");
+
+        postData(userId, dateUtils.getWantDate(titleTime.split("-")[0]),
+                dateUtils.getWantDate(titleTime.split("-")[1]));
 
     }
 
@@ -122,14 +148,13 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_week_date:         //获取日期
-                new WeekDialog(getContext(),this,position).show();
+                new WeekDialog(getContext(), this, position).show();
                 break;
             case R.id.tv_write_comment:     //写评论
-                new CommentDialog(getContext(),this).show();
+                new CommentDialog(getContext(), this).show();
                 break;
         }
     }
-
 
     // 提交评论
     @Override
@@ -148,10 +173,14 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
 
         this.position = position;
         mTvDate.setText(weekText);
+        String begintime = weekText.split("-")[0];
+        String endtime = weekText.split("-")[1];
+
+        postData(3066, dateUtils.getWantDate(begintime), dateUtils.getWantDate(endtime));
 
     }
 
-    private void postData(int userid,String begintime,String endtime){
+    private void postData(int userid, String begintime, String endtime) {
         WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
         weekDetailsRequestData.setUserId(userid);
         weekDetailsRequestData.setType("week");

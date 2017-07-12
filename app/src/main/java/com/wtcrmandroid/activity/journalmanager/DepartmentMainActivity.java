@@ -54,7 +54,7 @@ public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                DepartmentMainActivity.this.finish();
             }
         });
         titlebar.setRightOnClickListener(new View.OnClickListener() {
@@ -84,18 +84,10 @@ public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter
             }
         });
 
-       /* mDataList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            DepartmentData departmentData = new DepartmentData();
-            departmentData.setPersonName("name"+i);
-            departmentData.setCommentCount("count"+i);
-            mDataList.add(departmentData);
-        }*/
-
     }
 
     @Override
-    public void returnData(int key, List<DepartmentRponseData> data) {
+    public void returnData(int key, final List<DepartmentRponseData> data) {
 
         mAdapter = new DepartmentJournalAdapter(this,data);
         listDepart.setAdapter(mAdapter);
@@ -104,13 +96,16 @@ public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter
         listDepart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0){
-                    startActivity(new Intent(DepartmentMainActivity.this,
-                            HtJournalDetails.class));
-                }else if (position == 1){
-                    startActivity(new Intent(DepartmentMainActivity.this,
-                            XsJournalDetails.class));
-                }
+
+                    Intent intent = new Intent(DepartmentMainActivity.this,
+                            HtJournalDetails.class);
+                    intent.putExtra("userid",data.get(position).getUserid());
+                    startActivity(intent);
+
+                /*}else if (position == 1){
+//                    startActivity(new Intent(DepartmentMainActivity.this,
+//                            XsJournalDetails.class));
+                }*/
             }
         });
 

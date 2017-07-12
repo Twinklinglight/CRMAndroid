@@ -95,6 +95,11 @@ public class WriterWeekPlaneAdapter extends MySmallBaseAdapter<WriterWeekPlaneDa
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
 
     class MyTextWatcher implements TextWatcher {
         private WriterWeekPlaneData data;

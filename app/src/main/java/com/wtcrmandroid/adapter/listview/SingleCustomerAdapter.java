@@ -51,6 +51,11 @@ public class SingleCustomerAdapter extends MySmallBaseAdapter<SingleCustomerData
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     static class ViewHolder {
         @BindView(R.id.tv_single_sort)
         TextView mTvSingleSort;

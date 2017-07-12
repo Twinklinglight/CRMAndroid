@@ -92,6 +92,11 @@ public class WriteDayPlanAdapter extends MySmallBaseAdapter<WriteDayplanData, Wr
     }
 
     @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
+    @Override
     public void WorkSelect(String workSort,int position) {
         list.get(position).setWorkSort(workSort);
         notifyDataSetChanged();

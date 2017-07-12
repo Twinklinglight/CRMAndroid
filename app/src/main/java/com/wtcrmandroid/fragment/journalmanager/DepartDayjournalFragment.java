@@ -1,5 +1,7 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iflytek.cloud.thirdparty.V;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
@@ -16,6 +19,7 @@ import com.wtcrmandroid.model.reponsedata.BaseData;
 import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
+import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
 import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.BaseFragment;
@@ -25,6 +29,7 @@ import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 import com.wtcrmandroid.view.popupwindow.CalendarPopupWindow;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -54,7 +59,16 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     MyListView mLvComment;      //评论列表
     Unbinder unbinder;
 
-    private int Logid;
+    private int Logid;          //日志id
+
+    private int userid;         //员工id
+
+    private String datetime;
+
+    TextView learnStudy;
+    View commentHead;
+    View footview;
+    ViewHolder viewHolder;
 
     private HtDayplanDetailsAdapter mDayplanAdapter;
 
@@ -68,6 +82,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     @Override
     public void returnData(int key, Object data) {
 
+        Log.i("zxd","returnData = "+data.toString());
         switch (key){
             case 1:         //日计划列表
                 mDayplanAdapter = new HtDayplanDetailsAdapter(getActivity(),(List<HtDayplanDetailsData>) data);
@@ -82,27 +97,27 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
                 String leve = daysumData.getLeve();
                 Logid = daysumData.getLogId();
 
+                if (work.size()>0){
+                    footview.setVisibility(View.VISIBLE);
+                }else {
+                    footview.setVisibility(View.GONE);
+                }
                 mDysumAdapter = new HtDaysumDetailsAdapter(getActivity(), work);
                 mLvDaysumDetails.setAdapter(mDysumAdapter);
+                learnStudy.setText(learning);
                 mDysumAdapter.notifyDataSetChanged();
 
-                View footview = LayoutInflater.from(getContext()).inflate(R.layout.item_sum_foot,null);
-                TextView learnStudy = (TextView) footview.findViewById(R.id.tv_daysum_xxfx);
-                learnStudy.setText(learning);
-                mLvDaysumDetails.addFooterView(footview);       //学习反省
+                if (exam.size()>0){
 
-                if (exam != null){
-
-                    View commentHead = LayoutInflater.from(getActivity()).inflate(R.layout.item_comment_head, null);
-                    ViewHolder viewHolder = new ViewHolder(commentHead);
-                    commentHead.setTag(viewHolder);
-                    viewHolder.mTvCommentCount.setText("评论(" + exam.size() + ")");
-                    mLvComment.addHeaderView(commentHead);  //评论数量
-
+                    commentHead.setVisibility(View.VISIBLE);
+                }else {
+                    commentHead.setVisibility(View.GONE);
                 }
                 mCommentAdapter = new CommentAdapter(getActivity(), exam,leve);
                 mLvComment.setAdapter(mCommentAdapter);     //评论列表
+                viewHolder.mTvCommentCount.setText("评论(" + exam.size() + ")");
                 mCommentAdapter.notifyDataSetChanged();
+
 
                 break;
             case 3:
@@ -121,10 +136,31 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     protected void init() {
 
         presenter = new DepartDayPresenter(this,getContext());
-        postData(3066,"2017-06-26");
+        datetime = DateUtil.getToday();
+        mTvDate.setText(DateUtil.getTodayString());
+
+        footview = LayoutInflater.from(getContext()).inflate(R.layout.item_sum_foot,null);
+        learnStudy = (TextView) footview.findViewById(R.id.tv_daysum_xxfx);
+        mLvDaysumDetails.addFooterView(footview);       //学习反省
+
+        commentHead = LayoutInflater.from(getActivity()).inflate(R.layout.item_comment_head, null);
+        viewHolder = new ViewHolder(commentHead);
+        commentHead.setTag(viewHolder);
+        mLvComment.addHeaderView(commentHead);  //评论数量
+
+        Bundle arguments = getArguments();
+        if (arguments !=null){
+            userid = arguments.getInt("userid");
+        }
+        postData(userid,datetime);
 
     }
 
+    public void cancleWindows(){
+        if (Calendarwindow.isShowing()){
+            Calendarwindow.dismiss();
+        }
+    }
 
     @OnClick({R.id.iv_calender,R.id.tv_write_comment})
     public void onViewClicked(View view) {
@@ -134,7 +170,11 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
                     Calendarwindow = new CalendarPopupWindow(getContext(),llcalendar,this);
                     Calendarwindow.show();
                 }else {
-                    Calendarwindow.dismiss();
+                    if (Calendarwindow.isShowing()){
+                        Calendarwindow.dismiss();
+                    }else {
+                        Calendarwindow.show();
+                    }
                 }
                 break;
             case R.id.tv_write_comment:     //写评论
@@ -147,7 +187,10 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     @Override
     public void CalendarSelcet(String datetext, Date date) {
 
-        postData(3066,datetext);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        mTvDate.setText(sdf.format(date));
+        postData(userid,sdf2.format(date));
 
     }
 

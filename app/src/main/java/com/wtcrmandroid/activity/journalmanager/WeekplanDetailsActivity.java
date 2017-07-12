@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +32,9 @@ public class WeekplanDetailsActivity extends BaseActivity<WeekPlanDetailsPresent
     @BindView(R.id.lv_weekplan)
     ListView mLvWeekplan;           //日志列表
 
+    private String weekStart;
+    private String weekEnd;
+
     private WeekDayplanAdapter mAdapter;
     private List<WriterWeekPlaneData>mDataList; //数据源
 
@@ -43,22 +47,27 @@ public class WeekplanDetailsActivity extends BaseActivity<WeekPlanDetailsPresent
     @Override
     protected void initView() {
         presenter = new WeekPlanDetailsPresenter(this,this);
+
+        weekStart = getIntent().getStringExtra("wpbegin");
+        weekEnd = getIntent().getStringExtra("wpend");
+
+        mTvWeekplan.setText(weekStart+"-"+weekEnd+"周计划");
+
         WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
         weekDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         weekDetailsRequestData.setType("week");
         weekDetailsRequestData.setPlan(true);
-        weekDetailsRequestData.setWeekBegin("2017/6/12");
-        weekDetailsRequestData.setWeekEnd("2017/6/18");
+        weekDetailsRequestData.setWeekBegin(weekStart);
+        weekDetailsRequestData.setWeekEnd(weekEnd);
 
         presenter.GetWeekPlanData(weekDetailsRequestData);
         mTitleBar.setTitletext("日志详情");
-
-        mDataList = new ArrayList<>();
-//        for (int i = 0; i < 3; i++) {
-//            WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
-//            writerWeekPlaneData.setWorkNumber("本周计划"+(i+1));
-//            mDataList.add(writerWeekPlaneData);
-//        }
+        mTitleBar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WeekplanDetailsActivity.this.finish();
+            }
+        });
 
     }
 

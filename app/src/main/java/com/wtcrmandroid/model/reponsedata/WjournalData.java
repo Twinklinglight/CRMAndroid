@@ -1,5 +1,7 @@
 package com.wtcrmandroid.model.reponsedata;
 
+import java.util.List;
+
 /**
  * Created by ZSC on 2017/6/30.
  */
@@ -7,46 +9,22 @@ package com.wtcrmandroid.model.reponsedata;
 public class WjournalData {
     /**
      * ret : 0
-     * msg : 成功
+     * msg : true
+     * data : []
      */
 
-    private int ret;
-    private String msg;
 
-    public int getRet() {
-        return ret;
+    private List<?> data;
+
+
+    public List<?> getData() {
+        return data;
     }
 
-    public void setRet(int ret) {
-        this.ret = ret;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setData(List<?> data) {
+        this.data = data;
     }
 
 
 
-   /* private String ret;
-    private String msg;
-
-    public String getRet() {
-        return ret;
-    }
-
-    public void setRet(String ret) {
-        this.ret = ret;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }*/
 }

@@ -42,7 +42,13 @@ public class HtDaysumDetailsAdapter extends MySmallBaseAdapter<HtDaysumDetailsDa
         return view;
     }
 
-     class ViewHolder {
+    @Override
+    protected View onCreateNullViewholder() {
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_list_null, null);
+        return view;
+    }
+
+    class ViewHolder {
         @BindView(R.id.tv_work_sort)
         TextView mTvWorkSort;
         @BindView(R.id.tv_daysum_person)

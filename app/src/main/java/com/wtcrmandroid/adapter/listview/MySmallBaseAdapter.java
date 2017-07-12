@@ -1,6 +1,7 @@
 package com.wtcrmandroid.adapter.listview;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,6 +14,10 @@ import java.util.List;
  */
 
 public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
+
+    private final int nomalType = 1;
+    private final int nullType = 2;
+
     protected List<T> list;
     protected Activity activity;
 
@@ -32,31 +37,53 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list.size();
+        Log.i("zxd","getCount = "+list.size());
+        return list.size()>0 ?list.size() : 1;
+
     }
 
     @Override
     public Object getItem(int position) {
+        Log.i("zxd","getItem执行了");
         return null;
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         T1 holder = null;
 //        if (convertView == null) {
+        if (getItemViewType(position) == nomalType){
+
             convertView = onCreateViewHolder();
+            holder = (T1) convertView.getTag();
+            convert(holder, position);
+        }else {
+            convertView = onCreateNullViewholder();
+        }
 //        }
-        holder = (T1) convertView.getTag();
-        convert(holder, position);
+
         return convertView;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 3;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        Log.i("zxd","getItemViewType执行了");
+        return (list.size()>0) ? nomalType : nullType;
+
     }
 
     protected abstract void convert(T1 holder, int position);
 
     protected abstract View onCreateViewHolder();
+    protected abstract View onCreateNullViewholder();
 }

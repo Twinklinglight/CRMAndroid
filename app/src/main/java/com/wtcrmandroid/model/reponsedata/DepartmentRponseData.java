@@ -6,16 +6,16 @@ package com.wtcrmandroid.model.reponsedata;
 
 public class DepartmentRponseData {
 
-    private String userid;
+    private int userid;
     private String username;
     private String zhiwu;
     private String Column1;
 
-    public String getUserid() {
+    public int getUserid() {
         return userid;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(int userid) {
         this.userid = userid;
     }
 

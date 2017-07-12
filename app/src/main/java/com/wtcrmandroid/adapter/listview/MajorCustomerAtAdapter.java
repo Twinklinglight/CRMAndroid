@@ -47,6 +47,11 @@ public class MajorCustomerAtAdapter extends MySmallBaseAdapter<MajorCustomerData
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     static class ViewHolder {
         @BindView(R.id.tv_major_sort)
         TextView mTvMajorSort;

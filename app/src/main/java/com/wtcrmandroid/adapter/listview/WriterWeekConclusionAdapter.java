@@ -97,6 +97,11 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekSu
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     //完成情况
     @Override
     public void completeCondition(String text, int position) {

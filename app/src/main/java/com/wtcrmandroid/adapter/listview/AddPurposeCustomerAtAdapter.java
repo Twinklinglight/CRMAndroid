@@ -60,6 +60,11 @@ public class AddPurposeCustomerAtAdapter extends MySmallBaseAdapter<AddPurpostCt
         return view;
     }
 
+    @Override
+    protected View onCreateNullViewholder() {
+        return null;
+    }
+
     static class ViewHolder {
         @BindView(R.id.tv_major_sort)
         TextView mTvMajorSort;

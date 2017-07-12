@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.HtDaysumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
@@ -40,8 +41,12 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
     @BindView(R.id.lv_comment)
     MyListView mLvComment;          //评论列表
 
-    private List<HtDaysumDetailsData> mDtailsList;
-    private List<CommentData> mCommentList;
+    private String time;
+    View footview;
+    View comentHead;
+    TextView learnStudy;
+    ViewHolder viewHolder;
+
     private HtDaysumDetailsAdapter mDetailsAdapter;
     private CommentAdapter mCommentAdapter;
 
@@ -54,16 +59,18 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
     @Override
     protected void initView() {
         presenter = new HtDaysumDetailsPresenter(this,this);
+
+        time = getIntent().getStringExtra("dsdate");
+        mTvJournalTitle.setText(time+"总结");
+
         DayDetailsRQ dayDetailsRequestData = new DayDetailsRQ();
-        dayDetailsRequestData.setUserId(3066);
+        dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRequestData.setType("day");
         dayDetailsRequestData.setIsPlan(false);
-        dayDetailsRequestData.setNowDate("2017-06-13");
+        dayDetailsRequestData.setNowDate(time);
 
         presenter.GetDaySumDetails(dayDetailsRequestData);
 
-        mDtailsList = new ArrayList<>();
-        mCommentList = new ArrayList<>();
         mTitlebar.setTitletext("日志详情");
 
         //返回
@@ -73,28 +80,16 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
                 HtDaysumDetailsActivity.this.finish();
             }
         });
-        getData();
 
-    }
+        footview = LayoutInflater.from(this).inflate(R.layout.item_sum_foot,null);
+        learnStudy = (TextView) footview.findViewById(R.id.tv_daysum_xxfx);
+        mLvWork.addFooterView(footview);
 
-    public void getData() {
-       /* for (int i = 0; i < 3; i++) {
-            HtDaysumDetailsData htDaysumDetailsData = new HtDaysumDetailsData();
-            htDaysumDetailsData.setWorkComplete("基本完成");
-            htDaysumDetailsData.setWorkContent("你干了啥说就是啥");
-            htDaysumDetailsData.setWorkPerson("网二");
-            htDaysumDetailsData.setWorkSort("A类");
-            htDaysumDetailsData.setWorkStudy("今天收获很大，恩，都有沙雷");
+        comentHead = LayoutInflater.from(this).
+                inflate(R.layout.item_comment_head, null);
+        viewHolder = new ViewHolder(comentHead);
+        mLvComment.addHeaderView(comentHead);
 
-            CommentData commentData = new CommentData();
-            commentData.setCommentContent("已经查看，继续努力！");
-            commentData.setCommentJob("部长");
-            commentData.setCommentPerson("郭靖");
-            commentData.setCommentTime("2017-5-7");
-
-            mDtailsList.add(htDaysumDetailsData);
-            mCommentList.add(commentData);
-        }*/
     }
 
     @Override
@@ -105,25 +100,24 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
         String leve = data.getLeve();
         String learning = data.getLearning();
 
+        if (work.size()>0){
+            footview.setVisibility(View.VISIBLE);
+        }else {
+            footview.setVisibility(View.GONE);
+        }
         mDetailsAdapter = new HtDaysumDetailsAdapter(this, work);
         mLvWork.setDivider(null);       //去除分割线
         mLvWork.setAdapter(mDetailsAdapter);
-
-        View footview = LayoutInflater.from(this).inflate(R.layout.item_sum_foot,null);
-        TextView learnStudy = (TextView) footview.findViewById(R.id.tv_daysum_xxfx);
         learnStudy.setText(learning);
-        mLvWork.addFooterView(footview);
-
         mDetailsAdapter.notifyDataSetChanged();
 
         if (exam.size() > 0) {
-            View view = LayoutInflater.from(this).
-                    inflate(R.layout.item_comment_head, null);
-            ViewHolder viewHolder = new ViewHolder(view);
-            mLvComment.addHeaderView(view);
-            viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
+            comentHead.setVisibility(View.VISIBLE);
+        }else {
+            comentHead.setVisibility(View.GONE);
         }
         mCommentAdapter = new CommentAdapter(this, exam,leve);
+        viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
         mLvComment.setAdapter(mCommentAdapter);
         mCommentAdapter.notifyDataSetChanged();
 
