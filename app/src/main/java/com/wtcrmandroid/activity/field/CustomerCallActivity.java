@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.baidu.location.BDLocation;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
+import com.jph.takephoto.compress.CompressConfig;
 import com.jph.takephoto.model.InvokeParam;
 import com.jph.takephoto.model.TContextWrap;
 import com.jph.takephoto.model.TResult;
@@ -49,6 +50,7 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
 
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
+    Uri imageUri;
     @Override
     public void returnData(int key, Object data) {
 
@@ -69,19 +71,28 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
             }
         });
         rvView.setLayoutManager(new GridLayoutManager(this, 4));
-        rvView.setAdapter(adapter = new PhotoChooseAdapter());
+        rvView.setAdapter(adapter = new PhotoChooseAdapter(this));
         adapter.setList(photo_list);
+
+        CompressConfig config=new CompressConfig.Builder()
+                .setMaxSize(51200)
+                .setMaxPixel(800)
+                .enableReserveRaw(true)
+                .create();
+        takePhoto.onEnableCompress(config,true);
         adapter.setMyOnClickListner(new PhotoChooseAdapter.MyOnClickListner() {
             @Override
             public void selectPhoto(int position) {
                 File file=new File(Environment.getExternalStorageDirectory(), "/temp/"+System.currentTimeMillis() + ".jpg");
                 if (!file.getParentFile().exists())file.getParentFile().mkdirs();
-                Uri imageUri = Uri.fromFile(file);
+                imageUri = Uri.fromFile(file);
+                takePhoto.onPickFromCapture(imageUri);
             }
 
             @Override
             public void deletePhoto(int position) {
-
+                photo_list.remove(position);
+                adapter.setList(photo_list);
             }
         });
     }
@@ -135,7 +146,8 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
     }
     @Override
     public void takeSuccess(TResult result) {
-
+        photo_list.add(result.getImage().getCompressPath());
+        adapter.setList(photo_list);
     }
 
     @Override
@@ -145,6 +157,7 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
 
     @Override
     public void takeCancel() {
+        showShortToast("取消当前操作！");
 
     }
 

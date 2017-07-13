@@ -10,6 +10,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.ClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
+import com.wtcrmandroid.model.requestdata.AKeyPullInRQ;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -189,6 +190,12 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new ClientLibraryAdapter(this));
+        adapter.setaKeyPullIn(new ClientLibraryAdapter.AKeyPullIn() {
+            @Override
+            public void AKeyPullIn(AKeyPullInRQ aKeyPullInRQ) {
+                presenter.aKeyPullIn(aKeyPullInRQ,2);
+            }
+        });
         presenter = new MainClientLibraryPresenter(this,this);
         data=new SearchCustomerRQ();
         presenter.getData(data,0);
@@ -226,11 +233,15 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                 adapter.addList(data);
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
+            //加载更多返回数据
             case 1:
                 List<SearchCustomerRP> list=adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);
+                break;
+            case 2:
+                showShortToast("拉入成功！");
                 break;
 
         }

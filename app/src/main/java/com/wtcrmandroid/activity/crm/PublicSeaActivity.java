@@ -13,6 +13,7 @@ import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
 import com.wtcrmandroid.dialog.popupwindow.addressselection.AreaPopUpWindow;
 import com.wtcrmandroid.model.reponsedata.SearchCustomerRP;
+import com.wtcrmandroid.model.requestdata.AKeyPullInRQ;
 import com.wtcrmandroid.model.requestdata.SearchCustomerRQ;
 import com.wtcrmandroid.presenter.activity.MainClientLibraryPresenter;
 import com.wtcrmandroid.utils.L;
@@ -196,6 +197,12 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new ClientLibraryAdapter(this));
         adapter.setStyle(1);
+        adapter.setaKeyPullIn(new ClientLibraryAdapter.AKeyPullIn() {
+            @Override
+            public void AKeyPullIn(AKeyPullInRQ aKeyPullInRQ) {
+                presenter.aKeyPullIn(aKeyPullInRQ,2);
+            }
+        });
     }
 
 
@@ -222,11 +229,15 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                 adapter.addList(data);
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
+            //加载更多返回数据
             case 1:
                 List<SearchCustomerRP> list=adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);
+                break;
+            case 2:
+                showShortToast("拉入成功！");
                 break;
 
         }
