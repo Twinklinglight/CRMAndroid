@@ -26,11 +26,16 @@ public class HtDaysumDetailsAdapter extends MySmallBaseAdapter<HtDaysumDetailsDa
     @Override
     protected void convert(ViewHolder holder, int position) {
 
-        holder.mTvWorkSort.setText(list.get(position).getWorkSort());
-        holder.mTvDaysumContent.setText(list.get(position).getWorkContent());
-        holder.mTvDaysumPerson.setText(list.get(position).getWorkPerson());
-        holder.mTvDaysumWcqk.setText(list.get(position).getWorkComplete());
-
+        HtDaysumDetailsData htDaysumDetailsData = list.get(position);
+        holder.mTvWorkSort.setText(htDaysumDetailsData.getWorkSort());
+        holder.mTvDaysumContent.setText(htDaysumDetailsData.getWorkContent());
+        holder.mTvDaysumPerson.setText(htDaysumDetailsData.getWorkPerson());
+        if (htDaysumDetailsData.getWorkUnfinishedReason() == ""||htDaysumDetailsData.getWorkUnfinishedReason() == null){
+            holder.mTvDaysumWcqk.setText(htDaysumDetailsData.getWorkComplete());
+        }else {
+            holder.mTvDaysumWcqk.setText(htDaysumDetailsData.getWorkComplete()
+                    +htDaysumDetailsData.getWorkUnfinishedReason()+" 下次完成时间"+htDaysumDetailsData.getWorkNextFinishTime());
+        }
     }
 
     @Override

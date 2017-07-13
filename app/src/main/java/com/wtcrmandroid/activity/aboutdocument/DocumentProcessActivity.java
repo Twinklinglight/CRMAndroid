@@ -18,6 +18,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
+ * 可以发起、审批
  * @author Create by zxd on 2017/7/3
  */
 

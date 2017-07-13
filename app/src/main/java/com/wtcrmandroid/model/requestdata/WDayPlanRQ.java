@@ -11,18 +11,18 @@ import java.util.List;
 public class WDayPlanRQ {
 
     private int userId;
-    private String time;
+    private String workRecordTime;
     private String type;
     private boolean isPlan;
     private List<WriteDayplanData> work;
     private String learningAndReflection;
 
-    public String getTime() {
-        return time;
+    public String getWorkRecordTime() {
+        return workRecordTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setWorkRecordTime(String workRecordTime) {
+        this.workRecordTime = workRecordTime;
     }
 
     public int getUserId() {

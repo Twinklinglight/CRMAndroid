@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
@@ -117,6 +118,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
     @Override
     public void returnData(int key, Object data) {
 
+        Toast.makeText(this,"提交成功",Toast.LENGTH_SHORT).show();
         WriteDayPlanActivity.this.finish();
 
     }
@@ -148,11 +150,10 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
     @OnClick(R.id.tv_dayplan_submit)
     public void onClick() {
 
-        Log.i("WriteDayPlanActivity","mlist = "+mList.toString());
         WDayPlanRQ wDayPlanRequstData = new WDayPlanRQ();
         wDayPlanRequstData.setUserId(MyApplication.application.getLoginData().getUserID());
         wDayPlanRequstData.setType("day");
-        wDayPlanRequstData.setTime(subTime);
+        wDayPlanRequstData.setWorkRecordTime(subTime);
         wDayPlanRequstData.setLearningAndReflection("");
         wDayPlanRequstData.setPlan(true);
         wDayPlanRequstData.setWork(mList);

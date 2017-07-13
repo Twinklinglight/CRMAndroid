@@ -136,9 +136,14 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
                         break;
                     case 3:     //选择日期
                         if (calendarWindow != null){
-                            calendarWindow.show();
+                            if (calendarWindow.isShowing()){
+                                calendarWindow.dismiss();
+                            }else {
+                                calendarWindow.show();
+                            }
                         }else {
                             calendarWindow =  new CalendarPopupWindow(MyJournalActivity.this,tcmbBar,MyJournalActivity.this);
+                            calendarWindow.show();
                             calendarWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
                                 @Override
                                 public void onDismiss() {

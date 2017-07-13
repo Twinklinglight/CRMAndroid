@@ -36,7 +36,7 @@ public class WriterWeekPlaneAdapter extends MySmallBaseAdapter<WriterWeekPlaneDa
     @Override
     protected void convert(final ViewHolder holder, final int position) {
         final WriterWeekPlaneData data = list.get(position);
-        holder.tvPlan.setText(data.getWorkNumber());
+        holder.tvPlan.setText("本周计划"+(position+1));
         holder.etWorkPlane.setText(data.getWorkContent());
         holder.etPlaneTarget.setText(data.getWorkPlanning());
         holder.etProportion.setText(data.getWorkPercentage());
@@ -67,12 +67,7 @@ public class WriterWeekPlaneAdapter extends MySmallBaseAdapter<WriterWeekPlaneDa
             holder.rlAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    data.setEtWorkPlane(holder.etWorkPlane.getText().toString());
-//                    data.setEtPlaneTarget(holder.etPlaneTarget.getText().toString());
-//                    data.setEtProportion(holder.etProportion.getText().toString());
-//                    list.set(position,data);
                     WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
-                    writerWeekPlaneData.setWorkNumber("本周计划");
                     list.add(writerWeekPlaneData);
                     L.e(list.size() + "" + list.get(0).getWorkContent());
                     WriterWeekPlaneAdapter.this.notifyDataSetChanged();
@@ -80,9 +75,6 @@ public class WriterWeekPlaneAdapter extends MySmallBaseAdapter<WriterWeekPlaneDa
             });
         } else {
             holder.rlAdd.setVisibility(View.GONE);
-//            holder.etWorkPlane.setKeyListener(null);
-//            holder.etPlaneTarget.setKeyListener(null);
-//            holder.etProportion.setKeyListener(null);
         }
     }
 

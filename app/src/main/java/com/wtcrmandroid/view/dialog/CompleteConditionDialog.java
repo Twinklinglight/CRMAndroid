@@ -65,21 +65,6 @@ public class CompleteConditionDialog extends Dialog {
         ButterKnife.bind(this);
     }
 
-    private void initWindowParams() {
-        Window dialogWindow = getWindow();
-        // 获取屏幕宽、高用
-        Resources resources = mContext.getResources();
-        DisplayMetrics dm = resources.getDisplayMetrics();
-        float density1 = dm.density;
-        int width3 = dm.widthPixels;
-
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.width = (int) (width3 * 0.85); // 宽度设置为屏幕的0.85
-        dialogWindow.setGravity(Gravity.CENTER);
-        dialogWindow.setAttributes(lp);
-    }
-
-
     @OnClick({R.id.rb_done, R.id.rb_undone,R.id.tv_sure,R.id.tv_cancle})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -103,7 +88,7 @@ public class CompleteConditionDialog extends Dialog {
                 }else {
                     String reasonText = etNocompleteReason.getText().toString();
                     String nextTime = etNocompleteTime.getText().toString();
-                    completeListener.completeCondition(reasonText +" "+ nextTime,position);
+                    completeListener.unCompleteReason(reasonText,nextTime,position);
                 }
                 dismiss();
                 break;
@@ -115,7 +100,21 @@ public class CompleteConditionDialog extends Dialog {
 
     public interface CompeleteListener{
         void completeCondition(String text,int position);
+        void unCompleteReason(String reason,String time,int position);
     }
 
+    private void initWindowParams() {
+        Window dialogWindow = getWindow();
+        // 获取屏幕宽、高用
+        Resources resources = mContext.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        float density1 = dm.density;
+        int width3 = dm.widthPixels;
+
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        lp.width = (int) (width3 * 0.85); // 宽度设置为屏幕的0.85
+        dialogWindow.setGravity(Gravity.CENTER);
+        dialogWindow.setAttributes(lp);
+    }
 
 }

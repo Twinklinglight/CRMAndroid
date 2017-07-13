@@ -46,11 +46,12 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
             });
         }
 
-        holder.mTvDaysumSort.setText(list.get(position).getWorkSort());
+        final WriteDaysumData writeDaysumData = list.get(position);
+        holder.mTvDaysumSort.setText(writeDaysumData.getWorkSort());
         holder.mTvDaysumSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String workSort = list.get(position).getWorkSort();
+                String workSort = writeDaysumData.getWorkSort();
                 int tag = 0;
                 switch (workSort) {
                     case "A类 紧急又重要":
@@ -69,9 +70,17 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
                 new SelectionJobCategoriesDialog(activity, WriteDaySumAdapter.this, position, tag).show();
             }
         });
-        holder.mTvDaysumContent.setText(list.get(position).getWorkContent());
-        holder.mEtDaysumPerson.setText(list.get(position).getWorkPerson());
-        holder.mTvDaysumComplete.setText(list.get(position).getWorkComplete());
+        holder.mTvDaysumContent.setText(writeDaysumData.getWorkContent());
+        holder.mEtDaysumPerson.setText(writeDaysumData.getWorkPerson());
+
+        //第一次为null 不展示
+        if (writeDaysumData.getWorkComplete()==null && writeDaysumData.getWorkUnfinishedReason() == null){
+            holder.mTvDaysumComplete.setText("");
+        }else {
+            holder.mTvDaysumComplete.setText(writeDaysumData.getWorkComplete()+ writeDaysumData.getWorkUnfinishedReason()+
+                    writeDaysumData.getWorkNextFinishTime());
+        }
+
         holder.llComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,8 +88,8 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
             }
         });
 
-        holder.mTvDaysumContent.addTextChangedListener(new MyTextWatch(list.get(position), position, 0));
-        holder.mEtDaysumPerson.addTextChangedListener(new MyTextWatch(list.get(position), position, 1));
+        holder.mTvDaysumContent.addTextChangedListener(new MyTextWatch(writeDaysumData, position, 0));
+        holder.mEtDaysumPerson.addTextChangedListener(new MyTextWatch(writeDaysumData, position, 1));
 
     }
 
@@ -107,7 +116,17 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
     //完成情况的回调
     @Override
     public void completeCondition(String text,int position) {
-        list.get(position).setWorkComplete(text);
+        list.get(position).setWorkUnfinishedReason("");
+        list.get(position).setWorkNextFinishTime("");
+        list.get(position).setWorkComplete("已完成 "+text);
+        notifyDataSetChanged();
+    }
+    //未完成情况的回调
+    @Override
+    public void unCompleteReason(String reason, String time, int position) {
+        list.get(position).setWorkComplete("未完成 ");
+        list.get(position).setWorkUnfinishedReason(" "+reason);
+        list.get(position).setWorkNextFinishTime(" "+time);
         notifyDataSetChanged();
     }
 

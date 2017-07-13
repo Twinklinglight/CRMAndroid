@@ -19,7 +19,6 @@
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="本周计划"
             android:textColor="#2b2f33"
             android:textSize="16dp" />
 
@@ -50,12 +49,12 @@
             android:background="@mipmap/ic_work_content" />
 
         <EditText
+            style="@style/EditTextStyle"
             android:id="@+id/et_work_plane"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@null"
             android:hint="工作计划"
             android:textColor="#2b2f33"
             android:textColorHint="#C5C9CD"
@@ -84,12 +83,12 @@
             android:background="@mipmap/ic_target" />
 
         <EditText
+            style="@style/EditTextStyle"
             android:id="@+id/et_plane_target"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@null"
             android:hint="计划达成目标/完成进度"
             android:textColor="#2b2f33"
             android:textColorHint="#C5C9CD"
@@ -111,12 +110,12 @@
             android:background="@mipmap/ic_proportion" />
 
         <EditText
+            style="@style/EditTextStyle"
             android:id="@+id/et_proportion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@null"
             android:hint="此工作所占比重"
             android:textColor="#2b2f33"
             android:textColorHint="#C5C9CD"

@@ -157,8 +157,11 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     }
 
     public void cancleWindows(){
-        if (Calendarwindow.isShowing()){
-            Calendarwindow.dismiss();
+        if (Calendarwindow != null){
+
+            if (Calendarwindow.isShowing()){
+                Calendarwindow.dismiss();
+            }
         }
     }
 

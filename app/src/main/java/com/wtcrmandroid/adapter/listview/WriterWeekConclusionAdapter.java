@@ -36,7 +36,7 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekSu
     @Override
     protected void convert(final ViewHolder holder, final int position) {
         final WriterWeekSumData data = list.get(position);
-        holder.tvPlan.setText(data.getWorkNumber());
+        holder.tvPlan.setText("本周总结"+(position+1));
 
         if (list.size() > 1) {
             holder.ivDelete.setVisibility(View.VISIBLE);
@@ -51,7 +51,13 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekSu
         holder.etWorkPlane.setText(data.getWorkContent());
         holder.etPlaneTarget.setText(data.getWorkPlanning());
         holder.etProportion.setText(data.getWorkPercentage());
-        holder.tvComplete.setText(data.getWorkComplete());
+        if (data.getWorkUnfinishedReason()=="" || data.getWorkUnfinishedReason() == null){
+            holder.tvComplete.setText(data.getWorkComplete());
+        }else {
+            holder.tvComplete.setText(data.getWorkComplete()+data.getWorkUnfinishedReason()+
+                                        "下次完成时间"+data.getWorkNextFinishTime());
+        }
+
 
         holder.llComplete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,22 +76,6 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekSu
                 doVoice(holder.etWorkPlane);
             }
         });
-        if (list.size() == position + 1) {
-            holder.rlAdd.setVisibility(View.VISIBLE);
-
-            holder.rlAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    WriterWeekSumData writerWeekPlaneData = new WriterWeekSumData();
-                    writerWeekPlaneData.setWorkNumber("本周总结");
-                    list.add(writerWeekPlaneData);
-                    L.e(list.size() + "" + list.get(0).getWorkContent());
-                    WriterWeekConclusionAdapter.this.notifyDataSetChanged();
-                }
-            });
-        } else {
-            holder.rlAdd.setVisibility(View.GONE);
-        }
     }
 
     @Override
@@ -105,7 +95,18 @@ public class WriterWeekConclusionAdapter extends MySmallBaseAdapter<WriterWeekSu
     //完成情况
     @Override
     public void completeCondition(String text, int position) {
-        list.get(position).setWorkComplete(text);
+        list.get(position).setWorkUnfinishedReason("");
+        list.get(position).setWorkNextFinishTime("");
+        list.get(position).setWorkComplete("已完成 "+text);
+        notifyDataSetChanged();
+    }
+
+    //未完成请况
+    @Override
+    public void unCompleteReason(String reason, String time, int position) {
+        list.get(position).setWorkComplete("未完成 ");
+        list.get(position).setWorkUnfinishedReason(reason+" ");
+        list.get(position).setWorkNextFinishTime(" "+time);
         notifyDataSetChanged();
     }
 

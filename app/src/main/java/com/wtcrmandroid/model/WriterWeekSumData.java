@@ -1,5 +1,7 @@
 package com.wtcrmandroid.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by 1363655717 on 2017-06-06.
  * 写周计划实体类
@@ -11,7 +13,26 @@ public class WriterWeekSumData {
     private String workContent;
     private String workPlanning;
     private String workPercentage;
+    @SerializedName("workTarget")
     private String workComplete;
+    private String workUnfinishedReason;
+    private String workNextFinishTime;
+
+    public String getWorkNextFinishTime() {
+        return workNextFinishTime;
+    }
+
+    public void setWorkNextFinishTime(String workNextFinishTime) {
+        this.workNextFinishTime = workNextFinishTime;
+    }
+
+    public String getWorkUnfinishedReason() {
+        return workUnfinishedReason;
+    }
+
+    public void setWorkUnfinishedReason(String workUnfinishedReason) {
+        this.workUnfinishedReason = workUnfinishedReason;
+    }
 
     public String getWorkNumber() {
         return workNumber;

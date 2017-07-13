@@ -26,7 +26,7 @@ public class WeekDayplanAdapter extends MySmallBaseAdapter<WriterWeekPlaneData, 
     @Override
     protected void convert(ViewHolder holder, int position) {
 
-        holder.mTvWeekplanTitle.setText(list.get(position).getWorkNumber());
+        holder.mTvWeekplanTitle.setText("本周计划"+(position+1));
         holder.mTvWeekplanContent.setText(list.get(position).getWorkContent());
         holder.mTvWeekplanMb.setText(list.get(position).getWorkPlanning());
         holder.mTvWeekplanPercent.setText(list.get(position).getWorkPercentage());

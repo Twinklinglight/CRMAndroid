@@ -11,7 +11,8 @@ import java.util.List;
 public class WweekPlanRequestData {
 
     private int userId;
-    private String time;
+    private String weekStart;
+    private String weekEnd;
     private String type;
     private boolean isPlan;
     private List<WriterWeekPlaneData> work;
@@ -25,12 +26,21 @@ public class WweekPlanRequestData {
         this.userId = userId;
     }
 
-    public String getTime() {
-        return time;
+
+    public String getWeekStart() {
+        return weekStart;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setWeekStart(String weekStart) {
+        this.weekStart = weekStart;
+    }
+
+    public String getWeekEnd() {
+        return weekEnd;
+    }
+
+    public void setWeekEnd(String weekEnd) {
+        this.weekEnd = weekEnd;
     }
 
     public String getType() {

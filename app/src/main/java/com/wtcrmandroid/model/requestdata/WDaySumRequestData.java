@@ -11,7 +11,7 @@ import java.util.List;
 public class WDaySumRequestData {
 
     private int userId;
-    private String time;
+    private String workRecordTime;
     private String type;
     private boolean isPlan;
     private List<WriteDaysumData> work;
@@ -25,12 +25,12 @@ public class WDaySumRequestData {
         this.userId = userId;
     }
 
-    public String getTime() {
-        return time;
+    public String getWorkRecordTime() {
+        return workRecordTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setWorkRecordTime(String workRecordTime) {
+        this.workRecordTime = workRecordTime;
     }
 
     public String getType() {

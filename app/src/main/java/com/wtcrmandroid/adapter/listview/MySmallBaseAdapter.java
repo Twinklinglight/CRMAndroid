@@ -37,14 +37,12 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
 
     @Override
     public int getCount() {
-        Log.i("zxd","getCount = "+list.size());
         return list.size()>0 ?list.size() : 1;
 
     }
 
     @Override
     public Object getItem(int position) {
-        Log.i("zxd","getItem执行了");
         return null;
     }
 
@@ -77,7 +75,6 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        Log.i("zxd","getItemViewType执行了");
         return (list.size()>0) ? nomalType : nullType;
 
     }

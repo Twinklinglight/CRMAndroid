@@ -3,7 +3,9 @@ package com.wtcrmandroid.activity.journalmanager;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.iflytek.cloud.thirdparty.T;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
@@ -27,7 +29,7 @@ import butterknife.OnClick;
  * 写周计划
  */
 
-public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, WjournalData> implements WeekDialog.WeekListener {
+public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, List<T>> implements WeekDialog.WeekListener {
 
     @BindView(R.id.titlebar)
     TitleBar titlebar;
@@ -37,10 +39,14 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
     List<WriterWeekPlaneData> list;
     @BindView(R.id.tv_date_show)
     TextView tvDateShow;
+    DateUtils dateUtils;
 
     private WriterWeekPlaneAdapter adapter;
     private int position = 2;
     private String nowWeek;
+    private String weekBegin = "";
+    private String weekEnd ="";
+    private String sumLearn ="";
 
     @Override
     protected int layout() {
@@ -57,7 +63,12 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
                 WriteWeekPlanActivity.this.finish();
             }
         });
-        nowWeek = new DateUtils().getNowWeek();
+        dateUtils = new DateUtils();
+        nowWeek = dateUtils.getNowWeek();       //获取当前周日期 区间
+
+        weekBegin = dateUtils.getWantDate(nowWeek.split("-")[0]);   //获取当前周起始日期
+        weekEnd = dateUtils.getWantDate(nowWeek.split("-")[1]);     //获取当前周结束日期
+
         tvDateShow.setText(nowWeek);
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +77,7 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
             }
         });
         WriterWeekPlaneData writerWeekPlaneData = new WriterWeekPlaneData();
-        writerWeekPlaneData.setWorkNumber("本周计划1");
+        writerWeekPlaneData.setWorkNumber("");
         list = new ArrayList<>();
         list.add(writerWeekPlaneData);
         adapter = new WriterWeekPlaneAdapter(this, list);
@@ -81,7 +92,8 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
         switch (view.getId()){
             case R.id.bt_submit:
                 WweekPlanRequestData wweekPlanRequestData = new WweekPlanRequestData();
-                wweekPlanRequestData.setTime(nowWeek);
+                wweekPlanRequestData.setWeekStart(weekBegin);
+                wweekPlanRequestData.setWeekEnd(weekEnd);
                 wweekPlanRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
                 wweekPlanRequestData.setType("week");
                 wweekPlanRequestData.setPlan(true);
@@ -98,8 +110,9 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
     }
 
     @Override
-    public void returnData(int key, WjournalData data) {
+    public void returnData(int key, List<T> data) {
 
+        Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
         WriteWeekPlanActivity.this.finish();
     }
 
@@ -112,5 +125,7 @@ public class WriteWeekPlanActivity extends BaseActivity<WriteWeekPlanPresenter, 
     public void weekSelect(String weekText, int position) {
         this.position = position;
         tvDateShow.setText(weekText);
+        weekBegin = dateUtils.getWantDate(weekText.split("-")[0]);  //获取选择后的周区间
+        weekEnd = dateUtils.getWantDate(weekText.split("-")[1]);
     }
 }

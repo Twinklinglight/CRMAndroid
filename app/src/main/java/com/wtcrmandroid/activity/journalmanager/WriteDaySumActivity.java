@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -7,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
@@ -36,7 +39,7 @@ import butterknife.OnClick;
  * @date 2017/6/6
  */
 
-public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,WjournalData> implements CalendarDialog.CalendarListener {
+public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Object> implements CalendarDialog.CalendarListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
@@ -46,6 +49,9 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
     TextView tvDaySumDate;                 //显示所选日期
 
     private String SelectDate = "";
+    private String subTime ="" ;
+    SimpleDateFormat sdf;
+    private String sumLearn = "";
     private WriteDaySumAdapter mDaySumAdapter;
     private List<WriteDaysumData> mDataList;
 
@@ -68,6 +74,8 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
         });
         Date time = Calendar.getInstance().getTime();
         SelectDate = new SimpleDateFormat("yyyy-MM-dd EEEE").format(time); //默认为当天
+        sdf =new SimpleDateFormat("yyyy-MM-dd");
+        subTime = sdf.format(time);
         SetDateText(SelectDate);
 
         mDataList = new ArrayList<>();
@@ -80,11 +88,28 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
         View view = LayoutInflater.from(this).inflate(R.layout.item_daysum_foot, null);
         ViewHolder viewHolder = new ViewHolder(view);
         mLvDaysum.addFooterView(view);
+
+        viewHolder.mEtDaysumSum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                sumLearn = s.toString();
+            }
+        });
         viewHolder.mLlDaysumAddjob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 WriteDaysumData writeDaysumData1 = new WriteDaysumData();
-                writeDaysumData1.setWorkSort("C类");
+                writeDaysumData1.setWorkSort("");
                 mDataList.add(writeDaysumData1);
                 mDaySumAdapter.notifyDataSetChanged();
             }
@@ -106,7 +131,9 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
     }
 
     @Override
-    public void returnData(int key, WjournalData data) {
+    public void returnData(int key, Object data) {
+
+        Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
         this.finish();
     }
 
@@ -118,13 +145,12 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
                 break;
             case R.id.tv_daysum_submit:         //提交
                 WDaySumRequestData wDaySumRequestData = new WDaySumRequestData();
-                wDaySumRequestData.setTime(SelectDate);
+                wDaySumRequestData.setWorkRecordTime(subTime);
                 wDaySumRequestData.setType("day");
                 wDaySumRequestData.setPlan(false);
                 wDaySumRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
                 wDaySumRequestData.setWork(mDataList);
-                wDaySumRequestData.setLearningAndReflection("");
-
+                wDaySumRequestData.setLearningAndReflection(sumLearn);
                 presenter.SubDaySum(wDaySumRequestData);
                 break;
         }
@@ -134,6 +160,7 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Wjour
     @Override
     public void CalendarSelcet(String datetext,Date date) {
         SelectDate = datetext;
+        subTime = sdf.format(date);
         SetDateText(datetext);
     }
 

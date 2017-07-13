@@ -26,13 +26,13 @@ public class WeeksumDetailsAdapter extends MySmallBaseAdapter<WeeksumDetailsData
 
     @Override
     protected void convert(ViewHolder holder, int position) {
-        holder.mTvWeekpsumTitle.setText("本周总结"+position);
+        holder.mTvWeekpsumTitle.setText("本周总结"+(position+1));
 
         WeeksumDetailsData weeksumDetailsData = list.get(position);
         holder.mTvWeeksumContent.setText(weeksumDetailsData.getWeekContent());
         holder.mTvWeekTarget.setText(weeksumDetailsData.getWeekTarget());
         holder.mTvWeeksumPercent.setText(weeksumDetailsData.getWeekPercent());
-        holder.mTvWeeksumComplete.setText(weeksumDetailsData.getWeekComplete());
+        holder.mTvWeeksumComplete.setText(weeksumDetailsData.getWeekComplete()+weeksumDetailsData.getWorkUnfinishedReason());
 
     }
 
