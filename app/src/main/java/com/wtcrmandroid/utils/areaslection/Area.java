@@ -1,4 +1,4 @@
-package com.wtcrmandroid.dialog.popupwindow.addressselection;
+package com.wtcrmandroid.utils.areaslection;
 
 import com.google.gson.annotations.SerializedName;
 
