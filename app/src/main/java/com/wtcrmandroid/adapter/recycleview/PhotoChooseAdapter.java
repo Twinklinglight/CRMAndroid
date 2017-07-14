@@ -66,12 +66,18 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
 
         } else {
             Glide.with(context).load(new File(list.get(position))).into(holder.ivPhoto);
-            holder.ivPhoto.setImageResource(R.mipmap.ic_dog);
             holder.ivDelete.setVisibility(View.VISIBLE);
             holder.ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     myOnClickListner.deletePhoto(position);
+                }
+            });
+            holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
                 }
             });
         }

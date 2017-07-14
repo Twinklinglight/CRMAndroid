@@ -73,6 +73,7 @@
                     android:background="#e9edf2" />
 
                 <LinearLayout
+                    android:id="@+id/ll_select_customer"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
@@ -84,12 +85,13 @@
                         android:background="@mipmap/ic_xrz_person" />
 
                     <TextView
+                        android:id="@+id/tv_customer_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
-                        android:text="中国物通"
-                        android:textColor="#2b2f33"
+                        android:text="请选择客户名称"
+                        android:textColor="@color/colorContext"
                         android:textSize="16sp" />
 
                     <ImageView
@@ -129,6 +131,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
+                        android:id="@+id/iv_microphone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
