@@ -123,4 +123,11 @@
     <string name="select_province">选择省份</string>
     <string name="select_city">选择市</string>
     <string name="select_town">选择县/区</string>
+
+
+
+    <string name="help">帮助</string>
+    <string name="string_help_text">\"当前应用缺少必要权限。请点击\\\"设置\\\"-\\\"权限\\\"-打开所需权限。\"</string>
+    <string name="quit">退出</string>
+    <string name="settings">设置</string>
 </resources>

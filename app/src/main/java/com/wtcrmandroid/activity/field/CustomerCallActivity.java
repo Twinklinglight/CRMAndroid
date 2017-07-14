@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.field;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.jph.takephoto.permission.PermissionManager;
 import com.jph.takephoto.permission.TakePhotoInvocationHandler;
 import com.wtcrmandroid.BaseMapActivity;
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.crm.MyClientLibrary;
 import com.wtcrmandroid.adapter.recycleview.PhotoChooseAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
@@ -30,27 +32,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/16.
  * 客户拜访
  */
 
-public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.TakeResultListener,InvokeListener {
+public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.TakeResultListener, InvokeListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tv_address)
     TextView tvAddress;
     @BindView(R.id.rv_view)
     RecyclerView rvView;
+    @BindView(R.id.tv_customer_name)
+    TextView tvCustomerName;
     private PhotoChooseAdapter adapter;
 
-    private List<String> photo_list=new ArrayList<>();
+    private List<String> photo_list = new ArrayList<>();
 
 
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
-    Uri imageUri;
+    private Uri imageUri;
+
+
+    private String customername;
+    private String customerid;
     @Override
     public void returnData(int key, Object data) {
 
@@ -74,18 +83,19 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
         rvView.setAdapter(adapter = new PhotoChooseAdapter(this));
         adapter.setList(photo_list);
 
-        CompressConfig config=new CompressConfig.Builder()
-                .setMaxSize(51200)
-                .setMaxPixel(800)
-                .enableReserveRaw(true)
-                .create();
-        takePhoto.onEnableCompress(config,true);
+
         adapter.setMyOnClickListner(new PhotoChooseAdapter.MyOnClickListner() {
             @Override
             public void selectPhoto(int position) {
-                File file=new File(Environment.getExternalStorageDirectory(), "/temp/"+System.currentTimeMillis() + ".jpg");
-                if (!file.getParentFile().exists())file.getParentFile().mkdirs();
+                File file = new File(Environment.getExternalStorageDirectory(), "/temp/" + System.currentTimeMillis() + ".jpg");
+                if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
                 imageUri = Uri.fromFile(file);
+                CompressConfig config = new CompressConfig.Builder()
+                        .setMaxSize(51200)
+                        .setMaxPixel(800)
+                        .enableReserveRaw(true)
+                        .create();
+                takePhoto.onEnableCompress(config, true);
                 takePhoto.onPickFromCapture(imageUri);
             }
 
@@ -106,7 +116,7 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
 
     @Override
     protected void getAddress(BDLocation location) {
-        tvAddress.setText("当前位置： "+location.getLocationDescribe());
+        tvAddress.setText("当前位置： " + location.getLocationDescribe());
 
     }
 
@@ -116,36 +126,47 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
     }
 
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         getTakePhoto().onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         getTakePhoto().onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+        if (10 == requestCode && RESULT_OK == resultCode) {
+            customername = data.getStringExtra("customername");
+            customerid = data.getStringExtra("customerid");
+            tvCustomerName.setText(customername);
+            tvCustomerName.setTextColor(Color.parseColor("#2b2f33"));
+
+        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        PermissionManager.TPermissionType type=PermissionManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
-        PermissionManager.handlePermissionsResult(this,type,invokeParam,this);
+        PermissionManager.TPermissionType type = PermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionManager.handlePermissionsResult(this, type, invokeParam, this);
     }
+
     /**
-     *  获取TakePhoto实例
+     * 获取TakePhoto实例
+     *
      * @return
      */
-    public TakePhoto getTakePhoto(){
-        if (takePhoto==null){
-            takePhoto= (TakePhoto) TakePhotoInvocationHandler.of(this).bind(new TakePhotoImpl(this,this));
+    public TakePhoto getTakePhoto() {
+        if (takePhoto == null) {
+            takePhoto = (TakePhoto) TakePhotoInvocationHandler.of(this).bind(new TakePhotoImpl(this, this));
         }
         return takePhoto;
     }
+
     @Override
     public void takeSuccess(TResult result) {
+        showShortToast(result.getImage().getCompressPath());
         photo_list.add(result.getImage().getCompressPath());
         adapter.setList(photo_list);
     }
@@ -163,10 +184,26 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
 
     @Override
     public PermissionManager.TPermissionType invoke(InvokeParam invokeParam) {
-        PermissionManager.TPermissionType type=PermissionManager.checkPermission(TContextWrap.of(this),invokeParam.getMethod());
-        if(PermissionManager.TPermissionType.WAIT.equals(type)){
-            this.invokeParam=invokeParam;
+        PermissionManager.TPermissionType type = PermissionManager.checkPermission(TContextWrap.of(this), invokeParam.getMethod());
+        if (PermissionManager.TPermissionType.WAIT.equals(type)) {
+            this.invokeParam = invokeParam;
         }
         return type;
     }
+
+
+    @OnClick({R.id.ll_select_customer, R.id.iv_microphone, R.id.bt_submit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_select_customer:
+                startActivityForResult(new Intent(CustomerCallActivity.this, MyClientLibrary.class).putExtra("style", 1), 10);
+                break;
+            case R.id.iv_microphone:
+                break;
+            case R.id.bt_submit:
+                break;
+        }
+    }
+
+
 }

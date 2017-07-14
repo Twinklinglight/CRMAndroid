@@ -57,6 +57,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
     private SearchSalerCustomerRQ data;
 
     private int page=1;
+    private int style;
     @Override
     protected int layout() {
         return R.layout.activity_client_library;
@@ -192,6 +193,8 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
         mSwipeToLoadLayout.setOnRefreshListener(this);
+        style=getIntent().getIntExtra("style",0);
+        adapter.setStyle(style);
     }
 
     private void initToWindow(View view) {

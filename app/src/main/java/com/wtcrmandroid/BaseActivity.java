@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.wtcrmandroid.permission.PermissionsActivity;
+import com.wtcrmandroid.permission.PermissionsChecker;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.AllView;
@@ -20,7 +22,9 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompatActivity implements AllView<T1> {
     protected T presenter;
-
+    private static final int REQUEST_CODE = 0; // 请求码
+    protected PermissionsChecker mPermissionsChecker; // 权限检测器
+    protected String[] PERMISSIONS;
     @Override
     public void showShortToast(String text) {
         L.e(text);
@@ -33,8 +37,8 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(layout());
+        mPermissionsChecker = new PermissionsChecker(this);
         ButterKnife.bind(this);
         initView();
     }
@@ -51,4 +55,8 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
      */
     protected abstract void initView();
 
+
+    protected void startPermissionsActivity() {
+        PermissionsActivity.startActivityForResult(this, REQUEST_CODE, PERMISSIONS);
+    }
 }

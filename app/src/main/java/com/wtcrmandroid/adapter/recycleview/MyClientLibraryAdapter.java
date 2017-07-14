@@ -1,16 +1,20 @@
 package com.wtcrmandroid.adapter.recycleview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.crm.MyClientLibrary;
 import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerRP;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by wt-pc on 2017/6/23.
@@ -21,6 +25,9 @@ public class MyClientLibraryAdapter extends BaseRecycleAdapter<SearchSalerCustom
 
 
     private int style = 0;
+
+
+
 
     public void setStyle(int style) {
         this.style = style;
@@ -35,7 +42,7 @@ public class MyClientLibraryAdapter extends BaseRecycleAdapter<SearchSalerCustom
 
 
     @Override
-    protected void convert(ViewHolder holder, SearchSalerCustomerRP bean, int position) {
+    protected void convert(ViewHolder holder, final SearchSalerCustomerRP bean, int position) {
         holder.tvCompanyName.setText(bean.getCompanyName());
         holder.tvCompanyAddress.setText("公司地址：" + bean.getSite());
         holder.tvTime.setText("入库时间：" + bean.getSelectTime());
@@ -51,6 +58,24 @@ public class MyClientLibraryAdapter extends BaseRecycleAdapter<SearchSalerCustom
         } else {
             holder.tvSource.setText("未知来源");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (style){
+                    case 0:
+                        break;
+                    case 1:
+                        Intent intent = new Intent();
+                        intent.putExtra("customername", bean.getCompanyName());
+                        intent.putExtra("customerid", bean.getCustomerID());
+                        MyClientLibrary activity= (MyClientLibrary) context;
+                        activity.setResult(RESULT_OK, intent); // 设置结果数据
+                        activity.finish(); // 关闭Activity
+                        break;
+                }
+
+            }
+        });
 
     }
 
