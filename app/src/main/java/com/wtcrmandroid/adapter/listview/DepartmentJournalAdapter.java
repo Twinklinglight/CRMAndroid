@@ -1,6 +1,8 @@
 package com.wtcrmandroid.adapter.listview;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,13 +34,16 @@ public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentRpons
     protected void convert(ViewHolder holder, int position) {
 
         DepartmentRponseData departmentData = list.get(position);
+
         holder.mTvName.setText(departmentData.getUsername());
         holder.mTvCommentCount.setText("本月已被评论"+departmentData.getColumn1()+"条");
+
+        setColor(departmentData.getRoleLevel(),holder);
+
         String username = departmentData.getUsername();
         int begin = username.length()-2;
         int end = username.length();
         holder.mIvHeadpicture.setText(username.substring(begin,end));
-
 
     }
 
@@ -50,6 +55,24 @@ public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentRpons
         return view;
     }
 
+
+    //设置图片颜色
+    private void setColor(String type,ViewHolder holder){
+        switch (type){
+            case "普通员工":
+                holder.mIvHeadpicture.setFillColor(Color.parseColor("#39BAFF"));
+                break;
+            case "团队经理":
+                holder.mIvHeadpicture.setFillColor(Color.parseColor("#F7BE29"));
+                break;
+            case "部长":
+                holder.mIvHeadpicture.setFillColor(Color.parseColor("#94D301"));
+                break;
+            case "总监":
+                holder.mIvHeadpicture.setFillColor(Color.parseColor("#F76129"));
+                break;
+        }
+    }
     @Override
     protected View onCreateNullViewholder() {
         return null;

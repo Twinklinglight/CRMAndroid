@@ -10,6 +10,8 @@ import com.thinkcool.circletextimageview.CircleTextImageView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.reponsedata.GetSelcetpersonRP;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,10 +24,10 @@ public class DocSelectpersonAdapter extends BaseRecycleAdapter<GetSelcetpersonRP
 
     /**
      * @param context  //上下文
-     * @param layoutId //布局id
      */
-    public DocSelectpersonAdapter(Context context, int layoutId) {
+    public DocSelectpersonAdapter(Context context, List<GetSelcetpersonRP> list) {
         super(context, R.layout.item_doc_selectperson);
+        addList(list);
     }
 
     @Override

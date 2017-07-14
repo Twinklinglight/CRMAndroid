@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iflytek.cloud.thirdparty.V;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
@@ -82,7 +83,6 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     @Override
     public void returnData(int key, Object data) {
 
-        Log.i("zxd","returnData = "+data.toString());
         switch (key){
             case 1:         //日计划列表
                 mDayplanAdapter = new HtDayplanDetailsAdapter(getActivity(),(List<HtDayplanDetailsData>) data);
@@ -136,7 +136,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     public void init() {
 
         presenter = new DepartDayPresenter(this,getContext());
-        datetime = DateUtil.getToday();
+        datetime = DateUtil.getSubToaday();
         mTvDate.setText(DateUtil.getTodayString());
 
         footview = LayoutInflater.from(getContext()).inflate(R.layout.item_sum_foot,null);
@@ -202,7 +202,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     @Override
     public void clickOk(String leve, String context) {
         CommintRQ commintRQ = new CommintRQ();
-        commintRQ.setUserId(3066);
+        commintRQ.setUserId(MyApplication.application.getLoginData().getUserID());
         commintRQ.setLogId(Logid);
         commintRQ.setLeve(leve);
         commintRQ.setExamineText(context);

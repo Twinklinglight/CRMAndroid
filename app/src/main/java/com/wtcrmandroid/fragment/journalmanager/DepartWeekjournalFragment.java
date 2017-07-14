@@ -176,7 +176,7 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
         String begintime = weekText.split("-")[0];
         String endtime = weekText.split("-")[1];
 
-        postData(3066, dateUtils.getWantDate(begintime), dateUtils.getWantDate(endtime));
+        postData(userId, dateUtils.getWantDate(begintime), dateUtils.getWantDate(endtime));
 
     }
 

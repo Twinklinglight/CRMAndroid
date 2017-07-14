@@ -8,6 +8,15 @@ public class GetSelcetpersonRP {
 
     private String name;
     private String job;
+    private String roleLevel;
+
+    public String getRoleLevel() {
+        return roleLevel;
+    }
+
+    public void setRoleLevel(String roleLevel) {
+        this.roleLevel = roleLevel;
+    }
 
     public String getName() {
         return name;

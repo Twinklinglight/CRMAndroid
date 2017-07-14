@@ -30,6 +30,13 @@ public class MycardActivity extends BaseActivity {
         mTitlebar.setTitletext("我的名片");
         mTitlebar.setrighttext("分享");
 
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MycardActivity.this.finish();
+            }
+        });
+
         //分享按钮
         mTitlebar.setRightOnClickListener(new View.OnClickListener() {
             @Override

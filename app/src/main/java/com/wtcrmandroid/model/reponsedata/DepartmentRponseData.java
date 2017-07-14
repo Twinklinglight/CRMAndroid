@@ -8,7 +8,7 @@ public class DepartmentRponseData {
 
     private int userid;
     private String username;
-    private String zhiwu;
+    private String roleLevel;
     private String Column1;
 
     public int getUserid() {
@@ -27,12 +27,12 @@ public class DepartmentRponseData {
         this.username = username;
     }
 
-    public String getZhiwu() {
-        return zhiwu;
+    public String getRoleLevel() {
+        return roleLevel;
     }
 
-    public void setZhiwu(String zhiwu) {
-        this.zhiwu = zhiwu;
+    public void setRoleLevel(String roleLevel) {
+        this.roleLevel = roleLevel;
     }
 
     public String getColumn1() {

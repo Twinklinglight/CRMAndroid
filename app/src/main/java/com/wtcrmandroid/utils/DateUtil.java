@@ -33,6 +33,12 @@ public class DateUtil {
 
     }
 
+    public static String getSubToaday(){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return df.format(new Date());
+
+    }
+
 
 
     /**

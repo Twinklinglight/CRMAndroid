@@ -64,7 +64,7 @@ public class DocumentDealAdapter extends BaseRecycleAdapter<DocumentListRpData, 
 
     @Override
     public ViewHolder getViewHolder(View v) {
-        return null;
+        return new ViewHolder(v);
     }
 
     //需要点击修改按钮时，要先设置listener

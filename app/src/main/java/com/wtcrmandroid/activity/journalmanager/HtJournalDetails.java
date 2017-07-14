@@ -62,7 +62,6 @@ public class HtJournalDetails extends BaseActivity {
         Rbweek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(HtJournalDetails.this, "rbweek出发了", Toast.LENGTH_SHORT).show();
                 Dayfragment.cancleWindows();
             }
         });
