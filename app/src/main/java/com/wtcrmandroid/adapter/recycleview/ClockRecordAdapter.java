@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.dealdata.GroupingClockRecordDD;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,17 +22,19 @@ import butterknife.ButterKnife;
  */
 
 public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final int HEAD = 0;
-    private final int WORD = 1;
-
+    private final int NULLDATA = 0;
+    private final int HEAD = 1;
+    private final int WORD = 2;
 
 
     private Context context;
-    private List<GroupingClockRecordDD> list;
+    private List<GroupingClockRecordDD> list=new ArrayList<>();
 
     @Override
     public int getItemViewType(int position) {
-        if (list.get(position).getType() == 0)
+        if (list.size() == 0)
+            return NULLDATA;
+        else if (list.get(position).getType() == 0)
             return HEAD;
         else
             return WORD;
@@ -54,7 +57,10 @@ public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
         RecyclerView.ViewHolder holder;
-        if (viewType == HEAD) {
+        if (viewType == NULLDATA) {
+            v = LayoutInflater.from(context).inflate(R.layout.view_null_data, parent, false);
+            holder = new StatisticaDetailsAdapter.NullDataViewHolder(v);
+        } else if (viewType == HEAD) {
             v = LayoutInflater.from(context).inflate(R.layout.item_header_time_text, parent, false);
             holder = new HeadViewHolder(v);
         } else {
@@ -101,7 +107,7 @@ public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (list != null) {
             return list.size();
         } else
-            return 0;
+            return 1;
     }
 
 

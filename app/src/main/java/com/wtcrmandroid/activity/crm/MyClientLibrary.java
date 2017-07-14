@@ -220,6 +220,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
         page=1;
         data.setPageSize(page);
         presenter.getData(data,0);
+        adapter.addList(new ArrayList<SearchSalerCustomerRP>());
     }
 
     @Override
@@ -252,7 +253,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
         mSwipeToLoadLayout.setLoadingMore(false);
         if(page==1) {
             mSwipeToLoadLayout.setRefreshing(false);
-            adapter.addList(new ArrayList<SearchSalerCustomerRP>());
+
         }else
             mSwipeToLoadLayout.setLoadingMore(false);
 

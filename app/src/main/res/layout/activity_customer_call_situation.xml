@@ -36,8 +36,22 @@
         android:layout_height="1dp"
         android:background="#e9edf2" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_view"
+    <com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_refresh_header" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/layout_loadmore_footer" />
+
+    </com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout>
 </LinearLayout>

@@ -79,6 +79,7 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, List
         page=1;
         data.setWeekIndex(0);
         presenter.sedPost(data,0);
+        adapter.setList(new ArrayList<GroupingClockRecordDD>());
     }
 
     @Override
@@ -110,10 +111,10 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, List
     @Override
     public void showShortToast(String text) {
         super.showShortToast(text);
-        mSwipeToLoadLayout.setLoadingMore(false);
+
         if(page==1) {
             mSwipeToLoadLayout.setRefreshing(false);
-            adapter.setList(new ArrayList<GroupingClockRecordDD>());
+
         }else
             mSwipeToLoadLayout.setLoadingMore(false);
 

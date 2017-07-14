@@ -8,12 +8,9 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.StatisticaDetailsAdapter;
 import com.wtcrmandroid.model.reponsedata.ClockRecordRP;
-import com.wtcrmandroid.model.requestdata.FieldStatisticsDetailsRQ;
+import com.wtcrmandroid.model.requestdata.DayCloclRecordRQ;
 import com.wtcrmandroid.presenter.activity.FieldStatisticsDetailsPresenter;
-import com.wtcrmandroid.view.RefreshHeaderView;
-import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
 
 import java.util.List;
 
@@ -30,14 +27,8 @@ public class StatisticsDetailsActivity extends BaseActivity<FieldStatisticsDetai
     @BindView(R.id.swipe_target)
     RecyclerView rvView;
 
-    @BindView(R.id.swipe_refresh_header)
-    RefreshHeaderView mHeaderView;
-    @BindView(R.id.swipe_load_more_footer)
-    RefreshLoadMoreFooterView mFooterView;
-    @BindView(R.id.swipeToLoadLayout)
-    SwipeToLoadLayout mSwipeToLoadLayout;
     private StatisticaDetailsAdapter adapter;
-    private FieldStatisticsDetailsRQ data;
+    private  DayCloclRecordRQ data;
 
     @Override
     public void returnData(int key, List<ClockRecordRP> data) {
@@ -47,7 +38,7 @@ public class StatisticsDetailsActivity extends BaseActivity<FieldStatisticsDetai
 
     @Override
     protected int layout() {
-        return R.layout.activity_clock_record;
+        return R.layout.activity_statistics_details;
     }
 
     @Override
@@ -64,9 +55,8 @@ public class StatisticsDetailsActivity extends BaseActivity<FieldStatisticsDetai
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new StatisticaDetailsAdapter(this));
         presenter = new FieldStatisticsDetailsPresenter(this, this);
-        data = new FieldStatisticsDetailsRQ();
-        data.setCreateTime(date);
-        data.setPageSize("1");
+        data = new DayCloclRecordRQ();;
+        data.setToDay(date);
         data.setUserId(userId);
         presenter.sedPost(data, 0);
         adapter.setDate(date);
