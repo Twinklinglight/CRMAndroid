@@ -261,4 +261,15 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
             }
         });
     }
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+        mSwipeToLoadLayout.setLoadingMore(false);
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+            adapter.addList(new ArrayList<SearchCustomerRP>());
+        } else
+            mSwipeToLoadLayout.setLoadingMore(false);
+
+    }
 }

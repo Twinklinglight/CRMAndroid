@@ -104,6 +104,8 @@ public class ClockRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             return 0;
     }
 
+
+
     static class HeadViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_time)
         TextView tvTime;

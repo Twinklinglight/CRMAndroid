@@ -42,6 +42,9 @@ public abstract class BasePresenter {
                     public void run() {
                         //已在主线程中，可以更新UI
                         view.showShortToast(errorMsg);
+
+
+
                     }
                 });
             }

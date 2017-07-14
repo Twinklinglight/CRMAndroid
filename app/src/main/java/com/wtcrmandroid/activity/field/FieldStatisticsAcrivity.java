@@ -100,6 +100,7 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
                                         adapter.setDate(datetext);
                                         presenter.sedPost(fieldStatisticsRQ,0);
                                     }
+                                    adapter.addList(new ArrayList<FieldStatisticsRP>());
                                 }
                             });
                             calendarPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {

@@ -262,4 +262,16 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         presenter.getData(data,1);
 
     }
+
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+        mSwipeToLoadLayout.setLoadingMore(false);
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+            adapter.addList(new ArrayList<SearchCustomerRP>());
+        }else
+            mSwipeToLoadLayout.setLoadingMore(false);
+
+    }
 }
