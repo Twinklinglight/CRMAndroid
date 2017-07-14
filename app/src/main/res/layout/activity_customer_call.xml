@@ -57,6 +57,7 @@
                     android:background="#e9edf2" />
 
                 <EditText
+                    android:id="@+id/et_addrss_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -120,6 +121,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/tv_remarks"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

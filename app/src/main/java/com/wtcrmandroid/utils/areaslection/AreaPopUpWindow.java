@@ -106,6 +106,7 @@ public class AreaPopUpWindow {
                     case SelectAreaRecyclerAdapter.SHOW_TOWN:
                         selectAreaListener.selectAreaOk(area, parentView);
                         disMissPopWindow();
+                        toShow = SelectAreaRecyclerAdapter.SHOW_PROVINCE;
                         break;
                     default:
                         break;

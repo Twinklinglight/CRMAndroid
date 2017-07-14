@@ -20,7 +20,6 @@ import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
 import com.wtcrmandroid.activity.crm.PublicSeaActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
-import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
 import com.wtcrmandroid.activity.journalmanager.JournalManagerActivity;
 import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -114,11 +113,11 @@ public class HomeFragment extends BaseFragment {
                 break;
             //录入客户
             case R.id.tv_pullintocustomer:
-                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")){
-                    startActivity(new Intent(getContext(), PullintoCustomerActivity.class));
-                }else {
+//                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")){
+//                    startActivity(new Intent(getContext(), PullintoCustomerActivity.class));
+//                }else {
                     startActivity(new Intent(getContext(), SalePullintoCustomerActivity.class));
-                }
+//                }
                 break;
             //主客户库
             case R.id.rl_main_client_library:

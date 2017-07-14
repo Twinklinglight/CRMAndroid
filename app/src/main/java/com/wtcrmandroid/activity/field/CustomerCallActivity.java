@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -22,9 +23,13 @@ import com.jph.takephoto.permission.InvokeListener;
 import com.jph.takephoto.permission.PermissionManager;
 import com.jph.takephoto.permission.TakePhotoInvocationHandler;
 import com.wtcrmandroid.BaseMapActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
 import com.wtcrmandroid.adapter.recycleview.PhotoChooseAdapter;
+import com.wtcrmandroid.model.requestdata.CustomerCallRQ;
+import com.wtcrmandroid.presenter.activity.CustomerCallP;
+import com.wtcrmandroid.utils.Base64;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import java.io.File;
@@ -39,7 +44,7 @@ import butterknife.OnClick;
  * 客户拜访
  */
 
-public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.TakeResultListener, InvokeListener {
+public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object> implements TakePhoto.TakeResultListener, InvokeListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tv_address)
@@ -48,10 +53,14 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
     RecyclerView rvView;
     @BindView(R.id.tv_customer_name)
     TextView tvCustomerName;
+    @BindView(R.id.tv_remarks)
+    EditText tvRemarks;
+    @BindView(R.id.et_addrss_details)
+    EditText etAddrssDetails;
     private PhotoChooseAdapter adapter;
 
     private List<String> photo_list = new ArrayList<>();
-
+    List<CustomerCallRQ.ImageFile> img = new ArrayList<>();
 
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
@@ -60,8 +69,14 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
 
     private String customername;
     private String customerid;
+    private String userID;
+    private String address;
+    private CustomerCallRQ customerCallRQ;
+
     @Override
     public void returnData(int key, Object data) {
+        showShortToast("提交成功！");
+        finish();
 
     }
 
@@ -72,6 +87,7 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
 
     @Override
     protected void initview() {
+        presenter = new CustomerCallP(this, this);
         titlebar.setTitletext("客户拜访");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +98,9 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
         rvView.setLayoutManager(new GridLayoutManager(this, 4));
         rvView.setAdapter(adapter = new PhotoChooseAdapter(this));
         adapter.setList(photo_list);
-
-
+        customerCallRQ = new CustomerCallRQ();
+        userID = MyApplication.application.getLoginData().getUserID() + "";
+        customerCallRQ.setUserId(userID);
         adapter.setMyOnClickListner(new PhotoChooseAdapter.MyOnClickListner() {
             @Override
             public void selectPhoto(int position) {
@@ -103,6 +120,7 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
             public void deletePhoto(int position) {
                 photo_list.remove(position);
                 adapter.setList(photo_list);
+                img.remove(position);
             }
         });
     }
@@ -117,6 +135,9 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
     @Override
     protected void getAddress(BDLocation location) {
         tvAddress.setText("当前位置： " + location.getLocationDescribe());
+        customerCallRQ.setLng(location.getLatitude());
+        customerCallRQ.setLat(location.getLongitude());
+        address = location.getLocationDescribe();
 
     }
 
@@ -141,6 +162,8 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
             customerid = data.getStringExtra("customerid");
             tvCustomerName.setText(customername);
             tvCustomerName.setTextColor(Color.parseColor("#2b2f33"));
+            customerCallRQ.setCustomerId(customerid);
+            customerCallRQ.setCustomerName(customername);
 
         }
     }
@@ -169,6 +192,14 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
         showShortToast(result.getImage().getCompressPath());
         photo_list.add(result.getImage().getCompressPath());
         adapter.setList(photo_list);
+        CustomerCallRQ.ImageFile imageFile = new CustomerCallRQ.ImageFile();
+        imageFile.setFilename(userID + System.currentTimeMillis() + ".jpg");
+        try {
+            imageFile.setBasecode(Base64.encodeBase64File(result.getImage().getCompressPath()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        img.add(imageFile);
     }
 
     @Override
@@ -201,9 +232,28 @@ public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.T
             case R.id.iv_microphone:
                 break;
             case R.id.bt_submit:
+                if (customerCallRQ.getLat() == 0) {
+                    showShortToast("请等待定位完成！");
+                    return;
+                }
+                if (customerCallRQ.getCustomerName() == null) {
+                    showShortToast("请选择拜访客户！");
+                    return;
+                }
+                String addressdetails=etAddrssDetails.getText().toString();
+                if (addressdetails.equals("")) {
+                    showShortToast("请填写详细地址！");
+                    return;
+                }
+                customerCallRQ.setAddressDetail(address+addressdetails);
+                customerCallRQ.setRemarks(tvRemarks.getText().toString());
+                customerCallRQ.setImg(img);
+                presenter.sedPost(customerCallRQ, 0);
+
                 break;
         }
     }
+
 
 
 }
