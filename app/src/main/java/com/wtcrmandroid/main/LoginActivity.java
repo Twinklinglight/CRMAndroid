@@ -84,4 +84,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
         startActivity(new Intent(this,MainActivity.class));
 
     }
+    @Override protected void onResume() {
+        super.onResume();
+
+        // 缺少权限时, 进入权限配置页面
+        if (mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
+            startPermissionsActivity();
+        }
+    }
 }

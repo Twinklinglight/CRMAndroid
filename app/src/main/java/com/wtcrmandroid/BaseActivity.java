@@ -55,14 +55,7 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
      */
     protected abstract void initView();
 
-    @Override protected void onResume() {
-        super.onResume();
 
-        // 缺少权限时, 进入权限配置页面
-        if (mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
-            startPermissionsActivity();
-        }
-    }
     protected void startPermissionsActivity() {
         PermissionsActivity.startActivityForResult(this, REQUEST_CODE, PERMISSIONS);
     }
