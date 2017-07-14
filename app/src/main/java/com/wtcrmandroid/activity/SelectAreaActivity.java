@@ -12,10 +12,10 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
-import com.wtcrmandroid.dialog.popupwindow.addressselection.AreaImpl;
-import com.wtcrmandroid.dialog.popupwindow.addressselection.IAreaModule;
-import com.wtcrmandroid.dialog.popupwindow.addressselection.SelectAreaRecyclerAdapter;
+import com.wtcrmandroid.utils.areaslection.Area;
+import com.wtcrmandroid.utils.areaslection.AreaImpl;
+import com.wtcrmandroid.utils.areaslection.IAreaModule;
+import com.wtcrmandroid.utils.areaslection.SelectAreaRecyclerAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import java.util.List;

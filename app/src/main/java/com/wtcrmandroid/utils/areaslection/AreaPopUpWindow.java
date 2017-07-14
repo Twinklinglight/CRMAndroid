@@ -1,4 +1,4 @@
-package com.wtcrmandroid.dialog.popupwindow.addressselection;
+package com.wtcrmandroid.utils.areaslection;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;

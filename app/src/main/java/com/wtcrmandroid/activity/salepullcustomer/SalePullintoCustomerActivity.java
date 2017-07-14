@@ -14,7 +14,7 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.SelectAreaActivity;
-import com.wtcrmandroid.dialog.popupwindow.addressselection.Area;
+import com.wtcrmandroid.utils.areaslection.Area;
 import com.wtcrmandroid.model.requestdata.SaveCustomerRQ;
 import com.wtcrmandroid.presenter.activity.SalePullintoCustomerPresenter;
 import com.wtcrmandroid.utils.TextUtils;
