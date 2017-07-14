@@ -133,7 +133,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
         presenter = new DepartDayPresenter(this,getContext());
         datetime = DateUtil.getToday();

@@ -122,7 +122,7 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
     }
 
     @Override
-    protected void init() {
+    public void init() {
         presenter = new DepartWeekPresenter(this, getContext());
         dateUtils = new DateUtils();
         titleTime = dateUtils.getNowWeek();
