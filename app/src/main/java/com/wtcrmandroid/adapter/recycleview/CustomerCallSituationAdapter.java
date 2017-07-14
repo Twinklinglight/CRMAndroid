@@ -5,8 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.thinkcool.circletextimageview.CircleTextImageView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.reponsedata.CompanyVisitDetailsRP;
+import com.wtcrmandroid.utils.TextUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +19,7 @@ import butterknife.ButterKnife;
  */
 
 public class CustomerCallSituationAdapter extends BaseRecycleAdapter<CompanyVisitDetailsRP, CustomerCallSituationAdapter.ViewHolder> {
+
 
 
 
@@ -39,14 +42,15 @@ public class CustomerCallSituationAdapter extends BaseRecycleAdapter<CompanyVisi
             holder.vBottom.setVisibility(View.INVISIBLE);
         else
             holder.vBottom.setVisibility(View.VISIBLE);
-       holder.tvTime.setText( bean.getCreateTime());
+        holder.tvTime.setText(bean.getCreateTime());
         holder.tvName.setText(bean.getCustomerName());
         holder.tvWant.setText(bean.getRemarks());
         holder.tvAddress.setText(bean.getAddressDetail());
-        String[] dateArray =bean.getCreateTime().split(" ");
-        String[] timeArray =dateArray[0].split("/");
-        holder.tvMonth.setText(timeArray[1]+"月");
-        holder.tvDay.setText(timeArray[2]+"日");
+        String[] dateArray = bean.getCreateTime().split(" ");
+        String[] timeArray = dateArray[0].split("/");
+        holder.tvMonth.setText(timeArray[1] + "月");
+        holder.tvDay.setText(timeArray[2] + "日");
+        holder.ctivPhoto.setText(TextUtils.NameText(bean.getUserName()));
     }
 
     @Override
@@ -72,7 +76,8 @@ public class CustomerCallSituationAdapter extends BaseRecycleAdapter<CompanyVisi
         TextView tvWant;
         @BindView(R.id.tv_address)
         TextView tvAddress;
-
+        @BindView(R.id.ctiv_photo)
+        CircleTextImageView ctivPhoto;
 
         public ViewHolder(View itemView) {
             super(itemView);

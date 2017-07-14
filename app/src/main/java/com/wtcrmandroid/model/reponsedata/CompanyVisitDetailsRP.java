@@ -23,6 +23,7 @@ public class CompanyVisitDetailsRP {
 
     private String rowid;
     private String userid;
+    private String userName;
     private String customerId;
     private String customerName;
     private String lat;
@@ -110,5 +111,13 @@ public class CompanyVisitDetailsRP {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

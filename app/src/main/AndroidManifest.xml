@@ -143,10 +143,7 @@
         <activity android:name=".activity.journalmanager.GetSingleCustomerActivity"/>
         <!-- 新增意向客户 -->
         <activity android:name=".activity.journalmanager.AddPurposeCustomerActivity"/>
-        <!-- 部门员工日志管理首页 -->
-        <activity android:name=".activity.journalmanager.DepartmentEmployeesLogManagementMainActivity"/>
-        <!-- 部门员工日志管理搜索页 -->
-        <activity android:name=".activity.journalmanager.DepartmentEmployeesLogManagementSerachActivity"/>
+
         <activity android:name=".activity.journalmanager.HtDayplanDetails"/>
         <!-- 后台日总结详情 -->
         <activity android:name=".activity.journalmanager.HtDaysumDetailsActivity"/>
@@ -169,7 +166,7 @@
         <!-- 百度地图可以 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="WMFitVpylrtAuTgFPbltCkoP6SRY7zIE"/>
+            android:value="UtlbHSVhVkYbnDTbtRlh96oHcs5xTCLv"/>
 
         <!-- shareSDK 的activity -->
         <activity
