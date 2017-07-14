@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <com.wtcrmandroid.view.custompricing.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height">
+    </com.wtcrmandroid.view.custompricing.TitleBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="1dp">
+        
+        <TextView
+            android:id="@+id/tv_docTitle"
+            android:layout_marginTop="25dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_18"
+            android:textColor="@color/colorIconText"
+            android:text="title"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:paddingBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorContext"
+            android:textSize="@dimen/text_size_14"
+            android:text="time"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_16"
+                android:textColor="@color/colorContext"
+                android:text="申请人："/>
+            <TextView
+                android:id="@+id/tv_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_16"
+                android:textColor="@color/colorIconText"
+                android:text="张三"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_context"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/colorIconText"
+            android:text="haha"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcy_recognize"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:background="@color/lineColor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorBackground"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/colorPrimary"
+            android:text="退单"
+            android:layout_marginRight="1dp"/>
+
+        <TextView
+            android:id="@+id/tv_wait"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorBackground"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/colorPrimary"
+            android:text="驳回"
+            android:layout_marginRight="1dp"/>
+
+        <TextView
+            android:id="@+id/tv_apply"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorBackground"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/colorPrimary"
+            android:text="审批"/>
+
+    </LinearLayout>
+
+</LinearLayout>

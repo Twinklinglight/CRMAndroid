@@ -1,5 +1,6 @@
 package com.wtcrmandroid.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -130,6 +131,7 @@ public class MyJournalAdapter extends BaseAdapter {
 
     private String getDayTitle(String time){
         String title = "";
+        Log.i("======",time);
         String[] split = time.split("-");
         title = split[0]+"年"+split[1]+"月"+split[2]+"日";
         return title;
