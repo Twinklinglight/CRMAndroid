@@ -11,12 +11,12 @@ import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
-import com.wtcrmandroid.utils.areaslection.Area;
-import com.wtcrmandroid.utils.areaslection.AreaPopUpWindow;
 import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerRP;
 import com.wtcrmandroid.model.requestdata.SearchSalerCustomerRQ;
 import com.wtcrmandroid.presenter.activity.MyClientLibraryPresenter;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.areaslection.Area;
+import com.wtcrmandroid.utils.areaslection.AreaPopUpWindow;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -220,6 +220,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
         page=1;
         data.setPageSize(page);
         presenter.getData(data,0);
+        adapter.addList(new ArrayList<SearchSalerCustomerRP>());
     }
 
     @Override
@@ -245,5 +246,16 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
                 mSwipeToLoadLayout.setLoadingMore(false);
                 break;
         }
+    }
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+        mSwipeToLoadLayout.setLoadingMore(false);
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+
+        }else
+            mSwipeToLoadLayout.setLoadingMore(false);
+
     }
 }

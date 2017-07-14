@@ -253,6 +253,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         page=1;
         data.setPageSize(page);
         presenter.getData(data,0);
+        adapter.addList(new ArrayList<SearchCustomerRP>());
     }
 
     @Override
@@ -260,6 +261,18 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         page=page+1;
         data.setPageSize(page);
         presenter.getData(data,1);
+
+    }
+
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+        mSwipeToLoadLayout.setLoadingMore(false);
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+
+        }else
+            mSwipeToLoadLayout.setLoadingMore(false);
 
     }
 }

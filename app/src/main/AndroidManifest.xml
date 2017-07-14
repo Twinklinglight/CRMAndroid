@@ -169,7 +169,7 @@
         <!-- 百度地图可以 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="WMFitVpylrtAuTgFPbltCkoP6SRY7zIE"/>
+            android:value="UtlbHSVhVkYbnDTbtRlh96oHcs5xTCLv"/>
 
         <!-- shareSDK 的activity -->
         <activity

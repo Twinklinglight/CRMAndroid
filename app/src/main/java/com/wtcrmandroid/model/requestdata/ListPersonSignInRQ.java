@@ -6,7 +6,7 @@ package com.wtcrmandroid.model.requestdata;
 
 public class ListPersonSignInRQ {
     private int userId;
-    private int pageSize;
+    private int weekIndex;
 
     public int getUserId() {
         return userId;
@@ -16,11 +16,11 @@ public class ListPersonSignInRQ {
         this.userId = userId;
     }
 
-    public int getPageSize() {
-        return pageSize;
+    public int getWeekIndex() {
+        return weekIndex;
     }
 
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+    public void setWeekIndex(int weekIndex) {
+        this.weekIndex = weekIndex;
     }
 }

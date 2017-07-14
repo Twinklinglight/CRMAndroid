@@ -18,6 +18,7 @@ import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
 import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
 import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -64,7 +65,7 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, List
         presenter = new ClockRecordPresenter(this,this);
         data = new ListPersonSignInRQ();
         data.setUserId(MyApplication.application.getLoginData().getUserID());
-        data.setPageSize(1);
+        data.setWeekIndex(0);
         presenter.sedPost(data,0);
         mSwipeToLoadLayout.setRefreshHeaderView(mHeaderView);
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
@@ -76,14 +77,15 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, List
     @Override
     public void onRefresh() {
         page=1;
-        data.setPageSize(page);
+        data.setWeekIndex(0);
         presenter.sedPost(data,0);
+        adapter.setList(new ArrayList<GroupingClockRecordDD>());
     }
 
     @Override
     public void onLoadMore() {
         page=page+1;
-        data.setPageSize(page);
+        data.setWeekIndex(page-1);
         presenter.sedPost(data,1);
     }
 
@@ -93,19 +95,28 @@ public class ClockRecordActivity extends BaseActivity<ClockRecordPresenter, List
             //刷新返回数据
             case 0:
                 adapter.setList(data);
-                showShortToast("刷新成功！");
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
             //加载更多数据
             case 1:
                 mSwipeToLoadLayout.setLoadingMore(false);
-                showShortToast("加载成功！");
                 List<GroupingClockRecordDD> list=adapter.getList();
                 list.addAll(data);
                 adapter.setList(list);
                 break;
         }
 
+
+    }
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+
+        }else
+            mSwipeToLoadLayout.setLoadingMore(false);
 
     }
 }

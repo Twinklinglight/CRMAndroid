@@ -23,7 +23,7 @@ import java.util.List;
 public class ClockRecordPresenter extends BasePresenter {
     Date date;
     Date lasttime;
-    private List<GroupingClockRecordDD> list = new ArrayList<>();
+
 
     public ClockRecordPresenter(AllView view, Context context) {
         super(view, context);
@@ -32,7 +32,7 @@ public class ClockRecordPresenter extends BasePresenter {
 
     @Override
     protected void returnData(int key, String response) {
-        list.clear();
+       List<GroupingClockRecordDD> list = new ArrayList<>();
         List<ClockRecordRP> listRP = new ArrayList<>();
         Type listType = new TypeToken<List<ClockRecordRP>>() {
         }.getType();

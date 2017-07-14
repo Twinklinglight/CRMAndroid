@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 // 应用插件
 apply plugin: 'com.neenbedankt.android-apt'
 android {
+    signingConfigs {
+        CRMAndroid {
+            keyAlias 'crm'
+            keyPassword 'wt4000105656'
+            storeFile file('CRMAndroid.jks')
+            storePassword 'wt4000105656'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -13,6 +21,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            zipAlignEnabled false
+            minifyEnabled false
+            signingConfig signingConfigs.CRMAndroid
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

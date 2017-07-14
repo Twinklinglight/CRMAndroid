@@ -91,12 +91,12 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
         presenter = new FieldClockPresenter(this,this);
         int userId = MyApplication.application.getLoginData().getUserID();
         dayCloclRecordRQ = new DayCloclRecordRQ();
-        dayCloclRecordRQ.setUserId(userId);
+        dayCloclRecordRQ.setUserId(userId+"");
         Calendar cal = Calendar.getInstance();
         int day = cal.get(Calendar.DATE);       //日
         int month = cal.get(Calendar.MONTH) + 1;//月
         int year = cal.get(Calendar.YEAR);
-        dayCloclRecordRQ.setToDay(year + "/" + month + "/" + day);
+        dayCloclRecordRQ.setToDay(year + "-" + month + "-" + day);
         presenter.clockRecord(dayCloclRecordRQ, 1);
         placeSaveRequestData = new PlaceSaveRQ();
         placeSaveRequestData.setUserId(userId);

@@ -12,14 +12,14 @@ public class DayCloclRecordRQ {
      * ToDay : 2017/07/03
      */
 
-    private int userId;
+    private String userId;
     private String ToDay;
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

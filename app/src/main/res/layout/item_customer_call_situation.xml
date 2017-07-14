@@ -29,6 +29,7 @@
             app:citv_text_text="张三" />
 
         <TextView
+            android:id="@+id/tv_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -37,6 +38,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="30"
@@ -70,6 +72,7 @@
             android:layout_marginTop="15dp">
 
             <TextView
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="张三"
@@ -77,6 +80,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -86,6 +90,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tv_want"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -107,6 +112,7 @@
                 android:background="@mipmap/ic_customer_call_details_address" />
 
             <TextView
+                android:id="@+id/tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
