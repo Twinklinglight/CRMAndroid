@@ -46,7 +46,7 @@ public class PermissionsActivity extends AppCompatActivity {
         if (getIntent() == null || !getIntent().hasExtra(EXTRA_PERMISSIONS)) {
             throw new RuntimeException("PermissionsActivity需要使用静态startActivityForResult方法启动!");
         }
-        setContentView(-R.layout.activity_permissions);
+        setContentView(R.layout.activity_permissions);
 
         mChecker = new PermissionsChecker(this);
         isRequireCheck = true;

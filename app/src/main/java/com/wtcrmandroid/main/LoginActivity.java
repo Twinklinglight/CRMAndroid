@@ -1,5 +1,6 @@
 package com.wtcrmandroid.main;
 
+import android.Manifest;
 import android.content.Intent;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -37,6 +38,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
     @Override
     protected void initView() {
+        PERMISSIONS = new String[]{
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+        };
         presenter=new LoginPresenter(this,this);
 //        TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
 //        L.e(tm.getDeviceId()+"--");

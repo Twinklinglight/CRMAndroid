@@ -1,6 +1,5 @@
 package com.wtcrmandroid;
 
-import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -24,15 +23,8 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompatActivity implements AllView<T1> {
     protected T presenter;
     private static final int REQUEST_CODE = 0; // 请求码
-    private PermissionsChecker mPermissionsChecker; // 权限检测器
-    // 所需的全部权限
-    static final String[] PERMISSIONS = new String[]{
-            Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-
-    };
+    protected PermissionsChecker mPermissionsChecker; // 权限检测器
+    protected String[] PERMISSIONS;
     @Override
     public void showShortToast(String text) {
         L.e(text);
@@ -62,6 +54,7 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
      * 初始化方法
      */
     protected abstract void initView();
+
     @Override protected void onResume() {
         super.onResume();
 
@@ -70,8 +63,7 @@ public abstract class BaseActivity<T extends BasePresenter, T1> extends AppCompa
             startPermissionsActivity();
         }
     }
-
-    private void startPermissionsActivity() {
+    protected void startPermissionsActivity() {
         PermissionsActivity.startActivityForResult(this, REQUEST_CODE, PERMISSIONS);
     }
 }
