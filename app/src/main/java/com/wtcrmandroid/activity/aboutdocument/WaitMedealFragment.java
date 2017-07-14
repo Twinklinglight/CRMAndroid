@@ -39,7 +39,7 @@ public class WaitMedealFragment extends BaseFragment<WaitMeDealPresenter,List<Do
     }
 
     @Override
-    protected void init() {
+    public void init() {
         presenter = new WaitMeDealPresenter(this,getActivity());
         WaitMedealRqData waitMedealRqData = new WaitMedealRqData();
         waitMedealRqData.setUserId(1667);

@@ -27,7 +27,7 @@ public class ContactsFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         rvView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvView.setAdapter(adapter = new AddressBookAdapter(getActivity()));
 

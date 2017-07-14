@@ -32,7 +32,7 @@ public class SingleCustomerFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
         mData = new ArrayList<>();
         getData();

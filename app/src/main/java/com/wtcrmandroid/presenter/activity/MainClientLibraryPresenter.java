@@ -36,4 +36,13 @@ public class MainClientLibraryPresenter extends BasePresenter {
     public void getData(Object object,int key){
         post("AllCustomerList/seachCustomer",object,key);
     }
+
+    /**
+     * 一键拉入
+     * @param object
+     * @param key
+     */
+    public void aKeyPullIn(Object object,int key){
+        post("AllCustomerList/setMyCustomer",object,key);
+    }
 }

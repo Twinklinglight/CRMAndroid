@@ -6,22 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.utils.L;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by 1363655717 on 2017/3/23.
  */
 
-public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T1> {
+public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
     private int layoutId;
-    protected List <T> list;
+    protected List <T> list= new ArrayList<>();
     protected Context context;
     private OnItemClickListner onItemClickListner;//单击事件
     private OnItemLongClickListner onItemLongClickListner;//长按单击事件
     private boolean clickFlag = true;//单击事件和长单击事件的屏蔽标识
-
+    private final int NULLDATA = 0;
+    private final int WORD = 1;
     /**
      *
      * @param context //上下文
@@ -41,39 +44,56 @@ public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> e
     public List<T> getList() {
         return list;
     }
-
     @Override
-    public T1 onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(layoutId, parent, false);
-        final T1 holder = getViewHolder(v);
-        //单击事件回调
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (clickFlag) {
-                    if(onItemClickListner!=null)
-                    onItemClickListner.onItemClickListner(v,holder.getLayoutPosition());
-                }
-                clickFlag = true;
-            }
-        });
-        //单击长按事件回调
-        v.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if(onItemLongClickListner!=null)
-                onItemLongClickListner.onItemLongClickListner(v,holder.getLayoutPosition());
-                clickFlag = false;
-                return false;
-            }
-        });
+    public int getItemViewType(int position) {
+        if (list.size() == 0)
+            return NULLDATA;
+        else
+            return WORD;
+    }
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v;
+        RecyclerView.ViewHolder holder;
+        if (viewType == NULLDATA) {
+            v = LayoutInflater.from(context).inflate(R.layout.view_null_data, parent, false);
+            holder = new StatisticaDetailsAdapter.NullDataViewHolder(v);
+        } else {
+            v = LayoutInflater.from(context).inflate(layoutId, parent, false);
+            holder = getViewHolder(v);
+        }
         return holder;
+//        View v = LayoutInflater.from(context).inflate(layoutId, parent, false);
+//        final T1 holder = getViewHolder(v);
+//        //单击事件回调
+//        v.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (clickFlag) {
+//                    if(onItemClickListner!=null)
+//                    onItemClickListner.onItemClickListner(v,holder.getLayoutPosition());
+//                }
+//                clickFlag = true;
+//            }
+//        });
+//        //单击长按事件回调
+//        v.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                if(onItemLongClickListner!=null)
+//                onItemLongClickListner.onItemLongClickListner(v,holder.getLayoutPosition());
+//                clickFlag = false;
+//                return false;
+//            }
+//        });
+//        return holder;
     }
 
     @Override
-    public void onBindViewHolder(T1 holder, int position) {
-        if(list!=null){
-            convert(holder, list.get(position),position);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if(list.size()!=0){
+            T1 t1= (T1) holder;
+            convert(t1, list.get(position),position);
             L.e("youshuju");
         }
     }
@@ -82,15 +102,10 @@ public abstract class BaseRecycleAdapter<T,T1 extends RecyclerView.ViewHolder> e
 
     @Override
     public int getItemCount() {
-        if(list!=null) {
+        if(list.size()!=0) {
             return list.size();
         }
-        return 5;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        return 1;
     }
 
     public void setOnItemClickListner(OnItemClickListner onItemClickListner) {

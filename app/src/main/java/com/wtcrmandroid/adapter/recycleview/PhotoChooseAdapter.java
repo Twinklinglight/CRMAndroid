@@ -1,15 +1,17 @@
 package com.wtcrmandroid.adapter.recycleview;
 
-import android.os.Environment;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.custompricing.SquareImageView;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,6 +25,15 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
 
     private List<String> list;
     private int size;
+    private MyOnClickListner myOnClickListner;
+    private Context context;
+    public PhotoChooseAdapter(Context context) {
+        this.context = context;
+    }
+
+    public void setMyOnClickListner(MyOnClickListner myOnClickListner) {
+        this.myOnClickListner = myOnClickListner;
+    }
 
     public void setList(List<String> list) {
         this.list = list;
@@ -41,43 +52,26 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         if (position == size) {
             holder.ivPhoto.setImageResource(R.mipmap.ic_photo_upload);
             holder.ivDelete.setVisibility(View.GONE);
             holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String status2 = Environment.getExternalStorageState();
-                    // 判断SD卡
-                    if (status2 != null && status2.equals(Environment.MEDIA_MOUNTED)) {
+                    myOnClickListner.selectPhoto(position);
 
-//                        Intent openCameraIntent = new Intent(
-//                                MediaStore.ACTION_IMAGE_CAPTURE);
-//                        openCameraIntent.addCategory(Intent.CATEGORY_DEFAULT);
-//                        SimpleDateFormat sDateFormat = new SimpleDateFormat(
-//                                "yyyyMMddHHmmssSSS");
-//                        String date = sDateFormat.format(new java.util.Date());
-//                        //营业执照
-//                        headImg = WTUserManager.INSTANCE.getCurrentUser()
-//                                + "headimg_" + date + ".png";
-//                        headImgFilePath = Const.PHOTO_PATH + headImg;
-//                        file_path = Const.PHOTO_PATH + headImg;
-//                        File fileimage = new File(file_path);
-//                        Uri tempUri = Uri.fromFile(fileimage);
-//                        openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
-//                        startActivityForResult(openCameraIntent, REQUEST_CAMERA);
-                    }
                 }
             });
 
         } else {
+            Glide.with(context).load(new File(list.get(position))).into(holder.ivPhoto);
             holder.ivPhoto.setImageResource(R.mipmap.ic_dog);
             holder.ivDelete.setVisibility(View.VISIBLE);
             holder.ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    myOnClickListner.deletePhoto(position);
                 }
             });
         }
@@ -102,5 +96,9 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+    public interface MyOnClickListner{
+        void selectPhoto(int position);
+        void deletePhoto(int position);
     }
 }

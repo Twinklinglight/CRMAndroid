@@ -3,10 +3,13 @@ package com.wtcrmandroid.adapter.recycleview;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.reponsedata.SearchCustomerRP;
+import com.wtcrmandroid.model.requestdata.AKeyPullInRQ;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,12 +20,20 @@ import butterknife.ButterKnife;
 
 public class ClientLibraryAdapter extends BaseRecycleAdapter<SearchCustomerRP, ClientLibraryAdapter.ViewHolder> {
 
-
+    private AKeyPullIn aKeyPullIn;
 
     private int style = 0;
 
     public void setStyle(int style) {
         this.style = style;
+    }
+
+    /**
+     * 一键拉入
+     * @param aKeyPullIn
+     */
+    public void setaKeyPullIn(AKeyPullIn aKeyPullIn) {
+        this.aKeyPullIn = aKeyPullIn;
     }
 
     /**
@@ -34,12 +45,21 @@ public class ClientLibraryAdapter extends BaseRecycleAdapter<SearchCustomerRP, C
 
 
     @Override
-    protected void convert(ViewHolder holder, SearchCustomerRP bean, int position) {
+    protected void convert(ViewHolder holder, final SearchCustomerRP bean, int position) {
 
         holder.tvCompanyName.setText(bean.getCompanyName());
         holder.tvCompanyAddress.setText("公司地址：" + bean.getSite());
         holder.tvTime.setText("入库时间：" + bean.getRecordTime());
         holder.tvKind.setText(bean.getCustomerKind());
+        holder.btView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AKeyPullInRQ aKeyPullInRQ=new AKeyPullInRQ();
+                aKeyPullInRQ.setUserId(MyApplication.application.getLoginData().getUserID());
+                aKeyPullInRQ.setCustomerId(bean.getCustomerID());
+                aKeyPullIn.AKeyPullIn(aKeyPullInRQ);
+            }
+        });
         if (bean.getCurrentStatus().equals("Sale")) {
             holder.tvLibraryKind.setText("销售库");
         } else if (bean.getCurrentStatus().equals("Free")) {
@@ -49,7 +69,7 @@ public class ClientLibraryAdapter extends BaseRecycleAdapter<SearchCustomerRP, C
         } else {
             holder.tvLibraryKind.setText("过期物信通库");
         }
-        switch (style){
+        switch (style) {
             case 0:
                 break;
             case 1:
@@ -77,10 +97,17 @@ public class ClientLibraryAdapter extends BaseRecycleAdapter<SearchCustomerRP, C
         TextView tvLibraryKind;
         @BindView(R.id.tv_source)
         TextView tvSource;
+        @BindView(R.id.bt_view)
+        Button btView;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
+    }
+
+    public interface AKeyPullIn {
+        void AKeyPullIn(AKeyPullInRQ aKeyPullInRQ);
     }
 }

@@ -5,14 +5,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.model.reponsedata.TotalAchievementsRP;
+import com.wtcrmandroid.model.requestdata.IdTimeRequestdata;
+import com.wtcrmandroid.presenter.fragment.TotalAchievementsP;
 import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -23,16 +26,54 @@ import butterknife.OnClick;
  * 总业绩
  */
 
-public class TotalAchievementsFragment extends BaseFragment {
+public class TotalAchievementsFragment extends BaseFragment<TotalAchievementsP, TotalAchievementsRP> {
     @BindView(R.id.tv_start_data)
     TextView tvStartData;
     @BindView(R.id.tv_end_data)
     TextView tvEndData;
 
     Date startdate;
+    IdTimeRequestdata idTimeRequestdata;
+    @BindView(R.id.tv_wt)
+    TextView tvWt;
+    @BindView(R.id.tv_wt_money)
+    TextView tvWtMoney;
+    @BindView(R.id.tv_new)
+    TextView tvNew;
+    @BindView(R.id.tv_continue)
+    TextView tvContinue;
+    @BindView(R.id.tv_total)
+    TextView tvTotal;
+    @BindView(R.id.tv_market)
+    TextView tvMarket;
+    @BindView(R.id.tv_merchants)
+    TextView tvMerchants;
+    @BindView(R.id.tv_sp)
+    TextView tvSp;
+    @BindView(R.id.tv_sp_money)
+    TextView tvSpMoney;
+    @BindView(R.id.tv_sp_new)
+    TextView tvSpNew;
+    @BindView(R.id.tv_sp_continue)
+    TextView tvSpContinue;
+    @BindView(R.id.tv_z_money)
+    TextView tvZMoney;
+
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, TotalAchievementsRP data) {
+        tvWtMoney.setText(data.getMoney_wt());
+        tvSpMoney.setText(data.getMoney_sp());
+        tvZMoney.setText(data.getMoney());
+       tvNew.setText(data.getMoney_wtNew());
+        tvContinue.setText(data.getMoney_wtXu());
+        tvTotal.setText(data.getMoney_wtdx());
+        tvMarket.setText(data.getMoney_wtsc());
+        tvMerchants.setText(data.getMoney_wtzs());
+        tvSpMoney.setText(data.getMoney_sp());
+        tvSpNew.setText(data.getMoney_spNew());
+        tvSpContinue.setText(data.getMoney_spXu());
+
 
     }
 
@@ -42,21 +83,23 @@ public class TotalAchievementsFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
-        Calendar cal = Calendar.getInstance();
-//        int day = cal.get(Calendar.DATE);       //日
-        int month = cal.get(Calendar.MONTH) + 1;//月
-        int year = cal.get(Calendar.YEAR);      //年
+    public void init() {
+        idTimeRequestdata = new IdTimeRequestdata();
+        idTimeRequestdata.setUserId(MyApplication.application.getLoginData().getUserID());
         int totalday = DateUtil.getCurrentMonthDay();
-        String startDate=year + "-" + month + "-01";
-        tvStartData.setText(startDate);
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String startDate = df.format(new Date()).substring(0, 8) + "01";
+        tvStartData.setText(startDate);
         try {
-            startdate=df.parse(startDate);
+            startdate = df.parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        tvEndData.setText(year + "-" + month + "-" + totalday);
+        tvEndData.setText(startDate.substring(0, 8) + totalday);
+        presenter = new TotalAchievementsP(this, getActivity());
+        idTimeRequestdata.setStartTime(tvStartData.getText().toString());
+        idTimeRequestdata.setEndTime(tvEndData.getText().toString());
+        presenter.getTotalAchievements(idTimeRequestdata, 0);
     }
 
     @OnClick({R.id.tv_start_data, R.id.tv_end_data})
@@ -68,6 +111,8 @@ public class TotalAchievementsFragment extends BaseFragment {
                     public void CalendarSelcet(String datetext, Date date) {
                         tvStartData.setText(datetext.substring(0, 10));
                         startdate = date;
+                        idTimeRequestdata.setStartTime(datetext.substring(0, 10));
+                        presenter.getTotalAchievements(idTimeRequestdata, 0);
                     }
                 }).show();
                 break;
@@ -77,11 +122,16 @@ public class TotalAchievementsFragment extends BaseFragment {
                     public void CalendarSelcet(String datetext, Date date) {
                         if (date.getTime() < startdate.getTime()) {
                             Toast.makeText(getActivity(), "结束时间小于起始时间", Toast.LENGTH_SHORT).show();
-                        } else
+                        } else {
                             tvEndData.setText(datetext.substring(0, 10));
+                            idTimeRequestdata.setEndTime(datetext.substring(0, 10));
+                            presenter.getTotalAchievements(idTimeRequestdata, 0);
+                        }
                     }
                 }).show();
                 break;
         }
     }
+
+
 }

@@ -1,21 +1,21 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;
-import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.journalmanager.DaysumAddCustomerFragment;
 import com.wtcrmandroid.fragment.journalmanager.DaysumHkdzFragment;
 import com.wtcrmandroid.fragment.journalmanager.DaysumSingleCustomerFragment;
 import com.wtcrmandroid.fragment.journalmanager.DaysumWorkCountFragment;
 import com.wtcrmandroid.fragment.journalmanager.DaysumWorkPlanFragment;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class XsDaysumDetailsActivity extends BaseActivity {
     private XsDayplanAdapter mXsDayplanAdapter;
 
     private List<String> mStringList;
-    private List<Fragment> mFragmentList;
+    private List<BaseFragment> mFragmentList;
 
     @Override
     protected int layout() {

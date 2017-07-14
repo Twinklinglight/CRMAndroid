@@ -1,17 +1,31 @@
 package com.wtcrmandroid.activity.field;
 
+import android.content.Intent;
 import android.hardware.Sensor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
+import com.jph.takephoto.app.TakePhoto;
+import com.jph.takephoto.app.TakePhotoImpl;
+import com.jph.takephoto.compress.CompressConfig;
+import com.jph.takephoto.model.InvokeParam;
+import com.jph.takephoto.model.TContextWrap;
+import com.jph.takephoto.model.TResult;
+import com.jph.takephoto.permission.InvokeListener;
+import com.jph.takephoto.permission.PermissionManager;
+import com.jph.takephoto.permission.TakePhotoInvocationHandler;
 import com.wtcrmandroid.BaseMapActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.PhotoChooseAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +36,7 @@ import butterknife.BindView;
  * 客户拜访
  */
 
-public class CustomerCallActivity extends BaseMapActivity {
+public class CustomerCallActivity extends BaseMapActivity implements TakePhoto.TakeResultListener,InvokeListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.tv_address)
@@ -32,6 +46,11 @@ public class CustomerCallActivity extends BaseMapActivity {
     private PhotoChooseAdapter adapter;
 
     private List<String> photo_list=new ArrayList<>();
+
+
+    private TakePhoto takePhoto;
+    private InvokeParam invokeParam;
+    Uri imageUri;
     @Override
     public void returnData(int key, Object data) {
 
@@ -52,9 +71,37 @@ public class CustomerCallActivity extends BaseMapActivity {
             }
         });
         rvView.setLayoutManager(new GridLayoutManager(this, 4));
-        rvView.setAdapter(adapter = new PhotoChooseAdapter());
-        photo_list.add("");
+        rvView.setAdapter(adapter = new PhotoChooseAdapter(this));
         adapter.setList(photo_list);
+
+        CompressConfig config=new CompressConfig.Builder()
+                .setMaxSize(51200)
+                .setMaxPixel(800)
+                .enableReserveRaw(true)
+                .create();
+        takePhoto.onEnableCompress(config,true);
+        adapter.setMyOnClickListner(new PhotoChooseAdapter.MyOnClickListner() {
+            @Override
+            public void selectPhoto(int position) {
+                File file=new File(Environment.getExternalStorageDirectory(), "/temp/"+System.currentTimeMillis() + ".jpg");
+                if (!file.getParentFile().exists())file.getParentFile().mkdirs();
+                imageUri = Uri.fromFile(file);
+                takePhoto.onPickFromCapture(imageUri);
+            }
+
+            @Override
+            public void deletePhoto(int position) {
+                photo_list.remove(position);
+                adapter.setList(photo_list);
+            }
+        });
+    }
+
+    @Override
+    public void getBundle(Bundle savedInstanceState) {
+        super.getBundle(savedInstanceState);
+        getTakePhoto().onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -69,4 +116,57 @@ public class CustomerCallActivity extends BaseMapActivity {
     }
 
 
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        getTakePhoto().onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        getTakePhoto().onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionManager.TPermissionType type=PermissionManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        PermissionManager.handlePermissionsResult(this,type,invokeParam,this);
+    }
+    /**
+     *  获取TakePhoto实例
+     * @return
+     */
+    public TakePhoto getTakePhoto(){
+        if (takePhoto==null){
+            takePhoto= (TakePhoto) TakePhotoInvocationHandler.of(this).bind(new TakePhotoImpl(this,this));
+        }
+        return takePhoto;
+    }
+    @Override
+    public void takeSuccess(TResult result) {
+        photo_list.add(result.getImage().getCompressPath());
+        adapter.setList(photo_list);
+    }
+
+    @Override
+    public void takeFail(TResult result, String msg) {
+
+    }
+
+    @Override
+    public void takeCancel() {
+        showShortToast("取消当前操作！");
+
+    }
+
+    @Override
+    public PermissionManager.TPermissionType invoke(InvokeParam invokeParam) {
+        PermissionManager.TPermissionType type=PermissionManager.checkPermission(TContextWrap.of(this),invokeParam.getMethod());
+        if(PermissionManager.TPermissionType.WAIT.equals(type)){
+            this.invokeParam=invokeParam;
+        }
+        return type;
+    }
 }

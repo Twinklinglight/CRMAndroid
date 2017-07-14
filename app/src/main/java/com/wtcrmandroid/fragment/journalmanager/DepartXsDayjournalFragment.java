@@ -71,7 +71,7 @@ public class DepartXsDayjournalFragment extends BaseFragment implements CommentD
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
     }
 

@@ -13,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.aboutdocument.DocumentProcessActivity;
 import com.wtcrmandroid.activity.crm.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
@@ -52,7 +52,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
+        isSale=MyApplication.application.getLoginData().isIsSaler();
         titlebar.serLeftImageVisibility(GONE);
         titlebar.setLeftText("工作台");
         titlebar.setRightImageResource(R.mipmap.ico_plus);
@@ -113,7 +114,7 @@ public class HomeFragment extends BaseFragment {
                 break;
             //录入客户
             case R.id.tv_pullintocustomer:
-                if (!isSale){
+                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")){
                     startActivity(new Intent(getContext(), PullintoCustomerActivity.class));
                 }else {
                     startActivity(new Intent(getContext(), SalePullintoCustomerActivity.class));

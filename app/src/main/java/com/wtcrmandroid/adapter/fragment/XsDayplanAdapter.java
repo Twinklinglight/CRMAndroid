@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.wtcrmandroid.BaseFragment;
+
 import java.util.List;
 
 /**
@@ -14,9 +16,9 @@ import java.util.List;
 public class XsDayplanAdapter extends FragmentPagerAdapter {
 
     private List<String>mTitleList;
-    private List<Fragment>mFragmentList;
+    private List<BaseFragment>mFragmentList;
 
-    public XsDayplanAdapter(FragmentManager fm, List<String> titleList, List<Fragment> fragmentList) {
+    public XsDayplanAdapter(FragmentManager fm, List<String> titleList, List<BaseFragment> fragmentList) {
         super(fm);
         mTitleList = titleList;
         mFragmentList = fragmentList;

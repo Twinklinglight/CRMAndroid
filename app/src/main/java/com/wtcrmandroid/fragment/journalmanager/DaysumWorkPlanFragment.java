@@ -42,7 +42,7 @@ public class DaysumWorkPlanFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
         mDataList = new ArrayList<>();
         mCommentDatas = new ArrayList<>();

@@ -1,19 +1,19 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;
-import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.fragment.journalmanager.MajorCustomerFragment;
 import com.wtcrmandroid.fragment.journalmanager.SingleCustomerFragment;
 import com.wtcrmandroid.fragment.journalmanager.WorkPlanFragment;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class XsDayplanDetailsActivity extends BaseActivity {
     private XsDayplanAdapter mAdapter;
 
     private List<String> mTitleList;    //tablayout 标题列表
-    private List<Fragment> mFragmentList; //vp中fragment集合
+    private List<BaseFragment> mFragmentList; //vp中fragment集合
 
 
     @Override

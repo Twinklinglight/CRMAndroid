@@ -31,7 +31,7 @@ public class WorkPlanFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    public void init() {
         mData = new ArrayList<>();
         getData();
         mAdapter = new HtDayplanDetailsAdapter(getActivity(),mData);

@@ -1,4 +1,4 @@
-package com.wtcrmandroid.dialog.popupwindow.addressselection;
+package com.wtcrmandroid.utils.areaslection;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
