@@ -112,7 +112,7 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                                     page=1;
                                     data.setPageSize(page);
                                     presenter.getData(data,0);
-
+                                    adapter.addList(new ArrayList<SearchCustomerRP>());
                                 }
                             });
 
@@ -145,6 +145,7 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                                     page=1;
                                     data.setPageSize(page);
                                     presenter.getData(data,0);
+                                    adapter.addList(new ArrayList<SearchCustomerRP>());
                                 }
                             });
 
@@ -227,7 +228,7 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
         switch(key){
             //刷新返回数据
             case 0:
-                adapter.addList(data);
+                adapter.addList(new ArrayList<SearchCustomerRP>());
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
             //加载更多返回数据
@@ -259,6 +260,7 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
                 page=1;
                 data.setPageSize(page);
                 presenter.getData(data,0);
+                adapter.addList(new ArrayList<SearchCustomerRP>());
             }
         });
     }

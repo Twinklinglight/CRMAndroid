@@ -110,6 +110,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
                                     page=1;
                                     data.setPageSize(page);
                                     presenter.getData(data,0);
+                                    adapter.addList(new ArrayList<SearchSalerCustomerRP>());
                                 }
                             });
 
@@ -142,6 +143,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
                                     page=1;
                                     data.setPageSize(page);
                                     presenter.getData(data,0);
+                                    adapter.addList(new ArrayList<SearchSalerCustomerRP>());
                                 }
                             });
 
@@ -211,6 +213,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
                 page=1;
                 data.setPageSize(page);
                 presenter.getData(data,0);
+                adapter.addList(new ArrayList<SearchSalerCustomerRP>());
             }
         });
     }
