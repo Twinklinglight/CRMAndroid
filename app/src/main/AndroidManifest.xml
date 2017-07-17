@@ -72,7 +72,7 @@
         <!-- 客户拜访情况 -->
         <activity android:name=".activity.field.CustomerCallSituationActivity"/>
         <!-- 客户拜访统计 -->
-        <activity android:name=".activity.field.CustomerCallStatisticsAcrivity"/>
+        <activity android:name=".activity.field.CustomerCallStatisticalAcrivity"/>
         <!-- ———————————————————————————————————————————————————————————————— -->
 
 

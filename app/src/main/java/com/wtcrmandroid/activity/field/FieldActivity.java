@@ -59,7 +59,7 @@ public class FieldActivity extends BaseActivity {
                 startActivity(new Intent(FieldActivity.this,MyCallRecordActivity.class));
                 break;
             case R.id.srl_customer_call_statistics:
-                startActivity(new Intent(FieldActivity.this,CustomerCallStatisticsAcrivity.class));
+                startActivity(new Intent(FieldActivity.this,CustomerCallStatisticalAcrivity.class));
                 break;
             case R.id.srl_employees_location:
                 break;
