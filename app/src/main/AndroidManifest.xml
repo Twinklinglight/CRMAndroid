@@ -211,7 +211,8 @@
         <activity android:name=".activity.aboutdocument.DocumentNomalProcessActivity" />
         <activity android:name=".activity.aboutdocument.SubDocumentActivity" />
         <activity android:name=".activity.aboutdocument.DocSelectPersonActivity" />
-        <activity android:name=".activity.aboutdocument.DocumentDetailsActivity"></activity>
+        <activity android:name=".activity.aboutdocument.DocumentDetailsActivity" />
+        <activity android:name=".activity.aboutdocument.DocNomalDetailsActivity"></activity>
     </application>
 
 </manifest>
