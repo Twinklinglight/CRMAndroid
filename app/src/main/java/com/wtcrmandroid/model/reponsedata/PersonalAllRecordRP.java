@@ -1,11 +1,13 @@
 package com.wtcrmandroid.model.reponsedata;
 
+import java.io.Serializable;
+
 /**
  * Created by wt-pc on 2017/7/17.
  * 某个人的所有拜访记录
  */
 
-public class PersonalAllRecordRP {
+public class PersonalAllRecordRP implements Serializable {
 
     /**
      * rowid : 1
@@ -22,12 +24,12 @@ public class PersonalAllRecordRP {
     private String rowid;
     private String customerid;
     private String customerName;
-    private String lat;
-    private String lng;
+    private Double lat;
+    private Double lng;
     private String addressDetail;
     private String remarks;
     private String createTime;
-    private String address;
+    private String address="";
 
     public String getRowid() {
         return rowid;
@@ -53,19 +55,19 @@ public class PersonalAllRecordRP {
         this.customerName = customerName;
     }
 
-    public String getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
-    public String getLng() {
+    public Double getLng() {
         return lng;
     }
 
-    public void setLng(String lng) {
+    public void setLng(Double lng) {
         this.lng = lng;
     }
 

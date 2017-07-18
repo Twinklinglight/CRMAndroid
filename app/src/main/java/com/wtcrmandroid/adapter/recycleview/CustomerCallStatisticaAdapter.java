@@ -21,6 +21,11 @@ import butterknife.ButterKnife;
  */
 
 public class CustomerCallStatisticaAdapter extends BaseRecycleAdapter<VisitStatisticalRP,CustomerCallStatisticaAdapter.ViewHolder> {
+    private String date;
+
+    public void setDate(String date) {
+        this.date = date;
+    }
     /**
      * @param context  //上下文
      */
@@ -35,11 +40,11 @@ public class CustomerCallStatisticaAdapter extends BaseRecycleAdapter<VisitStati
 
 
     @Override
-    protected void convert(ViewHolder holder,VisitStatisticalRP bean,int position) {
+    protected void convert(ViewHolder holder, final VisitStatisticalRP bean, int position) {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,CustomerVisitDetailsListActivity.class));
+                context.startActivity(new Intent(context,CustomerVisitDetailsListActivity.class).putExtra("userId", bean.getUserId()).putExtra("date",date));
             }
         });
         holder.tvNumber.setText(bean.getVisitCount());
