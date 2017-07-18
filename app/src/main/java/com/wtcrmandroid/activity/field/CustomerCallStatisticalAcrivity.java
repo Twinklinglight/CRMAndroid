@@ -8,10 +8,8 @@ import android.widget.PopupWindow;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.CustomerCallStatisticaAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
-import com.wtcrmandroid.model.dealdata.GroupingClockRecordDD;
 import com.wtcrmandroid.model.reponsedata.VisitStatisticalRP;
 import com.wtcrmandroid.model.requestdata.VisitStatisticalRQ;
 import com.wtcrmandroid.presenter.activity.CustomerCallStatisticalP;
@@ -53,7 +51,7 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout mSwipeToLoadLayout;
 
-    private BaseRecycleAdapter adapter;
+    private CustomerCallStatisticaAdapter adapter;
     private TitlePopupWindow titleLeftPopupWindow;
     private CalendarPopupWindow calendarPopupWindow;
     private VisitStatisticalRQ visitStatisticalRQ;
@@ -122,12 +120,13 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
                                     if (DateUtil.isSameDate(d, new Date())) {
                                         tcmbBar.setRightTextNo("今天");
                                         visitStatisticalRQ.setDate(DateUtil.getToday());
-                                        presenter.sedPost(visitStatisticalRQ,0);
                                     }else {
                                         tcmbBar.setRightTextNo(datetext);
                                         visitStatisticalRQ.setDate(datetext);
-                                        presenter.sedPost(visitStatisticalRQ,0);
+
                                     }
+                                    presenter.sedPost(visitStatisticalRQ,0);
+                                    adapter.setDate(datetext);
                                     adapter.addList(new ArrayList<VisitStatisticalRP>());
 
                                 }
@@ -171,6 +170,7 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
         visitStatisticalRQ.setPageindex(page);
         visitStatisticalRQ.setUserId(MyApplication.application.getLoginData().getUserID()+"");
         presenter.sedPost(visitStatisticalRQ,0);
+        adapter.setDate(DateUtil.getToday());
     }
 
 
@@ -179,7 +179,7 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
         page = 1;
         visitStatisticalRQ.setPageindex(page);
         presenter.sedPost(visitStatisticalRQ,0);
-        adapter.addList(new ArrayList<GroupingClockRecordDD>());
+        adapter.addList(new ArrayList<VisitStatisticalRP>());
     }
 
     @Override

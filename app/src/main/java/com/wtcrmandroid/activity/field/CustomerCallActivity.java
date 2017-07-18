@@ -30,6 +30,8 @@ import com.wtcrmandroid.adapter.recycleview.PhotoChooseAdapter;
 import com.wtcrmandroid.model.requestdata.CustomerCallRQ;
 import com.wtcrmandroid.presenter.activity.CustomerCallP;
 import com.wtcrmandroid.utils.Base64;
+import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import java.io.File;
@@ -189,7 +191,6 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
 
     @Override
     public void takeSuccess(TResult result) {
-        showShortToast(result.getImage().getCompressPath());
         photo_list.add(result.getImage().getCompressPath());
         adapter.setList(photo_list);
         CustomerCallRQ.ImageFile imageFile = new CustomerCallRQ.ImageFile();
@@ -230,6 +231,7 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
                 startActivityForResult(new Intent(CustomerCallActivity.this, MyClientLibrary.class).putExtra("style", 1), 10);
                 break;
             case R.id.iv_microphone:
+                doVoice(tvRemarks);
                 break;
             case R.id.bt_submit:
                 if (customerCallRQ.getLat() == 0) {
@@ -253,7 +255,23 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
                 break;
         }
     }
+    public void doVoice(final EditText etText) {
 
+        Iat iat = new Iat(this);
+        iat.iatRecognize();
+        iat.setSetRestult(new Iat.setResult() {
+            @Override
+            public void succeed(String result) {
+                etText.setText(result);
+
+            }
+
+            @Override
+            public void failed(String iatError) {
+                L.e("出现了一个错误，请您重试");
+            }
+        });
+    }
 
 
 }
