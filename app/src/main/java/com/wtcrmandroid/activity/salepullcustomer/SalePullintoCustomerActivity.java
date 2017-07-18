@@ -23,6 +23,11 @@ import com.wtcrmandroid.view.custompricing.TitleBar;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 申中甲
+ * 物通录入客户
+ */
+
 public class SalePullintoCustomerActivity extends BaseActivity<SalePullintoCustomerPresenter, String > {
 
     @BindView(R.id.title)
@@ -177,7 +182,7 @@ public class SalePullintoCustomerActivity extends BaseActivity<SalePullintoCusto
 
         }
     }
-
+    //提交数据
     private void submit() {
         String sort=mTvSort.getText().toString();
         saveCustomerRQ.setAttribution(MyApplication.application.getLoginData().getAttribution());

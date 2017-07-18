@@ -242,12 +242,12 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
                     showShortToast("请选择拜访客户！");
                     return;
                 }
-                String addressdetails=etAddrssDetails.getText().toString();
+                String addressdetails = etAddrssDetails.getText().toString();
                 if (addressdetails.equals("")) {
                     showShortToast("请填写详细地址！");
                     return;
                 }
-                customerCallRQ.setAddressDetail(address+addressdetails);
+                customerCallRQ.setAddressDetail(address + addressdetails);
                 customerCallRQ.setRemarks(tvRemarks.getText().toString());
                 customerCallRQ.setImg(img);
                 presenter.sedPost(customerCallRQ, 0);
@@ -255,6 +255,7 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
                 break;
         }
     }
+
     public void doVoice(final EditText etText) {
 
         Iat iat = new Iat(this);
@@ -263,7 +264,6 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
             @Override
             public void succeed(String result) {
                 etText.setText(result);
-
             }
 
             @Override

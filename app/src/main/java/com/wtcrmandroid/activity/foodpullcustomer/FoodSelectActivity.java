@@ -90,14 +90,12 @@ public class FoodSelectActivity extends BaseActivity implements FoodSelectAdapte
         mFoodSelectAdapter.notifyDataSetChanged();
 
         if (type == 1){
-
             String text = mDataList.get(position);
             Intent intent = new Intent();
             intent.putExtra("TEXT",text);           //回调选中文字
             intent.putExtra("POSITION",position);   //回调选中位置
             setResult(1,intent);
         }else if(type == 2){
-
             String text = mDataList.get(position);
             Intent intent = new Intent();
             intent.putExtra("TEXT",text);
