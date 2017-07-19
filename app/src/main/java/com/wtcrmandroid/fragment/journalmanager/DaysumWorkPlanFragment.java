@@ -1,10 +1,12 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.BaseFragment;
@@ -31,6 +33,8 @@ public class DaysumWorkPlanFragment extends BaseFragment {
     MyListView mIvComment;
     private CommentAdapter mCommentAdapter;
     private List<CommentData> mCommentDatas;
+    private String level= "";
+    private String Learning = "";
 
     private HtDaysumDetailsAdapter mDetailsAdapter;
     private List<HtDaysumDetailsData>mDataList;
@@ -44,32 +48,34 @@ public class DaysumWorkPlanFragment extends BaseFragment {
     @Override
     public void init() {
 
-        mDataList = new ArrayList<>();
-        mCommentDatas = new ArrayList<>();
+        XsDaysumDetailsActivity activity = (XsDaysumDetailsActivity)getActivity();
 
-        for (int i = 0; i < 3; i++) {
-            CommentData commentData = new CommentData();
-            HtDaysumDetailsData htDaysumDetailsData = new HtDaysumDetailsData();
-            htDaysumDetailsData.setWorkSort("A类");
-            commentData.setCommentPerson("总监");
-            commentData.setCommentTime("2017-6-12");
-            commentData.setCommentJob("弄着、弄那");
-            commentData.setCommentContent("除了这你还弄啥类");
-            mCommentDatas.add(commentData);
-            mDataList.add(htDaysumDetailsData);
-        }
+        mDataList = activity.DaysumData.getWork().getWorkdetail();
+        mCommentDatas = activity.DaysumData.getExam();
+        level = activity.DaysumData.getLeve();
+        Learning = activity.DaysumData.getLearning();
 
-        mDetailsAdapter = new HtDaysumDetailsAdapter(getActivity(),mDataList);
+        mDetailsAdapter = new HtDaysumDetailsAdapter(activity,mDataList);
         mLvWorkPlan.setAdapter(mDetailsAdapter);
+        View footview = LayoutInflater.from(activity).inflate(R.layout.item_sum_foot,null);
+        TextView tvLearn = (TextView)footview.findViewById(R.id.tv_daysum_xxfx);
+        tvLearn.setText(Learning);
+        mLvWorkPlan.addFooterView(footview);
         mDetailsAdapter.notifyDataSetChanged();
 
-        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDatas,"");
+        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDatas,level);
         mIvComment.setAdapter(mCommentAdapter);
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_comment_head, null);
-        ViewHolder viewHolder = new ViewHolder(view);
-        view.setTag(viewHolder);
-        viewHolder.mTvCommentCount.setText("评论("+mCommentDatas.size()+")");
-        mIvComment.addHeaderView(view);
+
+        if (mCommentDatas.size()>0){
+
+            View view = LayoutInflater.from(getContext()).inflate(R.layout.item_comment_head, null);
+            ViewHolder viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
+            viewHolder.mTvCommentCount.setText("评论("+mCommentDatas.size()+")");
+            mIvComment.addHeaderView(view);
+        }
+        mCommentAdapter.notifyDataSetChanged();
+
 
 
     }
@@ -82,7 +88,6 @@ public class DaysumWorkPlanFragment extends BaseFragment {
     static class ViewHolder {
         @BindView(R.id.tv_comment_count)
         TextView mTvCommentCount;
-
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

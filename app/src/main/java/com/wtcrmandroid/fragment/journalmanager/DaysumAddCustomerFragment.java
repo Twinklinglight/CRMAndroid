@@ -3,6 +3,7 @@ package com.wtcrmandroid.fragment.journalmanager;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.AddPurposeFragmentAdapter;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.AddPurpostCtAtData;
@@ -22,7 +23,6 @@ public class DaysumAddCustomerFragment extends BaseFragment {
     @BindView(R.id.lv_daysum_addcustomer)
     ListView mLvDaysumAddcustomer;
     private AddPurposeFragmentAdapter mAdapter;
-    private List<AddPurpostCtAtData> mDataList;
 
     @Override
     protected int Rlayout() {
@@ -32,13 +32,10 @@ public class DaysumAddCustomerFragment extends BaseFragment {
     @Override
     public void init() {
 
-        mDataList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            AddPurpostCtAtData addPurpostCtAtData = new AddPurpostCtAtData();
-            addPurpostCtAtData.setWorkSort("A类");
-            mDataList.add(addPurpostCtAtData);
-        }
-        mAdapter = new AddPurposeFragmentAdapter(getActivity(),mDataList);
+        XsDaysumDetailsActivity activity = (XsDaysumDetailsActivity)getActivity();
+        List<AddPurpostCtAtData> addcustinfo = activity.DaysumData.getWork().getAddcustinfo();
+
+        mAdapter = new AddPurposeFragmentAdapter(getActivity(),addcustinfo);
         mLvDaysumAddcustomer.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }

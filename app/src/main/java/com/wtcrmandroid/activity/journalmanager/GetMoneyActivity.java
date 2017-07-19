@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -12,6 +14,7 @@ import com.wtcrmandroid.adapter.listview.GetMoneyAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.GetMoneyData;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class GetMoneyActivity extends BaseActivity {
     ListView mLvGetmoney;           //列表
     private List<GetMoneyData> mDataList;
     private GetMoneyAtAdapter mMoneyAtAdapter;
+    public static final int GETMONEY_CODE = 1;
 
 
     @Override
@@ -46,9 +50,15 @@ public class GetMoneyActivity extends BaseActivity {
     @Override
     protected void initView() {
         mTitlebar.setTitletext("回款到单");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetMoneyActivity.this.finish();
+            }
+        });
         mDataList = new ArrayList<>();
         GetMoneyData getMoneyData = new GetMoneyData();
-        getMoneyData.setCustomerName("张三");
+        getMoneyData.setCustomerName("");
         mDataList.add(getMoneyData);
 
         mMoneyAtAdapter = new GetMoneyAtAdapter(this, mDataList);
@@ -72,6 +82,12 @@ public class GetMoneyActivity extends BaseActivity {
 
     @OnClick(R.id.tv_getmoney_save)
     public void onViewClicked() {
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("WorkLoad",(Serializable)mDataList);
+        intent.putExtras(bundle);
+        this.setResult(GETMONEY_CODE,intent);
+        this.finish();
     }
 
     @Override

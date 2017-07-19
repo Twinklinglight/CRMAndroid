@@ -1,8 +1,10 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
+import android.util.Log;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.XsDayplanDetailsActivity;
 import com.wtcrmandroid.adapter.listview.SingleFragmentAdapter;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.SingleCustomerData;
@@ -33,25 +35,14 @@ public class SingleCustomerFragment extends BaseFragment {
 
     @Override
     public void init() {
-
-        mData = new ArrayList<>();
-        getData();
-        mAdapter = new SingleFragmentAdapter(getActivity(),mData);
+        XsDayplanDetailsActivity activity = (XsDayplanDetailsActivity) getActivity();
+        mData = activity.RpData.getWorkDreamOrder();
+        Log.i("----------","mData = "+mData);
+        mAdapter = new SingleFragmentAdapter(activity,mData);
+        Log.i("----------","mAdapter = "+mAdapter);
         mLvSingleFragment.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-    }
-
-    public void getData() {
-        mData = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            SingleCustomerData mDatas = new SingleCustomerData();
-            mDatas.setWorkSort("A");
-            mDatas.setWorkName("张三");
-            mDatas.setWorkPercent("50%");
-            mDatas.setWorkAnalysis("就是个这");
-
-            mData.add(mDatas);
-        }
+        Log.i("----------","mAdapter = "+mAdapter);
     }
 
     @Override

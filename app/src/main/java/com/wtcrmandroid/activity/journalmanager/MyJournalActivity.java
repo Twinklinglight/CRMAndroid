@@ -52,9 +52,11 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     @BindView(R.id.tcmb_bar)
     TopChooseMenuBar tcmbBar;
 
-    private String type = "";
-    private String todate = "";
-    private int index = 0;
+    private String type = "";       //类型筛选
+    private String todate = "";     //时间筛选
+    private int index = 0;          //索引
+
+    private boolean isSeal = true;
 
     private TitlePopupWindow TypeWindows;
 
@@ -246,18 +248,30 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     @Override
     public void DayPlanClick(int position) {
 
-        Intent intent = new Intent(MyJournalActivity.this, HtDayplanDetails.class);
-        intent.putExtra("dpdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
-        startActivity(intent);
-
+        if (isSeal){
+            Intent intent = new Intent(MyJournalActivity.this, XsDayplanDetailsActivity.class);
+            intent.putExtra("dpdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(MyJournalActivity.this, HtDayplanDetails.class);
+            intent.putExtra("dpdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
+            startActivity(intent);
+        }
     }
 
     @Override
     public void DaySumClick(int position) {
 
-        Intent intent = new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class);
-        intent.putExtra("dsdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
-        startActivity(intent);
+        if (isSeal){
+            Intent intent = new Intent(MyJournalActivity.this, XsDaysumDetailsActivity.class);
+            intent.putExtra("dsdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
+            startActivity(intent);
+
+        }else {
+            Intent intent = new Intent(MyJournalActivity.this, HtDaysumDetailsActivity.class);
+            intent.putExtra("dsdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
+            startActivity(intent);
+        }
     }
 
     @Override

@@ -1,13 +1,20 @@
 package com.wtcrmandroid.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 /**
  * Created by zxd on 2017/6/12
  */
 
-public class MajorCustomerData {
+public class MajorCustomerData{
 
+    @SerializedName("workLevel")
     private String WorkSort;
+    @SerializedName("custName")
     private String CustomerName;
+    @SerializedName("nextIdea")
     private String WorkAnalysis;
 
     public String getWorkSort() {

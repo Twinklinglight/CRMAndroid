@@ -69,12 +69,19 @@
 
     <!--今日工作量-->
     <string name="phone_number">有效电话:</string>
+    <string name="phone_number1">有效电话</string>
     <string name="sm_count">有效上门:</string>
+    <string name="sm_count1">有效上门</string>
     <string name="A_customer">A类客户库存:</string>
+    <string name="A_customer1">A类客户库存</string>
     <string name="B_customer">B类客户库存:</string>
+    <string name="B_customer1">B类客户库存</string>
     <string name="add_A">新增A类客户:</string>
+    <string name="add_A1">新增A类客户</string>
     <string name="add_B">新增B类客户:</string>
+    <string name="add_B1">新增B类客户</string>
     <string name="krl">库容量:</string>
+    <string name="krl1">库容量</string>
     <string name="hint_number">请输入有效电话数量</string>
     <string name="hint_sm">请输入有效上门数量</string>
     <string name="hint_A">请输入A类客户库存</string>

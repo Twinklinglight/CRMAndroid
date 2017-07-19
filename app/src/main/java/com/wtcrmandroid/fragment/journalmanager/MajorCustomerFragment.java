@@ -3,6 +3,7 @@ package com.wtcrmandroid.fragment.journalmanager;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.XsDayplanDetailsActivity;
 import com.wtcrmandroid.adapter.listview.MajorCustomerAdapter;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.MajorCustomerData;
@@ -30,21 +31,11 @@ public class MajorCustomerFragment extends BaseFragment {
 
     @Override
     public void init() {
-        mDatas = new ArrayList<>();
-        getData();
-        mAdapter = new MajorCustomerAdapter(getActivity(),mDatas);
+        XsDayplanDetailsActivity activity = (XsDayplanDetailsActivity) getActivity();
+        mDatas = activity.RpData.getWorkFocus();
+        mAdapter = new MajorCustomerAdapter(activity,mDatas);
         mLvMajorFragment.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-    }
-
-    public void getData() {
-        for (int i = 0; i <5 ; i++) {
-            MajorCustomerData majorCustomerData = new MajorCustomerData();
-            majorCustomerData.setWorkSort("A类");
-            majorCustomerData.setCustomerName("小东");
-            majorCustomerData.setWorkAnalysis("救你不用谢");
-            mDatas.add(majorCustomerData);
-        }
     }
 
     @Override

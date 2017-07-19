@@ -43,11 +43,15 @@
             android:text="@string/work_load"
             android:textColor="@color/colorIconText"/>
 
-        <ImageView
+        <TextView
+            android:id="@+id/tv_workorder"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/colorIconText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_grayright_arrow"/>
+            android:drawableRight="@mipmap/ic_grayright_arrow"
+            android:drawablePadding="5dp"/>
 
 
     </RelativeLayout>
@@ -66,11 +70,15 @@
             android:text="@string/money_qk"
             android:textColor="@color/colorIconText"/>
 
-        <ImageView
+        <TextView
+            android:id="@+id/tv_workload"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/colorIconText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_grayright_arrow"/>
+            android:drawableRight="@mipmap/ic_grayright_arrow"
+            android:drawablePadding="5dp"/>
 
 
     </RelativeLayout>
@@ -89,11 +97,15 @@
             android:text="@string/single_analysis"
             android:textColor="@color/colorIconText"/>
 
-        <ImageView
+        <TextView
+            android:id="@+id/tv_single"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/colorIconText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_grayright_arrow"/>
+            android:drawableRight="@mipmap/ic_grayright_arrow"
+            android:drawablePadding="5dp"/>
 
 
     </RelativeLayout>
@@ -112,11 +124,15 @@
             style="@style/ContentText"
             android:textColor="@color/colorIconText"/>
 
-        <ImageView
+        <TextView
+            android:id="@+id/tv_newCustomer"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/colorIconText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_grayright_arrow"/>
+            android:drawableRight="@mipmap/ic_grayright_arrow"
+            android:drawablePadding="5dp"/>
 
 
     </RelativeLayout>

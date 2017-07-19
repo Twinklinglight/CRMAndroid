@@ -8,30 +8,36 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
         android:text="@string/if_get"
         android:textColor="@android:color/black"
-        android:textSize="15sp"/>
+        android:textSize="18sp"/>
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="30dp">
 
         <RadioButton
             android:id="@+id/rb_yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableRight="@android:drawable/btn_radio"
+            android:textSize="@dimen/text_size_16"
+            android:drawableRight="@drawable/selector_radiobutton_background"
+            android:textColor="@drawable/selector_text_blue_realblack"
             android:text="是"/>
 
         <RadioButton
             android:id="@+id/rb_no"
+            android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:drawableRight="@android:drawable/btn_radio"
+            android:textColor="@drawable/selector_text_blue_realblack"
+            android:textSize="@dimen/text_size_16"
+            android:drawableRight="@drawable/selector_radiobutton_background"
             android:text="否"/>
 
     </RadioGroup>

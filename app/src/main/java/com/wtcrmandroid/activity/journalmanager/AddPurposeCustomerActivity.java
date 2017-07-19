@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -12,6 +14,7 @@ import com.wtcrmandroid.adapter.listview.AddPurposeCustomerAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.AddPurpostCtAtData;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,9 +50,15 @@ public class AddPurposeCustomerActivity extends BaseActivity {
     protected void initView() {
 
         mTitlebar.setTitletext("新增意向客户");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddPurposeCustomerActivity.this.finish();
+            }
+        });
         mDataList = new ArrayList<>();
         AddPurpostCtAtData addPurpostCtAtData = new AddPurpostCtAtData();
-        addPurpostCtAtData.setWorkSort("A类");
+        addPurpostCtAtData.setWorkSort("");
         mDataList.add(addPurpostCtAtData);
         mAdapter = new AddPurposeCustomerAtAdapter(this, mDataList);
         mLvAddCustomer.setAdapter(mAdapter);
@@ -73,6 +82,12 @@ public class AddPurposeCustomerActivity extends BaseActivity {
 
     @OnClick(R.id.tv_addcustomer_save)
     public void onViewClicked() {
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("NewCustomer",(Serializable)mDataList);
+        intent.putExtras(bundle);
+        this.setResult(1,intent);
+        this.finish();
     }
 
     @Override

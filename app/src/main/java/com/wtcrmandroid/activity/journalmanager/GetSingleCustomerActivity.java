@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -12,6 +14,7 @@ import com.wtcrmandroid.adapter.listview.GetSingleAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.GetSingleCustomerData;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class GetSingleCustomerActivity extends BaseActivity {
 
     private List<GetSingleCustomerData> mGetList;
     private GetSingleAtAdapter mSingleAtAdapter;
+    public static final int SINGLE_CODE = 1;
 
     @Override
     protected int layout() {
@@ -48,7 +52,7 @@ public class GetSingleCustomerActivity extends BaseActivity {
         mTitlebar.setTitletext("预测单客户踩中");
         mGetList = new ArrayList<>();
         GetSingleCustomerData getSingleCustomerData = new GetSingleCustomerData();
-        getSingleCustomerData.setWorkSort("A类");
+        getSingleCustomerData.setWorkSort("");
         mGetList.add(getSingleCustomerData);
 
         mSingleAtAdapter = new GetSingleAtAdapter(this, mGetList);
@@ -75,6 +79,12 @@ public class GetSingleCustomerActivity extends BaseActivity {
 
     @OnClick(R.id.tv_dayplan_submit)
     public void onViewClicked() {
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Single",(Serializable)mGetList);
+        intent.putExtras(bundle);
+        this.setResult(SINGLE_CODE,intent);
+        this.finish();
     }
 
     @Override

@@ -16,13 +16,13 @@
     </com.wtcrmandroid.view.custompricing.TitleBar>
 
     <TextView
-        android:id="@+id/tv_dayplan_submit"
+        android:id="@+id/tv_single_submit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="@string/submit"
+        android:text="完成保存"
         android:textColor="#ffffff"/>
 
     <ListView

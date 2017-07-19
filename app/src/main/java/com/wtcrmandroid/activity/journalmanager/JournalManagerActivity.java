@@ -37,7 +37,7 @@ public class JournalManagerActivity extends BaseActivity {
     @BindView(R.id.rl_department_employees_log_management)
     RelativeLayout mRlJournalManagerBmygrz;     //部门员工日志
 
-    private boolean isSales = false;    //是否是销售人员
+    private boolean isSales = true;    //是否是销售人员
 
     @Override
     protected int layout() {

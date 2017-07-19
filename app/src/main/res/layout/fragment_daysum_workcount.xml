@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:paddingTop="5dp"
-                    android:text="@string/phone_number"/>
+                    android:text="@string/phone_number1"/>
 
                 <TextView
                     android:id="@+id/tv_phone_count"
@@ -256,12 +256,8 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
 
     </LinearLayout>
-
-
-
 
 </LinearLayout>

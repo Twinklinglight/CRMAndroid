@@ -9,14 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iflytek.cloud.thirdparty.V;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.fragment.journalmanager.presenter.DepartDayPresenter;
-import com.wtcrmandroid.model.reponsedata.BaseData;
 import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
@@ -25,7 +23,7 @@ import com.wtcrmandroid.view.dialog.CalendarDialog;
 import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.CommentData;
-import com.wtcrmandroid.model.HtDayplanDetailsData;
+import com.wtcrmandroid.model.reponsedata.HtDayplanDetailsData;
 import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 import com.wtcrmandroid.view.popupwindow.CalendarPopupWindow;
@@ -79,6 +77,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
 
     private CalendarPopupWindow Calendarwindow;
 
+    private static final String TAG = "DepartDayjournalFragmen";
 
     @Override
     public void returnData(int key, Object data) {
@@ -217,6 +216,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
         dayDetailsRQ.setType("day");
         dayDetailsRQ.setIsPlan(true);
         dayDetailsRQ.setNowDate(data);
+
         presenter.postDepartDay(dayDetailsRQ);
 
         DayDetailsRQ dayDetailsRQ2 = new DayDetailsRQ();

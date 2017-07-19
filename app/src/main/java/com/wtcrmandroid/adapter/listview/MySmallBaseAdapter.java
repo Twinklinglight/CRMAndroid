@@ -37,8 +37,14 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list.size()>0 ?list.size() : 1;
 
+        if (list == null){
+            return 1;
+        }else if(list.size()!=0) {
+            return list.size();
+        }else {
+            return 1;
+        }
     }
 
     @Override
@@ -55,12 +61,12 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         T1 holder = null;
 //        if (convertView == null) {
-        if (getItemViewType(position) == nomalType){
+        if (getItemViewType(position) == nomalType) {
 
             convertView = onCreateViewHolder();
             holder = (T1) convertView.getTag();
             convert(holder, position);
-        }else {
+        } else {
             convertView = onCreateNullViewholder();
         }
 //        }
@@ -75,12 +81,18 @@ public abstract class MySmallBaseAdapter<T, T1> extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        return (list.size()>0) ? nomalType : nullType;
-
+        if (list == null){
+            return nullType;
+        }else if(list.size()!=0) {
+            return nomalType;
+        }else {
+            return nullType;
+        }
     }
 
     protected abstract void convert(T1 holder, int position);
 
     protected abstract View onCreateViewHolder();
+
     protected abstract View onCreateNullViewholder();
 }

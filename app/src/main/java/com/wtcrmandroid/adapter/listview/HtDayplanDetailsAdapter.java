@@ -1,14 +1,12 @@
 package com.wtcrmandroid.adapter.listview;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.HtDayplanDetailsData;
+import com.wtcrmandroid.model.reponsedata.HtDayplanDetailsData;
 
 import java.util.List;
 

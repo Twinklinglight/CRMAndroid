@@ -4,8 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.model.HtDayplanDetailsData;
-import com.wtcrmandroid.model.reponsedata.BaseData;
+import com.wtcrmandroid.model.reponsedata.HtDayplanDetailsData;
 import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;

@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -9,18 +10,34 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.wtcrmandroid.R;
+import com.baidu.mapapi.map.Text;
+import com.iflytek.cloud.thirdparty.T;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.present.XsWriteDaysumPresenter;
 import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;
-import com.wtcrmandroid.view.custompricing.TitleBar;
+import com.wtcrmandroid.model.AddPurpostCtAtData;
+import com.wtcrmandroid.model.GetMoneyData;
+import com.wtcrmandroid.model.GetSingleCustomerData;
 import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.model.requestdata.WorkOrder;
+import com.wtcrmandroid.model.requestdata.XsWriteDaysumRQ;
+import com.wtcrmandroid.view.custompricing.TitleBar;
+import com.wtcrmandroid.view.dialog.CalendarDialog;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 销售写日总结
@@ -29,20 +46,25 @@ import butterknife.ButterKnife;
  * @date 2017/6/13
  */
 
-public class XsWriteDaysumActivity extends BaseActivity {
+public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, List<T>> implements CalendarDialog.CalendarListener {
 
     @BindView(R.id.titlebar)
     TitleBar mTitlebar;
     @BindView(R.id.tv_daypsum_date)
     TextView mTvDaypsumDate;            //日志日期
-    @BindView(R.id.ib_daypsum_calender)
-    ImageButton mIbDaypsumCalender;     //选择日期的按钮
     @BindView(R.id.lv_xs_daypsum)
     ListView mLvXsDaypsum;              //日志列表
-    @BindView(R.id.tv_daysum_submit)
-    TextView mTvDaysumSubmit;           //提交按钮
+
+    private ViewHolder viewHolder;
+    private String DateSelect = "";     //显示日期
+    private String subTime = "";
+
     private WriteDaySumAdapter mDaySumAdapter;
     private List<WriteDaysumData> mDataList;
+    private List<AddPurpostCtAtData> addcustinfo;    //新增意向客户
+    private List<GetSingleCustomerData> workdream;   //预测单客户是否踩中
+    private List<GetMoneyData> workload;             //汇款到单
+    private WorkOrder workorder;                    //今日工作量
 
     public static final int ADDCUSTOMER = 0;
     public static final int BACKMONEY = 1;
@@ -57,16 +79,29 @@ public class XsWriteDaysumActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+        presenter = new XsWriteDaysumPresenter(this, this);
+
+        Date time = Calendar.getInstance().getTime();
+        DateSelect = new SimpleDateFormat("yyyy-MM-dd EEEE").format(time);
+        subTime = new SimpleDateFormat("yyyy-MM-dd").format(time);
+        SetDateText(DateSelect);
+
         mTitlebar.setTitletext("写日总结");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                XsWriteDaysumActivity.this.finish();
+            }
+        });
         mDataList = new ArrayList<>();
         WriteDaysumData daysumData = new WriteDaysumData();
-        daysumData.setWorkSort("A类");
+        daysumData.setWorkSort("");
         mDataList.add(daysumData);
         mDaySumAdapter = new WriteDaySumAdapter(this, mDataList);
         mLvXsDaypsum.setAdapter(mDaySumAdapter);
 
         View view = LayoutInflater.from(this).inflate(R.layout.item_xs_xrzj_foot, null);
-        ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder = new ViewHolder(view);
         view.setTag(viewHolder);
         mLvXsDaypsum.addFooterView(view);
 
@@ -75,7 +110,7 @@ public class XsWriteDaysumActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 WriteDaysumData writeDaysumData = new WriteDaysumData();
-                writeDaysumData.setWorkSort("B类");
+                writeDaysumData.setWorkSort("");
                 mDataList.add(writeDaysumData);
                 mDaySumAdapter.notifyDataSetChanged();
             }
@@ -86,7 +121,7 @@ public class XsWriteDaysumActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        AddPurposeCustomerActivity.class),ADDCUSTOMER);
+                        AddPurposeCustomerActivity.class), ADDCUSTOMER);
             }
         });
 
@@ -95,7 +130,7 @@ public class XsWriteDaysumActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        TodayWorkLoadActivity.class),WORKLOAD);
+                        TodayWorkLoadActivity.class), WORKLOAD);
             }
         });
 
@@ -104,7 +139,7 @@ public class XsWriteDaysumActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        GetMoneyActivity.class),BACKMONEY);
+                        GetMoneyActivity.class), BACKMONEY);
             }
         });
 
@@ -113,7 +148,7 @@ public class XsWriteDaysumActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        GetSingleCustomerActivity.class),GETSINGLE);
+                        GetSingleCustomerActivity.class), GETSINGLE);
             }
         });
 
@@ -122,14 +157,42 @@ public class XsWriteDaysumActivity extends BaseActivity {
     //返回值
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case WORKLOAD:
+                if (resultCode == 1)
+                workorder = (WorkOrder) data.getExtras().getSerializable("TodayLoad");
+                if (workorder != null){
+                    viewHolder.tvWorkOrder.setText("已完成");
+                }else {
+                    viewHolder.tvWorkOrder.setText("");
+                }
                 break;
             case BACKMONEY:
+                if (resultCode == 1)
+                workload = (List<GetMoneyData>)data.getExtras().getSerializable("WorkLoad");
+                if (workload != null){
+                    viewHolder.tvWorkLoad.setText("完成");
+                }else {
+                    viewHolder.tvWorkLoad.setText("");
+                }
                 break;
             case GETSINGLE:
+                if (resultCode == 1)
+                workdream = (List<GetSingleCustomerData>)data.getExtras().getSerializable("Single");
+                if (workdream != null){
+                    viewHolder.tvSingle.setText("完成");
+                }else {
+                    viewHolder.tvSingle.setText("");
+                }
                 break;
             case ADDCUSTOMER:
+                if (resultCode == 1)
+                addcustinfo = ( List<AddPurpostCtAtData>)data.getExtras().getSerializable("NewCustomer");
+                if (addcustinfo != null){
+                    viewHolder.tvNewCustomer.setText("完成");
+                }else{
+                    viewHolder.tvNewCustomer.setText("");
+                }
                 break;
             default:
                 break;
@@ -137,8 +200,58 @@ public class XsWriteDaysumActivity extends BaseActivity {
     }
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, List<T> data) {
 
+        Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
+        this.finish();
+    }
+
+    //点击事件
+    @OnClick({R.id.ib_daypsum_calender, R.id.tv_daysum_submit})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ib_daypsum_calender:
+                new CalendarDialog(XsWriteDaysumActivity.this, XsWriteDaysumActivity.this).show();
+                break;
+            case R.id.tv_daysum_submit:
+                XsWriteDaysumRQ xsWriteDaysumRQ = new XsWriteDaysumRQ();
+                xsWriteDaysumRQ.setUserId(MyApplication.application.getLoginData().getUserID());
+                xsWriteDaysumRQ.setType("day");
+                xsWriteDaysumRQ.setPlan(false);
+                xsWriteDaysumRQ.setRoleClass(0);
+                xsWriteDaysumRQ.setWorkdetail(mDataList);
+                xsWriteDaysumRQ.setAddcustinfo(addcustinfo);
+                xsWriteDaysumRQ.setWorkload(workload);
+                xsWriteDaysumRQ.setWorkorder(workorder);
+                xsWriteDaysumRQ.setWorkdream(workdream);
+                xsWriteDaysumRQ.setWorkRecordTime(subTime);
+                xsWriteDaysumRQ.setLearningAndReflection(viewHolder.mEtDaysumSum.getText().toString());
+
+                presenter.postDaysum(xsWriteDaysumRQ);
+                break;
+        }
+    }
+
+    //日期选择的回调
+    @Override
+    public void CalendarSelcet(String datetext, Date date) {
+        SetDateText(datetext);
+        DateSelect = datetext;
+        subTime = new SimpleDateFormat("yyyy-MM-dd").format(date);
+    }
+
+    /**
+     * 返回的日期格式为：2017-6-27 星期二
+     * 字符串拆封 合并；
+     * @param date
+     */
+    //设置选中日期
+    private void SetDateText(String date) {
+        String[] split = date.split("-");
+        String DateText = split[0] + "年" + split[1] + "月" +
+                split[2].split(" ")[0] + "日" + " " + split[2].split(" ")[1];
+
+        mTvDaypsumDate.setText(DateText);
     }
 
     static class ViewHolder {
@@ -146,12 +259,20 @@ public class XsWriteDaysumActivity extends BaseActivity {
         LinearLayout mLlDaysumAddjob;
         @BindView(R.id.rl_daysum_workload)
         RelativeLayout mRlDaysumWorkload;
+        @BindView(R.id.tv_workorder)
+        TextView tvWorkOrder;
         @BindView(R.id.rl_money_analysis)
         RelativeLayout mRlMoneyAnalysis;
+        @BindView(R.id.tv_workload)
+        TextView tvWorkLoad;
         @BindView(R.id.rl_single_analysis)
         RelativeLayout mRlSingleAnalysis;
+        @BindView(R.id.tv_single)
+        TextView tvSingle;
         @BindView(R.id.rl_add_customer)
         RelativeLayout mRlAddCustomer;
+        @BindView(R.id.tv_newCustomer)
+        TextView tvNewCustomer;
         @BindView(R.id.et_daysum_sum)
         EditText mEtDaysumSum;
         @BindView(R.id.ib_daysum_sumyuyin)

@@ -1,7 +1,13 @@
 package com.wtcrmandroid.fragment.journalmanager;
-
-import com.wtcrmandroid.R;
+import android.widget.TextView;
 import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
+import com.wtcrmandroid.model.requestdata.WorkOrder;
+
+import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * 今日工作量fragment
@@ -9,6 +15,22 @@ import com.wtcrmandroid.BaseFragment;
  */
 
 public class DaysumWorkCountFragment extends BaseFragment {
+
+    @BindView(R.id.tv_phone_count)
+    TextView tvPhoneCount;
+    @BindView(R.id.tv_shangmen_count)
+    TextView tvShangmenCount;
+    @BindView(R.id.tv_A_count)
+    TextView tvACount;
+    @BindView(R.id.tv_B_count)
+    TextView tvBCount;
+    @BindView(R.id.tv_addA_count)
+    TextView tvAddACount;
+    @BindView(R.id.tv_addB_count)
+    TextView tvAddBCount;
+    @BindView(R.id.tv_krl_count)
+    TextView tvKrlCount;
+
     @Override
     protected int Rlayout() {
         return R.layout.fragment_daysum_workcount;
@@ -16,6 +38,16 @@ public class DaysumWorkCountFragment extends BaseFragment {
 
     @Override
     public void init() {
+        XsDaysumDetailsActivity activity = (XsDaysumDetailsActivity) getActivity();
+        List<WorkOrder> list = activity.DaysumData.getWork().getWorkorder();
+        WorkOrder workorder = list.get(0);
+        tvACount.setText(workorder.getAStore());
+        tvBCount.setText(workorder.getBStore());
+        tvAddACount.setText(workorder.getNewAStore());
+        tvAddBCount.setText(workorder.getNewBStore());
+        tvShangmenCount.setText(workorder.getTrueVisit());
+        tvPhoneCount.setText(workorder.getTrueCall());
+        tvKrlCount.setText(workorder.getStroe());
 
     }
 

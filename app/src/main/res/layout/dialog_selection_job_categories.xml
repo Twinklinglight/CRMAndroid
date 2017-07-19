@@ -116,10 +116,6 @@
             android:layout_alignParentRight="true"
             android:text="@string/ssdk_oks_cancel"/>
 
-
-
-
     </RelativeLayout>
-
 
 </LinearLayout>
