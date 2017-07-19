@@ -5,6 +5,7 @@
               android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/ll_timeTitle"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/white"
@@ -391,101 +392,12 @@
                 style="@style/ContentText"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="@dimen/ViewWith"/>
-            <LinearLayout
+
+            <com.wtcrmandroid.view.listview.MyListView
+                android:id="@+id/lv_load"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Customer_name"
-                        style="@style/HintText"/>
-
-                    <TextView
-                        android:id="@+id/tv_customer_name"
-                        style="@style/ContentText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Customer_type"
-                        style="@style/HintText"/>
-
-                    <TextView
-                        android:id="@+id/tv_customer_type"
-                        style="@style/ContentText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Product_type"
-                        style="@style/HintText"/>
-
-                    <TextView
-                        android:id="@+id/tv_product_type"
-                        style="@style/ContentText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Getmoney"
-                        style="@style/HintText"/>
-
-                    <TextView
-                        android:id="@+id/tv_getmoney"
-                        style="@style/ContentText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="wrap_content">
+            </com.wtcrmandroid.view.listview.MyListView>
 
             <TextView
                 android:layout_width="match_parent"

@@ -27,7 +27,18 @@ public class GetMoneyAtAdapter extends MySmallBaseAdapter<GetMoneyData, GetMoney
     }
 
     @Override
-    protected void convert(ViewHolder holder, int position) {
+    protected void convert(ViewHolder holder, final int position) {
+
+        if (list.size()>1){
+            holder.mIvDelete.setVisibility(View.VISIBLE);
+            holder.mIvDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }
 
         holder.mEtBackmoney.setText(list.get(position).getBackMoney());
         holder.mEtCustomerType.setText(list.get(position).getCustomerType());

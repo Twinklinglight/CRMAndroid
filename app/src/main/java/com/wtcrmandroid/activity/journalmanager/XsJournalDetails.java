@@ -1,5 +1,6 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 
@@ -30,6 +31,10 @@ public class XsJournalDetails extends BaseActivity {
     private FragmentTabAdapter mFragmentTabAdapter;
     private List<BaseFragment> mfragmentList;
 
+    public int userid;
+    private DepartXsDayjournalFragment xsDayjournalFragment;
+    private DepartWeekjournalFragment weekjournalFragment;
+
     @Override
     protected int layout() {
         return R.layout.activity_xs_journal_details;
@@ -37,11 +42,18 @@ public class XsJournalDetails extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        userid = getIntent().getIntExtra("userid",0);
+        Bundle bundle = new Bundle();
+        bundle.putInt("userid",userid);
         mfragmentList = new ArrayList<>();
-        mfragmentList.add(new DepartXsDayjournalFragment());
-        mfragmentList.add(new DepartWeekjournalFragment());
+        xsDayjournalFragment = new DepartXsDayjournalFragment();
+        weekjournalFragment = new DepartWeekjournalFragment();
 
+        xsDayjournalFragment.setArguments(bundle);
+        weekjournalFragment.setArguments(bundle);
+
+        mfragmentList.add(xsDayjournalFragment);
+        mfragmentList.add(weekjournalFragment);
         mFragmentTabAdapter = new FragmentTabAdapter(this, mfragmentList, R.id.frame_xs_journal,mRgDayweek);
 
     }

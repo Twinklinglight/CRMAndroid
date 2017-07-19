@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.AddPurpostCtAtData;
+import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 
 import java.util.List;
 
@@ -22,15 +23,25 @@ import butterknife.ButterKnife;
  * Created by zxd on 2017/6/14
  */
 
-public class AddPurposeCustomerAtAdapter extends MySmallBaseAdapter<AddPurpostCtAtData, AddPurposeCustomerAtAdapter.ViewHolder> {
+public class AddPurposeCustomerAtAdapter extends MySmallBaseAdapter<AddPurpostCtAtData, AddPurposeCustomerAtAdapter.ViewHolder> implements SelectionJobCategoriesDialog.WorkLinstener {
 
     public AddPurposeCustomerAtAdapter(Activity activity, List<AddPurpostCtAtData> list) {
         super(activity, list);
     }
 
     @Override
-    protected void convert(ViewHolder holder, int position) {
+    protected void convert(ViewHolder holder, final int position) {
 
+        if (list.size()>1){
+            holder.mIvDelete.setVisibility(View.VISIBLE);
+            holder.mIvDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }
         AddPurpostCtAtData addPurpostCtAtData = list.get(position);
         holder.mTvMajorSort.setText(addPurpostCtAtData.getWorkSort());
         holder.mEtMajorName.setText(addPurpostCtAtData.getCustomerName());
@@ -46,6 +57,23 @@ public class AddPurposeCustomerAtAdapter extends MySmallBaseAdapter<AddPurpostCt
             @Override
             public void onClick(View v) {
 
+                String workSort = list.get(position).getWorkSort();
+                int tag = 0;
+                switch (workSort){
+                    case "A类 紧急又重要":
+                        tag = 1;
+                        break;
+                    case "B类 较重要":
+                        tag = 2;
+                        break;
+                    case "C类 重要":
+                        tag = 3;
+                        break;
+                    case "D类 次重要":
+                        tag = 4;
+                        break;
+                }
+                new SelectionJobCategoriesDialog(activity,AddPurposeCustomerAtAdapter.this,position,tag).show();
             }
         });
     }
@@ -63,6 +91,13 @@ public class AddPurposeCustomerAtAdapter extends MySmallBaseAdapter<AddPurpostCt
     @Override
     protected View onCreateNullViewholder() {
         return null;
+    }
+
+    //等级选择的回调
+    @Override
+    public void WorkSelect(String workSort, int position) {
+        list.get(position).setWorkSort(workSort);
+        notifyDataSetChanged();
     }
 
     static class ViewHolder {

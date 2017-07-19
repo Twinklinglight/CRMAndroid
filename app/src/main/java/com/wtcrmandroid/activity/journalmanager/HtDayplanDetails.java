@@ -1,7 +1,6 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -13,9 +12,8 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.activity.journalmanager.present.HtDayplanDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
-import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.HtDayplanDetailsData;
+import com.wtcrmandroid.model.reponsedata.HtDayplanDetailsData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

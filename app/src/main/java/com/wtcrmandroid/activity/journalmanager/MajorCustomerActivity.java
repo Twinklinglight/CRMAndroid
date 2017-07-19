@@ -1,5 +1,8 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -12,6 +15,7 @@ import com.wtcrmandroid.adapter.listview.MajorCustomerAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.MajorCustomerData;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +40,12 @@ public class MajorCustomerActivity extends BaseActivity {
     @BindView(R.id.lv_majorcustomer)
     ListView mLvMajor;     //列表
 
+    private ViewHolder viewHolder;
     List<MajorCustomerData> mDataList;
     private MajorCustomerAtAdapter mAtAdapter;
 
+    public static final int RESULT_CODE = 3;
+    private static final String TAG = "MajorCustomerActivity";
 
     @Override
     protected int layout() {
@@ -48,16 +55,22 @@ public class MajorCustomerActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MajorCustomerActivity.this.finish();
+            }
+        });
         mTitlebar.setTitletext("重点意向客户");
         mDataList = new ArrayList<>();
         MajorCustomerData majorCustomerData = new MajorCustomerData();
-        majorCustomerData.setWorkSort("B类");
+        majorCustomerData.setWorkSort("");
         mDataList.add(majorCustomerData);
         mAtAdapter = new MajorCustomerAtAdapter(this, mDataList);
         mLvMajor.setAdapter(mAtAdapter);
 
         View view = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
-        ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder = new ViewHolder(view);
         view.setTag(viewHolder);
         mLvMajor.addFooterView(view);
 
@@ -76,6 +89,12 @@ public class MajorCustomerActivity extends BaseActivity {
 
     @OnClick(R.id.tv_major_save)
     public void onViewClicked() {
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("MajorList",(Serializable) mDataList);
+        intent.putExtras(bundle);
+        this.setResult(RESULT_CODE,intent);
+        this.finish();
     }
 
     @Override

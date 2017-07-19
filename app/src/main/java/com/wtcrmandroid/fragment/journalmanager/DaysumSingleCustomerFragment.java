@@ -3,6 +3,7 @@ package com.wtcrmandroid.fragment.journalmanager;
 import android.widget.ListView;
 
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.IfgetSingleDetailsAdapter;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.GetSingleCustomerData;
@@ -22,7 +23,6 @@ public class DaysumSingleCustomerFragment extends BaseFragment {
     ListView mLvSingleFragment;
 
     private IfgetSingleDetailsAdapter mAdapter;
-    private List<GetSingleCustomerData> mDataList;
 
     @Override
     protected int Rlayout() {
@@ -32,13 +32,10 @@ public class DaysumSingleCustomerFragment extends BaseFragment {
     @Override
     public void init() {
 
-        mDataList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            GetSingleCustomerData getSingleCustomerData = new GetSingleCustomerData();
-            getSingleCustomerData.setWorkSort("B类");
-            mDataList.add(getSingleCustomerData);
-        }
-        mAdapter = new IfgetSingleDetailsAdapter(getActivity(),mDataList);
+        XsDaysumDetailsActivity activity = (XsDaysumDetailsActivity)getActivity();
+        List<GetSingleCustomerData> workdream = activity.DaysumData.getWork().getWorkdream();
+
+        mAdapter = new IfgetSingleDetailsAdapter(getActivity(),workdream);
         mLvSingleFragment.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }

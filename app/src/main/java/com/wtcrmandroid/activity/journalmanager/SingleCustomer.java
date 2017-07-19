@@ -1,21 +1,27 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.SingleCustomerAdapter;
-import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.model.SingleCustomerData;
+import com.wtcrmandroid.view.custompricing.TitleBar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 预测到单客户activity
@@ -32,6 +38,8 @@ public class SingleCustomer extends BaseActivity {
     ListView mLvSinglecustomer;
     private SingleCustomerAdapter mCustomerAdapter;
     private List<SingleCustomerData> mDataList;
+    public static final int RESUlT_CODE = 2;
+    private static final String TAG = "SingleCustomer";
 
     @Override
     protected int layout() {
@@ -41,10 +49,16 @@ public class SingleCustomer extends BaseActivity {
     @Override
     protected void initView() {
 
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SingleCustomer.this.finish();
+            }
+        });
         mTitlebar.setTitletext("预测到单客户");
         mDataList = new ArrayList<>();
         SingleCustomerData singleCustomerData = new SingleCustomerData();
-        singleCustomerData.setWorkSort("A类");
+        singleCustomerData.setWorkSort("");
         mDataList.add(singleCustomerData);
         mCustomerAdapter = new SingleCustomerAdapter(this, mDataList);
         mLvSinglecustomer.setAdapter(mCustomerAdapter);
@@ -58,7 +72,7 @@ public class SingleCustomer extends BaseActivity {
             @Override
             public void onClick(View v) {
                 SingleCustomerData singleCustomerData1 = new SingleCustomerData();
-                singleCustomerData1.setWorkSort("B类");
+                singleCustomerData1.setWorkSort("");
                 mDataList.add(singleCustomerData1);
                 mCustomerAdapter.notifyDataSetChanged();
             }
@@ -70,6 +84,17 @@ public class SingleCustomer extends BaseActivity {
     @Override
     public void returnData(int key, Object data) {
 
+    }
+
+    @OnClick(R.id.tv_single_submit)
+    public void onClick() {
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("SingleList",(Serializable)mDataList);
+        intent.putExtras(bundle);
+        Log.i("XsWriteDayplanActivity", "-----="+mDataList.toString());
+        this.setResult(RESUlT_CODE, intent);
+        this.finish();
     }
 
     static class ViewHolder {

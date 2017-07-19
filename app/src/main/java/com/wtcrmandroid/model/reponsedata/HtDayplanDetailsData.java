@@ -1,12 +1,14 @@
-package com.wtcrmandroid.model;
+package com.wtcrmandroid.model.reponsedata;
 
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 /**
  * Created by zxd on 2017/6/9
  */
 
-public class HtDayplanDetailsData {
+public class HtDayplanDetailsData{
 
     @SerializedName("workLevel")
     private String WorkSort;
@@ -65,5 +67,17 @@ public class HtDayplanDetailsData {
 
     public void setWorkPlanTime(String workPlanTime) {
         this.workPlanTime = workPlanTime;
+    }
+
+    @Override
+    public String toString() {
+        return "HtDayplanDetailsData{" +
+                "WorkSort='" + WorkSort + '\'' +
+                ", WorkPerson='" + WorkPerson + '\'' +
+                ", WorkPercent='" + WorkPercent + '\'' +
+                ", WorkContent='" + WorkContent + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", workPlanTime='" + workPlanTime + '\'' +
+                '}';
     }
 }

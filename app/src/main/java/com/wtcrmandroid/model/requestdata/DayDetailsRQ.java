@@ -11,6 +11,16 @@ public class DayDetailsRQ {
     private boolean isPlan;
     private String nowDate;
 
+    private int roleClass;
+
+    public int getRoleClass() {
+        return roleClass;
+    }
+
+    public void setRoleClass(int roleClass) {
+        this.roleClass = roleClass;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -41,5 +51,16 @@ public class DayDetailsRQ {
 
     public void setNowDate(String nowDate) {
         this.nowDate = nowDate;
+    }
+
+    @Override
+    public String toString() {
+        return "DayDetailsRQ{" +
+                "userId=" + userId +
+                ", type='" + type + '\'' +
+                ", isPlan=" + isPlan +
+                ", nowDate='" + nowDate + '\'' +
+                ", roleClass=" + roleClass +
+                '}';
     }
 }

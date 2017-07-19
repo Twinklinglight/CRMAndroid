@@ -1,13 +1,20 @@
 package com.wtcrmandroid.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 /**
  * Created by zxd on 2017/6/14
  */
 
-public class AddPurpostCtAtData {
+public class AddPurpostCtAtData implements Serializable{
 
+    @SerializedName("workLevel")
     private String WorkSort;
+    @SerializedName("custName")
     private String CustomerName;
+    @SerializedName("nextIdea")
     private String AnalysisGjin;
 
     public String getWorkSort() {

@@ -20,11 +20,18 @@ public class HtDaysumDetailsData {
     @SerializedName("workState")
     private String WorkComplete;
 
-   /* @SerializedName("workUnfinishedReason")
-    private String WorkStudy;*/
-
+    private String workFinishTime;
     private String workUnfinishedReason;
     private String workNextFinishTime;
+
+
+    public String getWorkFinishTime() {
+        return workFinishTime;
+    }
+
+    public void setWorkFinishTime(String workFinishTime) {
+        this.workFinishTime = workFinishTime;
+    }
 
     public String getWorkUnfinishedReason() {
         return workUnfinishedReason;
@@ -74,11 +81,4 @@ public class HtDaysumDetailsData {
         WorkComplete = workComplete;
     }
 
-    /*public String getWorkStudy() {
-        return WorkStudy;
-    }
-
-    public void setWorkStudy(String workStudy) {
-        WorkStudy = workStudy;
-    }*/
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rl_single_sort"
@@ -13,11 +14,11 @@
 
         <TextView
             android:id="@+id/iv_dayplan_sort"
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="事项等级:"
-            style="@style/ContentText"/>
+            android:text="事项等级:" />
 
         <TextView
             android:id="@+id/tv_single_sort"
@@ -26,8 +27,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_dayplan_sort"
             android:hint="@string/hint_sort"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
         <ImageView
             android:id="@+id/iv_delete"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:src="@mipmap/ic_xrz_delete"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
     </RelativeLayout>
 
@@ -43,25 +43,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:layout_marginTop="1dp"
         android:padding="20dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/Customer_name"
-            style="@style/ContentText"/>
+            android:text="@string/Customer_name" />
 
         <EditText
-            style="@style/EditTextStyle"
             android:id="@+id/et_single_name"
+            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_dayplan_sort"
             android:hint="@string/hint__name"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
 
     </LinearLayout>
@@ -70,25 +70,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:layout_marginTop="1dp"
         android:padding="20dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/fengxi_genjin"
-            style="@style/ContentText"/>
+            android:text="@string/fengxi_genjin" />
 
         <EditText
-            style="@style/EditTextStyle"
             android:id="@+id/et_single_analysis"
+            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_dayplan_sort"
             android:hint="@string/hint_genjin"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
 
     </LinearLayout>
@@ -97,25 +97,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:layout_marginTop="1dp"
         android:padding="20dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/deal_percent"
-            style="@style/ContentText"/>
+            android:text="@string/deal_percent" />
 
         <EditText
-            style="@style/EditTextStyle"
             android:id="@+id/et_single_percent"
+            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_dayplan_sort"
             android:hint="@string/hint_percent"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
 
     </LinearLayout>

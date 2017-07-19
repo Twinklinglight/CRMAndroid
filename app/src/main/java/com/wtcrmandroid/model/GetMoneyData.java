@@ -1,50 +1,22 @@
 package com.wtcrmandroid.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 /**
  * Created by zxd on 2017/6/14
  */
 
-public class GetMoneyData {
-    /**
-     * ret : 0
-     * msg : 成功
-     * data : [{"workNumber":"" ,"workContent":"搭建配置WAF防御系统" ,"workPlanning":"" ,"workPercentage":"" ,"workTarget":"" ,"workUnfinishedReason":"" ,"workNextFinishTime":"" },{"workNumber":"" ,"workContent":"centos el7系统下配置redmine添加git版本库" ,"workPlanning":"" ,"workPercentage":"" ,"workTarget":"" ,"workUnfinishedReason":"" ,"workNextFinishTime":"" },{"workNumber":"" ,"workContent":"gitlab的简单使用配置" ,"workPlanning":"" ,"workPercentage":"" ,"workTarget":"" ,"workUnfinishedReason":"" ,"workNextFinishTime":"" },{"workNumber":"" ,"workContent":"centos 平台搭建waf及x-waf-admin" ,"workPlanning":"" ,"workPercentage":"" ,"workTarget":"" ,"workUnfinishedReason":"" ,"workNextFinishTime":"" },{"workNumber":"" ,"workContent":"对waf的部署和配置" ,"workPlanning":"" ,"workPercentage":"" ,"workTarget":"" ,"workUnfinishedReason":"" ,"workNextFinishTime":"" }]
-     *//*
+public class GetMoneyData implements Serializable{
 
-    private int ret;
-    private String msg;
-    private String data;
-
-    public int getRet() {
-        return ret;
-    }
-
-    public void setRet(int ret) {
-        this.ret = ret;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }*/
-
-
-
-
+    @SerializedName("custName")
     private String CustomerName;
+    @SerializedName("custKind")
     private String CustomerType;
+    @SerializedName("productType")
     private String ProductType;
+    @SerializedName("OrderMoney")
     private String BackMoney;
 
     public String getCustomerName() {

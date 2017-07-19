@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.model.HtDayplanDetailsData;
+import com.wtcrmandroid.model.reponsedata.HtDayplanDetailsData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
