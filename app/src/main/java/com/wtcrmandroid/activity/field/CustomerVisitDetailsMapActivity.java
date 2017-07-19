@@ -65,8 +65,6 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
             }
         });
         list = (List<PersonalAllRecordRP>) getIntent().getExtras().getSerializable("list");
-        showShortToast(list.size() + "");
-
         for (int i = 0; i < list.size(); i++) {
             PersonalAllRecordRP data = list.get(i);
             View contentView = LayoutInflater.from(this).inflate(R.layout.overlay_view, null);

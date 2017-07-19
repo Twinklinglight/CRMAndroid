@@ -1,6 +1,7 @@
 package com.wtcrmandroid.model.reponsedata;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by wt-pc on 2017/7/17.
@@ -9,34 +10,45 @@ import java.io.Serializable;
 
 public class PersonalAllRecordRP implements Serializable {
 
+
     /**
-     * rowid : 1
-     * customerid : 1997661
-     * customerName : 徐先生
-     * lat : 113.706292
-     * lng : 34.754151
-     * addressDetail : 在恒泰国际附近不了
-     * remarks :
-     * createTime : 2017/7/14 20:00:14
+     * customerName : ???
+     * createTime : 2017/7/19 9:57:31
+     * customerid : 1997630
      * address :
+     * path : ["http://crm.chinawutong.com/uploadfiles/appimg/26271500033509487.jpg","http://crm.chinawutong.com/uploadfiles/appimg/26271500371731529.jpg","http://crm.chinawutong.com/uploadfiles/appimg/26271500371943994.jpg"]
+     * remarks :
+     * lng : 34.754166
+     * addressDetail : ???????????
+     * rowid : 1
+     * lat : 113.706276
      */
 
-    private String rowid;
-    private String customerid;
     private String customerName;
-    private Double lat;
+    private String createTime;
+    private String customerid;
+    private String address;
+    private String remarks;
     private Double lng;
     private String addressDetail;
-    private String remarks;
-    private String createTime;
-    private String address="";
+    private String rowid;
+    private Double lat;
+    private List<String> path;
 
-    public String getRowid() {
-        return rowid;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setRowid(String rowid) {
-        this.rowid = rowid;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getCustomerid() {
@@ -47,20 +59,20 @@ public class PersonalAllRecordRP implements Serializable {
         this.customerid = customerid;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Double getLat() {
-        return lat;
+    public String getRemarks() {
+        return remarks;
     }
 
-    public void setLat(Double lat) {
-        this.lat = lat;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public Double getLng() {
@@ -79,27 +91,27 @@ public class PersonalAllRecordRP implements Serializable {
         this.addressDetail = addressDetail;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public String getRowid() {
+        return rowid;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setRowid(String rowid) {
+        this.rowid = rowid;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public Double getLat() {
+        return lat;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
-    public String getAddress() {
-        return address;
+    public List<String> getPath() {
+        return path;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPath(List<String> path) {
+        this.path = path;
     }
 }

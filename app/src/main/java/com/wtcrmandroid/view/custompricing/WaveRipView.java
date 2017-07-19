@@ -82,7 +82,7 @@ public class WaveRipView extends View {
     };
 
     private void initView() {
-        cirRadius = 130;
+        cirRadius = 150;
         circlePaint = new Paint();
         circlePaint.setColor(Color.parseColor("#FDCFBF"));
         circlePaint.setStyle(Style.FILL);
@@ -127,9 +127,9 @@ public class WaveRipView extends View {
         Paint mTextPaint = new Paint();
         Paint.FontMetricsInt fm = mTextPaint.getFontMetricsInt();
         mTextPaint.setColor(Color.WHITE);
-        mTextPaint.setTextSize(60);
+        mTextPaint.setTextSize(70);
         canvas.drawText("打卡",getWidth() / 2 - mTextPaint.measureText("打卡") / 2,
-                getHeight() / 2 - fm.descent + (fm.bottom - fm.top) ,mTextPaint);
+                getHeight() / 2 - fm.descent + (fm.bottom - fm.top)+10 ,mTextPaint);
 
         // 绘制一个扇形
 //        RectF rectF = new RectF(width / 2 - radius, height / 2 - radius, width

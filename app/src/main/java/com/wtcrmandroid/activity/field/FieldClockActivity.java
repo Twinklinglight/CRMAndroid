@@ -33,6 +33,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/15.
@@ -88,10 +89,10 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
         setTitlebar();
         mUiSettings = mBaiduMap.getUiSettings();
         mUiSettings.setScrollGesturesEnabled(false);
-        presenter = new FieldClockPresenter(this,this);
+        presenter = new FieldClockPresenter(this, this);
         int userId = MyApplication.application.getLoginData().getUserID();
         dayCloclRecordRQ = new DayCloclRecordRQ();
-        dayCloclRecordRQ.setUserId(userId+"");
+        dayCloclRecordRQ.setUserId(userId + "");
         Calendar cal = Calendar.getInstance();
         int day = cal.get(Calendar.DATE);       //日
         int month = cal.get(Calendar.MONTH) + 1;//月
@@ -154,6 +155,13 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+
+
+    @OnClick(R.id.bt_clock)
+    public void onViewClicked() {
+        presenter.clock(placeSaveRequestData, 0);
     }
 
 

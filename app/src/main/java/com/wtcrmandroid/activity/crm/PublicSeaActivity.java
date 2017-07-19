@@ -225,10 +225,12 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
 
     @Override
     public void returnData(int key, List<SearchCustomerRP> data) {
+        showShortToast(key+"");
         switch(key){
             //刷新返回数据
             case 0:
-                adapter.addList(new ArrayList<SearchCustomerRP>());
+                showShortToast(data.toString());
+                adapter.addList(data);
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
             //加载更多返回数据

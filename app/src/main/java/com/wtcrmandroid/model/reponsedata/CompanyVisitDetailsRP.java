@@ -1,5 +1,7 @@
 package com.wtcrmandroid.model.reponsedata;
 
+import java.util.List;
+
 /**
  * Created by wt-pc on 2017/7/14.
  * 某公司拜访记录
@@ -31,7 +33,8 @@ public class CompanyVisitDetailsRP {
     private String addressDetail;
     private String remarks;
     private String createTime;
-    private String path;
+    private List<String> path;
+
 
     public String getRowid() {
         return rowid;
@@ -105,13 +108,7 @@ public class CompanyVisitDetailsRP {
         this.createTime = createTime;
     }
 
-    public String getPath() {
-        return path;
-    }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
 
     public String getUserName() {
         return userName;
@@ -119,5 +116,14 @@ public class CompanyVisitDetailsRP {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+
+    public List<String> getPath() {
+        return path;
+    }
+
+    public void setPath(List<String> path) {
+        this.path = path;
     }
 }

@@ -73,6 +73,9 @@
         <activity android:name=".activity.field.CustomerCallSituationActivity"/>
         <!-- 客户拜访统计 -->
         <activity android:name=".activity.field.CustomerCallStatisticalAcrivity"/>
+        <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
+        <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
+        <activity android:name=".activity.field.StatisticsDetailsActivity"/>
         <!-- ———————————————————————————————————————————————————————————————— -->
 
 
@@ -122,12 +125,11 @@
         <activity android:name=".activity.crm.MainClientLibrary"/>
         <activity android:name=".activity.crm.MyClientLibrary"/>
         <activity android:name=".activity.crm.PublicSeaActivity"/>
+        <activity android:name=".activity.crm.MyPushCustomerActivity"/>
         <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
         <activity android:name=".activity.crm.SearchMyClientLibraryActivity"/>
+        <activity android:name=".activity.crm.SearchPushCustomerActivity"/>
         <activity android:name=".activity.crm.BattlefieldReportActivity"/>
-        <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
-        <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
-        <activity android:name=".activity.field.StatisticsDetailsActivity"/>
         <activity android:name=".activity.SelectAreaActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 

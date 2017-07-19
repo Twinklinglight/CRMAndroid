@@ -14,6 +14,7 @@ import com.wtcrmandroid.activity.aboutdocument.DocumentProcessActivity;
 import com.wtcrmandroid.activity.crm.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
+import com.wtcrmandroid.activity.crm.MyPushCustomerActivity;
 import com.wtcrmandroid.activity.crm.PublicSeaActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
 import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
@@ -131,8 +132,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             case 13://续单公海
                 context.startActivity(new Intent(context, PublicSeaActivity.class));
                 break;
-            case 6:
+            case 14://我的地推客户
+                context.startActivity(new Intent(context, MyPushCustomerActivity.class));
                 break;
+
         }
     }
 }

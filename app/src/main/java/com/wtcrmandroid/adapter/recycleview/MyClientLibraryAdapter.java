@@ -21,14 +21,7 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class MyClientLibraryAdapter extends BaseRecycleAdapter<SearchSalerCustomerRP, MyClientLibraryAdapter.ViewHolder> {
-
-
-
     private int style = 0;
-
-
-
-
     public void setStyle(int style) {
         this.style = style;
     }
