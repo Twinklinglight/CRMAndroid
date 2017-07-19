@@ -9,9 +9,12 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.MyCallRecordAdapter;
+import com.wtcrmandroid.model.reponsedata.PersonalAllRecordRP;
+import com.wtcrmandroid.model.requestdata.DayVisitDetailsRQ;
+import com.wtcrmandroid.presenter.activity.DayVisitDetailsP;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,20 +24,24 @@ import butterknife.BindView;
  * 客户拜访详情
  */
 
-public class CustomerVisitDetailsListActivity extends BaseActivity {
+public class CustomerVisitDetailsListActivity extends BaseActivity<DayVisitDetailsP,List<PersonalAllRecordRP>> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
-    @BindView(R.id.rv_view)
+    @BindView(R.id.swipe_target)
     RecyclerView rvView;
     private BaseRecycleAdapter adapter;
+    DayVisitDetailsRQ dayVisitDetailsRQ;
+    private List<PersonalAllRecordRP> list;
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, List<PersonalAllRecordRP> data) {
+        adapter.addList(data);
+        list=data;
 
     }
 
     @Override
     protected int layout() {
-        return R.layout.activity_my_call_record;
+        return R.layout.activity_call_record;
     }
 
     @Override
@@ -44,7 +51,7 @@ public class CustomerVisitDetailsListActivity extends BaseActivity {
         titlebar.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CustomerVisitDetailsListActivity.this,CustomerVisitDetailsMapActivity.class));
+                startActivity(new Intent(CustomerVisitDetailsListActivity.this,CustomerVisitDetailsMapActivity.class).putExtra("list", (Serializable) list));
             }
         });
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
@@ -55,9 +62,13 @@ public class CustomerVisitDetailsListActivity extends BaseActivity {
         });
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter=new MyCallRecordAdapter(this));
-        List list= new ArrayList();
-        list.add("dsfas");
-        adapter.addList(list);
+        presenter=new DayVisitDetailsP(this,this);
+        dayVisitDetailsRQ=new DayVisitDetailsRQ();
+        dayVisitDetailsRQ.setUserId(getIntent().getStringExtra("userId"));
+        dayVisitDetailsRQ.setDate(getIntent().getStringExtra("date"));
+        presenter.sedPost(dayVisitDetailsRQ,0);
+
+
     }
 
 

@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    android:animateLayoutChanges="true"
     tools:context="com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity">
 
     <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/titlebar_height">
-    </com.wtcrmandroid.view.custompricing.TitleBar>
+        android:layout_height="@dimen/titlebar_height"></com.wtcrmandroid.view.custompricing.TitleBar>
 
     <TextView
         android:id="@+id/tv_submit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="@string/submit"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff" />
 
     <ScrollView
-        android:layout_below="@id/title"
-        android:layout_above="@id/tv_submit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/tv_submit"
+        android:layout_below="@id/title">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,28 +39,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
                 android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
                     style="@style/Content32"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@string/member_sort"
-                    />
+                    android:text="@string/member_sort" />
 
                 <TextView
                     android:id="@+id/tv_sort"
                     style="@style/Content32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/ic_grayright_arrow"
-                    android:drawablePadding="5dp"/>
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/ic_grayright_arrow" />
 
             </LinearLayout>
 
@@ -77,13 +73,13 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColor="@color/colorIconText"
-                android:textSize="@dimen/Text32"/>
+                android:textSize="@dimen/Text32" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ViewWith"
                 android:layout_marginLeft="10dp"
-                android:background="@color/lineColor"/>
+                android:background="@color/lineColor" />
 
             <EditText
                 android:id="@+id/et_company_name"
@@ -94,13 +90,13 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColor="@color/colorIconText"
-                android:textSize="@dimen/Text32"/>
+                android:textSize="@dimen/Text32" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ViewWith"
                 android:layout_marginLeft="10dp"
-                android:background="@color/lineColor"/>
+                android:background="@color/lineColor" />
 
             <EditText
                 android:id="@+id/et_phone_number"
@@ -111,13 +107,13 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColor="@color/colorIconText"
-                android:textSize="@dimen/Text32"/>
+                android:textSize="@dimen/Text32" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ViewWith"
                 android:layout_marginLeft="10dp"
-                android:background="@color/lineColor"/>
+                android:background="@color/lineColor" />
 
 
             <EditText
@@ -125,46 +121,49 @@
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:hint="@string/customer_name"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:hint="@string/customer_name"
-                android:textSize="@dimen/Text32"
-                android:textColor="@color/colorIconText"/>
+                android:textColor="@color/colorIconText"
+                android:textSize="@dimen/Text32" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ViewWith"
-                android:background="@color/lineColor"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@color/lineColor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginTop="10dp">
+                android:paddingRight="10dp">
+
                 <TextView
+                    style="@style/Content32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Content32"
-                    android:text="@string/company_profile"
-                    android:paddingTop="10dp"/>
+                    android:paddingTop="10dp"
+                    android:text="@string/company_profile" />
+
                 <EditText
                     android:id="@+id/et_company_profile"
                     style="@style/EditTextStyle"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:hint="@string/hint_profile"
-                    android:textSize="@dimen/Text32"
-                    android:layout_marginLeft="10dp"/>
+                    android:textSize="@dimen/Text32" />
 
                 <ImageView
                     android:id="@+id/iv_company_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
-                    android:src="@mipmap/ic_xrz_yuyin"/>
+                    android:src="@mipmap/ic_xrz_yuyin" />
 
             </LinearLayout>
 
@@ -173,28 +172,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
                 android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
                     style="@style/Content32"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@string/company_address"
-                    />
+                    android:text="@string/company_address" />
 
                 <TextView
                     android:id="@+id/tv_company_address"
                     style="@style/Content32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/ic_grayright_arrow"
-                    android:drawablePadding="5dp"/>
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/ic_grayright_arrow" />
 
             </LinearLayout>
 
@@ -203,8 +201,8 @@
                 android:id="@+id/ll_canshouqi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginTop="10dp"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <LinearLayout
@@ -216,21 +214,20 @@
                     android:paddingRight="10dp">
 
                     <TextView
+                        style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/Content32"
-                        android:text="@string/detail_address"/>
+                        android:text="@string/detail_address" />
 
                     <EditText
                         android:id="@+id/et_addrss_details"
                         style="@style/EditTextStyle"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hint_address"
-                        android:textSize="@dimen/Text32"
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/hint_address"
                         android:textColor="@color/colorContext"
-                        />
+                        android:textSize="@dimen/Text32" />
 
                 </LinearLayout>
 
@@ -239,102 +236,103 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp"
                     android:background="@color/white"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         style="@style/Content32"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="@string/company_sort"
-                        />
+                        android:text="@string/company_sort" />
 
                     <TextView
                         android:id="@+id/tv_company_sort"
                         style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableRight="@mipmap/ic_grayright_arrow"
-                        android:drawablePadding="5dp"/>
+                        android:drawablePadding="5dp"
+                        android:drawableRight="@mipmap/ic_grayright_arrow" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ViewWith"
-                    android:background="@color/lineColor"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/lineColor" />
 
                 <LinearLayout
                     android:id="@+id/ll_company_product"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp"
                     android:background="@color/white"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         style="@style/Content32"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="@string/major_product"
-                        />
+                        android:text="@string/major_product" />
 
                     <TextView
                         android:id="@+id/tv_company_product"
                         style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableRight="@mipmap/ic_grayright_arrow"
-                        android:drawablePadding="5dp"/>
+                        android:drawablePadding="5dp"
+                        android:drawableRight="@mipmap/ic_grayright_arrow" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ViewWith"
-                    android:background="@color/lineColor"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/lineColor" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/white"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
                     <TextView
+                        style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/Content32"
-                        android:text="@string/customer_job"/>
+                        android:text="@string/customer_job" />
 
                     <EditText
                         android:id="@+id/et_comstomer_job"
                         style="@style/EditTextStyle"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hint_jog"
-                        android:textSize="@dimen/Text32"
-                        android:textColor="@color/colorContext"/>
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/hint_jog"
+                        android:textColor="@color/colorContext"
+                        android:textSize="@dimen/Text32" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ViewWith"
-                    android:background="@color/lineColor"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/lineColor" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -345,27 +343,28 @@
                     android:paddingRight="10dp">
 
                     <TextView
+                        style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/Content32"
-                        android:text="@string/line_phone"/>
+                        android:text="@string/line_phone" />
 
                     <EditText
                         android:id="@+id/et_line_phone"
                         style="@style/EditTextStyle"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hint_jog"
-                        android:textSize="@dimen/Text32"
-                        android:textColor="@color/colorContext"/>
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/hint_jog"
+                        android:textColor="@color/colorContext"
+                        android:textSize="@dimen/Text32" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ViewWith"
-                    android:background="@color/lineColor"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/lineColor" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -376,27 +375,28 @@
                     android:paddingRight="10dp">
 
                     <TextView
+                        style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/Content32"
-                        android:text="@string/e_mail"/>
+                        android:text="@string/e_mail" />
 
                     <EditText
                         android:id="@+id/et_email"
                         style="@style/EditTextStyle"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hint_emil"
-                        android:textSize="@dimen/Text32"
-                        android:textColor="@color/colorContext"/>
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/hint_emil"
+                        android:textColor="@color/colorContext"
+                        android:textSize="@dimen/Text32" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ViewWith"
-                    android:background="@color/lineColor"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/lineColor" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -407,27 +407,28 @@
                     android:paddingRight="10dp">
 
                     <TextView
+                        style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/Content32"
-                        android:text="@string/QQ"/>
+                        android:text="@string/QQ" />
 
                     <EditText
                         android:id="@+id/et_QQ"
                         style="@style/EditTextStyle"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hint_qq"
-                        android:textSize="@dimen/Text32"
-                        android:textColor="@color/colorContext"/>
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/hint_qq"
+                        android:textColor="@color/colorContext"
+                        android:textSize="@dimen/Text32" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ViewWith"
-                    android:background="@color/lineColor"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/lineColor" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -438,27 +439,28 @@
                     android:paddingRight="10dp">
 
                     <TextView
+                        style="@style/Content32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/Content32"
-                        android:text="@string/message"/>
+                        android:text="@string/message" />
 
                     <EditText
                         android:id="@+id/et_message"
                         style="@style/EditTextStyle"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hint_message"
-                        android:textSize="@dimen/Text32"
-                        android:textColor="@color/colorContext"/>
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/hint_message"
+                        android:textColor="@color/colorContext"
+                        android:textSize="@dimen/Text32" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ViewWith"
-                    android:background="@color/lineColor"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/lineColor" />
 
 
             </LinearLayout>
@@ -468,9 +470,9 @@
                 android:id="@+id/ll_else"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:gravity="center"
-                android:layout_marginTop="10dp">
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/tv_else"
@@ -478,13 +480,13 @@
                     android:layout_height="48dp"
                     android:gravity="center"
                     android:text="其他"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="@color/colorPrimary" />
 
                 <ImageView
                     android:id="@+id/iv_else"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_double_downarrow"/>
+                    android:src="@mipmap/ic_double_downarrow" />
 
             </LinearLayout>
 

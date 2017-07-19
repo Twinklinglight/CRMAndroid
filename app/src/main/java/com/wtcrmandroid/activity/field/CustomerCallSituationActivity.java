@@ -3,6 +3,7 @@ package com.wtcrmandroid.activity.field;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
@@ -29,7 +30,7 @@ import butterknife.BindView;
  * 客户拜访情况
  */
 
-public class CustomerCallSituationActivity extends BaseActivity<CustomerCallSituationP,List<CompanyVisitDetailsRP>>  implements OnLoadMoreListener, OnRefreshListener {
+public class CustomerCallSituationActivity extends BaseActivity<CustomerCallSituationP, List<CompanyVisitDetailsRP>> implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.swipe_target)
@@ -41,13 +42,16 @@ public class CustomerCallSituationActivity extends BaseActivity<CustomerCallSitu
     RefreshLoadMoreFooterView mFooterView;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout mSwipeToLoadLayout;
+    @BindView(R.id.tv_customerName)
+    TextView tvCustomerName;
     private BaseRecycleAdapter adapter;
 
     private CompanyVisitDetailsRQ companyVisitDetailsRQ;
     private int page = 1;//当前页码
+
     @Override
     public void returnData(int key, List<CompanyVisitDetailsRP> data) {
-        switch(key) {
+        switch (key) {
             //刷新返回数据
             case 0:
                 adapter.addList(data);
@@ -56,7 +60,7 @@ public class CustomerCallSituationActivity extends BaseActivity<CustomerCallSitu
             //加载更多数据
             case 1:
                 mSwipeToLoadLayout.setLoadingMore(false);
-                List<CompanyVisitDetailsRP> list=adapter.getList();
+                List<CompanyVisitDetailsRP> list = adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 break;
@@ -77,43 +81,49 @@ public class CustomerCallSituationActivity extends BaseActivity<CustomerCallSitu
                 finish();
             }
         });
+        tvCustomerName.setText(getIntent().getStringExtra("customerName"));
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new CustomerCallSituationAdapter(this));
         mSwipeToLoadLayout.setRefreshHeaderView(mHeaderView);
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
         mSwipeToLoadLayout.setOnRefreshListener(this);
-        presenter=new CustomerCallSituationP(this,this);
-        companyVisitDetailsRQ=new CompanyVisitDetailsRQ();
-        companyVisitDetailsRQ.setCustomerId("1986948");
+        presenter = new CustomerCallSituationP(this, this);
+        companyVisitDetailsRQ = new CompanyVisitDetailsRQ();
+        companyVisitDetailsRQ.setCustomerId(getIntent().getStringExtra("customerid"));
         companyVisitDetailsRQ.setPageIndex(1);
-        presenter.sedPost(companyVisitDetailsRQ,0);
+        presenter.sedPost(companyVisitDetailsRQ, 0);
     }
 
 
     @Override
     public void onRefresh() {
-        page=1;
+        page = 1;
         companyVisitDetailsRQ.setPageIndex(1);
-        presenter.sedPost(companyVisitDetailsRQ,0);
+        presenter.sedPost(companyVisitDetailsRQ, 0);
         adapter.addList(new ArrayList<GroupingClockRecordDD>());
     }
 
     @Override
     public void onLoadMore() {
-        page=page+1;
+        page = page + 1;
         companyVisitDetailsRQ.setPageIndex(page);
-        presenter.sedPost(companyVisitDetailsRQ,1);
+        presenter.sedPost(companyVisitDetailsRQ, 1);
     }
+
     @Override
     public void showShortToast(String text) {
         super.showShortToast(text);
 
-        if(page==1) {
+        if (page == 1) {
             mSwipeToLoadLayout.setRefreshing(false);
 
-        }else
+        } else {
             mSwipeToLoadLayout.setLoadingMore(false);
+            page=page-1;
+        }
 
     }
+
+
 }

@@ -2,35 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F5F6F7">
 
     <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height" />
 
-    <LinearLayout
+    <com.wtcrmandroid.view.custompricing.TopChooseMenuBar
+        android:id="@+id/tcmb_bar"
         android:layout_width="match_parent"
-        android:layout_height="48dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:background="@mipmap/ic_company" />
-
-        <TextView
-            android:id="@+id/tv_customerName"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="聊城市立海冷藏有限公司"
-            android:textColor="#2b2f33"
-            android:textSize="16sp" />
-    </LinearLayout>
+        android:layout_height="44dp" />
 
     <View
         android:layout_width="match_parent"
@@ -55,4 +38,5 @@
             layout="@layout/layout_loadmore_footer" />
 
     </com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout>
+
 </LinearLayout>

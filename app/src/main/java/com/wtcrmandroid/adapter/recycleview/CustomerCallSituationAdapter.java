@@ -44,7 +44,7 @@ public class CustomerCallSituationAdapter extends BaseRecycleAdapter<CompanyVisi
             holder.vBottom.setVisibility(View.VISIBLE);
         holder.tvTime.setText(bean.getCreateTime());
         holder.tvName.setText(bean.getCustomerName());
-        holder.tvWant.setText(bean.getRemarks());
+        holder.tvWant.setText("客户意向："+bean.getRemarks());
         holder.tvAddress.setText(bean.getAddressDetail());
         String[] dateArray = bean.getCreateTime().split(" ");
         String[] timeArray = dateArray[0].split("/");

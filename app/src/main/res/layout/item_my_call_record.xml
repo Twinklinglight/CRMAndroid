@@ -22,6 +22,7 @@
             android:background="@mipmap/ic_company" />
 
         <TextView
+            android:id="@+id/tv_customerName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -46,9 +47,11 @@
         android:background="#e9edf2" />
 
     <TextView
+        android:id="@+id/tv_remarks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
         android:text="客户意向"
         android:textColor="#2b2f33"
@@ -67,6 +70,7 @@
             android:background="@mipmap/ic_customer_call_details_time" />
 
         <TextView
+            android:id="@+id/tv_createTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -88,6 +92,7 @@
             android:background="@mipmap/ic_customer_call_details_address" />
 
         <TextView
+            android:id="@+id/tv_addressDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

@@ -6,10 +6,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.ZoomControls;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -67,18 +64,14 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         getBundle(savedInstanceState);
         setContentView(layout());
         ButterKnife.bind(this);
-
-
-
-
         // 地图初始化
         mMapView = (MapView) findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
-        // 隐藏百度的LOGO
-        View child = mMapView.getChildAt(1);
-        if (child != null && (child instanceof ImageView || child instanceof ZoomControls)) {
-            child.setVisibility(View.INVISIBLE);
-        }
+//        // 隐藏百度的LOGO
+//        View child = mMapView.getChildAt(1);
+//        if (child != null && (child instanceof ImageView || child instanceof ZoomControls)) {
+//            child.setVisibility(View.INVISIBLE);
+//        }
         // 不显示地图上比例尺
         mMapView.showScaleControl(false);
         // 开启定位图层
