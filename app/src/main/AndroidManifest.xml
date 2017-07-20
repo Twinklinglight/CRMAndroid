@@ -55,7 +55,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- ——————————————————————-外勤模块—————————————————————————— -->
         <!-- 外勤 -->
         <activity android:name=".activity.field.FieldActivity"/>
@@ -205,9 +206,11 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activity.foodpullcustomer.PullintoCustomerActivity" />
+        <activity android:name=".activity.foodpullcustomer.PullintoCustomerActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.foodpullcustomer.FoodSelectActivity" />
-        <activity android:name=".activity.salepullcustomer.SalePullintoCustomerActivity" />
+        <activity android:name=".activity.salepullcustomer.SalePullintoCustomerActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.salepullcustomer.SaleSelectActivity" />
         <activity android:name=".activity.journalmanager.HtJournalDetails" />
         <activity android:name=".activity.journalmanager.XsJournalDetails" />
