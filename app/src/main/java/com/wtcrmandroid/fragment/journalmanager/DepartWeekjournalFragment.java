@@ -12,6 +12,7 @@ import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
 import com.wtcrmandroid.fragment.journalmanager.presenter.DepartWeekPresenter;
+import com.wtcrmandroid.model.reponsedata.WeekDepartRp;
 import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
@@ -66,7 +67,10 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
     private int logId;
 
     private int userId;
+    private String level;
     private String titleTime;
+    private String beginTiem;
+    private String endTime;
     DateUtils dateUtils;
     private int position = 2;
 
@@ -75,41 +79,41 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
 
         switch (key) {
             case 1:
-                mWeekplanDataList = (List<WriterWeekPlaneData>) data;
-                mWeekplanAdapter = new WeekDayplanAdapter(getActivity(), mWeekplanDataList);
-                mLvWeekplanDetails.setAdapter(mWeekplanAdapter);
-                mWeekplanAdapter.notifyDataSetChanged();
-                break;
-            case 2:
-                WeekSumDetailsRpData weeksumData = (WeekSumDetailsRpData) data;
-                mWeeksumDataList = weeksumData.getWork();
-                mCommentDataList = weeksumData.getExam();
-                String learning = weeksumData.getLearning();
-                String leve = weeksumData.getLeve();
-                logId = weeksumData.getLogId();
+                WeekDepartRp weekData = (WeekDepartRp)data;
+                List<WriterWeekPlaneData> plan = weekData.getPlan();
+                List<WeeksumDetailsData> work = weekData.getWork();
+                List<CommentData> exam = weekData.getExam();
+                level = weekData.getLeve();
+                logId = weekData.getLogId();
+                learnStudy.setText(weekData.getLearning());
 
-                if (mWeeksumDataList.size() > 0) {
+                mWeekplanAdapter = new WeekDayplanAdapter(getActivity(), plan);
+                mLvWeekplanDetails.setAdapter(mWeekplanAdapter);
+                mWeekplanAdapter.notifyDataSetChanged();        //周计划列表
+
+                if (work.size() > 0) {
                     footview.setVisibility(View.VISIBLE);
                 } else {
                     footview.setVisibility(View.GONE);
                 }
-                mWeeksumAdapter = new WeeksumDetailsAdapter(getActivity(), mWeeksumDataList);
+                mWeeksumAdapter = new WeeksumDetailsAdapter(getActivity(), work);
                 mLvWeeksumDetails.setAdapter(mWeeksumAdapter);
-                learnStudy.setText(learning);
                 mWeeksumAdapter.notifyDataSetChanged();
 
 
-                if (mCommentDataList.size() > 0) {
+                if (exam.size() > 0) {
                     commenthead.setVisibility(View.VISIBLE);
                 } else {
                     commenthead.setVisibility(View.GONE);
                 }
-                mCommentAdapter = new CommentAdapter(getActivity(), mCommentDataList, leve);
+                mCommentAdapter = new CommentAdapter(getActivity(), exam, level);
                 mLvComment.setAdapter(mCommentAdapter);
-                viewHolder.mTvCommentCount.setText("评价(" + mCommentDataList.size() + ")");
+                viewHolder.mTvCommentCount.setText("评价(" + exam.size() + ")");
                 mCommentAdapter.notifyDataSetChanged();
+
                 break;
-            case 3:
+            case 2:
+                postData(userId,beginTiem,endTime);
                 Toast.makeText(getContext(), "成功", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -138,9 +142,10 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
         mLvComment.addHeaderView(commenthead);
 
         userId = getArguments().getInt("userid");
+        beginTiem = dateUtils.getWantDate(titleTime.split("-")[0]);
+        endTime = dateUtils.getWantDate(titleTime.split("-")[1]);
 
-        postData(userId, dateUtils.getWantDate(titleTime.split("-")[0]),
-                dateUtils.getWantDate(titleTime.split("-")[1]));
+        postData(userId, beginTiem, endTime);
 
     }
 
@@ -173,10 +178,14 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
 
         this.position = position;
         mTvDate.setText(weekText);
+
         String begintime = weekText.split("-")[0];
         String endtime = weekText.split("-")[1];
 
-        postData(userId, dateUtils.getWantDate(begintime), dateUtils.getWantDate(endtime));
+        beginTiem = dateUtils.getWantDate(begintime);
+        endTime = dateUtils.getWantDate(endtime);
+
+        postData(userId,beginTiem,endTime );
 
     }
 
@@ -184,18 +193,10 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
         WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
         weekDetailsRequestData.setUserId(userid);
         weekDetailsRequestData.setType("week");
-        weekDetailsRequestData.setPlan(true);
+        weekDetailsRequestData.setIsPlan("");
         weekDetailsRequestData.setWeekBegin(begintime);
         weekDetailsRequestData.setWeekEnd(endtime);
         presenter.postDepartWeek(weekDetailsRequestData);
-
-        WeekDetailsRequestData weekDetailsRequestData2 = new WeekDetailsRequestData();
-        weekDetailsRequestData2.setUserId(userid);
-        weekDetailsRequestData2.setType("week");
-        weekDetailsRequestData2.setPlan(false);
-        weekDetailsRequestData2.setWeekBegin(begintime);
-        weekDetailsRequestData2.setWeekEnd(endtime);
-        presenter.postWeeksum(weekDetailsRequestData2);
 
     }
 

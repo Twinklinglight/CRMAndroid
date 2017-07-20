@@ -1,5 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +12,8 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.HtDaysumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
+import com.wtcrmandroid.adapter.recycleview.CommentRcAdapter;
+import com.wtcrmandroid.adapter.recycleview.HtDaysumDetailsRcAdapter;
 import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
 import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
@@ -38,17 +42,23 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
     TextView mTvJournalTitle;       //总结title
     @BindView(R.id.lv_work)
     MyListView mLvWork;             //工作列表
+//    RecyclerView mLvWork;
     @BindView(R.id.lv_comment)
     MyListView mLvComment;          //评论列表
+//    RecyclerView mLvComment;
 
     private String time;
     View footview;
     View comentHead;
     TextView learnStudy;
     ViewHolder viewHolder;
+    private HtDaysumDetailsRcAdapter htDaysumDetailsRcAdapter;
+    private CommentRcAdapter commentRcAdapter;
+    private HtDaysumDetailsAdapter htDaysumDetailsAdapter;
+    private CommentAdapter commentAdapter;
 
-    private HtDaysumDetailsAdapter mDetailsAdapter;
-    private CommentAdapter mCommentAdapter;
+//    private HtDaysumDetailsAdapter mDetailsAdapter;
+//    private CommentAdapter mCommentAdapter;
 
 
     @Override
@@ -66,8 +76,9 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
         DayDetailsRQ dayDetailsRequestData = new DayDetailsRQ();
         dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRequestData.setType("day");
-        dayDetailsRequestData.setIsPlan(false);
+        dayDetailsRequestData.setIsPlan("false");
         dayDetailsRequestData.setNowDate(time);
+        dayDetailsRequestData.setRoleClass(1);
 
         presenter.GetDaySumDetails(dayDetailsRequestData);
 
@@ -105,21 +116,35 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
         }else {
             footview.setVisibility(View.GONE);
         }
-        mDetailsAdapter = new HtDaysumDetailsAdapter(this, work);
+       /* htDaysumDetailsRcAdapter = new HtDaysumDetailsRcAdapter(this,work);
+//        mLvWork.setDivider(null);       //去除分割线
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        mLvWork.setLayoutManager(llm);
+        mLvWork.setAdapter(htDaysumDetailsRcAdapter);
+//        learnStudy.setText(learning);
+        htDaysumDetailsRcAdapter.notifyDataSetChanged();*/
+
+        htDaysumDetailsAdapter = new HtDaysumDetailsAdapter(this,work);
         mLvWork.setDivider(null);       //去除分割线
-        mLvWork.setAdapter(mDetailsAdapter);
+        mLvWork.setAdapter(htDaysumDetailsAdapter);
         learnStudy.setText(learning);
-        mDetailsAdapter.notifyDataSetChanged();
+        htDaysumDetailsAdapter.notifyDataSetChanged();
 
         if (exam.size() > 0) {
             comentHead.setVisibility(View.VISIBLE);
         }else {
             comentHead.setVisibility(View.GONE);
         }
-        mCommentAdapter = new CommentAdapter(this, exam,leve);
+        commentAdapter = new CommentAdapter(this, exam,leve);
         viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
-        mLvComment.setAdapter(mCommentAdapter);
-        mCommentAdapter.notifyDataSetChanged();
+        mLvComment.setAdapter(commentAdapter);
+        commentAdapter.notifyDataSetChanged();
+        /*LinearLayoutManager llm1 = new LinearLayoutManager(this);
+        mLvComment.setLayoutManager(llm1);
+        commentRcAdapter = new CommentRcAdapter(this,exam,leve);
+//        viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
+        mLvComment.setAdapter(commentRcAdapter);
+        commentRcAdapter.notifyDataSetChanged();*/
 
     }
 

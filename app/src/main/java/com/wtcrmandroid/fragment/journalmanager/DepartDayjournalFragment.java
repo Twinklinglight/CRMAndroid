@@ -16,6 +16,7 @@ import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.fragment.journalmanager.presenter.DepartDayPresenter;
 import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
+import com.wtcrmandroid.model.reponsedata.HtDayDepartRp;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
 import com.wtcrmandroid.utils.DateUtil;
@@ -68,6 +69,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     View commentHead;
     View footview;
     ViewHolder viewHolder;
+    private String level;
 
     private HtDayplanDetailsAdapter mDayplanAdapter;
 
@@ -83,43 +85,44 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
     public void returnData(int key, Object data) {
 
         switch (key){
-            case 1:         //日计划列表
-                mDayplanAdapter = new HtDayplanDetailsAdapter(getActivity(),(List<HtDayplanDetailsData>) data);
-                mLvDayplanDetails.setAdapter(mDayplanAdapter);
-                mDayplanAdapter.notifyDataSetChanged();
-                break;
-            case 2:
-                DaySumDetailsRpData daysumData = (DaySumDetailsRpData)data;
-                List<HtDaysumDetailsData> work = daysumData.getWork();
-                List<CommentData> exam = daysumData.getExam();
-                String learning = daysumData.getLearning();
-                String leve = daysumData.getLeve();
-                Logid = daysumData.getLogId();
+            case 1:
+                HtDayDepartRp dayData = (HtDayDepartRp)data;
+                List<HtDayplanDetailsData> plan = dayData.getPlan();
+                List<HtDaysumDetailsData> work1 = dayData.getWork();
+                List<CommentData> exam1 = dayData.getExam();
+                learnStudy.setText(dayData.getLearning());
+                Logid = dayData.getLogId();
+                level = dayData.getLeve();
 
-                if (work.size()>0){
+                mDayplanAdapter = new HtDayplanDetailsAdapter(getActivity(),plan);
+                mLvDayplanDetails.setAdapter(mDayplanAdapter);
+                mDayplanAdapter.notifyDataSetChanged();             //日计划列表
+
+                if (work1.size()>0){
                     footview.setVisibility(View.VISIBLE);
                 }else {
                     footview.setVisibility(View.GONE);
                 }
-                mDysumAdapter = new HtDaysumDetailsAdapter(getActivity(), work);
+                mDysumAdapter = new HtDaysumDetailsAdapter(getActivity(), work1);
                 mLvDaysumDetails.setAdapter(mDysumAdapter);
-                learnStudy.setText(learning);
                 mDysumAdapter.notifyDataSetChanged();
 
-                if (exam.size()>0){
+                if (exam1 != null){
+                    if (exam1.size()>0){
+                        commentHead.setVisibility(View.VISIBLE);
+                    }else {
+                        commentHead.setVisibility(View.GONE);
+                    }
 
-                    commentHead.setVisibility(View.VISIBLE);
-                }else {
-                    commentHead.setVisibility(View.GONE);
+                    mCommentAdapter = new CommentAdapter(getActivity(), exam1,level);
+                    mLvComment.setAdapter(mCommentAdapter);     //评论列表
+                    viewHolder.mTvCommentCount.setText("评论(" + exam1.size() + ")");
+                    mCommentAdapter.notifyDataSetChanged();
                 }
-                mCommentAdapter = new CommentAdapter(getActivity(), exam,leve);
-                mLvComment.setAdapter(mCommentAdapter);     //评论列表
-                viewHolder.mTvCommentCount.setText("评论(" + exam.size() + ")");
-                mCommentAdapter.notifyDataSetChanged();
-
 
                 break;
-            case 3:
+            case 2:
+                postData(userid,datetime);
                 Toast.makeText(DepartDayjournalFragment.this.getContext(), "成功", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -191,12 +194,11 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        datetime = sdf2.format(date);
         mTvDate.setText(sdf.format(date));
-        postData(userid,sdf2.format(date));
+        postData(userid,datetime);
 
     }
-
-
     //提交评论
     @Override
     public void clickOk(String leve, String context) {
@@ -214,17 +216,10 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
         DayDetailsRQ dayDetailsRQ = new DayDetailsRQ();
         dayDetailsRQ.setUserId(userid);
         dayDetailsRQ.setType("day");
-        dayDetailsRQ.setIsPlan(true);
+        dayDetailsRQ.setIsPlan("");
+        dayDetailsRQ.setRoleClass(1);
         dayDetailsRQ.setNowDate(data);
-
         presenter.postDepartDay(dayDetailsRQ);
-
-        DayDetailsRQ dayDetailsRQ2 = new DayDetailsRQ();
-        dayDetailsRQ2.setUserId(userid);
-        dayDetailsRQ2.setType("day");
-        dayDetailsRQ2.setIsPlan(false);
-        dayDetailsRQ2.setNowDate(data);
-        presenter.postDaysum(dayDetailsRQ2);
 
     }
 

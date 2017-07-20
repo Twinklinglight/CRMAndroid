@@ -45,7 +45,8 @@ public class SingleFragmentAdapter extends MySmallBaseAdapter<SingleCustomerData
 
     @Override
     protected View onCreateNullViewholder() {
-        return null;
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_list_null,null);
+        return view;
     }
 
     static class ViewHolder {

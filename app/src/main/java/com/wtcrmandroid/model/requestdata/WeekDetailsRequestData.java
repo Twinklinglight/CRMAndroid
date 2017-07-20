@@ -8,7 +8,7 @@ public class WeekDetailsRequestData {
 
     private int userId;
     private String type;
-    private boolean isPlan;
+    private String isPlan;
     private String weekBegin;
     private String weekEnd;
 
@@ -28,12 +28,12 @@ public class WeekDetailsRequestData {
         this.type = type;
     }
 
-    public boolean isPlan() {
+    public String getIsPlan() {
         return isPlan;
     }
 
-    public void setPlan(boolean plan) {
-        isPlan = plan;
+    public void setIsPlan(String isPlan) {
+        this.isPlan = isPlan;
     }
 
     public String getWeekBegin() {

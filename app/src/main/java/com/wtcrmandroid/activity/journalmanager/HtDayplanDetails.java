@@ -57,7 +57,7 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
         dayDetailsRequestData.setNowDate(DateTime);
         dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRequestData.setType("day");
-        dayDetailsRequestData.setIsPlan(true);
+        dayDetailsRequestData.setIsPlan("true");
         presenter.getDayPlanData(dayDetailsRequestData);
 
         mTitlebar.setTitletext("日志详情");
@@ -74,7 +74,7 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
 
     @Override
     public void returnData(int key, List<HtDayplanDetailsData> data) {
-        Log.i("returnData","data="+data.toString());
+
         mAdapter = new HtDayplanDetailsAdapter(this,data);
         mLvDayplanDetails.setDivider(null);
         mLvDayplanDetails.setAdapter(mAdapter);

@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
 import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.R;
+import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
 import com.wtcrmandroid.fragment.journalmanager.DepartWeekjournalFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartXsDayjournalFragment;
 
@@ -42,9 +42,9 @@ public class XsJournalDetails extends BaseActivity {
 
     @Override
     protected void initView() {
-        userid = getIntent().getIntExtra("userid",0);
+        userid = getIntent().getIntExtra("userid", 0);
         Bundle bundle = new Bundle();
-        bundle.putInt("userid",userid);
+        bundle.putInt("userid", userid);
         mfragmentList = new ArrayList<>();
         xsDayjournalFragment = new DepartXsDayjournalFragment();
         weekjournalFragment = new DepartWeekjournalFragment();
@@ -52,9 +52,10 @@ public class XsJournalDetails extends BaseActivity {
         xsDayjournalFragment.setArguments(bundle);
         weekjournalFragment.setArguments(bundle);
 
+
         mfragmentList.add(xsDayjournalFragment);
         mfragmentList.add(weekjournalFragment);
-        mFragmentTabAdapter = new FragmentTabAdapter(this, mfragmentList, R.id.frame_xs_journal,mRgDayweek);
+        mFragmentTabAdapter = new FragmentTabAdapter(this, mfragmentList, R.id.frame_xs_journal, mRgDayweek);
 
     }
 
@@ -63,13 +64,15 @@ public class XsJournalDetails extends BaseActivity {
 
     }
 
-    @OnClick({R.id.iv_back})
-    public void onViewClicked(View view) {
+    @OnClick({R.id.iv_back, R.id.rb_week})
+    public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_back:          //返回
+            case R.id.iv_back:
                 this.finish();
+                break;
+            case R.id.rb_week:
+                xsDayjournalFragment.cancleWindows();
                 break;
         }
     }
-
 }

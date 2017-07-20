@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.wtcrmandroid.model.reponsedata.XsDayDepartRp;
 import com.wtcrmandroid.model.reponsedata.XsDayplanDetailsRP;
 import com.wtcrmandroid.model.reponsedata.XsDaysumDetailsRP;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
@@ -28,35 +29,26 @@ public class XsDepartDayPresenter extends BasePresenter {
 
         switch (key){
             case 1:
-                Type type = new TypeToken<XsDayplanDetailsRP>() {
+                Type type = new TypeToken<XsDayDepartRp>() {
                 }.getType();
-                XsDayplanDetailsRP data = new Gson().fromJson(response, type);
+                XsDayDepartRp data = new Gson().fromJson(response, type);
                 view.returnData(key,data);
                 break;
             case 2:
-                Type type1 = new TypeToken<XsDaysumDetailsRP>() {
-                }.getType();
-                XsDaysumDetailsRP rpData = new Gson().fromJson(response, type1);
-                view.returnData(key,rpData);
-                break;
-            case 3:
-                view.returnData(3,response);
+                view.returnData(key,response);
                 break;
         }
     }
 
     /**
      *
-     * @param detailsRQ 1、dayplan  2、daysum 3、commint
+     * @param detailsRQ 1、dayplan 、daysum 2、commint
      */
     public void PostDepartDayplan(DayDetailsRQ detailsRQ){
         post("WorkPlan/getUserWorkPlan",detailsRQ,1);
     }
-    public void PostDepartDaysum(DayDetailsRQ data){
-        post("WorkPlan/getUserWorkPlan",data,2);
-    }
 
     public void PostCommint(CommintRQ data){
-        post("WorkPlan/saveWorkComment",data,3);
+        post("WorkPlan/saveWorkComment",data,2);
     }
 }

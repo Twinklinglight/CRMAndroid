@@ -43,15 +43,22 @@ public abstract class BaseAdapter<T, T1> extends android.widget.BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         T1 holder = null;
+        View view = null;
         if (convertView == null) {
-            convertView = onCreateViewHolder(position);
+            view = CretaView();
+            holder = onCreateViewHolder(view);
+            view.setTag(holder);
+        }else {
+            view = convertView;
+            holder = (T1) view.getTag();
         }
-        holder = (T1) convertView.getTag(position);
         convert(holder, position);
-        return convertView;
+        return view;
     }
 
     protected abstract void convert(T1 holder, int position);
 
-    protected abstract View onCreateViewHolder(int position);
+    protected abstract T1 onCreateViewHolder(View v);
+
+    protected abstract View CretaView();
 }
