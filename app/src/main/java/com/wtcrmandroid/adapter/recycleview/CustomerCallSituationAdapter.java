@@ -1,6 +1,8 @@
 package com.wtcrmandroid.adapter.recycleview;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -9,6 +11,8 @@ import com.thinkcool.circletextimageview.CircleTextImageView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.reponsedata.CompanyVisitDetailsRP;
 import com.wtcrmandroid.utils.TextUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +23,6 @@ import butterknife.ButterKnife;
  */
 
 public class CustomerCallSituationAdapter extends BaseRecycleAdapter<CompanyVisitDetailsRP, CustomerCallSituationAdapter.ViewHolder> {
-
 
 
 
@@ -44,13 +47,19 @@ public class CustomerCallSituationAdapter extends BaseRecycleAdapter<CompanyVisi
             holder.vBottom.setVisibility(View.VISIBLE);
         holder.tvTime.setText(bean.getCreateTime());
         holder.tvName.setText(bean.getCustomerName());
-        holder.tvWant.setText("客户意向："+bean.getRemarks());
+        holder.tvWant.setText( bean.getRemarks());
         holder.tvAddress.setText(bean.getAddressDetail());
         String[] dateArray = bean.getCreateTime().split(" ");
         String[] timeArray = dateArray[0].split("/");
         holder.tvMonth.setText(timeArray[1] + "月");
         holder.tvDay.setText(timeArray[2] + "日");
         holder.ctivPhoto.setText(TextUtils.NameText(bean.getUserName()));
+        List<String> path = bean.getPath();
+        if (path == null || path.size() > 0) {
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 5);
+            holder.rvView.setLayoutManager(gridLayoutManager);
+            holder.rvView.setAdapter(new PhotoAdapter((Activity) context, path));
+        }
     }
 
     @Override
@@ -78,6 +87,8 @@ public class CustomerCallSituationAdapter extends BaseRecycleAdapter<CompanyVisi
         TextView tvAddress;
         @BindView(R.id.ctiv_photo)
         CircleTextImageView ctivPhoto;
+        @BindView(R.id.rv_view)
+        RecyclerView rvView;
 
         public ViewHolder(View itemView) {
             super(itemView);

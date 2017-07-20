@@ -1,17 +1,17 @@
 package com.wtcrmandroid.adapter.recycleview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.field.CustomerCallSituationActivity;
 import com.wtcrmandroid.model.reponsedata.PersonalAllRecordRP;
-import com.wtcrmandroid.view.custompricing.SquareImageView;
 
 import java.util.List;
 
@@ -49,13 +49,16 @@ public class MyCallRecordAdapter extends BaseRecycleAdapter<PersonalAllRecordRP,
             }
         });
         holder.tvCustomerName.setText(bean.getCustomerName());
-        holder.tvRemarks.setText("客户意向:" + bean.getRemarks());
+        holder.tvRemarks.setText( bean.getRemarks());
         holder.tvCreateTime.setText(bean.getCreateTime());
         holder.tvAddressDetail.setText(bean.getAddress() + bean.getAddressDetail());
-        List<String> path= bean.getPath();
-        if(path==null||path.size()>0){
-            holder.llImage.setVisibility(View.VISIBLE);
-            switch (path.size()){
+        List<String> path = bean.getPath();
+        if (path == null || path.size() > 0) {
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 5);
+            holder.rvView.setLayoutManager(gridLayoutManager);
+            holder.rvView.setAdapter(new PhotoAdapter((Activity) context,path));
+           /* holder.llImage.setVisibility(View.VISIBLE);
+            switch (path.size()) {
                 case 1:
                     Glide.with(context)
                             .load(path.get(0))
@@ -111,11 +114,11 @@ public class MyCallRecordAdapter extends BaseRecycleAdapter<PersonalAllRecordRP,
                             .load(path.get(4))
                             .into(holder.sivFive);
                     break;
-            }
+            }*/
 
-        }else {
+        } /*else {
             holder.llImage.setVisibility(View.GONE);
-        }
+        }*/
 
     }
 
@@ -132,7 +135,7 @@ public class MyCallRecordAdapter extends BaseRecycleAdapter<PersonalAllRecordRP,
         TextView tvCreateTime;
         @BindView(R.id.tv_addressDetail)
         TextView tvAddressDetail;
-        @BindView(R.id.ll_image)
+       /* @BindView(R.id.ll_image)
         LinearLayout llImage;
         @BindView(R.id.siv_one)
         SquareImageView sivOne;
@@ -143,7 +146,9 @@ public class MyCallRecordAdapter extends BaseRecycleAdapter<PersonalAllRecordRP,
         @BindView(R.id.siv_four)
         SquareImageView sivFour;
         @BindView(R.id.siv_five)
-        SquareImageView sivFive;
+        SquareImageView sivFive;*/
+        @BindView(R.id.rv_view)
+        RecyclerView rvView;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

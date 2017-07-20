@@ -74,7 +74,11 @@ public class CalendarPopupWindow extends PopupWindow {
             }
         });
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        int[] locations = new int[2];
+        view.getLocationOnScreen(locations);
+        int screenHeight = context.getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+        int height = screenHeight - view.getHeight() - locations[1];
+        setHeight(height);
         setFocusable(false);
         this.view = view;
 

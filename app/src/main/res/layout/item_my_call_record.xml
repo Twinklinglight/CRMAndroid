@@ -61,7 +61,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        >
 
         <ImageView
             android:layout_width="wrap_content"
@@ -100,50 +101,58 @@
             android:textColor="#939699"
             android:textSize="14sp" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_image"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
-        android:paddingBottom="15dp">
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:paddingBottom="15dp"/>
 
-        <com.wtcrmandroid.view.custompricing.SquareImageView
-            android:id="@+id/siv_one"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@mipmap/ic_photo_upload" />
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ll_image"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:paddingBottom="15dp">-->
 
-        <com.wtcrmandroid.view.custompricing.SquareImageView
-            android:id="@+id/siv_two"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@mipmap/ic_photo_upload" />
+        <!--<com.wtcrmandroid.view.custompricing.SquareImageView-->
+            <!--android:id="@+id/siv_one"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@mipmap/ic_photo_upload" />-->
 
-        <com.wtcrmandroid.view.custompricing.SquareImageView
-            android:id="@+id/siv_three"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1" />
+        <!--<com.wtcrmandroid.view.custompricing.SquareImageView-->
+            <!--android:id="@+id/siv_two"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@mipmap/ic_photo_upload" />-->
 
-        <com.wtcrmandroid.view.custompricing.SquareImageView
-            android:id="@+id/siv_four"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1" />
+        <!--<com.wtcrmandroid.view.custompricing.SquareImageView-->
+            <!--android:id="@+id/siv_three"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_weight="1" />-->
 
-        <com.wtcrmandroid.view.custompricing.SquareImageView
-            android:id="@+id/siv_five"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+        <!--<com.wtcrmandroid.view.custompricing.SquareImageView-->
+            <!--android:id="@+id/siv_four"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_weight="1" />-->
+
+        <!--<com.wtcrmandroid.view.custompricing.SquareImageView-->
+            <!--android:id="@+id/siv_five"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_weight="1" />-->
+    <!--</LinearLayout>-->
 </LinearLayout>

@@ -61,8 +61,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape_rounded_rectangle5_white_bg"
-        android:orientation="vertical"
-        android:paddingBottom="50dp">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -120,5 +119,13 @@
                 android:textColor="#939699"
                 android:textSize="14sp" />
         </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="15dp"/>
     </LinearLayout>
 </LinearLayout>

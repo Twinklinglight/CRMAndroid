@@ -229,7 +229,6 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
         switch(key){
             //刷新返回数据
             case 0:
-                showShortToast(data.toString());
                 adapter.addList(data);
                 mSwipeToLoadLayout.setRefreshing(false);
                 break;
