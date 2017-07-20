@@ -65,8 +65,6 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
             }
         });
         list = (List<PersonalAllRecordRP>) getIntent().getExtras().getSerializable("list");
-        showShortToast(list.size() + "");
-
         for (int i = 0; i < list.size(); i++) {
             PersonalAllRecordRP data = list.get(i);
             View contentView = LayoutInflater.from(this).inflate(R.layout.overlay_view, null);
@@ -77,7 +75,7 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
             LatLng pt = new LatLng(data.getLng(), data.getLat());
             bd = BitmapDescriptorFactory.fromBitmap(getBitmapFromView(contentView));
             MarkerOptions oo = new MarkerOptions().icon(bd).
-                    position(pt).zIndex(9);
+                    position(pt).zIndex(100);
             Bundle des = new Bundle();
             des.putInt("des", i);
             oo.extraInfo(des);

@@ -3,16 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingRight="10dp">
-
-
-
-
     <com.wtcrmandroid.view.custompricing.SquareImageView
         android:id="@+id/iv_photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"/>
     <ImageView
         android:id="@+id/iv_delete"
         android:layout_width="wrap_content"

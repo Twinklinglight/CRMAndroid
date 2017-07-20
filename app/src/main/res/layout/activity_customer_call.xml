@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
@@ -13,152 +12,145 @@
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_below="@+id/titlebar"/>
 
-    <RelativeLayout
+    <Button
+        android:id="@+id/bt_submit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="44dp"
+        android:background="@color/colorPrimary"
+        android:text="立即提交"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bt_submit"
+        android:layout_below="@+id/bmapView"
+        >
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bt_submit">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#fff"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@mipmap/ic_customer_call_adddress" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="当前位置:"
+                    android:textColor="#2b2f33"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e9edf2" />
+
+            <EditText
+                android:id="@+id/et_addrss_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:hint="请补充详细地址"
+                android:minHeight="48dp"
+                android:textColor="#2b2f33"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#e9edf2" />
+
+            <LinearLayout
+                android:id="@+id/ll_select_customer"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@mipmap/ic_xrz_person" />
+
+                <TextView
+                    android:id="@+id/tv_customer_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="请选择客户名称"
+                    android:textColor="@color/colorContext"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/ic_customer_contacts" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#e9edf2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center_vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="#fff"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:background="@mipmap/ic_customer_call_adddress" />
-
-                    <TextView
-                        android:id="@+id/tv_address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="当前位置:"
-                        android:textColor="#2b2f33"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#e9edf2" />
 
                 <EditText
-                    android:id="@+id/et_addrss_details"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_remarks"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:background="@null"
-                    android:hint="请补充详细地址"
+                    android:hint="请输入此次客户拜访详细情况"
                     android:minHeight="48dp"
                     android:textColor="#2b2f33"
                     android:textSize="16sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="#e9edf2" />
-
-                <LinearLayout
-                    android:id="@+id/ll_select_customer"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:background="@mipmap/ic_xrz_person" />
-
-                    <TextView
-                        android:id="@+id/tv_customer_name"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:text="请选择客户名称"
-                        android:textColor="@color/colorContext"
-                        android:textSize="16sp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:background="@mipmap/ic_customer_contacts" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="#e9edf2" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/iv_microphone"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="客户意向"
-                        android:textColor="#2b2f33"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/tv_remarks"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="请补充客户意向"
-                        android:minHeight="48dp"
-                        android:textColor="#2b2f33"
-                        android:textSize="16sp" />
-
-                    <ImageView
-                        android:id="@+id/iv_microphone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:background="@mipmap/ic_xrz_yuyin" />
-                </LinearLayout>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:paddingBottom="30dp"/>
-
-
+                    android:background="@mipmap/ic_xrz_yuyin" />
             </LinearLayout>
-        </ScrollView>
-        <Button
-            android:id="@+id/bt_submit"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@color/colorPrimary"
-            android:layout_alignParentBottom="true"
-            android:text="立即提交"
-            android:textColor="#fff"
-            android:textSize="18sp"/>
-    </RelativeLayout>
-</LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingBottom="30dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

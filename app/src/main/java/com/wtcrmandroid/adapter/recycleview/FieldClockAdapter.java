@@ -58,13 +58,13 @@ public class FieldClockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (viewType == HEAD) {
             v = LayoutInflater.from(context).inflate(R.layout.item_timeline, parent, false);
             holder = new HeadViewHolder(v);
-        } else if (viewType == WORD) {
+        } else  /*(viewType == WORD)*/{
             v = LayoutInflater.from(context).inflate(R.layout.item_clock_bottom, parent, false);
             holder = new ViewHolder(v);
-        } else {
+        } /*else {
             v = LayoutInflater.from(context).inflate(R.layout.item_clock_button, parent, false);
             holder = new ButtonViewHolder(v);
-        }
+        }*/
         return holder;
     }
 
@@ -96,7 +96,7 @@ public class FieldClockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemCount() {
-        return list.size() + 2;
+        return list.size() + 1;
     }
 
     static class HeadViewHolder extends RecyclerView.ViewHolder {

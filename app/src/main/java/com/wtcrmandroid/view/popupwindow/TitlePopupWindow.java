@@ -25,6 +25,7 @@ import butterknife.ButterKnife;
 public class TitlePopupWindow extends PopupWindow {
 
     private View view;
+    private Context context;
     PoppupWindowTitleAdapter adapter;
 
     public TitlePopupWindow(Context context, View view, List list, int style, int isCheckposition, PoppupWindowTitleAdapter.oNclicklistner onclicklistner) {
@@ -42,15 +43,22 @@ public class TitlePopupWindow extends PopupWindow {
         WindowManager mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         setContentView(contentView);
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        int[] locations = new int[2];
+        view.getLocationOnScreen(locations);
+        int screenHeight = context.getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+        int height = screenHeight - view.getHeight() - locations[1];
+        setHeight(height);
         setFocusable(false);
         this.view = view;
+        this.context=context;
 
 
     }
 
     public void show() {
+
         showAsDropDown(view);
+
     }
 
     static class ViewHolder {

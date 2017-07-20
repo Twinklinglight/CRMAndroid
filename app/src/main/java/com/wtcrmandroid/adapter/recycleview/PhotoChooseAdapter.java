@@ -1,6 +1,7 @@
 package com.wtcrmandroid.adapter.recycleview;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,11 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.ImageBrowsingActivity;
 import com.wtcrmandroid.view.custompricing.SquareImageView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,8 +29,8 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
     private List<String> list;
     private int size;
     private MyOnClickListner myOnClickListner;
-    private Context context;
-    public PhotoChooseAdapter(Context context) {
+    private Activity context;
+    public PhotoChooseAdapter(Activity context) {
         this.context = context;
     }
 
@@ -76,6 +79,10 @@ public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.
             holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                           context.startActivity(new Intent(context, ImageBrowsingActivity.class)
+                                    .putStringArrayListExtra("path", (ArrayList<String>) list)
+                                    .putExtra("position",position));
 
 
                 }

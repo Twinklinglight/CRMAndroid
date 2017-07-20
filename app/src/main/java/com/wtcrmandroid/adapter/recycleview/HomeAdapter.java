@@ -9,11 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.aboutdocument.DocumentProcessActivity;
 import com.wtcrmandroid.activity.crm.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
+import com.wtcrmandroid.activity.crm.MyPushCustomerActivity;
 import com.wtcrmandroid.activity.crm.PublicSeaActivity;
 import com.wtcrmandroid.activity.field.FieldActivity;
 import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
@@ -82,7 +84,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-//        @BindView(R.id.v)
+        //        @BindView(R.id.v)
 //        View v;
         @BindView(R.id.tv_title)
         TextView tvTitle;
@@ -116,11 +118,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             case 9://扫一扫
                 break;
             case 10: //录入客户
-                //                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")){
-                context.startActivity(new Intent(context, PullintoCustomerActivity.class));
-//                }else {
-                context.startActivity(new Intent(context, SalePullintoCustomerActivity.class));
-//                }
+                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")) {
+                    context.startActivity(new Intent(context, PullintoCustomerActivity.class));
+                } else {
+                    context.startActivity(new Intent(context, SalePullintoCustomerActivity.class));
+                }
                 break;
             case 11://主客户库
                 context.startActivity(new Intent(context, MainClientLibrary.class));
@@ -131,8 +133,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             case 13://续单公海
                 context.startActivity(new Intent(context, PublicSeaActivity.class));
                 break;
-            case 6:
+            case 14://我的地推客户
+                context.startActivity(new Intent(context, MyPushCustomerActivity.class));
                 break;
+
         }
     }
 }

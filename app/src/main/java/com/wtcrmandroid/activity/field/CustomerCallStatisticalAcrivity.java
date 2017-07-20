@@ -152,6 +152,9 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
                     case 1:
                         titleLeftPopupWindow.dismiss();
                         break;
+                    case 3:
+                        calendarPopupWindow.dismiss();
+                        break;
 
                 }
 

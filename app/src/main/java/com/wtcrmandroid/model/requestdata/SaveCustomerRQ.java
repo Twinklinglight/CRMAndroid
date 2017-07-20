@@ -44,6 +44,7 @@ public class SaveCustomerRQ {
     private String tbxCustomerPosition;
     private String txtCompAddress;
     private String tbxDetailAdress;
+    private String txtCompanyDesc;
 
     public int getUserId() {
         return userId;
@@ -179,5 +180,13 @@ public class SaveCustomerRQ {
 
     public void setTbxDetailAdress(String tbxDetailAdress) {
         this.tbxDetailAdress = tbxDetailAdress;
+    }
+
+    public String getTxtCompanyDesc() {
+        return txtCompanyDesc;
+    }
+
+    public void setTxtCompanyDesc(String txtCompanyDesc) {
+        this.txtCompanyDesc = txtCompanyDesc;
     }
 }

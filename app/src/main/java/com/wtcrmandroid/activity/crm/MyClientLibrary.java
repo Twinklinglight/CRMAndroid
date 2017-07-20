@@ -9,6 +9,8 @@ import android.widget.PopupWindow;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
+import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
 import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.model.reponsedata.SearchSalerCustomerRP;
@@ -19,7 +21,6 @@ import com.wtcrmandroid.utils.areaslection.Area;
 import com.wtcrmandroid.utils.areaslection.AreaPopUpWindow;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
-import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/23.
@@ -37,8 +39,6 @@ import butterknife.BindView;
  */
 
 public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List<SearchSalerCustomerRP>> implements OnLoadMoreListener, OnRefreshListener {
-    @BindView(R.id.titlebar)
-    TitleBar titlebar;
     @BindView(R.id.tcmb_bar)
     TopChooseMenuBar tcmbBar;
     @BindView(R.id.swipe_target)
@@ -58,27 +58,33 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
 
     private int page=1;
     private int style;
+
+    @OnClick({R.id.iv_left, R.id.iv_right, R.id.iv_plus})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_left:
+                finish();
+                break;
+            case R.id.iv_right:
+                startActivity(new Intent(MyClientLibrary.this,SearchMyClientLibraryActivity.class).putExtra("kind",0));
+                break;
+            case R.id.iv_plus:
+//                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")){
+                    startActivity(new Intent(this, PullintoCustomerActivity.class));
+//                }else {
+                    startActivity(new Intent(this, SalePullintoCustomerActivity.class));
+//                }
+                break;
+        }
+    }
     @Override
     protected int layout() {
-        return R.layout.activity_client_library;
+        return R.layout.activity_my_client_library;
     }
 
     @Override
     protected void initView() {
-        titlebar.setTitletext("我的客户库");
-        titlebar.setRightImageResource(R.mipmap.ic_white_search);
-        titlebar.setLeftOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        titlebar.setrightLayoutClick(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MyClientLibrary.this,SearchMyClientLibraryActivity.class).putExtra("kind",0));
-            }
-        });
+
         tcmbBar.setStrings(new String[]{"会员类型", "入库来源", "区域"});
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override

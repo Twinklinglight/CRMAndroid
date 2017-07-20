@@ -140,24 +140,6 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-//    @OnClick({R.id.tv_log_management, R.id.tv_field, R.id.tv_document_process})
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            //日志管理点击事件
-//            case R.id.tv_log_management:
-//                startActivity(new Intent(getActivity(), JournalManagerActivity.class));
-//                break;
-//            //外勤点击事件
-//            case R.id.tv_field:
-//                startActivity(new Intent(getActivity(), FieldActivity.class));
-//                break;
-//
-//            //公文审批
-//            case R.id.tv_document_process:
-////                startActivity(new Intent(getContext(), DocumentProcessActivity.class));
-//                break;
-//        }
-//    }
 
     private void showPopupWindow() {
         //设置contentView

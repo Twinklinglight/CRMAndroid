@@ -14,7 +14,6 @@ import com.wtcrmandroid.adapter.fragment.FragmentAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.fragment.battlefieldreport.BattlefieldReportFragment;
 import com.wtcrmandroid.fragment.battlefieldreport.TotalAchievementsFragment;
-import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
 
 import java.util.ArrayList;
@@ -74,14 +73,14 @@ public class BattlefieldReportActivity extends BaseActivity {
                     List list = new ArrayList();
                     list.add("销售战报");
                     list.add("总业绩");
-                    titlePopupWindow = new TitlePopupWindow(this, rlTitle, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
+                    titlePopupWindow = new TitlePopupWindow(this, rlTitle, list, 1, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
                         @Override
                         public void oNclicklistner(String data, int position) {
                             tvCenter.setText(data);
                             titlePopupWindow.dismiss();
                             window = false;
                             fragmentAdapter.Changed(position);
-                            L.e(position + "yemian");
+
 
                         }
                     });

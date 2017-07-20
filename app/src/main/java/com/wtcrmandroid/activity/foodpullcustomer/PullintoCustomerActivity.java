@@ -264,6 +264,13 @@ public class PullintoCustomerActivity extends BaseActivity<SalePullintoCustomerP
             Toast.makeText(this, "请输入客户姓名！", Toast.LENGTH_SHORT).show();
             return;
         }
+        String txtCompanyDesc =mEtCompanyProfile.getText().toString();
+        if(TextUtils.isNull(txtCompanyDesc)){
+            saveCustomerRQ.setTxtCompanyDesc(txtCompanyDesc);
+        }else {
+            Toast.makeText(this, "请输入公司简介！", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String companyAddress =mTvCompanyAddress.getText().toString();
         if(TextUtils.isNull(companyAddress)){
             saveCustomerRQ.setTxtCompAddress(companyAddress);

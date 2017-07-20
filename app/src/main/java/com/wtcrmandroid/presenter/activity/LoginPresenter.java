@@ -9,7 +9,6 @@ import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.requestdata.LoginRequestData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
-import com.wtcrmandroid.utils.MD5Utils;
 import com.wtcrmandroid.view.AllView;
 
 import java.lang.reflect.Type;
@@ -42,14 +41,19 @@ public class LoginPresenter extends BasePresenter{
      */
     public void login() {
         LoginRequestData loginRequestData = new LoginRequestData();
-        /*loginRequestData.setUserName("jiaxinhe");
+
+        /*loginRequestData.setUserName("jiashaowen");
+        loginRequestData.setUserPass(MD5Utils.MD5("2746"));
+        loginRequestData.setImei("612433e62ec71f96");
+        MyApplication.application.setImei("612433e62ec71f96");*/
+        loginRequestData.setUserName("jiaxinhe");
 
         loginRequestData.setImei("9209843230929988");
-        MyApplication.application.setImei("9209843230929988");*/
-        loginRequestData.setUserName("wt");
-        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
-        loginRequestData.setImei("9209843230929999");
-        MyApplication.application.setImei("9209843230929999");
+        MyApplication.application.setImei("9209843230929988");
+//        loginRequestData.setUserName("wt");
+//        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
+//        loginRequestData.setImei("9209843230929999");
+//        MyApplication.application.setImei("9209843230929999");
         /*loginRequestData.setUserName("shenzhongjia");
         loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
         loginRequestData.setImei("9209843230929971");

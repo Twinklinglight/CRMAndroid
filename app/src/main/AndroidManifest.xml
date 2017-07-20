@@ -55,7 +55,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- ——————————————————————-外勤模块—————————————————————————— -->
         <!-- 外勤 -->
         <activity android:name=".activity.field.FieldActivity"/>
@@ -66,13 +67,17 @@
         <!-- 外勤统计 -->
         <activity android:name=".activity.field.FieldStatisticsAcrivity"/>
         <!-- 客户拜访 -->
-        <activity android:name=".activity.field.CustomerCallActivity"/>
+        <activity android:name=".activity.field.CustomerCallActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- 我的拜访记录 -->
         <activity android:name=".activity.field.MyCallRecordActivity"/>
         <!-- 客户拜访情况 -->
         <activity android:name=".activity.field.CustomerCallSituationActivity"/>
         <!-- 客户拜访统计 -->
         <activity android:name=".activity.field.CustomerCallStatisticalAcrivity"/>
+        <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
+        <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
+        <activity android:name=".activity.field.StatisticsDetailsActivity"/>
         <!-- ———————————————————————————————————————————————————————————————— -->
 
 
@@ -122,12 +127,11 @@
         <activity android:name=".activity.crm.MainClientLibrary"/>
         <activity android:name=".activity.crm.MyClientLibrary"/>
         <activity android:name=".activity.crm.PublicSeaActivity"/>
+        <activity android:name=".activity.crm.MyPushCustomerActivity"/>
         <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
         <activity android:name=".activity.crm.SearchMyClientLibraryActivity"/>
+        <activity android:name=".activity.crm.SearchPushCustomerActivity"/>
         <activity android:name=".activity.crm.BattlefieldReportActivity"/>
-        <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
-        <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
-        <activity android:name=".activity.field.StatisticsDetailsActivity"/>
         <activity android:name=".activity.SelectAreaActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 
@@ -202,9 +206,11 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activity.foodpullcustomer.PullintoCustomerActivity" />
+        <activity android:name=".activity.foodpullcustomer.PullintoCustomerActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.foodpullcustomer.FoodSelectActivity" />
-        <activity android:name=".activity.salepullcustomer.SalePullintoCustomerActivity" />
+        <activity android:name=".activity.salepullcustomer.SalePullintoCustomerActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.salepullcustomer.SaleSelectActivity" />
         <activity android:name=".activity.journalmanager.HtJournalDetails" />
         <activity android:name=".activity.journalmanager.XsJournalDetails" />
@@ -212,6 +218,8 @@
         <activity android:name=".activity.aboutdocument.DocumentNomalProcessActivity" />
         <activity android:name=".activity.aboutdocument.SubDocumentActivity" />
         <activity android:name=".activity.aboutdocument.DocSelectPersonActivity"></activity>
+        <!--图片放大浏览-->
+        <activity android:name=".activity.ImageBrowsingActivity"/>
     </application>
 
 </manifest>
