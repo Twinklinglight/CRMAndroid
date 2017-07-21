@@ -40,15 +40,18 @@ public class DaysumWorkCountFragment extends BaseFragment {
     public void init() {
         XsDaysumDetailsActivity activity = (XsDaysumDetailsActivity) getActivity();
         List<WorkOrder> list = activity.DaysumData.getWork().getWorkorder();
-        WorkOrder workorder = list.get(0);
-        tvACount.setText(workorder.getAStore());
-        tvBCount.setText(workorder.getBStore());
-        tvAddACount.setText(workorder.getNewAStore());
-        tvAddBCount.setText(workorder.getNewBStore());
-        tvShangmenCount.setText(workorder.getTrueVisit());
-        tvPhoneCount.setText(workorder.getTrueCall());
-        tvKrlCount.setText(workorder.getStroe());
+        if (list.size()>0){
 
+            WorkOrder workorder = list.get(0);
+            tvACount.setText(workorder.getAStore());
+            tvBCount.setText(workorder.getBStore());
+            tvAddACount.setText(workorder.getNewAStore());
+            tvAddBCount.setText(workorder.getNewBStore());
+            tvShangmenCount.setText(workorder.getTrueVisit());
+            tvPhoneCount.setText(workorder.getTrueCall());
+            tvKrlCount.setText(workorder.getStroe());
+
+        }
     }
 
     @Override

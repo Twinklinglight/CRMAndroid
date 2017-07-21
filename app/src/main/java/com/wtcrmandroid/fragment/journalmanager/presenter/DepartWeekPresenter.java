@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wtcrmandroid.model.WriterWeekPlaneData;
+import com.wtcrmandroid.model.reponsedata.WeekDepartRp;
 import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
@@ -31,18 +32,13 @@ public class DepartWeekPresenter extends BasePresenter {
 
         switch (key){
             case 1:
-                Type listtype = new TypeToken<List<WriterWeekPlaneData>>() {
+                Type listtype = new TypeToken<WeekDepartRp>() {
                 }.getType();
-                List<WriterWeekPlaneData> list = new Gson().fromJson(response,listtype);
-                view.returnData(1,list);
+                WeekDepartRp weekData = new Gson().fromJson(response,listtype);
+                view.returnData(key,weekData);
                 break;
             case 2:
-                Type type = new TypeToken<WeekSumDetailsRpData>() {}.getType();
-                WeekSumDetailsRpData weekSumDetailsRpData =  new Gson().fromJson(response, type);
-                view.returnData(key,weekSumDetailsRpData);
-                break;
-            case 3:
-                view.returnData(3,response);
+                view.returnData(key,response);
                 break;
         }
 
@@ -55,13 +51,9 @@ public class DepartWeekPresenter extends BasePresenter {
         post("WorkPlan/getUserWorkPlan",o,1);
     }
 
-    public void postWeeksum(WeekDetailsRequestData data){
-        post("WorkPlan/getUserWorkPlan",data,2);
-    }
-
     public void postWeekCommint(CommintRQ data){
 
-        post("WorkPlan/saveWorkComment",data,3);
+        post("WorkPlan/saveWorkComment",data,2);
     }
 
 }

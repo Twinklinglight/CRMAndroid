@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/tv_listnull"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:textSize="@dimen/text_size_18"
         android:text="暂无数据"
         android:textColor="@color/black"

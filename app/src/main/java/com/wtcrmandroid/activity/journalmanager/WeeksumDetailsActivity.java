@@ -73,7 +73,7 @@ public class WeeksumDetailsActivity extends BaseActivity<HtWeekSumDetailsPresent
         WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
         weekDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         weekDetailsRequestData.setType("week");
-        weekDetailsRequestData.setPlan(false);
+        weekDetailsRequestData.setIsPlan("false");
         weekDetailsRequestData.setWeekBegin(weekStart);
         weekDetailsRequestData.setWeekEnd(weekEnd);
         presenter.GetWeeSumDeails(weekDetailsRequestData);

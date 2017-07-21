@@ -39,8 +39,6 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.rv_view)
     RecyclerView rvView;
 
-    private boolean isSale = true; //是销售 或 食品
-
     private boolean window;
     private PopupWindow mPopWindow;
 
@@ -64,7 +62,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void init() {
-        isSale = MyApplication.application.getLoginData().isIsSaler();
+
         list.add(new HomeItemD(0, "OA办公", 0));
         oa_url = new int[]{R.mipmap.ic_home_log_management, R.mipmap.ic_home_notice_announcement, R.mipmap.ic_home_document_processing,
                 R.mipmap.ic_home_field, R.mipmap.ic_home_meeting_room_reservation, R.mipmap.ic_home_employees_management};

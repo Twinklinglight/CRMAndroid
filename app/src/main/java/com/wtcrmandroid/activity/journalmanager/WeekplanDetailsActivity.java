@@ -56,7 +56,7 @@ public class WeekplanDetailsActivity extends BaseActivity<WeekPlanDetailsPresent
         WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
         weekDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         weekDetailsRequestData.setType("week");
-        weekDetailsRequestData.setPlan(true);
+        weekDetailsRequestData.setIsPlan("true");
         weekDetailsRequestData.setWeekBegin(weekStart);
         weekDetailsRequestData.setWeekEnd(weekEnd);
 

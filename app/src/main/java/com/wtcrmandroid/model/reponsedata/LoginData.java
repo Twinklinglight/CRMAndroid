@@ -20,7 +20,7 @@ public class LoginData {
     private String Attribution;
     private int DepartmentID;
     private String Token;
-    private boolean IsSaler;
+    private int RoleClass;
 
     public int getUserID() {
         return UserID;
@@ -62,11 +62,11 @@ public class LoginData {
         this.Token = Token;
     }
 
-    public boolean isIsSaler() {
-        return IsSaler;
+    public int getRoleClass() {
+        return RoleClass;
     }
 
-    public void setIsSaler(boolean IsSaler) {
-        this.IsSaler = IsSaler;
+    public void setRoleClass(int roleClass) {
+        RoleClass = roleClass;
     }
 }

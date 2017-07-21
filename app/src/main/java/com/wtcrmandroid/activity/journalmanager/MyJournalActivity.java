@@ -56,8 +56,6 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     private String todate = "";     //时间筛选
     private int index = 0;          //索引
 
-    private boolean isSeal = true;
-
     private TitlePopupWindow TypeWindows;
 
     private CalendarPopupWindow calendarWindow;
@@ -65,6 +63,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     private MyJournalAdapter mMyJournalAdapter;
 
     private List<MyjournalRponseData> mDatas;
+    private int roleClass;
 
     @Override
     protected int layout() {
@@ -74,6 +73,9 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     @Override
     protected void initView() {
         presenter = new MyJournalPresenter(this,this);
+
+        roleClass = MyApplication.application.getLoginData().getRoleClass();
+
         postData(index,type,todate,1);
 
         mTitlebar.setTitletext("我的日志");
@@ -248,7 +250,8 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     @Override
     public void DayPlanClick(int position) {
 
-        if (isSeal){
+
+        if (roleClass == 0){
             Intent intent = new Intent(MyJournalActivity.this, XsDayplanDetailsActivity.class);
             intent.putExtra("dpdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
             startActivity(intent);
@@ -262,7 +265,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     @Override
     public void DaySumClick(int position) {
 
-        if (isSeal){
+        if (roleClass == 0){
             Intent intent = new Intent(MyJournalActivity.this, XsDaysumDetailsActivity.class);
             intent.putExtra("dsdate",mMyJournalAdapter.getmDatas().get(position).getShortRecordDate());
             startActivity(intent);

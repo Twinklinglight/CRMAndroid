@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -37,7 +38,7 @@ public class JournalManagerActivity extends BaseActivity {
     @BindView(R.id.rl_department_employees_log_management)
     RelativeLayout mRlJournalManagerBmygrz;     //部门员工日志
 
-    private boolean isSales = true;    //是否是销售人员
+    private int roleClass;                  //标识、0为销售模板，其他为后台模板；
 
     @Override
     protected int layout() {
@@ -46,6 +47,8 @@ public class JournalManagerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+        roleClass = MyApplication.application.getLoginData().getRoleClass();
         mTitlebar.setTitletext("日志管理");
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +56,6 @@ public class JournalManagerActivity extends BaseActivity {
                 finish();
             }
         });
-//        isSales = MyApplication.application.getLoginData().isIsSaler();
     }
 
 
@@ -65,7 +67,7 @@ public class JournalManagerActivity extends BaseActivity {
         switch (view.getId()) {
             //写日总结
             case R.id.ll_journalManager_write_daysum:
-                if (isSales){
+                if (roleClass == 0){
                     startActivity(new Intent(JournalManagerActivity.this,XsWriteDaysumActivity.class));
                 }else {
                     startActivity(new Intent(JournalManagerActivity.this,WriteDaySumActivity.class));
@@ -73,7 +75,7 @@ public class JournalManagerActivity extends BaseActivity {
                 break;
             //写日计划
             case R.id.ll_write_day_plan:
-                if (isSales){
+                if (roleClass == 0){
                     startActivity(new Intent(JournalManagerActivity.this,XsWriteDayplanActivity.class));
                 }else {
                     startActivity(new Intent(JournalManagerActivity.this,WriteDayPlanActivity.class));

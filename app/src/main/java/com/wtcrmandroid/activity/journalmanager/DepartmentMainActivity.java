@@ -30,8 +30,6 @@ public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter
     ListView listDepart;
     private DepartmentJournalAdapter mAdapter;
 
-    private boolean isSale = true;
-
     @Override
     protected int layout() {
         return R.layout.activity_department_employees_log_management_main;
@@ -74,7 +72,9 @@ public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (isSale){
+                int roleclass = data.get(position).getRoleclass();
+
+                if (roleclass == 0){    //0是销售、其他是后台
 
                     Intent intent = new Intent(DepartmentMainActivity.this, XsJournalDetails.class);
                     intent.putExtra("userid", data.get(position).getUserid());

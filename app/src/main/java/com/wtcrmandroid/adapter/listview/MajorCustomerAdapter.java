@@ -43,7 +43,8 @@ public class MajorCustomerAdapter extends MySmallBaseAdapter<MajorCustomerData, 
 
     @Override
     protected View onCreateNullViewholder() {
-        return null;
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_list_null,null);
+        return view;
     }
 
 

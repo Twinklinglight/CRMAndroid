@@ -82,7 +82,7 @@ public class XsDaysumDetailsActivity extends BaseActivity<XsDaysumDetailsPresent
         DayDetailsRQ dayDetailsRQ = new DayDetailsRQ();
         dayDetailsRQ.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRQ.setType("day");
-        dayDetailsRQ.setIsPlan(false);
+        dayDetailsRQ.setIsPlan("false");
         dayDetailsRQ.setRoleClass(0);
         dayDetailsRQ.setNowDate(timeDate);
 

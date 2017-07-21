@@ -1,5 +1,7 @@
 package com.wtcrmandroid.model.reponsedata;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by zxd on 2017/7/10.
  */
@@ -9,7 +11,17 @@ public class DepartmentRponseData {
     private int userid;
     private String username;
     private String roleLevel;
+    @SerializedName("examineCount")
     private String Column1;
+    private int roleclass;
+
+    public int getRoleclass() {
+        return roleclass;
+    }
+
+    public void setRoleclass(int roleclass) {
+        this.roleclass = roleclass;
+    }
 
     public int getUserid() {
         return userid;

@@ -76,7 +76,7 @@ public class XsDayplanDetailsActivity extends BaseActivity<XsDayPlanDetailsPrese
         DayDetailsRQ dayDetailsRQ = new DayDetailsRQ();
         dayDetailsRQ.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRQ.setType("day");
-        dayDetailsRQ.setIsPlan(true);
+        dayDetailsRQ.setIsPlan("true");
         dayDetailsRQ.setNowDate(timeDate);
         dayDetailsRQ.setRoleClass(0);
 

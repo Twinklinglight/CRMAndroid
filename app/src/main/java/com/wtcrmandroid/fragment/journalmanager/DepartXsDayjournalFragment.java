@@ -1,6 +1,7 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -19,6 +20,9 @@ import com.wtcrmandroid.adapter.listview.MajorCustomerAdapter;
 import com.wtcrmandroid.adapter.listview.SingleFragmentAdapter;
 import com.wtcrmandroid.adapter.listview.WorkLoadFgAdapter;
 import com.wtcrmandroid.fragment.journalmanager.presenter.XsDepartDayPresenter;
+import com.wtcrmandroid.model.reponsedata.CommentData;
+import com.wtcrmandroid.model.reponsedata.XsDausumWorkData;
+import com.wtcrmandroid.model.reponsedata.XsDayDepartRp;
 import com.wtcrmandroid.model.reponsedata.XsDayplanDetailsRP;
 import com.wtcrmandroid.model.reponsedata.XsDaysumDetailsRP;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
@@ -92,6 +96,7 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
     private View commentHead;   //评论headview;
     private ViewHolder viewHolder;
     private TextView learnStudy;//学习反省
+    private String level;
     private CalendarPopupWindow Calendarwindow;
     private HtDayplanDetailsAdapter xsDayplanAdapter;
     private SingleFragmentAdapter singleFragmentAdapter;
@@ -108,63 +113,70 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
 
         switch (key) {
             case 1:
-                XsDayplanDetailsRP planData = (XsDayplanDetailsRP) data;
+                XsDayDepartRp dayData = (XsDayDepartRp)data;
+
+                XsDayplanDetailsRP planData = dayData.getPlan();
+                XsDausumWorkData work = dayData.getWork();
+                List<CommentData> exam = dayData.getExam();
+                learnStudy.setText(dayData.getLearning());
+                Logid = dayData.getLogId();
+                level = dayData.getLeve();
+
                 xsDayplanAdapter = new HtDayplanDetailsAdapter(getActivity(), planData.getWorkdetail());
                 mLvDayplanDetails.setAdapter(xsDayplanAdapter);
-                xsDayplanAdapter.notifyDataSetChanged();
+                xsDayplanAdapter.notifyDataSetChanged();                    //日计划详情
 
                 singleFragmentAdapter = new SingleFragmentAdapter(getActivity(), planData.getWorkDreamOrder());
                 mLvSingleAnalysis.setAdapter(singleFragmentAdapter);
-                singleFragmentAdapter.notifyDataSetChanged();
+                singleFragmentAdapter.notifyDataSetChanged();               //预测单客户
 
                 majorCustomerAdapter = new MajorCustomerAdapter(getActivity(), planData.getWorkFocus());
                 mLvMajorGenjin.setAdapter(majorCustomerAdapter);
-                majorCustomerAdapter.notifyDataSetChanged();
-                break;
-            case 2:
-                XsDaysumDetailsRP sumData = (XsDaysumDetailsRP) data;
-                learnStudy.setText(sumData.getLearning());
-                Logid = sumData.getLogId();
+                majorCustomerAdapter.notifyDataSetChanged();                //重点客户
 
-                daysumDetailsAdapter = new HtDaysumDetailsAdapter(getActivity(), sumData.getWork().getWorkdetail());
+                daysumDetailsAdapter = new HtDaysumDetailsAdapter(getActivity(), work.getWorkdetail());
                 mLvDaysumDetails.setAdapter(daysumDetailsAdapter);
-                daysumDetailsAdapter.notifyDataSetChanged();        //日总结列表
+                daysumDetailsAdapter.notifyDataSetChanged();                //日总结列表
 
-                List<WorkOrder> workorder = sumData.getWork().getWorkorder();
-                WorkOrder order = workorder.get(0);
-                mTvPhoneCount.setText(order.getTrueCall());
-                mTvACount.setText(order.getAStore());
-                mTvBCount.setText(order.getBStore());
-                mTvAddACount.setText(order.getNewAStore());
-                mTvAddBCount.setText(order.getNewBStore());
-                mTvKrlCount.setText(order.getStroe());
-                mTvShangmenCount.setText(order.getTrueVisit());     //今日工作量
+                List<WorkOrder> workorder = work.getWorkorder();
 
-                workLoadFgAdapter = new WorkLoadFgAdapter(getActivity(), sumData.getWork().getWorkload());
+                if (workorder != null){
+
+                    if (workorder.size()>0){
+                        WorkOrder order = workorder.get(0);
+                        mTvPhoneCount.setText(order.getTrueCall());
+                        mTvACount.setText(order.getAStore());
+                        mTvBCount.setText(order.getBStore());
+                        mTvAddACount.setText(order.getNewAStore());
+                        mTvAddBCount.setText(order.getNewBStore());
+                        mTvKrlCount.setText(order.getStroe());
+                        mTvShangmenCount.setText(order.getTrueVisit());     //今日工作量
+                    }
+
+                }
+                workLoadFgAdapter = new WorkLoadFgAdapter(getActivity(), work.getWorkload());
                 lvLoad.setAdapter(workLoadFgAdapter);
                 workLoadFgAdapter.notifyDataSetChanged();           //回款到单
 
-                ifgetSingleDetailsAdapter = new IfgetSingleDetailsAdapter(getActivity(), sumData.getWork().getWorkdream());
+                ifgetSingleDetailsAdapter = new IfgetSingleDetailsAdapter(getActivity(), work.getWorkdream());
                 mLvIfgetSingle.setAdapter(ifgetSingleDetailsAdapter);
                 ifgetSingleDetailsAdapter.notifyDataSetChanged();       //单客户是否踩中
 
-                addPurposeFragmentAdapter = new AddPurposeFragmentAdapter(getActivity(), sumData.getWork().getAddcustinfo());
+                addPurposeFragmentAdapter = new AddPurposeFragmentAdapter(getActivity(), work.getAddcustinfo());
                 mLvAddCustomer.setAdapter(addPurposeFragmentAdapter);
                 addPurposeFragmentAdapter.notifyDataSetChanged();       //新增意向客户
 
-
-
-                if (sumData.getExam().size() > 0) {
+                if (exam.size() > 0) {
                     viewHolder.tvCommentCount.setVisibility(View.VISIBLE);
                 } else {
                     viewHolder.tvCommentCount.setVisibility(View.GONE);
                 }
-                viewHolder.tvCommentCount.setText("评论(" + sumData.getExam().size() + ")");
-                commentAdapter = new CommentAdapter(getActivity(), sumData.getExam(), sumData.getLeve());
+                viewHolder.tvCommentCount.setText("评论(" + exam.size() + ")");
+                commentAdapter = new CommentAdapter(getActivity(), exam, level);
                 mLvComment.setAdapter(commentAdapter);
                 commentAdapter.notifyDataSetChanged();
                 break;
-            case 3:
+            case 2:
                 Toast.makeText(getContext(), "评论成功", Toast.LENGTH_SHORT).show();
                 postData(userid, datetime);  //刷新列表
                 break;
@@ -201,7 +213,15 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
 
     }
 
+    //取消popupwindow
+    public void cancleWindows(){
+        if (Calendarwindow != null){
 
+            if (Calendarwindow.isShowing()){
+                Calendarwindow.dismiss();
+            }
+        }
+    }
     @OnClick({R.id.iv_calender, R.id.tv_write_comment})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -242,8 +262,9 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        datetime = sdf2.format(date);
         mTvDate.setText(sdf.format(date));
-        postData(userid, sdf2.format(date));
+        postData(userid,datetime );
     }
 
     private void postData(int userid, String data) {
@@ -252,17 +273,8 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
         dayDetailsRQ.setNowDate(data);
         dayDetailsRQ.setRoleClass(0);
         dayDetailsRQ.setType("day");
-        dayDetailsRQ.setIsPlan(false);
+        dayDetailsRQ.setIsPlan("");
         presenter.PostDepartDayplan(dayDetailsRQ);
-
-        DayDetailsRQ daysumRQ = new DayDetailsRQ();
-        daysumRQ.setUserId(userid);
-        daysumRQ.setNowDate(data);
-        daysumRQ.setRoleClass(0);
-        daysumRQ.setType("day");
-        daysumRQ.setIsPlan(true);
-        presenter.PostDepartDayplan(daysumRQ);
-
     }
 
 

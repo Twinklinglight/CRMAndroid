@@ -8,9 +8,8 @@ public class DayDetailsRQ {
 
     private int userId;
     private String type;
-    private boolean isPlan;
+    private String isPlan;
     private String nowDate;
-
     private int roleClass;
 
     public int getRoleClass() {
@@ -37,11 +36,11 @@ public class DayDetailsRQ {
         this.type = type;
     }
 
-    public boolean getIsPlan() {
+    public String getIsPlan() {
         return isPlan;
     }
 
-    public void setIsPlan(boolean isPlan) {
+    public void setIsPlan(String isPlan) {
         this.isPlan = isPlan;
     }
 

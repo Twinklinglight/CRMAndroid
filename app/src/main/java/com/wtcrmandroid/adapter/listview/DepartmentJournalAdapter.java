@@ -24,7 +24,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by zxd on 2017/6/15
  */
 
-public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentRponseData, DepartmentJournalAdapter.ViewHolder> {
+public class DepartmentJournalAdapter extends BaseAdapter<DepartmentRponseData, DepartmentJournalAdapter.ViewHolder> {
 
     public DepartmentJournalAdapter(Activity activity, List<DepartmentRponseData> list) {
         super(activity, list);
@@ -48,13 +48,15 @@ public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentRpons
     }
 
     @Override
-    protected View onCreateViewHolder() {
-        View view = LayoutInflater.from(activity).inflate(R.layout.item_department_journal, null);
-        ViewHolder viewHolder = new ViewHolder(view);
-        view.setTag(viewHolder);
-        return view;
+    protected ViewHolder onCreateViewHolder(View v) {
+        return new ViewHolder(v);
     }
 
+    @Override
+    protected View CretaView() {
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_department_journal, null);
+        return view;
+    }
 
     //设置图片颜色
     private void setColor(String type,ViewHolder holder){
@@ -72,10 +74,6 @@ public class DepartmentJournalAdapter extends MySmallBaseAdapter<DepartmentRpons
                 holder.mIvHeadpicture.setFillColor(Color.parseColor("#F76129"));
                 break;
         }
-    }
-    @Override
-    protected View onCreateNullViewholder() {
-        return null;
     }
 
     static class ViewHolder {

@@ -81,4 +81,16 @@ public class HtDaysumDetailsData {
         WorkComplete = workComplete;
     }
 
+    @Override
+    public String toString() {
+        return "HtDaysumDetailsData{" +
+                "WorkSort='" + WorkSort + '\'' +
+                ", WorkPerson='" + WorkPerson + '\'' +
+                ", WorkContent='" + WorkContent + '\'' +
+                ", WorkComplete='" + WorkComplete + '\'' +
+                ", workFinishTime='" + workFinishTime + '\'' +
+                ", workUnfinishedReason='" + workUnfinishedReason + '\'' +
+                ", workNextFinishTime='" + workNextFinishTime + '\'' +
+                '}';
+    }
 }
