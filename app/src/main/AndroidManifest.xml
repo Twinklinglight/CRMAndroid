@@ -103,26 +103,33 @@
         <!-- 日志管理 -->
         <activity android:name=".activity.journalmanager.JournalManagerActivity"/>
         <!-- 写日计划 -->
-        <activity android:name=".activity.journalmanager.WriteDayPlanActivity"/>
+        <activity android:name=".activity.journalmanager.WriteDayPlanActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- 战报 -->
         <!-- 写日总结 -->
-        <activity android:name=".activity.journalmanager.WriteDaySumActivity"/>
+        <activity android:name=".activity.journalmanager.WriteDaySumActivity"
+            android:windowSoftInputMode="adjustPan"/>
 
         <!-- 写周计划界面 -->
-        <activity android:name=".activity.journalmanager.WriteWeekPlanActivity"/>
+        <activity android:name=".activity.journalmanager.WriteWeekPlanActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- 写周总结界面 -->
-        <activity android:name=".activity.journalmanager.WriteWeekConclusionActivity"/>
+        <activity android:name=".activity.journalmanager.WriteWeekConclusionActivity"
+            android:windowSoftInputMode="adjustPan"/>
 
         <!-- 我的日志 -->
         <activity android:name=".activity.journalmanager.MyJournalActivity"/>
         <!-- 预测到单客户 -->
-        <activity android:name=".activity.journalmanager.SingleCustomer"/>
+        <activity android:name=".activity.journalmanager.SingleCustomer"
+            android:windowSoftInputMode="adjustPan"/>
 
         <!-- 重点意向客户 -->
-        <activity android:name=".activity.journalmanager.MajorCustomerActivity"/>
+        <activity android:name=".activity.journalmanager.MajorCustomerActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- 回款到单 -->
-        <activity android:name=".activity.journalmanager.GetMoneyActivity"/>
-        <!-- 今日工作量 -->
+        <activity android:name=".activity.journalmanager.GetMoneyActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
        <!--————————————————————————————————CRM——————————————————————————————————————-->
         <activity android:name=".activity.crm.MainClientLibrary"/>
         <activity android:name=".activity.crm.MyClientLibrary"/>
@@ -135,18 +142,16 @@
         <activity android:name=".activity.SelectAreaActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 
-
-        <!-- ###### -->
-        <!-- ###### -->
-        <!-- ###### -->
-
+        <!-- 今日工作量 -->
         <activity
             android:name=".activity.journalmanager.TodayWorkLoadActivity"
             android:windowSoftInputMode="stateHidden"/>
         <!-- 预测单客户踩中 -->
-        <activity android:name=".activity.journalmanager.GetSingleCustomerActivity"/>
+        <activity android:name=".activity.journalmanager.GetSingleCustomerActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- 新增意向客户 -->
-        <activity android:name=".activity.journalmanager.AddPurposeCustomerActivity"/>
+        <activity android:name=".activity.journalmanager.AddPurposeCustomerActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <!-- 部门员工日志管理首页 -->
         <activity android:name=".activity.journalmanager.DepartmentMainActivity"/>
         <!-- 部门员工日志管理搜索页 -->

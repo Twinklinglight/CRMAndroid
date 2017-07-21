@@ -14,9 +14,13 @@ import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.WriteWeekSumPresenter;
 import com.wtcrmandroid.adapter.listview.WriterWeekConclusionAdapter;
+import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.model.WriterWeekSumData;
+import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.model.requestdata.WweekSumRequstData;
 import com.wtcrmandroid.utils.DateUtils;
+import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.dialog.WeekDialog;
 
@@ -57,7 +61,22 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
 
     @Override
     protected void initView() {
+
+        dateUtils = new DateUtils();
+        nowWeek = dateUtils.getNowWeek();       //获取当前周日期 区间
+        weekBegin = dateUtils.getWantDate(nowWeek.split("-")[0]);   //获取当前周起始日期
+        weekEnd = dateUtils.getWantDate(nowWeek.split("-")[1]);     //获取当前周结束日期
+
         presenter = new WriteWeekSumPresenter(this, this);
+
+        WeekDetailsRequestData weekDetailsRequestData = new WeekDetailsRequestData();
+        weekDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
+        weekDetailsRequestData.setType("week");
+        weekDetailsRequestData.setIsPlan("true");
+        weekDetailsRequestData.setWeekBegin(weekBegin);
+        weekDetailsRequestData.setWeekEnd(weekEnd);
+
+        presenter.getWeekPlan(weekDetailsRequestData);  //先获取周计划详情
 
         titlebar.setTitletext("写周总结");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
@@ -67,13 +86,9 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
             }
         });
 
-        dateUtils = new DateUtils();
-        nowWeek = dateUtils.getNowWeek();       //获取当前周日期 区间
-
-        weekBegin = dateUtils.getWantDate(nowWeek.split("-")[0]);   //获取当前周起始日期
-        weekEnd = dateUtils.getWantDate(nowWeek.split("-")[1]);     //获取当前周结束日期
-
         tvDateShow.setText(nowWeek);
+
+
         final WriterWeekSumData writerWeekPlaneData = new WriterWeekSumData();
         writerWeekPlaneData.setWorkNumber("");
         list = new ArrayList<>();
@@ -100,7 +115,7 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
         viewHolder.ibWeeksumSumyuyin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                doVoice(viewHolder.etWeeksumSum);
             }
         });
 
@@ -109,8 +124,17 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
     @Override
     public void returnData(int key, Object data) {
 
-        Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
-        this.finish();
+        switch (key){
+            case 1:
+                Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
+                this.finish();
+                break;
+            case 2:
+                List<WriterWeekPlaneData> planData = (List<WriterWeekPlaneData>)data;
+                break;
+        }
+
+
 
     }
 
@@ -143,6 +167,24 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
         weekBegin = dateUtils.getWantDate(weekText.split("-")[0]);
         weekBegin = dateUtils.getWantDate(weekText.split("-")[1]);
 
+    }
+
+    //语音接口
+    public void doVoice(final EditText etText) {
+
+        Iat iat = new Iat(this);
+        iat.iatRecognize();
+        iat.setSetRestult(new Iat.setResult() {
+            @Override
+            public void succeed(String result) {
+                etText.setText(result);
+            }
+
+            @Override
+            public void failed(String iatError) {
+                L.e("出现了一个错误，请您重试");
+            }
+        });
     }
 
     static class ViewHolder {

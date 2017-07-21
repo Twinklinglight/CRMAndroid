@@ -57,6 +57,7 @@ public class HtDayplanDetails extends BaseActivity<HtDayplanDetailsPresenter,Lis
         dayDetailsRequestData.setNowDate(DateTime);
         dayDetailsRequestData.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRequestData.setType("day");
+        dayDetailsRequestData.setRoleClass(MyApplication.application.getLoginData().getRoleClass());
         dayDetailsRequestData.setIsPlan("true");
         presenter.getDayPlanData(dayDetailsRequestData);
 

@@ -113,7 +113,7 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
 
                 break;
             case 2:
-                postData(userId,beginTiem,endTime);
+                postData(userId,beginTiem,endTime);     //刷新列表
                 Toast.makeText(getContext(), "成功", Toast.LENGTH_SHORT).show();
                 break;
         }

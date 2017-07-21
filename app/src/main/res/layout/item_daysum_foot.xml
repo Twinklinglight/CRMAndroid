@@ -1,60 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_daysum_addjob"
-        android:padding="10dp"
-        android:background="@android:color/white"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_xrz_add"/>
+            android:src="@mipmap/ic_xrz_add" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:text="@string/add_work"
-            android:textColor="@color/colorPrimary"
-            />
+            android:textSize="@dimen/text_size_18"
+            android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorBackground"/>
     <RelativeLayout
-        android:layout_marginTop="10dp"
-        android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:background="@color/white"
+        android:layout_marginBottom="10dp"
         android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_xrz_sum"/>
+                android:src="@mipmap/ic_xrz_sum" />
 
             <EditText
                 android:id="@+id/et_daysum_sum"
                 style="@style/EditTextStyle"
-                android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="今日学习与反省（心得、体会）"/>
+                android:layout_marginLeft="10dp"
+                android:hint="今日学习与反省（心得、体会）" />
 
 
         </LinearLayout>
@@ -63,11 +67,10 @@
             android:id="@+id/ib_daysum_sumyuyin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:background="@null"
-            android:src="@mipmap/ic_xrz_yuyin"
-            />
+            android:src="@mipmap/ic_xrz_yuyin" />
 
     </RelativeLayout>
 

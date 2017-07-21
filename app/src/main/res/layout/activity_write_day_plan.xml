@@ -54,6 +54,7 @@
 
     <ListView
         android:id="@+id/lv_write_dayplan"
+        android:divider="@null"
         android:layout_above="@id/tv_dayplan_submit"
         android:layout_below="@id/rl_head"
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -95,7 +96,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
 
             mDayPlanAdapter.notifyDataSetChanged();
 
-            mViewHolder1.mRlAddjob.setOnClickListener(new View.OnClickListener() {
+            mViewHolder1.mllAddjob.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -163,7 +164,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
 
     static class ViewHolder1 {
         @BindView(R.id.rl_addjob)
-        RelativeLayout mRlAddjob;
+        LinearLayout mllAddjob;
 
         ViewHolder1(View view) {
             ButterKnife.bind(this, view);
