@@ -185,7 +185,7 @@ public class SalePullintoCustomerActivity extends BaseActivity<SalePullintoCusto
     //提交数据
     private void submit() {
         String sort=mTvSort.getText().toString();
-        saveCustomerRQ.setAttribution(MyApplication.application.getLoginData().getAttribution());
+        saveCustomerRQ.setAttribution("WT");
         saveCustomerRQ.setUserId(MyApplication.application.getLoginData().getUserID());
         if(TextUtils.isNull(sort)){
             saveCustomerRQ.setDrpWTCustomerKind(sort);

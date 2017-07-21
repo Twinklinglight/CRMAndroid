@@ -9,7 +9,6 @@ import android.widget.PopupWindow;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.foodpullcustomer.PullintoCustomerActivity;
 import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
 import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
@@ -70,7 +69,7 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
                 break;
             case R.id.iv_plus:
 //                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")){
-                    startActivity(new Intent(this, PullintoCustomerActivity.class));
+//                    startActivity(new Intent(this, PullintoCustomerActivity.class));
 //                }else {
                     startActivity(new Intent(this, SalePullintoCustomerActivity.class));
 //                }
@@ -263,8 +262,9 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
         if(page==1) {
             mSwipeToLoadLayout.setRefreshing(false);
 
-        }else
+        }else{
             mSwipeToLoadLayout.setLoadingMore(false);
-
+            page=page-1;
+        }
     }
 }

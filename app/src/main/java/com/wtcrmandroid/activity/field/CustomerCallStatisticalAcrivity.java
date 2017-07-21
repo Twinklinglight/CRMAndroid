@@ -98,6 +98,7 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
                         //左边弹窗
                         if (titleLeftPopupWindow == null) {
                             List list = new ArrayList();
+                            list.add("全部");
                             list.add("物通市场部");
                             titleLeftPopupWindow = new TitlePopupWindow(CustomerCallStatisticalAcrivity.this, tcmbBar, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
                                 @Override

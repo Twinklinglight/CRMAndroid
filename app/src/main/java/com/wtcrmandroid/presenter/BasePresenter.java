@@ -65,7 +65,15 @@ public abstract class BasePresenter {
 
             @Override
             public void onNetError(Exception e) {
-                L.e("BasePresenter.onNetError(Exception e)");
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //已在主线程中，可以更新UI
+                        view.showShortToast("网络错误！");
+                    }
+                });
+
+                L.e("BasePresenter.onNetError(Exception e)"+e.toString());
                 loadingDialog.dismiss();
             }
         });

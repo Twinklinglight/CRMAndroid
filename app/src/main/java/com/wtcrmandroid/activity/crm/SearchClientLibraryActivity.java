@@ -45,7 +45,7 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
 
     private int kind;
 
-    private int page = 1;
+    private int page = 0;
 
     @Override
     protected int layout() {
@@ -132,5 +132,16 @@ public class SearchClientLibraryActivity extends BaseActivity<SearchClientLibrar
         page = page + 1;
         data.setPageSize(page);
         presenter.searchCompany(data, 1);
+    }
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+        mSwipeToLoadLayout.setLoadingMore(false);
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+        } else{
+            mSwipeToLoadLayout.setLoadingMore(false);
+            page=page-1;
+        }
     }
 }

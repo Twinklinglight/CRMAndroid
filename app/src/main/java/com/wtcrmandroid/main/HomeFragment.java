@@ -88,16 +88,8 @@ public class HomeFragment extends BaseFragment {
         for (int i = 0; i < other_url.length; i++) {
             list.add(new HomeItemD(other_url[i], other_name[i], other_click[i]));
         }
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
-        //todo 这个属性很重要，可以直接实现上图的效果
-        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                if (position == 0 || position == oa_url.length+1 || position == oa_url.length + crm_url.length+2)
-                    return 4;
-                return 1;
-            }
-        });
         e(list.size()+"==="+list.toString());
         rvView.setLayoutManager(gridLayoutManager);
         rvView.setAdapter(crm_adapter = new HomeAdapter(getActivity(), list));

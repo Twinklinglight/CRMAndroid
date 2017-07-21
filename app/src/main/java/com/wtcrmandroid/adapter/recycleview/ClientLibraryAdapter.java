@@ -62,11 +62,15 @@ public class ClientLibraryAdapter extends BaseRecycleAdapter<SearchCustomerRP, C
         });
         if (bean.getCurrentStatus().equals("Sale")) {
             holder.tvLibraryKind.setText("销售库");
+            holder.btView.setVisibility(View.GONE);
         } else if (bean.getCurrentStatus().equals("Free")) {
             holder.tvLibraryKind.setText("公海");
+            holder.btView.setVisibility(View.VISIBLE);
         } else if (bean.getCurrentStatus().equals("Order")) {
+            holder.btView.setVisibility(View.GONE);
             holder.tvLibraryKind.setText("成单库");
         } else {
+            holder.btView.setVisibility(View.GONE);
             holder.tvLibraryKind.setText("过期物信通库");
         }
         switch (style) {

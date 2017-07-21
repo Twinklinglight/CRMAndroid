@@ -45,7 +45,7 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLi
     private CompanyNameRetrievalRQ data;
 
 
-    private int page = 1;
+    private int page = 0;
 
     @Override
     protected int layout() {
@@ -76,6 +76,8 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLi
                 finish();
                 break;
             case R.id.tv_right:
+                page = 1;
+                data.setPageSize(page);
                 data.setCompanyName(etSearch.getText().toString());
                 presenter.searchCompany(data, 0);
                 break;
@@ -115,5 +117,16 @@ public class SearchMyClientLibraryActivity extends BaseActivity<SearchMyClientLi
         data.setPageSize(page);
         presenter.searchCompany(data, 1);
 
+    }
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+        mSwipeToLoadLayout.setLoadingMore(false);
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+        } else{
+            mSwipeToLoadLayout.setLoadingMore(false);
+            page=page-1;
+        }
     }
 }

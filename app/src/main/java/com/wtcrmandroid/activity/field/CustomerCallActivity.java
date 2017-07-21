@@ -89,6 +89,8 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
 
     @Override
     protected void initview() {
+        Location();
+        startLocation();
         presenter = new CustomerCallP(this, this);
         titlebar.setTitletext("客户拜访");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
@@ -224,9 +226,12 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
     }
 
 
-    @OnClick({R.id.ll_select_customer, R.id.iv_microphone, R.id.bt_submit})
+    @OnClick({R.id.ll_select_customer, R.id.iv_microphone, R.id.bt_submit,R.id.iv_positioning})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.iv_positioning:
+                startLocation();
+                break;
             case R.id.ll_select_customer:
                 startActivityForResult(new Intent(CustomerCallActivity.this, MyClientLibrary.class).putExtra("style", 1), 10);
                 break;

@@ -8,12 +8,27 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height" />
 
-    <com.baidu.mapapi.map.MapView
-        android:id="@+id/bmapView"
+    <RelativeLayout
+        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:clickable="true"
-        android:layout_below="@+id/titlebar"/>
+        android:layout_below="@+id/titlebar">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:clickable="true" />
+
+        <ImageView
+            android:id="@+id/iv_positioning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/ic_positioning" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/bt_submit"
@@ -28,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bt_submit"
-        android:layout_below="@+id/bmapView"
+        android:layout_below="@+id/rl"
         >
 
         <LinearLayout

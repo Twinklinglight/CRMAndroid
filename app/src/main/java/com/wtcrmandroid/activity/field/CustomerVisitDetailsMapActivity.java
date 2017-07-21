@@ -12,6 +12,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.Marker;
@@ -26,6 +27,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/19.
@@ -50,6 +52,7 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
 
     @Override
     protected void initview() {
+        Location();
         titlebar.setTitletext("客户拜访详情");
         titlebar.setRightText("列表模式");
         titlebar.setRightOnClickListener(new View.OnClickListener() {
@@ -70,7 +73,7 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
             View contentView = LayoutInflater.from(this).inflate(R.layout.overlay_view, null);
             ViewHolder holder = new ViewHolder(contentView);
             holder.tvAddress.setText(data.getCustomerName());
-            holder.tvNumber.setText((i+1)+"");
+            holder.tvNumber.setText((i + 1) + "");
             //定义用于显示该InfoWindow的坐标点
             LatLng pt = new LatLng(data.getLng(), data.getLat());
             bd = BitmapDescriptorFactory.fromBitmap(getBitmapFromView(contentView));
@@ -83,6 +86,11 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
 
         }
         bd.recycle();
+        LatLng ll = new LatLng(list.get(0).getLng(),
+                list.get(0).getLat());
+        MapStatus.Builder builder = new MapStatus.Builder();
+        builder.target(ll).zoom(18.0f);
+        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -111,6 +119,11 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
     }
 
 
+
+    @OnClick(R.id.iv_positioning)
+    public void onViewClicked() {
+        startLocation();
+    }
 
 
     static class ViewHolder {

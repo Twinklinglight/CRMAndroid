@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="25dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#f5f6f7"/>
-        </LinearLayout>
-
-    </ScrollView>
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
 
     <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 
-</RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>
+
+
+

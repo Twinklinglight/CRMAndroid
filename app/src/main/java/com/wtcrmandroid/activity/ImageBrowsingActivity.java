@@ -1,13 +1,16 @@
 package com.wtcrmandroid.activity;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -15,6 +18,7 @@ import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.wtcrmandroid.R;
+import com.wtcrmandroid.view.dragzoomimageview.DragImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +43,7 @@ public class ImageBrowsingActivity extends Activity implements ViewPager.OnPageC
     private List<ImageView> imageViewList;
     // 点之间的宽度
     private int pWidth=20;
-
+    private int window_width, window_height;// 控件宽度
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,10 @@ public class ImageBrowsingActivity extends Activity implements ViewPager.OnPageC
         setContentView(R.layout.activity_image_browsing);
         ButterKnife.bind(this);
         initView();// 初始化控件
+        /** 获取可見区域高度 **/
+        WindowManager manager = getWindowManager();
+        window_width = manager.getDefaultDisplay().getWidth();
+        window_height = manager.getDefaultDisplay().getHeight();
     }
 
     /**
@@ -71,14 +79,34 @@ public class ImageBrowsingActivity extends Activity implements ViewPager.OnPageC
         List<String> path = getIntent().getStringArrayListExtra("path");
         imageViewList = new ArrayList<>();
 
-        ImageView iv;// 图片
+
         View view;// 点
         LayoutParams params; // 参数类
 
         for (int i = 0; i < path.size(); i++) {
-            iv = new ImageView(this);
-            Glide.with(this).load(path.get(i)).into(iv);
-            imageViewList.add(iv);
+            final DragImageView finalIv  = new DragImageView(this);
+            Glide.with(this).load(path.get(i)).into(finalIv );
+            /** 测量状态栏高度 **/
+            ViewTreeObserver viewTreeObserver = finalIv .getViewTreeObserver();
+
+            viewTreeObserver
+                    .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+                        @Override
+                        public void onGlobalLayout() {
+
+                                // 获取状况栏高度
+                                Rect frame = new Rect();
+                                getWindow().getDecorView()
+                                        .getWindowVisibleDisplayFrame(frame);
+
+                                finalIv.setScreen_H(window_height-frame.top);
+                                finalIv.setScreen_W(window_width);
+
+
+                        }
+                    });
+            imageViewList.add(finalIv );
             // 根据图片的个数, 每循环一次向LinearLayout中添加一个点
             view = new View(this);
             view.setBackgroundResource(R.drawable.point_normal);
