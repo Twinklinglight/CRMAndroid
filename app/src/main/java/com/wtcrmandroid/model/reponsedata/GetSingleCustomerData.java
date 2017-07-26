@@ -1,4 +1,4 @@
-package com.wtcrmandroid.model;
+package com.wtcrmandroid.model.reponsedata;
 
 import com.google.gson.annotations.SerializedName;
 

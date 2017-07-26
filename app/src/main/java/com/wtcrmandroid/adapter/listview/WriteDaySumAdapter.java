@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.model.reponsedata.WriteDaysumData;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.view.dialog.CompleteConditionDialog;

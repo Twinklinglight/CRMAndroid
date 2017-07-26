@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.WeeksumDetailsData;
+import com.wtcrmandroid.model.reponsedata.WeeksumDetailsData;
 
 import java.util.List;
 

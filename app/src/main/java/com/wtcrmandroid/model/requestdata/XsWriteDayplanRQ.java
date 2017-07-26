@@ -1,8 +1,8 @@
 package com.wtcrmandroid.model.requestdata;
 
-import com.wtcrmandroid.model.MajorCustomerData;
-import com.wtcrmandroid.model.SingleCustomerData;
-import com.wtcrmandroid.model.WriteDayplanData;
+import com.wtcrmandroid.model.reponsedata.MajorCustomerData;
+import com.wtcrmandroid.model.reponsedata.SingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.WriteDayplanData;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ public class XsWriteDayplanRQ {
     private String workRecordTime;
     private String type;
     private boolean isPlan;
+    private int roleClass;
     private List<WriteDayplanData> workdetail;
     private List<SingleCustomerData>workdreamorder;
     private List<MajorCustomerData>workfocus;
@@ -23,6 +24,14 @@ public class XsWriteDayplanRQ {
 
     public int getUserId() {
         return userId;
+    }
+
+    public int getRoleClass() {
+        return roleClass;
+    }
+
+    public void setRoleClass(int roleClass) {
+        this.roleClass = roleClass;
     }
 
     public void setUserId(int userId) {

@@ -43,10 +43,10 @@ public class LoginPresenter extends BasePresenter{
     public void login() {
         LoginRequestData loginRequestData = new LoginRequestData();
 
-        loginRequestData.setUserName("wtxz");
-        loginRequestData.setImei("9209843230929990");
-        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
-        MyApplication.application.setImei("9209843230929990");
+//        loginRequestData.setUserName("wtxz");
+//        loginRequestData.setImei("9209843230929990");
+//        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
+//        MyApplication.application.setImei("9209843230929990");
 
         /*loginRequestData.setUserName("jiashaowen");
         loginRequestData.setUserPass(MD5Utils.MD5("2746"));
@@ -56,10 +56,10 @@ public class LoginPresenter extends BasePresenter{
 //        loginRequestData.setImei("9209843230929988");
 //        MyApplication.application.setImei("9209843230929988");
 
-//        loginRequestData.setUserName("wt");
-//        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
-//        loginRequestData.setImei("9209843230929999");
-//        MyApplication.application.setImei("9209843230929999");
+        loginRequestData.setUserName("wt");
+        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
+        loginRequestData.setImei("9209843230929999");
+        MyApplication.application.setImei("9209843230929999");
         /*loginRequestData.setUserName("shenzhongjia");
         loginRequestData.setUserPass(MD5Utils.MD5("shen123456"));
         loginRequestData.setImei("9209843230929971");

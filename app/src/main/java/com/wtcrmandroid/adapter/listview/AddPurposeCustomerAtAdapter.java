@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.AddPurpostCtAtData;
+import com.wtcrmandroid.model.reponsedata.AddPurpostCtAtData;
 import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 
 import java.util.List;

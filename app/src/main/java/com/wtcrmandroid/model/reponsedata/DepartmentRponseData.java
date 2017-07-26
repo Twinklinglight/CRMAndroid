@@ -2,11 +2,13 @@ package com.wtcrmandroid.model.reponsedata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by zxd on 2017/7/10.
  */
 
-public class DepartmentRponseData {
+public class DepartmentRponseData implements Serializable{
 
     private int userid;
     private String username;
@@ -53,5 +55,16 @@ public class DepartmentRponseData {
 
     public void setColumn1(String column1) {
         Column1 = column1;
+    }
+
+    @Override
+    public String toString() {
+        return "DepartmentRponseData{" +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", roleLevel='" + roleLevel + '\'' +
+                ", Column1='" + Column1 + '\'' +
+                ", roleclass=" + roleclass +
+                '}';
     }
 }

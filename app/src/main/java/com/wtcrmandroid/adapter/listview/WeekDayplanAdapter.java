@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
+import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;
 
 import java.util.List;
 

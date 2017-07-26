@@ -1,4 +1,4 @@
-package com.wtcrmandroid.model;
+package com.wtcrmandroid.model.reponsedata;
 
 /**
  * Created by zxd on 2017/6/15

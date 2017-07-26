@@ -83,6 +83,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
         L.e("返回数据"+key+data.toString());
         L.e(data.getUserName());
         startActivity(new Intent(this,MainActivity.class));
+        this.finish();
 
     }
     @Override protected void onResume() {

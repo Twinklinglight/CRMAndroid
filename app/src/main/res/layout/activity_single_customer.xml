@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,6 +15,14 @@
         android:layout_height="@dimen/titlebar_height">
     </com.wtcrmandroid.view.custompricing.TitleBar>
 
+    <ListView
+        android:id="@+id/lv_singlecustomer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null">
+    </ListView>
+
     <TextView
         android:id="@+id/tv_single_submit"
         android:layout_width="match_parent"
@@ -24,15 +32,5 @@
         android:gravity="center"
         android:text="完成保存"
         android:textColor="#ffffff"/>
-
-    <ListView
-        android:id="@+id/lv_singlecustomer"
-        android:layout_below="@id/titlebar"
-        android:layout_above="@id/tv_dayplan_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white">
-
-    </ListView>
     
-</RelativeLayout>
+</LinearLayout>

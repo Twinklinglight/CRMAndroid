@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.WriterWeekSumData;
+import com.wtcrmandroid.model.reponsedata.WriterWeekSumData;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.view.dialog.CompleteConditionDialog;

@@ -1,12 +1,10 @@
 package com.wtcrmandroid.activity.journalmanager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +12,7 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
-import com.wtcrmandroid.model.WriteDayplanData;
-import com.wtcrmandroid.model.reponsedata.WjournalData;
+import com.wtcrmandroid.model.reponsedata.WriteDayplanData;
 import com.wtcrmandroid.model.requestdata.WDayPlanRQ;
 import com.wtcrmandroid.activity.journalmanager.present.WriteDayPlanPresenter;
 import com.wtcrmandroid.view.custompricing.TitleBar;

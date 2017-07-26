@@ -4,12 +4,18 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.aboutmy.MycardActivity;
+import com.wtcrmandroid.model.reponsedata.MineRpData;
+import com.wtcrmandroid.model.requestdata.MineRQ;
 import com.wtcrmandroid.view.dialog.MyPhoneNumberDialog;
 import com.wtcrmandroid.BaseFragment;
+
+import java.util.List;
 
 import butterknife.BindView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -18,7 +24,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by 1363655717 on 2017-06-01.
  */
 
-public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.MyPhoneNumber {
+public class MineFragment extends BaseFragment<MinePresenter,List<MineRpData>> implements MyPhoneNumberDialog.MyPhoneNumber {
     @BindView(R.id.ib_head_picture)
     ImageView mIbHeadPicture;         //头像按钮
     @BindView(R.id.tv_name)
@@ -39,6 +45,10 @@ public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.My
     private int PhoneNumber = 1;
     private int Motto = 2;
 
+    private String username;
+    private String rolename;
+    private String phonenumber;
+
     @Override
     protected int Rlayout() {
         return R.layout.fragment_my;
@@ -46,6 +56,11 @@ public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.My
 
     @Override
     public void init() {
+
+        presenter = new MinePresenter(this,getContext());
+        MineRQ mineRQ = new MineRQ();
+        mineRQ.setUserId(MyApplication.application.getLoginData().getUserID());
+        presenter.postData(mineRQ);
 
         //圆形图片
         Glide.with(this).load(R.mipmap.ic_my_headpicture)
@@ -83,7 +98,11 @@ public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.My
         mTvMyCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MycardActivity.class));
+                Intent intent = new Intent(getActivity(), MycardActivity.class);
+                intent.putExtra("username",username);
+                intent.putExtra("rolename",rolename);
+                intent.putExtra("phonenumber",phonenumber);
+                startActivity(intent);
             }
         });
 
@@ -91,7 +110,7 @@ public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.My
         mTvMyAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(), "暂无接入", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -99,7 +118,18 @@ public class MineFragment extends BaseFragment implements MyPhoneNumberDialog.My
 
 
     @Override
-    public void returnData(int key, Object data) {
+    public void returnData(int key, List<MineRpData> data) {
+        if (data.size()!= 0){
+            MineRpData mineRpData = data.get(0);
+            username = mineRpData.getUsername();
+            rolename = mineRpData.getRoleName();
+            phonenumber = mineRpData.getTelPhone();
+
+            mTvName.setText(username);
+            mTvMyDepartment.setText(mineRpData.getDepartmentName());
+            mTvMyJob.setText(rolename);
+            mTvMyPhonenumber.setText(phonenumber);
+        }
 
     }
 

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.GetMoneyData;
+import com.wtcrmandroid.model.reponsedata.GetMoneyData;
 
 import java.util.List;
 

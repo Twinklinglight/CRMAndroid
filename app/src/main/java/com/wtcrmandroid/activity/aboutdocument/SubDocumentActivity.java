@@ -33,6 +33,12 @@ public class SubDocumentActivity extends BaseActivity {
     @Override
     protected void initView() {
         titlebar.setTitletext("发起审批");
+        titlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SubDocumentActivity.this.finish();
+            }
+        });
 
     }
 
@@ -44,11 +50,11 @@ public class SubDocumentActivity extends BaseActivity {
     @OnClick({R.id.rl_other, R.id.rl_person, R.id.tv_submit})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.rl_other:
+            case R.id.rl_other:         //上传附件
                 break;
-            case R.id.rl_person:
+            case R.id.rl_person:        //选择审批人
                 break;
-            case R.id.tv_submit:
+            case R.id.tv_submit:        //提交
                 break;
         }
     }

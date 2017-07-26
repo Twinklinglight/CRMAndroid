@@ -105,6 +105,10 @@ public class TopChooseMenuBar extends LinearLayout {
         setText(tvRight,text);
 
     }
+
+    public void setRightAllText(String text){
+        setAllText(tvRight,text);
+    }
     public void setRightTextNo(String text) {
        tvRight.setText(text);
 
@@ -217,6 +221,10 @@ public class TopChooseMenuBar extends LinearLayout {
         }
         view.setText(text);
 
+    }
+
+    private void setAllText(TextView view,String text){
+        view.setText(text);
     }
     public interface OnCheckedChangedListener {
         void isSelected(int i);

@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
+import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.iat.Iat;
 

@@ -1,8 +1,5 @@
 package com.wtcrmandroid.model.reponsedata;
 
-import com.wtcrmandroid.model.MajorCustomerData;
-import com.wtcrmandroid.model.SingleCustomerData;
-
 import java.util.List;
 
 /**

@@ -5,8 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.iflytek.cloud.thirdparty.T;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
-import com.wtcrmandroid.model.reponsedata.WjournalData;
+import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 

@@ -14,7 +14,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
-import com.wtcrmandroid.model.WriteDayplanData;
+import com.wtcrmandroid.model.reponsedata.WriteDayplanData;
 
 import java.util.List;
 

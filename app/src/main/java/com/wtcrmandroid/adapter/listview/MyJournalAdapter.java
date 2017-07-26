@@ -1,4 +1,4 @@
-package com.wtcrmandroid.adapter;
+package com.wtcrmandroid.adapter.listview;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.MyjournalRponseData;
+import com.wtcrmandroid.model.reponsedata.MyjournalRponseData;
 
 import java.util.List;
 
@@ -43,7 +43,14 @@ public class MyJournalAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mDatas == null ? 0 : mDatas.size();
+
+        if (mDatas == null){
+            return 1;
+        }else if (mDatas.size()>0){
+            return mDatas.size();
+        }else {
+            return 1;
+        }
     }
 
     @Override
@@ -58,55 +65,67 @@ public class MyJournalAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
         View view = null;
-        view = convertView;
-        ViewHolder viewHolder = null;
-        if (view == null || !(view.getTag() instanceof ViewHolder)){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_journal, null);
-            viewHolder = new ViewHolder(view);
-            view.setTag(viewHolder);
-        }else {
-            viewHolder = (ViewHolder) view.getTag();
-        }
-        final MyjournalRponseData myjournalRponseData = mDatas.get(position);
-        viewHolder.mTvJournalContent.setText(myjournalRponseData.getContent());
-        final ViewHolder finalViewHolder = viewHolder;
-        setJournalType(finalViewHolder,myjournalRponseData);    //设置日志类型图标，title
-
-        viewHolder.llitem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                switch (myjournalRponseData.getType()){
-                    case "dayPlan":
-                        itemClickListener.DayPlanClick(position);
-                        break;
-                    case "dayWork":
-                        itemClickListener.DaySumClick(position);
-                        break;
-                    case "weekPlan":
-                        itemClickListener.WeekPlanClick(position);
-                        break;
-                    case "weekWork":
-                        itemClickListener.WeekSumClick(position);
-                        break;
-                }
-            }
-        });
-        /*switch (getItemViewType(position)){
+        switch (getItemViewType(position)){
             case NomalType:
+                view = convertView;
+                ViewHolder viewHolder = null;
+                if (view == null || !(view.getTag() instanceof ViewHolder)){
+                    view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_journal, null);
+                    viewHolder = new ViewHolder(view);
+                    view.setTag(viewHolder);
+                }else {
+                    viewHolder = (ViewHolder) view.getTag();
+                }
+                final MyjournalRponseData myjournalRponseData = mDatas.get(position);
+                viewHolder.mTvJournalContent.setText(myjournalRponseData.getContent());
+                final ViewHolder finalViewHolder = viewHolder;
+                setJournalType(finalViewHolder,myjournalRponseData);    //设置日志类型图标，title
+
+                viewHolder.llitem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        switch (myjournalRponseData.getType()){
+                            case "dayPlan":
+                                itemClickListener.DayPlanClick(position);
+                                break;
+                            case "dayWork":
+                                itemClickListener.DaySumClick(position);
+                                break;
+                            case "weekPlan":
+                                itemClickListener.WeekPlanClick(position);
+                                break;
+                            case "weekWork":
+                                itemClickListener.WeekSumClick(position);
+                                break;
+                        }
+                    }
+                });
 
                 break;
             case NullType:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_null,null);
                 TextView tvNull = (TextView)view.findViewById(R.id.tv_listnull);
-                tvNull.setText("本周暂无，上拉查看上一周");
+                tvNull.setText("本周暂无数据");
                 break;
-        }*/
+        }
 
         return view;
     }
-    
+
+    @Override
+    public int getItemViewType(int position) {
+        if (mDatas == null){
+            return NullType;
+        }else if (mDatas.size()>0){
+            return NomalType;
+        }else {
+            return NullType;
+        }
+    }
+
     private void setJournalType(ViewHolder finalViewHolder, MyjournalRponseData myjournalRponseData){
         switch (myjournalRponseData.getType()){
             case "dayPlan":
@@ -153,7 +172,6 @@ public class MyJournalAdapter extends BaseAdapter {
         void WeekPlanClick(int position);
         void WeekSumClick(int position);
     }
-
 
     static class ViewHolder {
         @BindView(R.id.tv_journal_title)

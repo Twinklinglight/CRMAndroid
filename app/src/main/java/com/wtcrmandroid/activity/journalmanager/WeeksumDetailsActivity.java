@@ -10,7 +10,7 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.HtWeekSumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
-import com.wtcrmandroid.model.WeeksumDetailsData;
+import com.wtcrmandroid.model.reponsedata.WeeksumDetailsData;
 import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;

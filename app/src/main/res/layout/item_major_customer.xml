@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:padding="20dp">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/iv_dayplan_sort"
@@ -20,15 +20,6 @@
             android:layout_centerVertical="true"
             android:text="事项等级:" />
 
-        <TextView
-            android:id="@+id/tv_major_sort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/iv_dayplan_sort"
-            android:hint="@string/hint_sort"
-            android:paddingLeft="10dp" />
-
         <ImageView
             android:id="@+id/iv_delete"
             android:layout_width="wrap_content"
@@ -37,13 +28,26 @@
             android:src="@mipmap/ic_xrz_delete"
             android:visibility="invisible" />
 
+        <TextView
+            android:id="@+id/tv_major_sort"
+            style="@style/ContentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/iv_delete"
+            android:layout_toRightOf="@id/iv_dayplan_sort"
+            android:hint="@string/hint_sort"
+            android:paddingLeft="10dp" />
+
+
+
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:padding="20dp"
+        android:padding="10dp"
         android:layout_marginTop="1dp">
 
         <TextView
@@ -56,7 +60,7 @@
         <EditText
             android:id="@+id/et_major_name"
             style="@style/EditTextStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_dayplan_sort"
@@ -70,7 +74,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:padding="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
         android:layout_marginTop="1dp">
 
         <TextView
@@ -83,7 +88,7 @@
         <EditText
             android:id="@+id/et_major_analysis"
             style="@style/EditTextStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_dayplan_sort"

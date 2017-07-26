@@ -1,9 +1,9 @@
 package com.wtcrmandroid.model.requestdata;
 
-import com.wtcrmandroid.model.AddPurpostCtAtData;
-import com.wtcrmandroid.model.GetMoneyData;
-import com.wtcrmandroid.model.GetSingleCustomerData;
-import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.model.reponsedata.AddPurpostCtAtData;
+import com.wtcrmandroid.model.reponsedata.GetMoneyData;
+import com.wtcrmandroid.model.reponsedata.GetSingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.WriteDaysumData;
 
 import java.util.List;
 

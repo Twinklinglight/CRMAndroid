@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.listview.GetSingleAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.GetSingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.GetSingleCustomerData;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -50,13 +50,27 @@ public class GetSingleCustomerActivity extends BaseActivity {
     protected void initView() {
 
         mTitlebar.setTitletext("预测单客户踩中");
-        mGetList = new ArrayList<>();
-        GetSingleCustomerData getSingleCustomerData = new GetSingleCustomerData();
-        getSingleCustomerData.setWorkSort("");
-        mGetList.add(getSingleCustomerData);
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetSingleCustomerActivity.this.finish();
+            }
+        });
 
-        mSingleAtAdapter = new GetSingleAtAdapter(this, mGetList);
-        mLvGetSinglecustomer.setAdapter(mSingleAtAdapter);
+        mGetList = (List<GetSingleCustomerData>) getIntent().getExtras().getSerializable("workdream");
+        if (mGetList.size() > 0) {
+
+            mSingleAtAdapter = new GetSingleAtAdapter(this, mGetList);
+            mLvGetSinglecustomer.setAdapter(mSingleAtAdapter);
+
+        } else {
+            mGetList = new ArrayList<>();
+            GetSingleCustomerData getSingleCustomerData = new GetSingleCustomerData();
+            getSingleCustomerData.setWorkSort("");
+            mGetList.add(getSingleCustomerData);
+            mSingleAtAdapter = new GetSingleAtAdapter(this, mGetList);
+            mLvGetSinglecustomer.setAdapter(mSingleAtAdapter);
+        }
 
         View footview = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
         ViewHolder viewHolder = new ViewHolder(footview);
@@ -81,9 +95,9 @@ public class GetSingleCustomerActivity extends BaseActivity {
     public void onViewClicked() {
         Intent intent = getIntent();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("Single",(Serializable)mGetList);
+        bundle.putSerializable("Single", (Serializable) mGetList);
         intent.putExtras(bundle);
-        this.setResult(SINGLE_CODE,intent);
+        this.setResult(SINGLE_CODE, intent);
         this.finish();
     }
 
@@ -94,7 +108,7 @@ public class GetSingleCustomerActivity extends BaseActivity {
 
     static class ViewHolder {
         @BindView(R.id.rl_addjob)
-        RelativeLayout mRlAddjob;
+        LinearLayout mRlAddjob;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/tv_addcustomer_save"
         android:layout_below="@id/titlebar"
-        android:background="@android:color/white">
+        android:divider="@null">
 
     </ListView>
 

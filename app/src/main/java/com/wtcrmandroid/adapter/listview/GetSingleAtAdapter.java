@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.GetSingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.GetSingleCustomerData;
 import com.wtcrmandroid.view.dialog.IfCaiDianDialog;
 import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 
@@ -65,19 +65,23 @@ public class GetSingleAtAdapter extends MySmallBaseAdapter<GetSingleCustomerData
             public void onClick(View v) {
                 String workSort = list.get(position).getWorkSort();
                 int tag = 0;
-                switch (workSort){
-                    case "A类 紧急又重要":
-                        tag = 1;
-                        break;
-                    case "B类 较重要":
-                        tag = 2;
-                        break;
-                    case "C类 重要":
-                        tag = 3;
-                        break;
-                    case "D类 次重要":
-                        tag = 4;
-                        break;
+                if (workSort == null){
+                    tag = 0;
+                }else {
+                    switch (workSort){
+                        case "A类 紧急又重要":
+                            tag = 1;
+                            break;
+                        case "B类 较重要":
+                            tag = 2;
+                            break;
+                        case "C类 重要":
+                            tag = 3;
+                            break;
+                        case "D类 次重要":
+                            tag = 4;
+                            break;
+                    }
                 }
                 new SelectionJobCategoriesDialog(activity,GetSingleAtAdapter.this,position,tag).show();
             }

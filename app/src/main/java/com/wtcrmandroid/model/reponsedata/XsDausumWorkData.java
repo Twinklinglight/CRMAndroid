@@ -1,8 +1,5 @@
 package com.wtcrmandroid.model.reponsedata;
 
-import com.wtcrmandroid.model.AddPurpostCtAtData;
-import com.wtcrmandroid.model.GetMoneyData;
-import com.wtcrmandroid.model.GetSingleCustomerData;
 import com.wtcrmandroid.model.requestdata.WorkOrder;
 
 import java.util.List;

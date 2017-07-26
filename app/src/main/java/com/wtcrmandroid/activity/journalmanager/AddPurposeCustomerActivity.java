@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.listview.AddPurposeCustomerAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.AddPurpostCtAtData;
+import com.wtcrmandroid.model.reponsedata.AddPurpostCtAtData;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -56,12 +56,23 @@ public class AddPurposeCustomerActivity extends BaseActivity {
                 AddPurposeCustomerActivity.this.finish();
             }
         });
-        mDataList = new ArrayList<>();
-        AddPurpostCtAtData addPurpostCtAtData = new AddPurpostCtAtData();
-        addPurpostCtAtData.setWorkSort("");
-        mDataList.add(addPurpostCtAtData);
-        mAdapter = new AddPurposeCustomerAtAdapter(this, mDataList);
-        mLvAddCustomer.setAdapter(mAdapter);
+        mDataList = (List<AddPurpostCtAtData>)getIntent().getExtras().getSerializable("addcustinfo");
+
+        if (mDataList.size()>0){
+
+            mAdapter = new AddPurposeCustomerAtAdapter(this, mDataList);
+            mLvAddCustomer.setAdapter(mAdapter);
+
+        }else {
+
+            mDataList = new ArrayList<>();
+            AddPurpostCtAtData addPurpostCtAtData = new AddPurpostCtAtData();
+            addPurpostCtAtData.setWorkSort("");
+            mDataList.add(addPurpostCtAtData);
+            mAdapter = new AddPurposeCustomerAtAdapter(this, mDataList);
+            mLvAddCustomer.setAdapter(mAdapter);
+
+        }
 
         View footview = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
         ViewHolder viewHolder = new ViewHolder(footview);
@@ -75,7 +86,6 @@ public class AddPurposeCustomerActivity extends BaseActivity {
                 mAdapter.notifyDataSetChanged();
             }
         });
-
 
     }
 
@@ -97,7 +107,7 @@ public class AddPurposeCustomerActivity extends BaseActivity {
 
     static class ViewHolder {
         @BindView(R.id.rl_addjob)
-        RelativeLayout mRlAddjob;
+        LinearLayout mRlAddjob;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
