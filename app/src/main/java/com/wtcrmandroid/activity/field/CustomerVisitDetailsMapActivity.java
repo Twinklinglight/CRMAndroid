@@ -12,9 +12,6 @@ import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.MapStatus;
-import com.baidu.mapapi.map.MapStatusUpdate;
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.model.LatLng;
@@ -75,7 +72,7 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
             holder.tvAddress.setText(data.getCustomerName());
             holder.tvNumber.setText((i + 1) + "");
             //定义用于显示该InfoWindow的坐标点
-            LatLng pt = new LatLng(data.getLng(), data.getLat());
+            LatLng pt = new LatLng(data.getLat(),data.getLng());
             bd = BitmapDescriptorFactory.fromBitmap(getBitmapFromView(contentView));
             MarkerOptions oo = new MarkerOptions().icon(bd).
                     position(pt).zIndex(100);
@@ -85,12 +82,9 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
             mBaiduMap.addOverlay(oo);
 
         }
-        bd.recycle();
-        LatLng ll = new LatLng(list.get(0).getLng(),
-                list.get(0).getLat());
-        MapStatus.Builder builder = new MapStatus.Builder();
-        builder.target(ll).zoom(18.0f);
-        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
+
+
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -108,8 +102,8 @@ public class CustomerVisitDetailsMapActivity extends BaseMapActivity {
 
     @Override
     protected void getAddress(BDLocation location) {
-        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(14.0f);
-        mBaiduMap.setMapStatus(msu);
+//        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(14.0f);
+//        mBaiduMap.setMapStatus(msu);
     }
 
 

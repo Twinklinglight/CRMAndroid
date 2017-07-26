@@ -1,7 +1,9 @@
 package com.wtcrmandroid;
 
 import android.app.Application;
+import android.content.Intent;
 
+import com.baidu.location.BDLocation;
 import com.baidu.mapapi.SDKInitializer;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -29,6 +31,9 @@ public class MyApplication extends Application {
      */
     private String imei;
     public static MyApplication application;
+    public BDLocation bdLocation;
+
+    public Intent serviceIntent;//服务
 
     public String getImei() {
         return imei;
@@ -49,6 +54,7 @@ public class MyApplication extends Application {
          * 注意该方法要再setContentView方法之前实现
          */
         SDKInitializer.initialize(getApplicationContext());
+
         application = this;
     }
 

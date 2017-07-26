@@ -7,12 +7,17 @@ import android.text.method.PasswordTransformationMethod;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.WTDataBaseManager;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;
+import com.wtcrmandroid.service.GuardianService;
+import com.wtcrmandroid.service.JobScheduleService;
+import com.wtcrmandroid.service.LocationService;
+import com.wtcrmandroid.service.utils.ServiceUtils;
 import com.wtcrmandroid.utils.L;
 
 import butterknife.BindView;
@@ -91,6 +96,21 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
         // 缺少权限时, 进入权限配置页面
         if (mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
             startPermissionsActivity();
+        }else {
+            boolean isLocalServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.LocationService");
+            boolean isRemoteServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.GuardianService");
+            if(!isLocalServiceWork||
+                    !isRemoteServiceWork){
+                this.startService(new Intent(this,LocationService.class));
+                this.startService(new Intent(this,GuardianService.class));
+                Toast.makeText(this, "进程复活", Toast.LENGTH_SHORT).show();
+            }
+
+            if(android.os.Build.VERSION.SDK_INT>=21){
+                if(ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.JobScheduleService")) {
+                    startService(new Intent(this, JobScheduleService.class));
+                }
+            }
         }
     }
 }

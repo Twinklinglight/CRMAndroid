@@ -139,10 +139,9 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
     @Override
     protected void getAddress(BDLocation location) {
         tvAddress.setText("当前位置： " + location.getLocationDescribe());
-        customerCallRQ.setLng(location.getLatitude());
-        customerCallRQ.setLat(location.getLongitude());
+        customerCallRQ.setLng(location.getLongitude());
+        customerCallRQ.setLat(location.getLatitude());
         address = location.getLocationDescribe();
-
     }
 
     @Override

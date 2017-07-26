@@ -92,22 +92,24 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         mBaiduMap.setMyLocationEnabled(true);
         // 定位初始化
         mLocationClient = new LocationClient(this);
+        initLocation();
         //声明LocationClient类
         mLocationClient.registerLocationListener(myListener);
 
-        initLocation();
+
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);//获取传感器管理服务
         mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
         mBaiduMap.setMyLocationConfiguration(new MyLocationConfiguration(
                 mCurrentMode, true, mCurrentMarker));
-        MapStatus.Builder builder = new MapStatus.Builder();
-        builder.overlook(0);
-        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+//        MapStatus.Builder builder = new MapStatus.Builder();
+//        builder.overlook(0);
+//        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
     }
     public void startLocation(){
+//        mLocationClient.registerLocationListener(myListener);
         mLocationClient.start();
-        if(builder!=null)
-            mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
+
     }
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
@@ -134,7 +136,7 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
 
         option.setScanSpan(0);
         //可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
-
+        option.disableCache(false);//禁止启用缓存定位
         option.setIsNeedAddress(true);
         //可选，设置是否需要地址信息，默认不需要
 
@@ -150,7 +152,7 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         option.setIsNeedLocationPoiList(true);
         //可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
 
-        option.setIgnoreKillProcess(false);
+        option.setIgnoreKillProcess(true);
         //可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
 
         option.SetIgnoreCacheException(false);
@@ -176,6 +178,8 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
                 SensorManager.SENSOR_DELAY_UI);
         if (!isLocationEnabled()) {
             dialog();
+        }else {
+            startLocation();
         }
     }
     protected void dialog() {
@@ -240,6 +244,9 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
     protected void onDestroy() {
         // 退出时销毁定位
         mLocationClient.stop();
+        mLocationClient.unRegisterLocationListener(myListener);
+        //取消注册传感器监听
+        mSensorManager.unregisterListener(this);
         // 关闭定位图层
         mBaiduMap.setMyLocationEnabled(false);
         mMapView.onDestroy();
@@ -269,11 +276,6 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
 
     }
 
-    //    @Override
-//    public void returnBean(int key, String data) {
-//
-//        returnData(key,list);
-//    }
     class MyLocationListener implements BDLocationListener {
         @Override
         public void onReceiveLocation(final BDLocation location) {
@@ -290,14 +292,14 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
                     .direction(mCurrentDirection).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
-            if (isFirstLoc) {
-                isFirstLoc = false;
+//            if (isFirstLoc) {
+//                isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
                 builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-            }
+//            }
 
             //获取定位结果
             StringBuffer sb = new StringBuffer(256);
@@ -391,8 +393,8 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
                 public void run() {
                     //此时已在主线程中，可以更新UI了
                     getAddress(location);
-                    // 退出时销毁定位
                     mLocationClient.stop();
+//                    mLocationClient.unRegisterLocationListener(myListener);
                 }
             });
 
