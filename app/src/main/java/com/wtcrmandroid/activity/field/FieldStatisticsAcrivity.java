@@ -70,6 +70,7 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
                         //左边弹窗
                         if (titleLeftPopupWindow == null) {
                             List list = new ArrayList();
+                            list.add("全部");
                             list.add("物通市场部");
                             titleLeftPopupWindow = new TitlePopupWindow(FieldStatisticsAcrivity.this, tcmbBar, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
                                 @Override

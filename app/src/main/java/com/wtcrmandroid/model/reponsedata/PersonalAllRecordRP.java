@@ -27,7 +27,7 @@ public class PersonalAllRecordRP implements Serializable {
     private String customerName;
     private String createTime;
     private String customerid;
-    private String address;
+    private String address="";
     private String remarks;
     private Double lng;
     private String addressDetail;

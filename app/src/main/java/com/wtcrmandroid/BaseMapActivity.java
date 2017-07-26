@@ -1,12 +1,21 @@
 package com.wtcrmandroid;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ZoomControls;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -57,7 +66,7 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
     boolean isFirstLoc = true; // 是否首次定位
     private MyLocationData locData;
     private float direction;
-
+    MapStatus.Builder builder=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,29 +76,40 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         // 地图初始化
         mMapView = (MapView) findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
-//        // 隐藏百度的LOGO
-//        View child = mMapView.getChildAt(1);
-//        if (child != null && (child instanceof ImageView || child instanceof ZoomControls)) {
-//            child.setVisibility(View.INVISIBLE);
-//        }
+        // 隐藏百度的LOGO
+        View child = mMapView.getChildAt(1);
+        if (child != null && (child instanceof ImageView || child instanceof ZoomControls)) {
+            child.setVisibility(View.INVISIBLE);
+        }
         // 不显示地图上比例尺
         mMapView.showScaleControl(false);
+
+        initview();
+
+    }
+    protected void Location(){
         // 开启定位图层
         mBaiduMap.setMyLocationEnabled(true);
         // 定位初始化
         mLocationClient = new LocationClient(this);
+        initLocation();
         //声明LocationClient类
         mLocationClient.registerLocationListener(myListener);
-        initview();
-        initLocation();
-        mLocationClient.start();
+
+
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);//获取传感器管理服务
         mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
         mBaiduMap.setMyLocationConfiguration(new MyLocationConfiguration(
                 mCurrentMode, true, mCurrentMarker));
-        MapStatus.Builder builder = new MapStatus.Builder();
-        builder.overlook(0);
-        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+//        MapStatus.Builder builder = new MapStatus.Builder();
+//        builder.overlook(0);
+//        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+    }
+    public void startLocation(){
+//        mLocationClient.registerLocationListener(myListener);
+        mLocationClient.start();
+
+
     }
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
@@ -114,10 +134,9 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         option.setCoorType("bd09ll");
         //可选，默认gcj02，设置返回的定位结果坐标系
 
-        int span = 1000;
-        option.setScanSpan(span);
+        option.setScanSpan(0);
         //可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
-
+        option.disableCache(false);//禁止启用缓存定位
         option.setIsNeedAddress(true);
         //可选，设置是否需要地址信息，默认不需要
 
@@ -133,7 +152,7 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         option.setIsNeedLocationPoiList(true);
         //可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
 
-        option.setIgnoreKillProcess(false);
+        option.setIgnoreKillProcess(true);
         //可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
 
         option.SetIgnoreCacheException(false);
@@ -157,8 +176,63 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
         //为系统的方向传感器注册监听器
         mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
                 SensorManager.SENSOR_DELAY_UI);
+        if (!isLocationEnabled()) {
+            dialog();
+        }else {
+            startLocation();
+        }
+    }
+    protected void dialog() {
+        AlertDialog.Builder builder = null;
+        if(builder==null) {
+            builder = new AlertDialog.Builder(this);
+            builder.setMessage("定位服务未开启!请开启定位服务!否则该页面功能无法正常使用！");
+
+            builder.setTitle("提示");
+
+            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+
+                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+            });
+
+            builder.setNegativeButton("退出该页面", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+        }
+        builder.create().show();
     }
 
+    /**
+     * 判断定位服务是否开启
+     *
+     * @param
+     * @return true 表示开启
+     */
+    public boolean isLocationEnabled() {
+        int locationMode = 0;
+        String locationProviders;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            try {
+                locationMode = Settings.Secure.getInt(getContentResolver(), Settings.Secure.LOCATION_MODE);
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+                return false;
+            }
+            return locationMode != Settings.Secure.LOCATION_MODE_OFF;
+        } else {
+            locationProviders = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            return !TextUtils.isEmpty(locationProviders);
+        }
+    }
     @Override
     protected void onStop() {
         //取消注册传感器监听
@@ -170,6 +244,9 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
     protected void onDestroy() {
         // 退出时销毁定位
         mLocationClient.stop();
+        mLocationClient.unRegisterLocationListener(myListener);
+        //取消注册传感器监听
+        mSensorManager.unregisterListener(this);
         // 关闭定位图层
         mBaiduMap.setMyLocationEnabled(false);
         mMapView.onDestroy();
@@ -199,11 +276,6 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
 
     }
 
-    //    @Override
-//    public void returnBean(int key, String data) {
-//
-//        returnData(key,list);
-//    }
     class MyLocationListener implements BDLocationListener {
         @Override
         public void onReceiveLocation(final BDLocation location) {
@@ -220,14 +292,15 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
                     .direction(mCurrentDirection).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
-            if (isFirstLoc) {
-                isFirstLoc = false;
+//            if (isFirstLoc) {
+//                isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
-                MapStatus.Builder builder = new MapStatus.Builder();
+                builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-            }
+//            }
+
             //获取定位结果
             StringBuffer sb = new StringBuffer(256);
 
@@ -320,6 +393,8 @@ public abstract class BaseMapActivity<T extends BasePresenter, T1> extends AppCo
                 public void run() {
                     //此时已在主线程中，可以更新UI了
                     getAddress(location);
+                    mLocationClient.stop();
+//                    mLocationClient.unRegisterLocationListener(myListener);
                 }
             });
 

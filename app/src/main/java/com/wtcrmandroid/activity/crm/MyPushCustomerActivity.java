@@ -124,8 +124,10 @@ public class MyPushCustomerActivity extends BaseActivity<MyPushCustomerP, List<P
         if(page==1) {
             mSwipeToLoadLayout.setRefreshing(false);
 
-        }else
+        }else{
             mSwipeToLoadLayout.setLoadingMore(false);
+            page=page-1;
+        }
 
     }
 }

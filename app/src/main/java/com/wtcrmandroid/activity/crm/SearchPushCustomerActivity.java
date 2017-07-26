@@ -77,6 +77,8 @@ public class SearchPushCustomerActivity extends BaseActivity<MyPushCustomerP, Li
                 finish();
                 break;
             case R.id.tv_right:
+                page = 1;
+                data.setPageIndex(page);
                 data.setComName(etSearch.getText().toString());
                 presenter.getData(data, 0);
                 break;
@@ -116,5 +118,16 @@ public class SearchPushCustomerActivity extends BaseActivity<MyPushCustomerP, Li
         data.setPageIndex(page);
         presenter.getData(data, 1);
 
+    }
+    @Override
+    public void showShortToast(String text) {
+        super.showShortToast(text);
+        mSwipeToLoadLayout.setLoadingMore(false);
+        if(page==1) {
+            mSwipeToLoadLayout.setRefreshing(false);
+        } else{
+            mSwipeToLoadLayout.setLoadingMore(false);
+            page=page-1;
+        }
     }
 }

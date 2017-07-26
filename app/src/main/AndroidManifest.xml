@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.wtcrmandroid"
     android:installLocation="preferExternal" >
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
@@ -25,7 +26,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
@@ -43,18 +43,19 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.LoginActivity">
+        <activity android:name=".activity.AppStartPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".main.LoginActivity"/>
         <activity android:name=".main.MainActivity"
             android:windowSoftInputMode="adjustPan"/>
         <!-- ——————————————————————-外勤模块—————————————————————————— -->
@@ -229,6 +230,24 @@
         <activity android:name=".activity.aboutdocument.DocSelectPersonActivity"></activity>
         <!--图片放大浏览-->
         <activity android:name=".activity.ImageBrowsingActivity"/>
+
+
+        <service
+            android:name=".service.LocationService"
+            android:enabled="true"
+            android:process=":myLocationService"/>
+        <service
+            android:name=".service.GuardianService"
+            android:enabled="true"
+            android:process=":GuardianService"/>
+
+        <service
+            android:name=".service.JobScheduleService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:enabled="true"
+            android:exported="true"/>
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
+        </service>
     </application>
 
 </manifest>

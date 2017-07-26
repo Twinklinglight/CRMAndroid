@@ -245,6 +245,10 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                 break;
             case 2:
                 showShortToast("拉入成功！");
+                page=1;
+                this.data.setPageSize(page);
+                presenter.getData(this.data,0);
+                adapter.addList(new ArrayList<SearchCustomerRP>());
                 break;
 
         }
@@ -273,9 +277,10 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         mSwipeToLoadLayout.setLoadingMore(false);
         if(page==1) {
             mSwipeToLoadLayout.setRefreshing(false);
-
-        }else
+        }else {
             mSwipeToLoadLayout.setLoadingMore(false);
+            page=page-1;
+        }
 
     }
 }

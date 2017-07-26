@@ -86,6 +86,8 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
 
     @Override
     protected void initview() {
+        Location();
+        startLocation();
         setTitlebar();
         mUiSettings = mBaiduMap.getUiSettings();
         mUiSettings.setScrollGesturesEnabled(false);
@@ -146,22 +148,25 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
         InfoWindow mInfoWindow = new InfoWindow(contentView, pt, -DensityUtils.dp2px(this, 15));
 //显示InfoWindow
         mBaiduMap.showInfoWindow(mInfoWindow);
-        placeSaveRequestData.setLng(latitude);
-        placeSaveRequestData.setLat(longitude);
+        placeSaveRequestData.setLng(longitude);
+        placeSaveRequestData.setLat(latitude);
         placeSaveRequestData.setAddress(location.getLocationDescribe());
     }
-
+    @OnClick({R.id.iv_positioning,R.id.bt_clock})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_positioning:
+                startLocation();
+                break;
+            case R.id.bt_clock:
+                presenter.clock(placeSaveRequestData, 0);
+                break;
+        }
+    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-    }
-
-
-
-    @OnClick(R.id.bt_clock)
-    public void onViewClicked() {
-        presenter.clock(placeSaveRequestData, 0);
     }
 
 
