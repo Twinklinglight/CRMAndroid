@@ -87,7 +87,6 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
     @Override
     protected void initview() {
         Location();
-        startLocation();
         setTitlebar();
         mUiSettings = mBaiduMap.getUiSettings();
         mUiSettings.setScrollGesturesEnabled(false);
@@ -102,7 +101,7 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
         dayCloclRecordRQ.setToDay(year + "-" + month + "-" + day);
         presenter.clockRecord(dayCloclRecordRQ, 1);
         placeSaveRequestData = new PlaceSaveRQ();
-        placeSaveRequestData.setUserId(userId);
+        placeSaveRequestData.setUserId(userId+"");
         placeSaveRequestData.setPositionType("1");
         rvView.setLayoutManager(new LinearLayoutManager(this));
         rvView.setAdapter(adapter = new FieldClockAdapter(this));
@@ -139,7 +138,10 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
     protected void getAddress(BDLocation location) {
         View contentView = LayoutInflater.from(this).inflate(R.layout.text_location_box, null);
         ViewHolder holder = new ViewHolder(contentView);
-        holder.tvAddress.setText(location.getLocationDescribe());
+        String s=location.getLocationDescribe();
+        String address=location.getProvince()+location.getCity()+location.getDistrict()+s.substring(1,s.length());
+
+        holder.tvAddress.setText("当前位置："+address);
         latitude = location.getLatitude();
         longitude = location.getLongitude();
 //定义用于显示该InfoWindow的坐标点
@@ -150,7 +152,7 @@ public class FieldClockActivity extends BaseMapActivity<FieldClockPresenter, Obj
         mBaiduMap.showInfoWindow(mInfoWindow);
         placeSaveRequestData.setLng(longitude);
         placeSaveRequestData.setLat(latitude);
-        placeSaveRequestData.setAddress(location.getLocationDescribe());
+        placeSaveRequestData.setAddress(address);
     }
     @OnClick({R.id.iv_positioning,R.id.bt_clock})
     public void onViewClicked(View view) {

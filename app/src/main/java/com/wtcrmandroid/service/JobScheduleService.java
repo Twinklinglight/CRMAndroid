@@ -33,7 +33,7 @@ public class JobScheduleService extends JobService {
         boolean isRemoteServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.GuardianService");
         if(!isLocalServiceWork||
                 !isRemoteServiceWork){
-            this.startService(new Intent(this,LocationService.class));
+//            this.startService(new Intent(this,LocationService.class));
             this.startService(new Intent(this,GuardianService.class));
             Toast.makeText(this, "进程复活", Toast.LENGTH_SHORT).show();
         }
@@ -61,10 +61,10 @@ public class JobScheduleService extends JobService {
         //否则会报错“java.lang.IllegalArgumentException: Error: requested job be persisted without holding RECEIVE_BOOT_COMPLETED permission.”
         //而且RECEIVE_BOOT_COMPLETED需要在安装的时候就要声明，如果一开始没声明，在升级时才声明，那么依然会报权限不足的错误
         builder.setPersisted(true);
-        builder.setRequiresCharging(false);//是否在充电时执行
-        builder.setRequiresDeviceIdle(false);//是否在空闲时执行
+        builder.setRequiresCharging(true);//是否在充电时执行
+        builder.setRequiresDeviceIdle(true);//是否在空闲时执行
 
-        builder.setPeriodic(1000);//设置时间间隔，单位毫秒
+        builder.setPeriodic(100);//设置时间间隔，单位毫秒
         return builder.build();
     }
 

@@ -19,22 +19,8 @@ public class PostRequest extends OkHttpRequest{
 	}
 	@Override
 	protected void initBuilder() {
-//		String string=params.toString();
-//		JSONObject json = null;
-//		try {
-//			json = new JSONObject(string);
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//		}
-//		L.e(json.toString());
-//        RequestBody requestBody=body.build();
-//    requestBody.contentType();
-
-//    builder.url(url).header("User-Agent",userAgent).post(requestBody);
-
         Gson gson=new Gson();
         String json=gson.toJson(params);
-
 		L.e(json);
 		LoginData loginData =MyApplication.application.getLoginData();
 		if(loginData !=null) {
@@ -43,6 +29,4 @@ public class PostRequest extends OkHttpRequest{
 		}else
 			builder.url(url).post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json));
 	}
-
-
 }

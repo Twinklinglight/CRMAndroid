@@ -20,10 +20,12 @@ public abstract class BasePresenter {
     protected AllView view;
     LoadingDialog loadingDialog;
     Handler mainHandler;
+    protected Context context;
     public BasePresenter(AllView view, Context context) {
         this.view = view;
         mainHandler = new Handler(Looper.getMainLooper());
         loadingDialog=new LoadingDialog(context);
+        this.context=context;
 
     }
 

@@ -90,7 +90,6 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
     @Override
     protected void initview() {
         Location();
-        startLocation();
         presenter = new CustomerCallP(this, this);
         titlebar.setTitletext("客户拜访");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
@@ -138,7 +137,7 @@ public class CustomerCallActivity extends BaseMapActivity<CustomerCallP, Object>
 
     @Override
     protected void getAddress(BDLocation location) {
-        tvAddress.setText("当前位置： " + location.getLocationDescribe());
+        tvAddress.setText("当前位置： " + location.getAddrStr());
         customerCallRQ.setLng(location.getLongitude());
         customerCallRQ.setLat(location.getLatitude());
         address = location.getLocationDescribe();

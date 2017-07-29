@@ -13,6 +13,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.iflytek.cloud.SpeechUtility;
+import com.wtcrmandroid.baidumap.MyBDLocation;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 
 import java.io.IOException;
@@ -22,6 +23,7 @@ import java.io.IOException;
  */
 
 public class MyApplication extends Application {
+    public MyBDLocation myBDLocation;
     /**
      * 登录返回数据
      */
@@ -56,6 +58,7 @@ public class MyApplication extends Application {
         SDKInitializer.initialize(getApplicationContext());
 
         application = this;
+        myBDLocation=new MyBDLocation(getApplicationContext());
     }
 
     public LoginData getLoginData() {
@@ -106,4 +109,5 @@ public class MyApplication extends Application {
             };
         }
     }
+
 }

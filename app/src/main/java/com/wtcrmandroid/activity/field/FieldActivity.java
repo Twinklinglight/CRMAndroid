@@ -62,6 +62,7 @@ public class FieldActivity extends BaseActivity {
                 startActivity(new Intent(FieldActivity.this,CustomerCallStatisticalAcrivity.class));
                 break;
             case R.id.srl_employees_location:
+                startActivity(new Intent(FieldActivity.this,StaffPositionActivity.class));
                 break;
         }
     }

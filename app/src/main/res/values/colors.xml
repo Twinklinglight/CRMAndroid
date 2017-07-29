@@ -9,7 +9,7 @@
     <color name="colorTitle">#ffffff</color>
     <color name="colorIconText">#2b2f33</color>
     <color name="colorContext">#939699</color>
-
+    <color name="color_gray_alpha_ccc">#96cccccc</color>
     <color name="pulltorefresh_bg">#BCBCBC</color>
     <color name="lineColor">#E9EDF2</color>
 

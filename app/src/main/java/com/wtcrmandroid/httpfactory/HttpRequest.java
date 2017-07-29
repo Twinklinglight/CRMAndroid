@@ -16,6 +16,7 @@ import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.httpfactory.https.SslUtils;
 import com.wtcrmandroid.httpfactory.request.PingUtils;
 import com.wtcrmandroid.httpfactory.request.PostRequest;
+import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.utils.L;
 
 import org.json.JSONException;
@@ -156,9 +157,13 @@ public class HttpRequest {
 
     public void sendPost(String url, Object params, Object tag, StringCallBack resultCallBack) {
 
+        LoginData loginData =MyApplication.application.getLoginData();
+
+
 //        params.put("ver_version", VERSION_CODE + "");//版本
-        PostRequest postRequest = new PostRequest(url, null, params, tag);
+        PostRequest postRequest = new PostRequest(url,null, params, tag);
         Request request = postRequest.getRequest();
+        L.e( postRequest.toString());
         deliverResult(url, request, resultCallBack);
     }
 

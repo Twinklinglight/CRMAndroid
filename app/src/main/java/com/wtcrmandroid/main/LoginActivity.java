@@ -7,7 +7,6 @@ import android.text.method.PasswordTransformationMethod;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
@@ -16,7 +15,6 @@ import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;
 import com.wtcrmandroid.service.GuardianService;
 import com.wtcrmandroid.service.JobScheduleService;
-import com.wtcrmandroid.service.LocationService;
 import com.wtcrmandroid.service.utils.ServiceUtils;
 import com.wtcrmandroid.utils.L;
 
@@ -87,6 +85,19 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
     public void returnData(int key, LoginData data) {
         L.e("返回数据"+key+data.toString());
         L.e(data.getUserName());
+        boolean isLocalServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.LocationService");
+        boolean isRemoteServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.GuardianService");
+        if(!isLocalServiceWork||
+                !isRemoteServiceWork){
+            this.startService(new Intent(this,GuardianService.class));
+
+        }
+
+        if(android.os.Build.VERSION.SDK_INT>=21){
+            if(ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.JobScheduleService")) {
+                startService(new Intent(this, JobScheduleService.class));
+            }
+        }
         startActivity(new Intent(this,MainActivity.class));
 
     }
@@ -97,20 +108,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
         if (mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
             startPermissionsActivity();
         }else {
-            boolean isLocalServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.LocationService");
-            boolean isRemoteServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.GuardianService");
-            if(!isLocalServiceWork||
-                    !isRemoteServiceWork){
-                this.startService(new Intent(this,LocationService.class));
-                this.startService(new Intent(this,GuardianService.class));
-                Toast.makeText(this, "进程复活", Toast.LENGTH_SHORT).show();
-            }
 
-            if(android.os.Build.VERSION.SDK_INT>=21){
-                if(ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.JobScheduleService")) {
-                    startService(new Intent(this, JobScheduleService.class));
-                }
-            }
         }
     }
 }

@@ -16,8 +16,9 @@
         <com.baidu.mapapi.map.MapView
             android:id="@+id/bmapView"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:clickable="true" />
+            android:layout_height="200dp"
+            android:clickable="true"
+            android:paddingBottom="-40dp"/>
 
         <ImageView
             android:id="@+id/iv_positioning"
