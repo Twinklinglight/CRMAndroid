@@ -1,7 +1,9 @@
 package com.wtcrmandroid.main;
 
+import android.view.KeyEvent;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
@@ -26,6 +28,8 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.title_window)
     LinearLayout titleWindow;
 
+    //记录用户首次点击返回键的时间
+    private long firstTime=0;
 
 
     @Override
@@ -61,5 +65,20 @@ public class MainActivity extends BaseActivity {
     @Override
     public void returnData(int key, Object data) {
 
+    }
+
+    //双击退出
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN){
+            if (System.currentTimeMillis()-firstTime>2000){
+                Toast.makeText(MainActivity.this,"再按一次退出程序",Toast.LENGTH_SHORT).show();
+                firstTime=System.currentTimeMillis();
+            }else{
+                this.finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

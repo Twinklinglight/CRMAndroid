@@ -1,11 +1,10 @@
 package com.wtcrmandroid.activity.journalmanager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,8 +12,7 @@ import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
-import com.wtcrmandroid.model.WriteDayplanData;
-import com.wtcrmandroid.model.reponsedata.WjournalData;
+import com.wtcrmandroid.model.reponsedata.WriteDayplanData;
 import com.wtcrmandroid.model.requestdata.WDayPlanRQ;
 import com.wtcrmandroid.activity.journalmanager.present.WriteDayPlanPresenter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -95,7 +93,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
 
             mDayPlanAdapter.notifyDataSetChanged();
 
-            mViewHolder1.mRlAddjob.setOnClickListener(new View.OnClickListener() {
+            mViewHolder1.mllAddjob.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -163,7 +161,7 @@ public class WriteDayPlanActivity extends BaseActivity<WriteDayPlanPresenter,Obj
 
     static class ViewHolder1 {
         @BindView(R.id.rl_addjob)
-        RelativeLayout mRlAddjob;
+        LinearLayout mllAddjob;
 
         ViewHolder1(View view) {
             ButterKnife.bind(this, view);

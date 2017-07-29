@@ -1,4 +1,4 @@
-package com.wtcrmandroid.model;
+package com.wtcrmandroid.model.reponsedata;
 
 /**
  *  type 1.日计划，2.日总结，3.周计划，4.周总结

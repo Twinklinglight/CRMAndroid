@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -18,14 +17,14 @@ import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.XsWriteDayplanPresenter;
 import com.wtcrmandroid.adapter.listview.WriteDayPlanAdapter;
-import com.wtcrmandroid.model.MajorCustomerData;
-import com.wtcrmandroid.model.SingleCustomerData;
-import com.wtcrmandroid.model.WriteDayplanData;
+import com.wtcrmandroid.model.reponsedata.MajorCustomerData;
+import com.wtcrmandroid.model.reponsedata.SingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.WriteDayplanData;
 import com.wtcrmandroid.model.requestdata.XsWriteDayplanRQ;
-import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -53,8 +52,8 @@ public class XsWriteDayplanActivity extends BaseActivity<XsWriteDayplanPresenter
     ListView mLvXsDayplan;              //日计划列表
     private WriteDayPlanAdapter mWriteDayPlanAdapter;
     private List<WriteDayplanData> mDataList;
-    private List<SingleCustomerData> mSingleList;
-    private List<MajorCustomerData> mMajorList;
+    private List<SingleCustomerData> mSingleList = new ArrayList<>();
+    private List<MajorCustomerData> mMajorList = new ArrayList<>();
 
     private ViewHolder viewHolder;
 
@@ -84,6 +83,12 @@ public class XsWriteDayplanActivity extends BaseActivity<XsWriteDayplanPresenter
         SetDateText(DateSelect);
 
         mTitlebar.setTitletext("写日计划");
+        mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                XsWriteDayplanActivity.this.finish();
+            }
+        });
         mDataList = new ArrayList<>();
         WriteDayplanData dayplanData = new WriteDayplanData();
         dayplanData.setWorkSort("");
@@ -112,8 +117,12 @@ public class XsWriteDayplanActivity extends BaseActivity<XsWriteDayplanPresenter
         viewHolder.mRlDayplanAnalysis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(XsWriteDayplanActivity.this,
-                        SingleCustomer.class), SINGLE);
+                Intent intent = new Intent(XsWriteDayplanActivity.this,
+                        SingleCustomer.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("single",(Serializable) mSingleList);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, SINGLE);
             }
         });
 
@@ -121,8 +130,12 @@ public class XsWriteDayplanActivity extends BaseActivity<XsWriteDayplanPresenter
         viewHolder.mRlDayplanGenjin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(XsWriteDayplanActivity.this,
-                        MajorCustomerActivity.class), MAJOR);
+                Intent intent = new Intent(XsWriteDayplanActivity.this,
+                        MajorCustomerActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("major",(Serializable)mMajorList);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, MAJOR);
             }
         });
     }
@@ -179,6 +192,7 @@ public class XsWriteDayplanActivity extends BaseActivity<XsWriteDayplanPresenter
                     xsWriteDayplanRQ.setWorkdreamorder(mSingleList);
                     xsWriteDayplanRQ.setWorkfocus(mMajorList);
                     xsWriteDayplanRQ.setWorkRecordTime(subTime);
+                    xsWriteDayplanRQ.setRoleClass(MyApplication.application.getLoginData().getRoleClass());
                     xsWriteDayplanRQ.setLearningAndReflection("");
                     presenter.postDayplan(xsWriteDayplanRQ);
                 }

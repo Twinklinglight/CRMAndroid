@@ -1,6 +1,6 @@
 package com.wtcrmandroid.model.requestdata;
 
-import com.wtcrmandroid.model.WriteDayplanData;
+import com.wtcrmandroid.model.reponsedata.WriteDayplanData;
 
 import java.util.List;
 

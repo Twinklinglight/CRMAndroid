@@ -2,23 +2,18 @@ package com.wtcrmandroid.adapter.listview;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.thinkcool.circletextimageview.CircleTextImageView;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.DepartmentData;
 import com.wtcrmandroid.model.reponsedata.DepartmentRponseData;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by zxd on 2017/6/15

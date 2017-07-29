@@ -1,8 +1,5 @@
 package com.wtcrmandroid.model.reponsedata;
 
-import com.wtcrmandroid.model.WeeksumDetailsData;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
-
 import java.util.List;
 
 /**

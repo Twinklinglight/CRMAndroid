@@ -13,15 +13,14 @@ import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
 import com.wtcrmandroid.adapter.listview.WeeksumDetailsAdapter;
 import com.wtcrmandroid.fragment.journalmanager.presenter.DepartWeekPresenter;
 import com.wtcrmandroid.model.reponsedata.WeekDepartRp;
-import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.utils.DateUtils;
 import com.wtcrmandroid.view.dialog.CommentDialog;
 import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.CommentData;
-import com.wtcrmandroid.model.WeeksumDetailsData;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
+import com.wtcrmandroid.model.reponsedata.WeeksumDetailsData;
+import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;
 import com.wtcrmandroid.view.dialog.WeekDialog;
 import com.wtcrmandroid.view.listview.MyListView;
 
@@ -113,7 +112,7 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
 
                 break;
             case 2:
-                postData(userId,beginTiem,endTime);
+                postData(userId,beginTiem,endTime);     //刷新列表
                 Toast.makeText(getContext(), "成功", Toast.LENGTH_SHORT).show();
                 break;
         }

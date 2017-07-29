@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:background="@android:color/white"
         android:padding="10dp">
 
@@ -15,17 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_xrz_workrank"/>
-
-        <TextView
-            android:id="@+id/tv_dayplan_sort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/iv_dayplan_sort"
-            android:hint="@string/work_sort"
-            android:paddingLeft="10dp"
-            />
+            android:src="@mipmap/ic_xrz_workrank" />
 
         <ImageView
             android:id="@+id/iv_delete"
@@ -33,13 +25,26 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:src="@mipmap/ic_xrz_delete"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_dayplan_sort"
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/iv_delete"
+            android:layout_toRightOf="@id/iv_dayplan_sort"
+            android:hint="@string/work_sort"
+            android:paddingLeft="10dp" />
+
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:background="@android:color/white"
         android:padding="10dp">
 
@@ -47,17 +52,7 @@
             android:id="@+id/iv_dayplan_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_xrz_context"/>
-
-        <EditText
-            android:id="@+id/tv_dayplan_content"
-            style="@style/EditTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/iv_dayplan_content"
-            android:hint="@string/work_content"
-            android:paddingLeft="10dp"
-            />
+            android:src="@mipmap/ic_xrz_context" />
 
         <ImageButton
             android:id="@+id/ib_dayplan_yy"
@@ -66,13 +61,25 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@null"
-            android:src="@mipmap/ic_xrz_yuyin"/>
+            android:src="@mipmap/ic_xrz_yuyin" />
+
+        <EditText
+            android:id="@+id/tv_dayplan_content"
+            style="@style/EditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/ib_dayplan_yy"
+            android:layout_toRightOf="@id/iv_dayplan_content"
+            android:hint="@string/work_content"
+            android:paddingLeft="10dp" />
+
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:background="@android:color/white"
         android:padding="10dp">
 
@@ -81,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_xrz_person"/>
+            android:src="@mipmap/ic_xrz_person" />
 
         <EditText
             android:id="@+id/et_dayplan_person"
@@ -91,14 +98,14 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_dayplan_person"
             android:hint="@string/execute_person"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:orientation="horizontal"
         android:weightSum="2">
 
@@ -113,7 +120,7 @@
                 android:id="@+id/iv_dayplan_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_xrz_percent"/>
+                android:src="@mipmap/ic_xrz_percent" />
 
             <EditText
                 android:id="@+id/tv_dayplan_percent"
@@ -122,8 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/iv_dayplan_percent"
                 android:hint="@string/work_persent"
-                android:paddingLeft="10dp"
-                />
+                android:paddingLeft="10dp" />
 
         </RelativeLayout>
 
@@ -138,7 +144,7 @@
                 android:id="@+id/iv_dayplan_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_xrz_time"/>
+                android:src="@mipmap/ic_xrz_time" />
 
             <EditText
                 android:id="@+id/tv_dayplan_time"
@@ -147,8 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/iv_dayplan_time"
                 android:hint="@string/complete_time"
-                android:paddingLeft="10dp"
-                />
+                android:paddingLeft="10dp" />
 
         </RelativeLayout>
 
@@ -165,7 +170,7 @@
             android:id="@+id/iv_dayplan_remark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_xrz_remark"/>
+            android:src="@mipmap/ic_xrz_remark" />
 
         <EditText
             android:id="@+id/tv_dayplan_remark"
@@ -174,8 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/iv_dayplan_remark"
             android:hint="@string/remark"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
     </RelativeLayout>
 

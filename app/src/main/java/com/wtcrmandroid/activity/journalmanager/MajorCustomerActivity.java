@@ -2,18 +2,17 @@ package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.listview.MajorCustomerAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.MajorCustomerData;
+import com.wtcrmandroid.model.reponsedata.MajorCustomerData;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,12 +61,23 @@ public class MajorCustomerActivity extends BaseActivity {
             }
         });
         mTitlebar.setTitletext("重点意向客户");
-        mDataList = new ArrayList<>();
-        MajorCustomerData majorCustomerData = new MajorCustomerData();
-        majorCustomerData.setWorkSort("");
-        mDataList.add(majorCustomerData);
-        mAtAdapter = new MajorCustomerAtAdapter(this, mDataList);
-        mLvMajor.setAdapter(mAtAdapter);
+
+        mDataList = (List<MajorCustomerData>)getIntent().getExtras().getSerializable("major");
+        if (mDataList.size()>0){
+
+            mAtAdapter = new MajorCustomerAtAdapter(this, mDataList);
+            mLvMajor.setAdapter(mAtAdapter);
+            mAtAdapter.notifyDataSetChanged();
+
+        }else {
+            mDataList = new ArrayList<>();
+            MajorCustomerData majorCustomerData = new MajorCustomerData();
+            majorCustomerData.setWorkSort("");
+            mDataList.add(majorCustomerData);
+            mAtAdapter = new MajorCustomerAtAdapter(this, mDataList);
+            mLvMajor.setAdapter(mAtAdapter);
+            mAtAdapter.notifyDataSetChanged();
+        }
 
         View view = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
         viewHolder = new ViewHolder(view);
@@ -104,7 +114,7 @@ public class MajorCustomerActivity extends BaseActivity {
 
     static class ViewHolder {
         @BindView(R.id.rl_addjob)
-        RelativeLayout mRlAddjob;
+        LinearLayout mRlAddjob;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

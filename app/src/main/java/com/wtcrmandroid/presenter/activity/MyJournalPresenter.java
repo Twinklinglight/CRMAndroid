@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.model.MyjournalRponseData;
+import com.wtcrmandroid.model.reponsedata.MyjournalRponseData;
 import com.wtcrmandroid.model.requestdata.MyJournalRequestData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
@@ -35,7 +35,7 @@ public class MyJournalPresenter extends BasePresenter{
     }
 
     /**
-     * 获取我的日志列表 type = 1 获取当前（刷新） type = 2 加载更多（上拉加载）
+     * 获取我的日志列表 type = 1 获取当前
      */
     public void getData(MyJournalRequestData requestData ,int type){
         post("WorkPlan/getUsersWorkPlan",requestData,type);

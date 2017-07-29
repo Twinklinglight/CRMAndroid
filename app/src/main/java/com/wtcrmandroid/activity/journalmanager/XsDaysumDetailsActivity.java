@@ -83,13 +83,12 @@ public class XsDaysumDetailsActivity extends BaseActivity<XsDaysumDetailsPresent
         dayDetailsRQ.setUserId(MyApplication.application.getLoginData().getUserID());
         dayDetailsRQ.setType("day");
         dayDetailsRQ.setIsPlan("false");
-        dayDetailsRQ.setRoleClass(0);
+        dayDetailsRQ.setRoleClass(MyApplication.application.getLoginData().getRoleClass());
         dayDetailsRQ.setNowDate(timeDate);
 
         presenter.postDaysumData(dayDetailsRQ);
 
     }
-
 
     @Override
     public void returnData(int key, XsDaysumDetailsRP data) {

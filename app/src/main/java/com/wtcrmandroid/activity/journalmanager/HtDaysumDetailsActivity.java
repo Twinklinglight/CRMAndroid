@@ -78,7 +78,7 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
         dayDetailsRequestData.setType("day");
         dayDetailsRequestData.setIsPlan("false");
         dayDetailsRequestData.setNowDate(time);
-        dayDetailsRequestData.setRoleClass(1);
+        dayDetailsRequestData.setRoleClass(MyApplication.application.getLoginData().getRoleClass());
 
         presenter.GetDaySumDetails(dayDetailsRequestData);
 

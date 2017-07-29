@@ -4,17 +4,13 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
 import com.wtcrmandroid.model.reponsedata.WeekDepartRp;
-import com.wtcrmandroid.model.reponsedata.WeekSumDetailsRpData;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
-import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * Created by zxd on 2017/7/10.

@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -14,6 +15,7 @@ import com.wtcrmandroid.model.reponsedata.DepartmentRponseData;
 import com.wtcrmandroid.model.requestdata.DepartmentRquestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -29,10 +31,11 @@ public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter
     @BindView(R.id.lv_department)
     ListView listDepart;
     private DepartmentJournalAdapter mAdapter;
+    private List<DepartmentRponseData> searchData;
 
     @Override
     protected int layout() {
-        return R.layout.activity_department_employees_log_management_main;
+        return R.layout.activity_department_main;
     }
 
     @Override
@@ -51,22 +54,28 @@ public class DepartmentMainActivity extends BaseActivity<DepartmentMainPresenter
                 DepartmentMainActivity.this.finish();
             }
         });
-        titlebar.setRightOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                startActivity(new Intent(DepartmentMainActivity.this, DepartmentSerachActivity.class));
-            }
-        });
 
     }
 
     @Override
     public void returnData(int key, final List<DepartmentRponseData> data) {
-
+        searchData = data;
         mAdapter = new DepartmentJournalAdapter(this, data);
         listDepart.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+
+        titlebar.setRightOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(DepartmentMainActivity.this, DepartmentSerachActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("searchData",(Serializable)data);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
         listDepart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

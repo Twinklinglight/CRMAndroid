@@ -20,7 +20,7 @@
         android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="@string/submit"
+        android:text="@string/Major_save"
         android:textColor="#ffffff"/>
 
     <ListView
@@ -29,7 +29,7 @@
         android:layout_above="@id/tv_dayplan_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white">
+        android:divider="@null">
 
     </ListView>
 

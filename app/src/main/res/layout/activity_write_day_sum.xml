@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context="com.wtcrmandroid.activity.journalmanager.WriteDaySumActivity">
 
     <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="45dp">
-    </com.wtcrmandroid.view.custompricing.TitleBar>
+        android:layout_height="45dp"></com.wtcrmandroid.view.custompricing.TitleBar>
 
     <RelativeLayout
         android:id="@+id/rl_head"
-        android:layout_below="@id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/titlebar"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:background="@android:color/white"
         android:padding="10dp">
 
@@ -28,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/app_name"/>
+            android:text="@string/app_name" />
 
         <ImageButton
             android:id="@+id/ib_daysum_calender"
@@ -36,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@null"
-            android:src="@mipmap/ic_xrz_calender"/>
+            android:src="@mipmap/ic_xrz_calender" />
 
     </RelativeLayout>
 
@@ -44,18 +42,19 @@
         android:id="@+id/tv_daysum_submit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="@string/submit"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff" />
 
     <ListView
         android:id="@+id/lv_write_daysum"
-        android:layout_above="@id/tv_daysum_submit"
-        android:layout_below="@id/rl_head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:layout_above="@id/tv_daysum_submit"
+        android:layout_below="@id/rl_head">
     </ListView>
 
 </RelativeLayout>

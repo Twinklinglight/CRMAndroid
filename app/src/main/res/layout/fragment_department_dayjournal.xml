@@ -73,13 +73,15 @@
                 android:id="@+id/lv_daysum_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:divider="@null"
                 android:layout_marginBottom="10dp">
             </com.wtcrmandroid.view.listview.MyListView>
 
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
         </LinearLayout>

@@ -44,16 +44,16 @@
     </LinearLayout>
     <ListView
         android:id="@+id/lv_write_work_plan"
+        android:divider="@null"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         />
     <Button
         android:id="@+id/bt_submit"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
         android:textColor="#ffffff"
         android:textSize="18dp"
         android:text="立即提交"

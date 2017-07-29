@@ -34,7 +34,7 @@ public class IfCaiDianDialog extends Dialog {
     private int tag;
 
     public IfCaiDianDialog(@NonNull Context context,CaiListener caiListener,int position,int tag) {
-        super(context);
+        super(context,R.style.Dialog);
         this.mContext = context;
         this.listener = caiListener;
         this.position = position;

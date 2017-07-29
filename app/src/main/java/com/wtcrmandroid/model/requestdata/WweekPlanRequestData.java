@@ -1,6 +1,6 @@
 package com.wtcrmandroid.model.requestdata;
 
-import com.wtcrmandroid.model.WriterWeekPlaneData;
+import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;
 
 import java.util.List;
 

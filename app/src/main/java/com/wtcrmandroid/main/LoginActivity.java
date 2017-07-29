@@ -99,6 +99,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
             }
         }
         startActivity(new Intent(this,MainActivity.class));
+        this.finish();
 
     }
     @Override protected void onResume() {

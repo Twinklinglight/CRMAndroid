@@ -11,9 +11,8 @@ import com.wtcrmandroid.activity.journalmanager.present.WeekPlanDetailsPresenter
 import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.WriterWeekPlaneData;
+import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

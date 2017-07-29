@@ -6,9 +6,8 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.AddPurposeFragmentAdapter;
 import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.model.AddPurpostCtAtData;
+import com.wtcrmandroid.model.reponsedata.AddPurpostCtAtData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

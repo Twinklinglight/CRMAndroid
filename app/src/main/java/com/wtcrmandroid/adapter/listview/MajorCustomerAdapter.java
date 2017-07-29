@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.MajorCustomerData;
+import com.wtcrmandroid.model.reponsedata.MajorCustomerData;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ import com.wtcrmandroid.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.WorkLoadFgAdapter;
-import com.wtcrmandroid.model.GetMoneyData;
+import com.wtcrmandroid.model.reponsedata.GetMoneyData;
 
 import java.util.List;
 

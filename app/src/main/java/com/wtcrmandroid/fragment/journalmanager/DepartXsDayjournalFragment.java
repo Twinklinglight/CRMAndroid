@@ -88,7 +88,6 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
     LinearLayout llTimeTitle;
 
 
-
     private String datetime;    //提交时间
     private int userid;         //部门员工id
     private int Logid;          //日志id
@@ -113,7 +112,7 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
 
         switch (key) {
             case 1:
-                XsDayDepartRp dayData = (XsDayDepartRp)data;
+                XsDayDepartRp dayData = (XsDayDepartRp) data;
 
                 XsDayplanDetailsRP planData = dayData.getPlan();
                 XsDausumWorkData work = dayData.getWork();
@@ -138,20 +137,17 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
                 mLvDaysumDetails.setAdapter(daysumDetailsAdapter);
                 daysumDetailsAdapter.notifyDataSetChanged();                //日总结列表
 
-                List<WorkOrder> workorder = work.getWorkorder();
+                WorkOrder workorder = work.getWorkorder();
 
-                if (workorder != null){
+                if (workorder != null) {
 
-                    if (workorder.size()>0){
-                        WorkOrder order = workorder.get(0);
-                        mTvPhoneCount.setText(order.getTrueCall());
-                        mTvACount.setText(order.getAStore());
-                        mTvBCount.setText(order.getBStore());
-                        mTvAddACount.setText(order.getNewAStore());
-                        mTvAddBCount.setText(order.getNewBStore());
-                        mTvKrlCount.setText(order.getStroe());
-                        mTvShangmenCount.setText(order.getTrueVisit());     //今日工作量
-                    }
+                    mTvPhoneCount.setText(workorder.getTrueCall());
+                    mTvACount.setText(workorder.getAStore());
+                    mTvBCount.setText(workorder.getBStore());
+                    mTvAddACount.setText(workorder.getNewAStore());
+                    mTvAddBCount.setText(workorder.getNewBStore());
+                    mTvKrlCount.setText(workorder.getStroe());
+                    mTvShangmenCount.setText(workorder.getTrueVisit());     //今日工作量
 
                 }
                 workLoadFgAdapter = new WorkLoadFgAdapter(getActivity(), work.getWorkload());
@@ -177,8 +173,8 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
                 commentAdapter.notifyDataSetChanged();
                 break;
             case 2:
-                Toast.makeText(getContext(), "评论成功", Toast.LENGTH_SHORT).show();
                 postData(userid, datetime);  //刷新列表
+                Toast.makeText(getContext(), "评论成功", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -214,14 +210,15 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
     }
 
     //取消popupwindow
-    public void cancleWindows(){
-        if (Calendarwindow != null){
+    public void cancleWindows() {
+        if (Calendarwindow != null) {
 
-            if (Calendarwindow.isShowing()){
+            if (Calendarwindow.isShowing()) {
                 Calendarwindow.dismiss();
             }
         }
     }
+
     @OnClick({R.id.iv_calender, R.id.tv_write_comment})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -264,7 +261,7 @@ public class DepartXsDayjournalFragment extends BaseFragment<XsDepartDayPresente
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
         datetime = sdf2.format(date);
         mTvDate.setText(sdf.format(date));
-        postData(userid,datetime );
+        postData(userid, datetime);
     }
 
     private void postData(int userid, String data) {

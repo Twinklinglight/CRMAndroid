@@ -95,7 +95,7 @@ public class MyPhoneNumberDialog extends Dialog {
         int width3 = dm.widthPixels;
 
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.width = (int) (width3 * 0.65); // 宽度设置为屏幕的0.65
+        lp.width = (int) (width3 * 0.85); // 宽度设置为屏幕的0.65
 
         dialogWindow.setGravity(Gravity.CENTER);
         dialogWindow.setAttributes(lp);

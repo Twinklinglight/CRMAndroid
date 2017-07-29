@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +13,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.mapapi.map.Text;
 import com.iflytek.cloud.thirdparty.T;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.XsWriteDaysumPresenter;
 import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;
-import com.wtcrmandroid.model.AddPurpostCtAtData;
-import com.wtcrmandroid.model.GetMoneyData;
-import com.wtcrmandroid.model.GetSingleCustomerData;
-import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.model.reponsedata.AddPurpostCtAtData;
+import com.wtcrmandroid.model.reponsedata.GetMoneyData;
+import com.wtcrmandroid.model.reponsedata.GetSingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.WriteDaysumData;
 import com.wtcrmandroid.model.requestdata.WorkOrder;
 import com.wtcrmandroid.model.requestdata.XsWriteDaysumRQ;
 import com.wtcrmandroid.view.custompricing.TitleBar;
@@ -60,16 +60,18 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
     private String subTime = "";
 
     private WriteDaySumAdapter mDaySumAdapter;
-    private List<WriteDaysumData> mDataList;
-    private List<AddPurpostCtAtData> addcustinfo;    //新增意向客户
-    private List<GetSingleCustomerData> workdream;   //预测单客户是否踩中
-    private List<GetMoneyData> workload;             //汇款到单
+    private List<WriteDaysumData> mDataList = new ArrayList<>();
+    private List<AddPurpostCtAtData> addcustinfo = new ArrayList<>();    //新增意向客户
+    private List<GetSingleCustomerData> workdream = new ArrayList<>();   //预测单客户是否踩中
+    private List<GetMoneyData> workload = new ArrayList<>();             //汇款到单
     private WorkOrder workorder;                    //今日工作量
 
     public static final int ADDCUSTOMER = 0;
     public static final int BACKMONEY = 1;
     public static final int WORKLOAD = 2;
     public static final int GETSINGLE = 3;
+    
+    private boolean CanSubmit = false;
 
     @Override
     protected int layout() {
@@ -120,8 +122,12 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
         viewHolder.mRlAddCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        AddPurposeCustomerActivity.class), ADDCUSTOMER);
+                Intent intent = new Intent(XsWriteDaysumActivity.this,
+                        AddPurposeCustomerActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("addcustinfo",(Serializable) addcustinfo);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, ADDCUSTOMER);
             }
         });
 
@@ -129,8 +135,12 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
         viewHolder.mRlDaysumWorkload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        TodayWorkLoadActivity.class), WORKLOAD);
+                Intent intent = new Intent(XsWriteDaysumActivity.this,
+                        TodayWorkLoadActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("workorder",workorder);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, WORKLOAD);
             }
         });
 
@@ -138,8 +148,12 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
         viewHolder.mRlMoneyAnalysis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        GetMoneyActivity.class), BACKMONEY);
+                Intent intent = new Intent(XsWriteDaysumActivity.this,
+                        GetMoneyActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("workload",(Serializable)workload);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, BACKMONEY);
             }
         });
 
@@ -147,8 +161,12 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
         viewHolder.mRlSingleAnalysis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(XsWriteDaysumActivity.this,
-                        GetSingleCustomerActivity.class), GETSINGLE);
+                Intent intent = new Intent(XsWriteDaysumActivity.this,
+                        GetSingleCustomerActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("workdream",(Serializable)workdream);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, GETSINGLE);
             }
         });
 
@@ -170,8 +188,8 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
             case BACKMONEY:
                 if (resultCode == 1)
                 workload = (List<GetMoneyData>)data.getExtras().getSerializable("WorkLoad");
-                if (workload != null){
-                    viewHolder.tvWorkLoad.setText("完成");
+                if (workload.size() > 0){
+                    viewHolder.tvWorkLoad.setText("已完成");
                 }else {
                     viewHolder.tvWorkLoad.setText("");
                 }
@@ -179,8 +197,8 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
             case GETSINGLE:
                 if (resultCode == 1)
                 workdream = (List<GetSingleCustomerData>)data.getExtras().getSerializable("Single");
-                if (workdream != null){
-                    viewHolder.tvSingle.setText("完成");
+                if (workdream.size()> 0){
+                    viewHolder.tvSingle.setText("已完成");
                 }else {
                     viewHolder.tvSingle.setText("");
                 }
@@ -188,8 +206,8 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
             case ADDCUSTOMER:
                 if (resultCode == 1)
                 addcustinfo = ( List<AddPurpostCtAtData>)data.getExtras().getSerializable("NewCustomer");
-                if (addcustinfo != null){
-                    viewHolder.tvNewCustomer.setText("完成");
+                if (addcustinfo.size() > 0){
+                    viewHolder.tvNewCustomer.setText("已完成");
                 }else{
                     viewHolder.tvNewCustomer.setText("");
                 }
@@ -214,20 +232,36 @@ public class XsWriteDaysumActivity extends BaseActivity<XsWriteDaysumPresenter, 
                 new CalendarDialog(XsWriteDaysumActivity.this, XsWriteDaysumActivity.this).show();
                 break;
             case R.id.tv_daysum_submit:
-                XsWriteDaysumRQ xsWriteDaysumRQ = new XsWriteDaysumRQ();
-                xsWriteDaysumRQ.setUserId(MyApplication.application.getLoginData().getUserID());
-                xsWriteDaysumRQ.setType("day");
-                xsWriteDaysumRQ.setPlan(false);
-                xsWriteDaysumRQ.setRoleClass(0);
-                xsWriteDaysumRQ.setWorkdetail(mDataList);
-                xsWriteDaysumRQ.setAddcustinfo(addcustinfo);
-                xsWriteDaysumRQ.setWorkload(workload);
-                xsWriteDaysumRQ.setWorkorder(workorder);
-                xsWriteDaysumRQ.setWorkdream(workdream);
-                xsWriteDaysumRQ.setWorkRecordTime(subTime);
-                xsWriteDaysumRQ.setLearningAndReflection(viewHolder.mEtDaysumSum.getText().toString());
+                if (workorder == null){
+                    CanSubmit = false;
+                    Toast.makeText(this, "今日工作量必须填写", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    CanSubmit = true;
+                }
+                if (workload == null){
+                    CanSubmit = false;
+                    Toast.makeText(this, "今日回款到单情况必须填写", Toast.LENGTH_SHORT).show();
+                }else {
+                    CanSubmit = true;
+                }
+                if (CanSubmit){
 
-                presenter.postDaysum(xsWriteDaysumRQ);
+                    XsWriteDaysumRQ xsWriteDaysumRQ = new XsWriteDaysumRQ();
+                    xsWriteDaysumRQ.setUserId(MyApplication.application.getLoginData().getUserID());
+                    xsWriteDaysumRQ.setType("day");
+                    xsWriteDaysumRQ.setPlan(false);
+                    xsWriteDaysumRQ.setRoleClass(0);
+                    xsWriteDaysumRQ.setWorkdetail(mDataList);
+                    xsWriteDaysumRQ.setAddcustinfo(addcustinfo);
+                    xsWriteDaysumRQ.setWorkload(workload);
+                    xsWriteDaysumRQ.setWorkorder(workorder);
+                    xsWriteDaysumRQ.setWorkdream(workdream);
+                    xsWriteDaysumRQ.setWorkRecordTime(subTime);
+                    xsWriteDaysumRQ.setLearningAndReflection(viewHolder.mEtDaysumSum.getText().toString());
+
+                    presenter.postDaysum(xsWriteDaysumRQ);
+                }
                 break;
         }
     }

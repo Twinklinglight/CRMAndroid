@@ -3,6 +3,7 @@ package com.wtcrmandroid.view.popupwindow;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -46,9 +47,14 @@ public class popubwindow_share extends PopupWindow {
     private View view;
     private Context mContext;
 
-    public popubwindow_share(Context context, View parentView) {
+    private String filepath;
+    private String filename;
+
+    public popubwindow_share(Context context, View parentView,String path,String filename) {
         super(context);
         this.mContext = context;
+        this.filepath = path;
+        this.filename = filename;
         initView();
         setContentView(view);
         showAsDropDown(parentView);
@@ -75,7 +81,6 @@ public class popubwindow_share extends PopupWindow {
         switch (view.getId()) {
             case R.id.linear_wechat:            //分享到到微信好友
                 showShare(Wechat.NAME);
-//                show(Wechat.NAME);
                 dismiss();
                 break;
             case R.id.linear_wechatmoments:     //分享到微信朋友圈
@@ -97,19 +102,6 @@ public class popubwindow_share extends PopupWindow {
         }
     }
 
-    private void show(String platform) {
-
-        ShareSDK.initSDK(mContext);
-        OnekeyShare oks = new OnekeyShare();
-        //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
-        oks.setPlatform(platform);
-        //关闭sso授权
-        oks.disableSSOWhenAuthorize();
-        oks.setText("微信分享");
-        oks.show(mContext);
-
-    }
-
     /**
      * 分享到指定平台
      *
@@ -121,11 +113,12 @@ public class popubwindow_share extends PopupWindow {
 //                "/AppShare/html/appShareRegister.html?inviteCode=" +
 //                WTUserManager.INSTANCE.getCurrentUser().getUserName();
 
-        String URL_SHARE_CLICK = "http://www.baidu.com";
+        String URL_SHARE_CLICK = "http://www.chinawutong.com";
 
-        String path = Const.SDCARD_PATH + "share/image"; //分享需要用到的图片
-        String iconName = "icon_wu_tong_logo.png";
+        String path = filepath; //分享需要用到的图片
+        String iconName = filename;
         final String iconPath = path + File.separatorChar + iconName;
+        Log.i("Print", "showShare: iconPath = "+iconPath);
         copyImgToSD(path, iconName);
         ShareSDK.initSDK(mContext);
         OnekeyShare oks = new OnekeyShare();

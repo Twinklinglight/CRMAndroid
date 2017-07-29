@@ -14,8 +14,8 @@ import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;
 import com.wtcrmandroid.fragment.journalmanager.MajorCustomerFragment;
 import com.wtcrmandroid.fragment.journalmanager.SingleCustomerFragment;
 import com.wtcrmandroid.fragment.journalmanager.WorkPlanFragment;
-import com.wtcrmandroid.model.MajorCustomerData;
-import com.wtcrmandroid.model.SingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.MajorCustomerData;
+import com.wtcrmandroid.model.reponsedata.SingleCustomerData;
 import com.wtcrmandroid.model.reponsedata.HtDayplanDetailsData;
 import com.wtcrmandroid.model.reponsedata.XsDayplanDetailsRP;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
@@ -78,7 +78,7 @@ public class XsDayplanDetailsActivity extends BaseActivity<XsDayPlanDetailsPrese
         dayDetailsRQ.setType("day");
         dayDetailsRQ.setIsPlan("true");
         dayDetailsRQ.setNowDate(timeDate);
-        dayDetailsRQ.setRoleClass(0);
+        dayDetailsRQ.setRoleClass(MyApplication.application.getLoginData().getRoleClass());
 
         presenter.postWpDetails(dayDetailsRQ);
 

@@ -2,17 +2,18 @@ package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.adapter.listview.GetMoneyAtAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-import com.wtcrmandroid.model.GetMoneyData;
+import com.wtcrmandroid.model.reponsedata.GetMoneyData;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class GetMoneyActivity extends BaseActivity {
     private List<GetMoneyData> mDataList;
     private GetMoneyAtAdapter mMoneyAtAdapter;
     public static final int GETMONEY_CODE = 1;
+    private static final String TAG = "GetMoneyActivity";
 
 
     @Override
@@ -56,13 +58,21 @@ public class GetMoneyActivity extends BaseActivity {
                 GetMoneyActivity.this.finish();
             }
         });
-        mDataList = new ArrayList<>();
-        GetMoneyData getMoneyData = new GetMoneyData();
-        getMoneyData.setCustomerName("");
-        mDataList.add(getMoneyData);
 
-        mMoneyAtAdapter = new GetMoneyAtAdapter(this, mDataList);
-        mLvGetmoney.setAdapter(mMoneyAtAdapter);
+        mDataList = (List<GetMoneyData>)getIntent().getExtras().getSerializable("workload");
+        if (mDataList.size()>0){
+            mMoneyAtAdapter = new GetMoneyAtAdapter(this, mDataList);
+            mLvGetmoney.setAdapter(mMoneyAtAdapter);
+            mMoneyAtAdapter.notifyDataSetChanged();
+        }else {
+            mDataList = new ArrayList<>();
+            GetMoneyData getMoneyData = new GetMoneyData();
+            getMoneyData.setCustomerName("");
+            mDataList.add(getMoneyData);
+            mMoneyAtAdapter = new GetMoneyAtAdapter(this, mDataList);
+            mLvGetmoney.setAdapter(mMoneyAtAdapter);
+            mMoneyAtAdapter.notifyDataSetChanged();
+        }
 
         View footview = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
         ViewHolder viewHolder = new ViewHolder(footview);
@@ -82,6 +92,7 @@ public class GetMoneyActivity extends BaseActivity {
 
     @OnClick(R.id.tv_getmoney_save)
     public void onViewClicked() {
+        Log.i(TAG, "onViewClicked: WorkLoad = "+mDataList.toString());
         Intent intent = getIntent();
         Bundle bundle = new Bundle();
         bundle.putSerializable("WorkLoad",(Serializable)mDataList);
@@ -93,11 +104,12 @@ public class GetMoneyActivity extends BaseActivity {
     @Override
     public void returnData(int key, Object data) {
 
+
     }
 
     static class ViewHolder {
         @BindView(R.id.rl_addjob)
-        RelativeLayout mRlAddjob;
+        LinearLayout mRlAddjob;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

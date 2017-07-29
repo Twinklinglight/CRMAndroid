@@ -42,8 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="3"/>
+                    android:paddingTop="10dp" />
 
             </LinearLayout>
 
@@ -71,8 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="3"/>
+                    android:paddingTop="10dp"/>
 
             </LinearLayout>
 
@@ -100,8 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="3"/>
+                    android:paddingTop="10dp"/>
 
             </LinearLayout>
 
@@ -128,8 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="3"/>
+                    android:paddingTop="10dp"/>
 
             </LinearLayout>
 
@@ -166,8 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="3"/>
+                    android:paddingTop="10dp"/>
 
             </LinearLayout>
 
@@ -195,8 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="3"/>
+                    android:paddingTop="10dp" />
 
             </LinearLayout>
 
@@ -224,8 +218,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="3"/>
+                    android:paddingTop="10dp"/>
 
             </LinearLayout>
 
@@ -251,8 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text=""/>
+                    android:paddingTop="10dp" />
 
             </LinearLayout>
 

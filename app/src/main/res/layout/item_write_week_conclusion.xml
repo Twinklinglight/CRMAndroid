@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#f5f6f7"
     android:orientation="vertical"
-    android:paddingBottom="20dp">
+    android:paddingBottom="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,19 +19,18 @@
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="本周总结"
             android:textColor="#2b2f33"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/iv_delete"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_xrz_delete"
-            android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/ic_xrz_delete"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 
@@ -51,22 +50,21 @@
 
         <EditText
             android:id="@+id/et_work_plane"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@null"
             android:hint="工作计划"
             android:textColor="#2b2f33"
-            android:textColorHint="#C5C9CD"
-            android:textSize="18dp" />
+            android:textColorHint="@color/colorContext" />
 
         <ImageView
-            android:padding="10dp"
             android:id="@+id/iv_microphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_microphone" />
+            android:background="@mipmap/ic_microphone"
+            android:padding="10dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -85,15 +83,15 @@
 
         <EditText
             android:id="@+id/et_plane_target"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@null"
             android:hint="计划达成目标/完成进度"
             android:textColor="#2b2f33"
-            android:textColorHint="#C5C9CD"
-            android:textSize="18dp" />
+            android:textColorHint="@color/colorContext"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -112,44 +110,45 @@
 
         <EditText
             android:id="@+id/et_proportion"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@null"
             android:hint="此工作所占比重"
             android:textColor="#2b2f33"
-            android:textColorHint="#C5C9CD"
-            android:textSize="18dp" />
+            android:textColorHint="@color/colorContext"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_complete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="horizontal"
+        android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:background="@android:color/white">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_xrz_wcqk"/>
+            android:src="@mipmap/ic_xrz_wcqk" />
+
         <TextView
             android:id="@+id/tv_complete"
+            style="@style/ContentText"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            style="@style/ContentText"
+            android:layout_weight="1"
             android:hint="@string/hint_daysum_wcqk"
-            android:textColorHint="#C5C9CD"/>
+            android:textColorHint="@color/colorContext" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_grayright_arrow"/>
+            android:src="@mipmap/ic_grayright_arrow" />
 
     </LinearLayout>
 

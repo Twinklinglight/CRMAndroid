@@ -16,9 +16,10 @@ import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.WriteDaySumPresenter;
 import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;
-import com.wtcrmandroid.model.WriteDaysumData;
-import com.wtcrmandroid.model.reponsedata.WjournalData;
+import com.wtcrmandroid.model.reponsedata.WriteDaysumData;
 import com.wtcrmandroid.model.requestdata.WDaySumRequestData;
+import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
 
@@ -80,15 +81,21 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Objec
 
         mDataList = new ArrayList<>();
         WriteDaysumData writeDaysumData = new WriteDaysumData();
-        writeDaysumData.setWorkSort("B类");
+        writeDaysumData.setWorkSort("");
         mDataList.add(writeDaysumData);
         mDaySumAdapter = new WriteDaySumAdapter(this, mDataList);
         mLvDaysum.setAdapter(mDaySumAdapter);
 
         View view = LayoutInflater.from(this).inflate(R.layout.item_daysum_foot, null);
-        ViewHolder viewHolder = new ViewHolder(view);
+        final ViewHolder viewHolder = new ViewHolder(view);
         mLvDaysum.addFooterView(view);
 
+        viewHolder.mIbDaysumSumyuyin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doVoice(viewHolder.mEtDaysumSum);
+            }
+        });
         viewHolder.mEtDaysumSum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -164,6 +171,23 @@ public class WriteDaySumActivity extends BaseActivity<WriteDaySumPresenter,Objec
         SetDateText(datetext);
     }
 
+
+    public void doVoice(final EditText etText) {
+
+        Iat iat = new Iat(this);
+        iat.iatRecognize();
+        iat.setSetRestult(new Iat.setResult() {
+            @Override
+            public void succeed(String result) {
+                etText.setText(result);
+            }
+
+            @Override
+            public void failed(String iatError) {
+                L.e("出现了一个错误，请您重试");
+            }
+        });
+    }
 
     static class ViewHolder {
         @BindView(R.id.ll_daysum_addjob)

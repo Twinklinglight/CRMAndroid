@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.model.WriteDaysumData;
+import com.wtcrmandroid.model.reponsedata.WriteDaysumData;
+import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.iat.Iat;
 import com.wtcrmandroid.view.dialog.CompleteConditionDialog;
 import com.wtcrmandroid.view.dialog.SelectionJobCategoriesDialog;
 
@@ -33,7 +35,7 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
     }
 
     @Override
-    protected void convert(ViewHolder holder, final int position) {
+    protected void convert(final ViewHolder holder, final int position) {
 
         if (list.size() > 1) {     //条目数量大于一，删除按钮显示
             holder.mIvDelete.setVisibility(View.VISIBLE);
@@ -88,6 +90,13 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
             }
         });
 
+        holder.mIbDaypsumYy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doVoice(holder.mTvDaysumContent);
+            }
+        });
+
         holder.mTvDaysumContent.addTextChangedListener(new MyTextWatch(writeDaysumData, position, 0));
         holder.mEtDaysumPerson.addTextChangedListener(new MyTextWatch(writeDaysumData, position, 1));
 
@@ -130,6 +139,24 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
         notifyDataSetChanged();
     }
 
+    //语音接口
+    public void doVoice(final EditText etText) {
+
+        Iat iat = new Iat(activity);
+        iat.iatRecognize();
+        iat.setSetRestult(new Iat.setResult() {
+            @Override
+            public void succeed(String result) {
+                etText.setText(result);
+            }
+
+            @Override
+            public void failed(String iatError) {
+                L.e("出现了一个错误，请您重试");
+            }
+        });
+    }
+
     static class ViewHolder {
         @BindView(R.id.tv_daysum_sort)
         TextView mTvDaysumSort;
@@ -138,7 +165,7 @@ public class WriteDaySumAdapter extends MySmallBaseAdapter<WriteDaysumData, Writ
         @BindView(R.id.tv_daysum_content)
         EditText mTvDaysumContent;
         @BindView(R.id.ib_daypsum_yy)
-        ImageButton mIbDaypsumYy;
+        ImageButton mIbDaypsumYy;           //语音按钮
         @BindView(R.id.et_daysum_person)
         EditText mEtDaysumPerson;
         @BindView(R.id.tv_daysum_complete)

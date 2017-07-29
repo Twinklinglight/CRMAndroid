@@ -63,7 +63,7 @@
 
     <!--xs_daysum_foot-->
     <string name="work_load">今日工作量</string>
-    <string name="money_qk">今日汇款到单情况</string>
+    <string name="money_qk">今日回款到单情况</string>
     <string name="single_analysis">预测到单客户踩中/踩中分析</string>
     <string name="add_customer">新增意向客户情况</string>
 

@@ -1,21 +1,23 @@
-package com.wtcrmandroid.model;
+package com.wtcrmandroid.model.reponsedata;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 /**
- * Created by zxd on 2017/6/12
+ * Created by zxd on 2017/6/14
  */
 
-public class MajorCustomerData{
+public class SingleCustomerData implements Serializable{
 
     @SerializedName("workLevel")
     private String WorkSort;
     @SerializedName("custName")
-    private String CustomerName;
+    private String WorkName;
     @SerializedName("nextIdea")
     private String WorkAnalysis;
+    @SerializedName("orderMaybe")
+    private String WorkPercent;
 
     public String getWorkSort() {
         return WorkSort;
@@ -25,12 +27,12 @@ public class MajorCustomerData{
         WorkSort = workSort;
     }
 
-    public String getCustomerName() {
-        return CustomerName;
+    public String getWorkName() {
+        return WorkName;
     }
 
-    public void setCustomerName(String customerName) {
-        CustomerName = customerName;
+    public void setWorkName(String workName) {
+        WorkName = workName;
     }
 
     public String getWorkAnalysis() {
@@ -41,12 +43,21 @@ public class MajorCustomerData{
         WorkAnalysis = workAnalysis;
     }
 
+    public String getWorkPercent() {
+        return WorkPercent;
+    }
+
+    public void setWorkPercent(String workPercent) {
+        WorkPercent = workPercent;
+    }
+
     @Override
     public String toString() {
-        return "MajorCustomerData{" +
+        return "SingleCustomerData{" +
                 "WorkSort='" + WorkSort + '\'' +
-                ", CustomerName='" + CustomerName + '\'' +
+                ", WorkName='" + WorkName + '\'' +
                 ", WorkAnalysis='" + WorkAnalysis + '\'' +
+                ", WorkPercent='" + WorkPercent + '\'' +
                 '}';
     }
 }

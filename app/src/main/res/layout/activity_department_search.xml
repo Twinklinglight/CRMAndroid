@@ -39,8 +39,15 @@
             android:layout_marginRight="10dp"
             android:text="搜索"
             android:textSize="16sp"
+            android:visibility="invisible"
             android:textColor="#ffffff"/>
 
 
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rec_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

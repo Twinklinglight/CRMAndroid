@@ -1,8 +1,5 @@
 package com.wtcrmandroid.model.reponsedata;
 
-import com.wtcrmandroid.model.AddPurpostCtAtData;
-import com.wtcrmandroid.model.GetMoneyData;
-import com.wtcrmandroid.model.GetSingleCustomerData;
 import com.wtcrmandroid.model.requestdata.WorkOrder;
 
 import java.util.List;
@@ -14,7 +11,7 @@ import java.util.List;
 public class XsDausumWorkData {
 
     private List<HtDaysumDetailsData> workdetail;
-    private List<WorkOrder> workorder;
+    private WorkOrder workorder;
     private List<GetMoneyData>workload;
     private List<GetSingleCustomerData>workdream;
     private List<AddPurpostCtAtData>addcustinfo;
@@ -27,11 +24,11 @@ public class XsDausumWorkData {
         this.workdetail = workdetail;
     }
 
-    public List<WorkOrder> getWorkorder() {
+    public WorkOrder getWorkorder() {
         return workorder;
     }
 
-    public void setWorkorder(List<WorkOrder> workorder) {
+    public void setWorkorder(WorkOrder workorder) {
         this.workorder = workorder;
     }
 

@@ -2,17 +2,16 @@ package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.SingleCustomerAdapter;
-import com.wtcrmandroid.model.SingleCustomerData;
+import com.wtcrmandroid.model.reponsedata.SingleCustomerData;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import java.io.Serializable;
@@ -49,20 +48,27 @@ public class SingleCustomer extends BaseActivity {
     @Override
     protected void initView() {
 
+        mTitlebar.setTitletext("预测到单客户");
         mTitlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SingleCustomer.this.finish();
             }
         });
-        mTitlebar.setTitletext("预测到单客户");
-        mDataList = new ArrayList<>();
-        SingleCustomerData singleCustomerData = new SingleCustomerData();
-        singleCustomerData.setWorkSort("");
-        mDataList.add(singleCustomerData);
-        mCustomerAdapter = new SingleCustomerAdapter(this, mDataList);
-        mLvSinglecustomer.setAdapter(mCustomerAdapter);
-
+        mDataList = (List<SingleCustomerData>)getIntent().getExtras().getSerializable("single");
+        if (mDataList.size()>0){
+            mCustomerAdapter = new SingleCustomerAdapter(this, mDataList);
+            mLvSinglecustomer.setAdapter(mCustomerAdapter);
+            mCustomerAdapter.notifyDataSetChanged();
+        }else {
+            mDataList = new ArrayList<>();
+            SingleCustomerData singleCustomerData = new SingleCustomerData();
+            singleCustomerData.setWorkSort("");
+            mDataList.add(singleCustomerData);
+            mCustomerAdapter = new SingleCustomerAdapter(this, mDataList);
+            mLvSinglecustomer.setAdapter(mCustomerAdapter);
+            mCustomerAdapter.notifyDataSetChanged();
+        }
         View view = LayoutInflater.from(this).inflate(R.layout.item_xrz_foot, null);
         ViewHolder viewHolder = new ViewHolder(view);
         view.setTag(view);
@@ -99,7 +105,7 @@ public class SingleCustomer extends BaseActivity {
 
     static class ViewHolder {
         @BindView(R.id.rl_addjob)
-        RelativeLayout mRlAddjob;
+        LinearLayout mRlAddjob;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

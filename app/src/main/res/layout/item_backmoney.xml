@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:padding="20dp">
+        android:padding="10dp"
+        android:layout_marginBottom="1dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Customer_name"
-            style="@style/ContentText"/>
+            android:text="@string/Customer_name" />
 
         <EditText
-            style="@style/EditTextStyle"
             android:id="@+id/et_get_backmoney_name"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="@string/hint__name"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
         <ImageView
             android:id="@+id/iv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_xrz_delete"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
 
     </LinearLayout>
@@ -42,23 +43,23 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:padding="20dp">
+        android:padding="10dp"
+        android:layout_marginBottom="1dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Customer_type"
-            style="@style/ContentText"/>
+            android:text="@string/Customer_type" />
 
         <EditText
-            style="@style/EditTextStyle"
             android:id="@+id/et_Customer_type"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="@string/hint_cttype"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
 
     </LinearLayout>
@@ -68,23 +69,23 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:padding="20dp">
+        android:padding="10dp"
+        android:layout_marginBottom="1dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Product_type"
-            style="@style/ContentText"/>
+            android:text="@string/Product_type" />
 
         <EditText
-            style="@style/EditTextStyle"
             android:id="@+id/et_product_type"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="@string/hint_pdtype"
-            android:paddingLeft="10dp"
-            />
+            android:paddingLeft="10dp" />
 
 
     </LinearLayout>
@@ -94,23 +95,25 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:padding="20dp">
+        android:padding="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
+            style="@style/ContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Getmoney"
-            style="@style/ContentText"/>
+            android:text="@string/Getmoney" />
 
         <EditText
-            style="@style/EditTextStyle"
             android:id="@+id/et_backmoney"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:hint="@string/hint_backmoney"
-            android:paddingLeft="10dp"
-            />
+            android:digits="1234567890."
+            android:inputType="number"
+            android:paddingLeft="10dp" />
 
 
     </LinearLayout>
