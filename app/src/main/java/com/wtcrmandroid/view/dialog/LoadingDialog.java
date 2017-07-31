@@ -41,7 +41,7 @@ public class LoadingDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_loading);
         ButterKnife.bind(this);
-        initWindowParams();
+//        initWindowParams();
     }
 
     private void initWindowParams() {
@@ -53,8 +53,8 @@ public class LoadingDialog extends Dialog {
         int width3 = dm.widthPixels;
 
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.width = (int) (width3 * 0.5); // 宽度设置为屏幕的0.5
-        lp.height=(int) (width3 * 0.5);
+        lp.width = (int) (width3 * 0.3); // 宽度设置为屏幕的0.5
+        lp.height=(int) (width3 * 0.3);
         dialogWindow.setGravity(Gravity.CENTER);
         dialogWindow.setAttributes(lp);
     }

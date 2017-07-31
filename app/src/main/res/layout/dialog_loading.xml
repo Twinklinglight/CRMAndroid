@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shap_phonenumber_dialog">
+    android:background="@drawable/shap_phonenumber_dialog"
+    android:padding="20dp">
 
     <ProgressBar
         android:id="@+id/loading_process_dialog_progressBar"
@@ -17,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:text="正在加载..."
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/text_size_18"
+        android:textSize="@dimen/text_size_16"
         android:layout_below="@+id/loading_process_dialog_progressBar"
         android:layout_marginTop="15dp"/>
 

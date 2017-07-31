@@ -50,15 +50,14 @@
         <TextView
             android:id="@+id/tv_ranking"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/tv_captain"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/tv_team_name"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
-
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_16" />
     </RelativeLayout>
 
     <View

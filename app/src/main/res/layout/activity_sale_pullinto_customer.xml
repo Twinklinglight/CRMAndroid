@@ -19,7 +19,8 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="@string/submit"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:textSize="@dimen/text_size_16"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
         android:layout_above="@id/tv_submit"
         android:layout_below="@id/title"
         android:background="#F5F6F7"
-        android:paddingBottom="30dp">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +50,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
                     android:text="@string/member_sort" />
+
 
                 <TextView
                     android:id="@+id/tv_sort"
@@ -57,21 +60,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
+                    android:layout_marginRight="10dp"
                     android:drawableRight="@mipmap/ic_grayright_arrow" />
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lineColor" />
             <EditText
                 android:id="@+id/et_member_name"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="9dp"
                 android:background="#fff"
                 android:hint="@string/member_name"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColor="@color/colorIconText"
-                android:textColorHint="#c4c8cc"
+                android:textColorHint="@color/hint"
                 android:textSize="@dimen/Text32" />
 
             <View
@@ -163,13 +170,17 @@
                     android:drawableRight="@mipmap/ic_grayright_arrow" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lineColor" />
 
             <!--收起 布局-->
             <LinearLayout
                 android:id="@+id/ll_canshouqi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="9dp"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -419,7 +430,8 @@
                     android:layout_height="48dp"
                     android:gravity="center"
                     android:text="其他"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_16"/>
 
                 <ImageView
                     android:id="@+id/iv_else"
@@ -428,6 +440,14 @@
                     android:src="@mipmap/ic_double_downarrow" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lineColor" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#F5F6F7" />
 
         </LinearLayout>
 

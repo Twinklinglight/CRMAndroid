@@ -82,7 +82,7 @@ public class WaveRipView extends View {
     };
 
     private void initView() {
-        cirRadius = 150;
+        cirRadius = 140;
         circlePaint = new Paint();
         circlePaint.setColor(Color.parseColor("#FDCFBF"));
         circlePaint.setStyle(Style.FILL);

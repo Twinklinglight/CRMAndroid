@@ -1,5 +1,6 @@
 package com.wtcrmandroid.view.popupwindow;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.ColorDrawable;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
-import com.wtcrmandroid.Const;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.utils.sharesdk.onekeyshare.OnekeyShare;
 
@@ -50,13 +50,20 @@ public class popubwindow_share extends PopupWindow {
     private String filepath;
     private String filename;
 
-    public popubwindow_share(Context context, View parentView,String path,String filename) {
+    public popubwindow_share(Activity context, View parentView,String path,String filename) {
         super(context);
         this.mContext = context;
         this.filepath = path;
         this.filename = filename;
         initView();
         setContentView(view);
+        setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
+        setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
+//        int[] locations = new int[2];
+//        view.getLocationOnScreen(locations);
+//        int screenHeight = mContext.getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+//        int height = screenHeight - parentView.getHeight() - locations[1];
+//        setHeight(height);
         showAsDropDown(parentView);
     }
 
@@ -64,8 +71,8 @@ public class popubwindow_share extends PopupWindow {
         view = LayoutInflater.from(mContext).inflate(R.layout.popupwindow_share, null);
         ButterKnife.bind(this, view);
 
-        setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
-        setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
+
+
 
         setFocusable(true);
         setOutsideTouchable(true);

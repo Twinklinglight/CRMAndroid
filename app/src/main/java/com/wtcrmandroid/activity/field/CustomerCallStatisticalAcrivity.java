@@ -112,6 +112,13 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
 
                         }
                         titleLeftPopupWindow.show();
+                        titleLeftPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                            @Override
+                            public void onDismiss() {
+                                tcmbBar.NoCheckStyle(1);
+                                tcmbBar.setIsCheck_number(0);
+                            }
+                        });
                         break;
                     case 3:
                         if (calendarPopupWindow == null) {

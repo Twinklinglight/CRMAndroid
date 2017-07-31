@@ -84,6 +84,13 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
 
                         }
                         titleLeftPopupWindow.show();
+                        titleLeftPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            tcmbBar.NoCheckStyle(1);
+                            tcmbBar.setIsCheck_number(0);
+                        }
+                    });
                         break;
                     case 3:
                         if (calendarPopupWindow == null) {
@@ -113,7 +120,13 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
                             });
                         }
                         calendarPopupWindow.show();
-
+                        calendarPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            tcmbBar.NoCheckStyle(3);
+                            tcmbBar.setIsCheck_number(0);
+                        }
+                    });
                         break;
                 }
 

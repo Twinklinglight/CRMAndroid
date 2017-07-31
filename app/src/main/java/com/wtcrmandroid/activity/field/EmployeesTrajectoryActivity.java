@@ -1,6 +1,7 @@
 package com.wtcrmandroid.activity.field;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.os.Handler;
 import android.os.Looper;
@@ -140,7 +141,7 @@ public class EmployeesTrajectoryActivity extends BaseMapActivity<EmployeesTrajec
                 }else {
                     LatLng pt=new LatLng(data.getLat(), data.getLng());
                     if(!SpatialRelationUtil.isCircleContainsPoint(latLng, 50, pt)){
-                        points.add(latLng);
+                        points.add(pt);
                         latLng=pt;
                     }
                 }
@@ -151,11 +152,15 @@ public class EmployeesTrajectoryActivity extends BaseMapActivity<EmployeesTrajec
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
-                    //已在主线程中，可以更新UI
-                    OverlayOptions ooPolyline = new PolylineOptions().width(15).color(R.color.colorPrimary)
-                            .points(points);
+                    if(points.size()>1) {
+                        //已在主线程中，可以更新UI
+                        OverlayOptions ooPolyline = new PolylineOptions().width(10).color(Color.parseColor("#389EFF"))
+                                .points(points);
 //        添加在地图中
-                    Polyline mPolyline = (Polyline) mBaiduMap.addOverlay(ooPolyline);
+                        Polyline mPolyline = (Polyline) mBaiduMap.addOverlay(ooPolyline);
+                    }else {
+
+                    }
                     View contentView = LayoutInflater.from(EmployeesTrajectoryActivity.this).inflate(R.layout.overlay_view, null);
                     StaffPositionActivity.ViewHolder holder = new StaffPositionActivity.ViewHolder(contentView);
                     holder.tvAddress.setText(data.getUserName());
