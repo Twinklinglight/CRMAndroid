@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.activity.aboutdocument.DocumentProcessActivity;
 import com.wtcrmandroid.activity.crm.BattlefieldReportActivity;
 import com.wtcrmandroid.activity.crm.MainClientLibrary;
 import com.wtcrmandroid.activity.crm.MyClientLibrary;
@@ -163,16 +163,27 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case 1:
                 context.startActivity(new Intent(context, JournalManagerActivity.class));
                 break;
+            case 2://通知公告
+                Toast.makeText(context,R.string.Unrealized,Toast.LENGTH_SHORT).show();
+                break;
             case 3://公文审批
-                context.startActivity(new Intent(context, DocumentProcessActivity.class));
+                Toast.makeText(context,R.string.Unrealized,Toast.LENGTH_SHORT).show();
+//                context.startActivity(new Intent(context, DocumentProcessActivity.class));
                 break;
             case 4://外勤点击事件
                 context.startActivity(new Intent(context, FieldActivity.class));
+                break;
+            case 5://会议室预约
+                Toast.makeText(context,R.string.Unrealized,Toast.LENGTH_SHORT).show();
+                break;
+            case 6://员工管理
+                Toast.makeText(context,R.string.Unrealized,Toast.LENGTH_SHORT).show();
                 break;
             case 8://战报点击事件
                 context.startActivity(new Intent(context, BattlefieldReportActivity.class));
                 break;
             case 9://扫一扫
+                Toast.makeText(context,R.string.Unrealized,Toast.LENGTH_SHORT).show();
                 break;
             case 10: //录入客户
 //                if (!MyApplication.application.getLoginData().getAttribution().equals("WT")) {
@@ -192,6 +203,12 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 break;
             case 14://我的地推客户
                 context.startActivity(new Intent(context, MyPushCustomerActivity.class));
+                break;
+            case 16://产品建议
+                Toast.makeText(context,R.string.Unrealized,Toast.LENGTH_SHORT).show();
+                break;
+            case 17://密条
+                Toast.makeText(context,R.string.Unrealized,Toast.LENGTH_SHORT).show();
                 break;
 
         }
