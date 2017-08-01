@@ -13,7 +13,6 @@ import com.wtcrmandroid.checkupdate.LookingForUpdate;
 import com.wtcrmandroid.model.reponsedata.CheckVersionRP;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.requestdata.CheckVersionRQ;
-import com.wtcrmandroid.model.requestdata.LoginRequestData;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.utils.PreferenceUtils;
@@ -97,18 +96,7 @@ public class LoginPresenter extends BasePresenter {
      * 登录
      */
     public void login(Object object, int key) {
-        LoginRequestData loginRequestData = new LoginRequestData();
 
-        /*loginRequestData.setUserName("jiashaowen");
-        loginRequestData.setUserPass(MD5Utils.MD5("2746"));
-        loginRequestData.setImei("612433e62ec71f96");
-        MyApplication.application.setImei("612433e62ec71f96");*/
-        loginRequestData.setUserName("jiaxinhe");
-
-        loginRequestData.setImei("9209843230929988");
-        //保存token
-        PreferenceUtils.setPrefString(context, Const.WT_CRM, Const.IMEI, "9209843230929988");
-        MyApplication.application.setImei("9209843230929988");
 //        loginRequestData.setUserName("wt");
 //        loginRequestData.setUserPass(MD5Utils.MD5("111111"));
 //        loginRequestData.setImei("9209843230929999");
@@ -123,8 +111,8 @@ public class LoginPresenter extends BasePresenter {
         /*loginRequestData.setUserName("like");
         loginRequestData.setUserPass("766aed991c06fd48");
         loginRequestData.setImei("9209843230929972");*/
-        L.e(loginRequestData.toString());
-        post("Login/UserLogin", loginRequestData, key);
+
+        post("Login/UserLogin", object, key);
 
     }
 
