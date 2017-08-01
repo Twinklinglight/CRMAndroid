@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.thinkcool.circletextimageview.CircleTextImageView;
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.Const;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.Const;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.popupwindow.popubwindow_share;

@@ -10,9 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.activity.SelectAreaActivity;
 import com.wtcrmandroid.activity.salepullcustomer.SaleSelectActivity;
 import com.wtcrmandroid.model.requestdata.SaveCustomerRQ;

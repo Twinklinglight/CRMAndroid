@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.wtcrmandroid.Const;
+import com.wtcrmandroid.base.Const;
 import com.wtcrmandroid.httpfactory.HttpRequest;
 import com.wtcrmandroid.httpfactory.callback.StringCallBack;
 import com.wtcrmandroid.utils.L;

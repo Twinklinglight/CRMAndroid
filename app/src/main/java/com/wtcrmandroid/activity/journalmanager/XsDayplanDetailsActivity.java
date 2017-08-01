@@ -5,9 +5,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.BaseFragment;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.XsDayPlanDetailsPresenter;
 import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;

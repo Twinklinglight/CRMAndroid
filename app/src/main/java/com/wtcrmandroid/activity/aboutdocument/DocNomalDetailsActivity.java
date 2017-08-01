@@ -3,7 +3,7 @@ package com.wtcrmandroid.activity.aboutdocument;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 

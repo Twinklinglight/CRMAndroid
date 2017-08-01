@@ -7,7 +7,7 @@ import android.os.Build;
 import android.support.v4.content.FileProvider;
 
 import com.wtcrmandroid.BuildConfig;
-import com.wtcrmandroid.Const;
+import com.wtcrmandroid.base.Const;
 import com.wtcrmandroid.httpfactory.HttpRequest;
 import com.wtcrmandroid.httpfactory.callback.FileCallBack;
 

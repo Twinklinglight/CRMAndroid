@@ -4,8 +4,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.ClockRecordAdapter;
 import com.wtcrmandroid.model.dealdata.GroupingClockRecordDD;

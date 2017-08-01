@@ -4,8 +4,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseFragment;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.reponsedata.TotalAchievementsRP;
 import com.wtcrmandroid.model.requestdata.IdTimeRequestdata;

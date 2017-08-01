@@ -15,7 +15,7 @@ import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.model.LatLng;
-import com.wtcrmandroid.BaseMapActivity;
+import com.wtcrmandroid.base.BaseMapActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.reponsedata.PersonalAllRecordRP;
 import com.wtcrmandroid.view.custompricing.TitleBar;

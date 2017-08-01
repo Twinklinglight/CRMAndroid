@@ -18,7 +18,7 @@ import com.baidu.mapapi.map.Polyline;
 import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.SpatialRelationUtil;
-import com.wtcrmandroid.BaseMapActivity;
+import com.wtcrmandroid.base.BaseMapActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.reponsedata.PersonalAllRecordRP;
 import com.wtcrmandroid.model.reponsedata.StaffPositionRP;

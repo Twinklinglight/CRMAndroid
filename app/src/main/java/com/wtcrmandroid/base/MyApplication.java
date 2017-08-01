@@ -1,4 +1,4 @@
-package com.wtcrmandroid;
+package com.wtcrmandroid.base;
 
 import android.app.Application;
 import android.content.Intent;

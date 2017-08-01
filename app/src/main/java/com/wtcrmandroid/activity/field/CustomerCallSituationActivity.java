@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.BaseRecycleAdapter;
 import com.wtcrmandroid.adapter.recycleview.CustomerCallSituationAdapter;

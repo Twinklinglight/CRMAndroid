@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.activity.journalmanager.present.DepartmentMainPresenter;
 import com.wtcrmandroid.adapter.listview.DepartmentJournalAdapter;
 import com.wtcrmandroid.model.reponsedata.DepartmentRponseData;

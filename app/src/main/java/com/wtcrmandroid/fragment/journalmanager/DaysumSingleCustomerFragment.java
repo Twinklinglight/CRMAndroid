@@ -5,7 +5,7 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.IfgetSingleDetailsAdapter;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.GetSingleCustomerData;
 
 import java.util.List;

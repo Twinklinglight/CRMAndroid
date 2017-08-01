@@ -3,7 +3,7 @@ package com.wtcrmandroid.activity.field;
 import android.content.Intent;
 import android.view.View;
 
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 

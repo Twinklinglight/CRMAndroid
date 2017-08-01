@@ -1,16 +1,14 @@
 package com.wtcrmandroid.activity.journalmanager;
 
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartDayjournalFragment;
 import com.wtcrmandroid.fragment.journalmanager.DepartWeekjournalFragment;
 

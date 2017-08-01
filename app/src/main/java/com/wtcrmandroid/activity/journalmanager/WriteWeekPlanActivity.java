@@ -6,8 +6,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iflytek.cloud.thirdparty.T;
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.WriterWeekPlaneAdapter;
 import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;

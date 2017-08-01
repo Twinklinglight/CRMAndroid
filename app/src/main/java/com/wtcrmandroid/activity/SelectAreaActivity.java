@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.utils.areaslection.Area;
 import com.wtcrmandroid.utils.areaslection.AreaImpl;

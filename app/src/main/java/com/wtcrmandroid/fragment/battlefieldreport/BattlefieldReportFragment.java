@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseFragment;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.XsDayplanAdapter;
 import com.wtcrmandroid.model.reponsedata.SalesRankingRP;

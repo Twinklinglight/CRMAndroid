@@ -6,9 +6,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

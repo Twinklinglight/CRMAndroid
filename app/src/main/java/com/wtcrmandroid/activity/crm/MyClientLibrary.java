@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.PopupWindow;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.salepullcustomer.SalePullintoCustomerActivity;
 import com.wtcrmandroid.adapter.recycleview.MyClientLibraryAdapter;

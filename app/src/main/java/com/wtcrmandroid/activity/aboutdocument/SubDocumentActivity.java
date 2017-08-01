@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 

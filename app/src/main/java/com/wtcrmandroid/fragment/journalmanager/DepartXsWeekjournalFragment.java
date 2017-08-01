@@ -1,6 +1,6 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 
 /**
  * Created by zxd on 2017/6/23

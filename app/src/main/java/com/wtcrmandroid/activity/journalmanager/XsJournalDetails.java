@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.FragmentTabAdapter;
 import com.wtcrmandroid.fragment.journalmanager.DepartWeekjournalFragment;

@@ -14,10 +14,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.Const;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.Const;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.WTDataBaseManager;
+import com.wtcrmandroid.base.WTDataBaseManager;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.requestdata.LoginRequestData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;

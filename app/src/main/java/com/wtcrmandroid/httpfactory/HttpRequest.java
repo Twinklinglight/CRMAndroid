@@ -7,9 +7,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 
-import com.wtcrmandroid.Const;
-import com.wtcrmandroid.MyApplication;
-import com.wtcrmandroid.WtHeader;
+import com.wtcrmandroid.base.Const;
+import com.wtcrmandroid.base.MyApplication;
+import com.wtcrmandroid.base.WtHeader;
 import com.wtcrmandroid.httpfactory.callback.FileCallBack;
 import com.wtcrmandroid.httpfactory.callback.RetCallBack;
 import com.wtcrmandroid.httpfactory.callback.StringCallBack;

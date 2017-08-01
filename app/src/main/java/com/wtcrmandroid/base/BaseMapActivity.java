@@ -1,4 +1,4 @@
-package com.wtcrmandroid;
+package com.wtcrmandroid.base;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -29,6 +29,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.baidumap.MyBDLocation;
 import com.wtcrmandroid.presenter.BasePresenter;
 import com.wtcrmandroid.view.AllView;

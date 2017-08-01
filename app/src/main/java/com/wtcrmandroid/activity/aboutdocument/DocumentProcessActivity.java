@@ -1,12 +1,11 @@
 package com.wtcrmandroid.activity.aboutdocument;
 
 
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.DocumentFragAdapter;
 import com.wtcrmandroid.view.custompricing.TitleBar;

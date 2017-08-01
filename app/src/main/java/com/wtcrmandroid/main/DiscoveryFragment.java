@@ -1,7 +1,7 @@
 package com.wtcrmandroid.main;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 
 /**
  * Created by 1363655717 on 2017-06-01.

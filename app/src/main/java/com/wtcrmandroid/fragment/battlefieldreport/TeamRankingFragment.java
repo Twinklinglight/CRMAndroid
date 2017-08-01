@@ -3,7 +3,7 @@ package com.wtcrmandroid.fragment.battlefieldreport;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.TeamRankingAdapter;
 import com.wtcrmandroid.model.reponsedata.SalesRankingRP;

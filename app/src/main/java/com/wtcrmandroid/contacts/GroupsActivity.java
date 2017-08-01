@@ -1,23 +1,13 @@
 package com.wtcrmandroid.contacts;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.adapter.expandablelistview.GroupEListViewAdapter;
-import com.wtcrmandroid.model.ContactsChild;
 import com.wtcrmandroid.model.ContactsGroup;
-import com.wtcrmandroid.utils.DensityUtils;
-import com.wtcrmandroid.view.SMExpandListView.SMExpandableView;
 import com.wtcrmandroid.view.SMExpandListView.SMRExpandView;
-import com.wtcrmandroid.view.SMExpandListView.SwipeMenu;
-import com.wtcrmandroid.view.SMExpandListView.SwipeMenuCreatorInterfaceUtil;
-import com.wtcrmandroid.view.SMExpandListView.SwipeMenuItem;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

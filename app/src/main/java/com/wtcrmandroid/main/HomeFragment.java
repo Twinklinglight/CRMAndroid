@@ -12,8 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.HomeAdapter;
 import com.wtcrmandroid.model.data.HomeItemD;

@@ -1,11 +1,9 @@
 package com.wtcrmandroid.fragment.journalmanager;
 import android.widget.TextView;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.model.requestdata.WorkOrder;
-
-import java.util.List;
 
 import butterknife.BindView;
 

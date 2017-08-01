@@ -8,8 +8,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.fragment.FragmentAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;

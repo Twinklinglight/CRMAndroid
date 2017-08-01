@@ -1,7 +1,7 @@
 package com.wtcrmandroid.httpfactory.request;
 
 import com.google.gson.Gson;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.utils.L;
 

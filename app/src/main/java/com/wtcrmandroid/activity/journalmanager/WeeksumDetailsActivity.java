@@ -4,8 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.HtWeekSumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;

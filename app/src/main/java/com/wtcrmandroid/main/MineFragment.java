@@ -4,19 +4,16 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.signature.StringSignature;
 import com.thinkcool.circletextimageview.CircleTextImageView;
-import com.wtcrmandroid.Const;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.Const;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.aboutmy.MycardActivity;
 import com.wtcrmandroid.model.reponsedata.MineRpData;
@@ -24,19 +21,16 @@ import com.wtcrmandroid.model.requestdata.CustomerCallRQ;
 import com.wtcrmandroid.model.requestdata.MineRQ;
 import com.wtcrmandroid.model.requestdata.NumberRQ;
 import com.wtcrmandroid.model.requestdata.UpdatePhotoRQ;
-import com.wtcrmandroid.utils.Base64;
 import com.wtcrmandroid.view.dialog.MyPhoneNumberDialog;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.view.dialog.PhotoDialog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.List;
-import java.util.UUID;
 
 import Decoder.BASE64Encoder;
 import butterknife.BindView;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by 1363655717 on 2017-06-01.

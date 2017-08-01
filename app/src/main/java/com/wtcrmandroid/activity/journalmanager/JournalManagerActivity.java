@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import butterknife.BindView;

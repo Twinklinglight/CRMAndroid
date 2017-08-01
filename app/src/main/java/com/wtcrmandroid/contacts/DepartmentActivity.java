@@ -3,18 +3,16 @@ package com.wtcrmandroid.contacts;
 import android.view.View;
 import android.widget.ExpandableListView;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.expandablelistview.GroupEListViewAdapter;
 import com.wtcrmandroid.contacts.presenter.ContactDepartPresenter;
-import com.wtcrmandroid.model.ContactsChild;
 import com.wtcrmandroid.model.ContactsGroup;
 import com.wtcrmandroid.model.reponsedata.ContactsDpmentRP;
 import com.wtcrmandroid.model.requestdata.MineRQ;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

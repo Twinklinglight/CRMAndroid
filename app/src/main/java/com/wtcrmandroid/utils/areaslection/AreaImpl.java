@@ -4,7 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.baidu.location.BDLocation;
-import com.wtcrmandroid.WTDataBaseManager;
+import com.wtcrmandroid.base.WTDataBaseManager;
 
 import java.util.ArrayList;
 import java.util.List;

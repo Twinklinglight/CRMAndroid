@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.PopupWindow;
 
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.adapter.recycleview.ClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.utils.areaslection.Area;

@@ -1,14 +1,13 @@
 package com.wtcrmandroid.activity.journalmanager;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.activity.journalmanager.present.HtDayplanDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;

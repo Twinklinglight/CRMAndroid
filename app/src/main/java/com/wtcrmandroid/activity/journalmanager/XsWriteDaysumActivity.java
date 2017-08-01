@@ -2,7 +2,6 @@ package com.wtcrmandroid.activity.journalmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -14,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iflytek.cloud.thirdparty.T;
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.XsWriteDaysumPresenter;
 import com.wtcrmandroid.adapter.listview.WriteDaySumAdapter;

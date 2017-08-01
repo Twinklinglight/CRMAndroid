@@ -1,4 +1,4 @@
-package com.wtcrmandroid;
+package com.wtcrmandroid.base;
 
 import android.content.Context;
 import android.content.res.AssetManager;

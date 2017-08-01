@@ -6,15 +6,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.requestdata.WorkOrder;
 import com.wtcrmandroid.view.custompricing.TitleBar;
-
-import java.io.Serializable;
 
 import butterknife.BindView;
 import butterknife.OnClick;

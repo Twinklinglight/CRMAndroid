@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.mcxtzhang.indexlib.IndexBar.widget.IndexBar;
 import com.mcxtzhang.indexlib.suspension.SuspensionDecoration;
-import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseFragment;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.aboutmy.MycardActivity;
 import com.wtcrmandroid.adapter.recycleview.AddressBookAdapter;
@@ -27,7 +27,6 @@ import com.wtcrmandroid.model.requestdata.MineRQ;
 import com.wtcrmandroid.view.DividerItemDecoration;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

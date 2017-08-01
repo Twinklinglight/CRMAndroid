@@ -5,7 +5,7 @@ import android.widget.ListView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.XsDayplanDetailsActivity;
 import com.wtcrmandroid.adapter.listview.SingleFragmentAdapter;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.SingleCustomerData;
 
 import java.util.List;

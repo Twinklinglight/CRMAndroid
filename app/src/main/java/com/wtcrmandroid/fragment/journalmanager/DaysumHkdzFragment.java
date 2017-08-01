@@ -2,7 +2,7 @@ package com.wtcrmandroid.fragment.journalmanager;
 
 import android.widget.ListView;
 
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.WorkLoadFgAdapter;

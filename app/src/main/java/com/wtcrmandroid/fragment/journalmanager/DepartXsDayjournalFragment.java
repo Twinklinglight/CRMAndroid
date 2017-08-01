@@ -1,15 +1,14 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wtcrmandroid.BaseFragment;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseFragment;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.AddPurposeFragmentAdapter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
@@ -24,7 +23,6 @@ import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.reponsedata.XsDausumWorkData;
 import com.wtcrmandroid.model.reponsedata.XsDayDepartRp;
 import com.wtcrmandroid.model.reponsedata.XsDayplanDetailsRP;
-import com.wtcrmandroid.model.reponsedata.XsDaysumDetailsRP;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
 import com.wtcrmandroid.model.requestdata.WorkOrder;

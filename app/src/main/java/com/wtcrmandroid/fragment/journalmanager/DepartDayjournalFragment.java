@@ -1,7 +1,6 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,20 +8,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDayplanDetailsAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
 import com.wtcrmandroid.fragment.journalmanager.presenter.DepartDayPresenter;
-import com.wtcrmandroid.model.reponsedata.DaySumDetailsRpData;
 import com.wtcrmandroid.model.reponsedata.HtDayDepartRp;
 import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
 import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
 import com.wtcrmandroid.view.dialog.CommentDialog;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.reponsedata.HtDayplanDetailsData;
 import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;

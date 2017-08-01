@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.WeekDayplanAdapter;
@@ -17,7 +17,7 @@ import com.wtcrmandroid.model.requestdata.CommintRQ;
 import com.wtcrmandroid.model.requestdata.WeekDetailsRequestData;
 import com.wtcrmandroid.utils.DateUtils;
 import com.wtcrmandroid.view.dialog.CommentDialog;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.reponsedata.WeeksumDetailsData;
 import com.wtcrmandroid.model.reponsedata.WriterWeekPlaneData;

@@ -1,6 +1,5 @@
 package com.wtcrmandroid.fragment.journalmanager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -9,12 +8,11 @@ import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.XsDaysumDetailsActivity;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
 import com.wtcrmandroid.adapter.listview.HtDaysumDetailsAdapter;
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.model.reponsedata.CommentData;
 import com.wtcrmandroid.model.reponsedata.HtDaysumDetailsData;
 import com.wtcrmandroid.view.listview.MyListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

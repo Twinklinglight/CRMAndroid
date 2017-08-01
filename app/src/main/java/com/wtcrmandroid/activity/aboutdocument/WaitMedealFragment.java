@@ -3,7 +3,7 @@ package com.wtcrmandroid.activity.aboutdocument;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.wtcrmandroid.BaseFragment;
+import com.wtcrmandroid.base.BaseFragment;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.aboutdocument.presenter.WaitMeDealPresenter;
 import com.wtcrmandroid.adapter.recycleview.DocumentDealAdapter;

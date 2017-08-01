@@ -1,13 +1,11 @@
 package com.wtcrmandroid.activity.journalmanager;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wtcrmandroid.BaseActivity;
-import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.base.BaseActivity;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.activity.journalmanager.present.HtDaysumDetailsPresenter;
 import com.wtcrmandroid.adapter.listview.CommentAdapter;
@@ -21,7 +19,6 @@ import com.wtcrmandroid.model.requestdata.DayDetailsRQ;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.listview.MyListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
