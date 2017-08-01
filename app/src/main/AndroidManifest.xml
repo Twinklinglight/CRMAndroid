@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wtcrmandroid"
-    android:installLocation="preferExternal">
+    android:installLocation="internalOnly">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
@@ -37,7 +37,7 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <!-- 动态权限 -->
     <application
         android:name=".base.MyApplication"
@@ -47,7 +47,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <receiver android:name=".service.RadioReceiver" >
+            <intent-filter>
+                <!-- 开机广播 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <provider
             android:name=".base.MyFileProvider"
             android:authorities="com.wtcrmandroid.fileProvider"
@@ -85,10 +90,15 @@
         <activity android:name=".activity.field.CustomerCallSituationActivity"/>
         <!-- 客户拜访统计 -->
         <activity android:name=".activity.field.CustomerCallStatisticalAcrivity"/>
+        <!--客户拜访详情列表界面-->
         <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
+        <!--客户拜访详情地图界面-->
         <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
+        <!--外勤统计详情-->
         <activity android:name=".activity.field.StatisticsDetailsActivity"/>
+        <!--员工位置-->
         <activity android:name=".activity.field.StaffPositionActivity"/>
+        <!--员工轨迹-->
         <activity android:name=".activity.field.EmployeesTrajectoryActivity"/>
         <!-- ———————————————————————————————————————————————————————————————— -->
 
@@ -143,14 +153,23 @@
             android:windowSoftInputMode="adjustPan"/>
 
        <!--————————————————————————————————CRM——————————————————————————————————————-->
+       <!--主客户库-->
         <activity android:name=".activity.crm.MainClientLibrary"/>
+        <!--我的客户库-->
         <activity android:name=".activity.crm.MyClientLibrary"/>
+        <!--续单公海-->
         <activity android:name=".activity.crm.PublicSeaActivity"/>
+        <!--我的地推客户-->
         <activity android:name=".activity.crm.MyPushCustomerActivity"/>
+        <!--主客户库、续单公海搜索页面-->
         <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
+        <!--我的客户库搜索页面-->
         <activity android:name=".activity.crm.SearchMyClientLibraryActivity"/>
+        <!--我的地推客户搜素页面-->
         <activity android:name=".activity.crm.SearchPushCustomerActivity"/>
+        <!--战报-->
         <activity android:name=".activity.crm.BattlefieldReportActivity"/>
+        <!--地址选择-->
         <activity android:name=".activity.SelectAreaActivity"/>
         <!--————————————————————————————————————————————————————————————————-->
 
@@ -257,6 +276,7 @@
             android:exported="true"/>
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
         </service>
+
     </application>
 
 </manifest>
