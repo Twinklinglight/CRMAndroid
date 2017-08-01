@@ -74,11 +74,8 @@ dependencies {
     compile 'com.github.thinkcool:circletextimageview:1.0.20151218'
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jph.takephoto:takephoto_library:4.0.3'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    compile 'com.jph.takephoto:takephoto_library:4.0.3'
-    compile files('libs/sun.misc.BASE64Decoder.jar')
 
 }
