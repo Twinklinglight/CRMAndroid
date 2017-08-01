@@ -3,23 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp">
-    <ImageView
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@mipmap/ic_app"/>
-   <View
-       android:layout_width="1dp"
-       android:layout_height="match_parent"
-      android:background="@color/lineColor"
-       android:layout_marginLeft="10dp"/>
-    <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="每天进步一点点！"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_18"
-        android:layout_marginLeft="10dp"
-        android:layout_gravity="center_vertical"/>
+
+
 
 </LinearLayout>

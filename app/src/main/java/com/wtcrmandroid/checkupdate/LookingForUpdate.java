@@ -7,8 +7,12 @@ import android.os.Build;
 import android.support.v4.content.FileProvider;
 
 import com.wtcrmandroid.BuildConfig;
+import com.wtcrmandroid.Const;
+import com.wtcrmandroid.httpfactory.HttpRequest;
+import com.wtcrmandroid.httpfactory.callback.FileCallBack;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * 版本升级
@@ -128,8 +132,8 @@ public class LookingForUpdate implements IOnInternetErrorModule {
     /**
      * 下载所需文件
      */
-    public void downFile(String type) {
-//        String url = "";
+    public void downFile() {
+        String url = "http://android.chinawutong.com/wutong/wutonglogics.apk?r=" + Math.random() * 100000;
 //        String apkName = "";
 //        if (type.equals("1")) {//车主
 //            url = Const.httpsString + Const.wtServerString + "/wutong/wutongdriver.apk?r=" + Math.random() * 100000;
@@ -147,38 +151,38 @@ public class LookingForUpdate implements IOnInternetErrorModule {
 //            url = Const.httpsString + Const.wtServerString + "/wutong/wutongphxxb.apk?r=" + Math.random() * 100000;
 //            apkName = "wutongphxxb.apk";
 //        }
-//        try {
-//            HttpRequest.instance().downFile(url, new FileCallBack(Const.NEW_APK, apkName) {
-//                @Override
-//                public void onError(int errorRet, String errorMsg) {
-//
-//                }
-//
-//                @Override
-//                public void onResponse(File response) {
-//                    if (downLoadFinishListener != null) {
-//                        downLoadFinishListener.downLoadFinish();
-//                        file = response;
-//                        startInstall();
-//                    }
-//                }
-//
-//                @Override
-//                public void onNetError(Exception e) {
-//
-//                }
-//
-//                @Override
-//                public void inProgress(long totalLenth, float progress) {
-//                    if (downLoadInfoListener != null) {
-//                        downLoadInfoListener.totalSize(totalLenth);
-//                        downLoadInfoListener.currentProgress(progress);
-//                    }
-//                }
-//            });
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            HttpRequest.instance().downFile(url, new FileCallBack(Const.NEW_APK, "wutongphxxb.apk") {
+                @Override
+                public void onError(int errorRet, String errorMsg) {
+
+                }
+
+                @Override
+                public void onResponse(File response) {
+                    if (downLoadFinishListener != null) {
+                        downLoadFinishListener.downLoadFinish();
+                        file = response;
+                        startInstall();
+                    }
+                }
+
+                @Override
+                public void onNetError(Exception e) {
+
+                }
+
+                @Override
+                public void inProgress(long totalLenth, float progress) {
+                    if (downLoadInfoListener != null) {
+                        downLoadInfoListener.totalSize(totalLenth);
+                        downLoadInfoListener.currentProgress(progress);
+                    }
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

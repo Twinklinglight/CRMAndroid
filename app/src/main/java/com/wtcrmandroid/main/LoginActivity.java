@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.telephony.TelephonyManager;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -14,14 +15,17 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.Const;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.WTDataBaseManager;
 import com.wtcrmandroid.model.reponsedata.LoginData;
+import com.wtcrmandroid.model.requestdata.LoginRequestData;
 import com.wtcrmandroid.presenter.activity.LoginPresenter;
 import com.wtcrmandroid.service.GuardianService;
 import com.wtcrmandroid.service.JobScheduleService;
 import com.wtcrmandroid.service.utils.ServiceUtils;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.PreferenceUtils;
 import com.wtcrmandroid.utils.StatusBarUtil;
 
 import butterknife.BindView;
@@ -39,7 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
     EditText etPass;
     @BindView(R.id.cb_passstyle)
     CheckBox cbPassstyle;
-
+    LoginRequestData loginRequestData = new LoginRequestData();
     @Override
     protected int layout() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -70,8 +74,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
         };
         presenter=new LoginPresenter(this,this);
-//        TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
-//        L.e(tm.getDeviceId()+"--");
+//
         presenter=new LoginPresenter(this,this);
         WTDataBaseManager.getsInstance().initDatabase(this);
         etPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -98,7 +101,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
     @OnClick(R.id.bt_login)
     public void onClick() {
-        presenter.login();
+        loginRequestData.setUserName("jiaxinhe");
+
+        loginRequestData.setImei("9209843230929988");
+
+        presenter.login(loginRequestData,0);
     }
     @Override
     public void returnData(int key, LoginData data) {
@@ -128,7 +135,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
         if (mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
             startPermissionsActivity();
         }else {
-
+            TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+//        L.e(tm.getDeviceId()+"--");
+            //保存token
+            PreferenceUtils.setPrefString(this, Const.WT_CRM, Const.IMEI, tm.getDeviceId());
+            presenter.checkVersion(1);
+//            MyApplication.application.setImei(tm.getDeviceId());
         }
     }
 }

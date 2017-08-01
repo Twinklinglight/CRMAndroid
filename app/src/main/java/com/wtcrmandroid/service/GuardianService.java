@@ -65,13 +65,12 @@ public class GuardianService extends Service{
 				deleteCode, deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		//自定义显示布局
-		RemoteViews contentViews = new RemoteViews(getPackageName(),R.layout.notification);
-		contentViews.setTextViewText(R.id.tv_text, "每天进步一点点！");
+		RemoteViews contentViews = new RemoteViews(getPackageName(),R.layout.notification_view);
 		//创建一个通知
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
 		mBuilder.setAutoCancel(true)
 				.setDeleteIntent(deletePendingIntent)
-				.setWhen(System.currentTimeMillis())//通知产生的时间，会在通知信息里显示，一般是系统获取到的时间
+//				.setWhen(System.currentTimeMillis())//通知产生的时间，会在通知信息里显示，一般是系统获取到的时间
 				.setPriority(Notification.PRIORITY_DEFAULT) //设置该通知优先级
 				.setOngoing(true)//ture，设置他为一个正在进行的通知。他们通常是用来表示一个后台任务,用户积极参与(如播放音乐)或以某种方式正在等待,因此占用设备(如一个文件下载,同步操作,主动网络连接)
 				.setSmallIcon(R.mipmap.ic_app)

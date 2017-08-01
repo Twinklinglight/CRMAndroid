@@ -19,7 +19,7 @@ import com.wtcrmandroid.view.dialog.LoadingDialog;
 public abstract class BasePresenter {
     protected AllView view;
     LoadingDialog loadingDialog;
-    Handler mainHandler;
+    protected Handler mainHandler;
     protected Context context;
     public BasePresenter(AllView view, Context context) {
         this.view = view;
