@@ -50,6 +50,8 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
     RefreshLoadMoreFooterView mFooterView;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout mSwipeToLoadLayout;
+    @BindView(R.id.v_shadow)
+    View vShadow;
 
     private CustomerCallStatisticaAdapter adapter;
     private TitlePopupWindow titleLeftPopupWindow;
@@ -93,6 +95,7 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
+                vShadow.setVisibility(View.VISIBLE);
                 switch (i) {
                     case 1:
                         //左边弹窗
@@ -117,6 +120,7 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
                             public void onDismiss() {
                                 tcmbBar.NoCheckStyle(1);
                                 tcmbBar.setIsCheck_number(0);
+                                vShadow.setVisibility(View.GONE);
                             }
                         });
                         break;
@@ -144,6 +148,7 @@ public class CustomerCallStatisticalAcrivity extends BaseActivity<CustomerCallSt
                                 public void onDismiss() {
                                     tcmbBar.NoCheckStyle(3);
                                     tcmbBar.setIsCheck_number(0);
+                                    vShadow.setVisibility(View.GONE);
                                 }
                             });
                         }

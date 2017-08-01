@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -42,6 +43,10 @@ public class MycardActivity extends BaseActivity {
     TextView tvPhone;
     @BindView(R.id.Circle_image)
     CircleTextImageView CircleImage;
+    @BindView(R.id.v_shadow)
+    View vShadow;
+    popubwindow_share popubwindow_share;
+
 
     @Override
     protected int layout() {
@@ -75,8 +80,17 @@ public class MycardActivity extends BaseActivity {
         mTitlebar.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vShadow.setVisibility(View.VISIBLE);
                 printTest(MycardActivity.this, scrll);
-                new popubwindow_share(MycardActivity.this, mTitlebar, path, filename);
+
+                    popubwindow_share = new popubwindow_share(MycardActivity.this, mTitlebar, path, filename);
+                    popubwindow_share.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            vShadow.setVisibility(View.GONE);
+                        }
+                    });
+
 
             }
         });

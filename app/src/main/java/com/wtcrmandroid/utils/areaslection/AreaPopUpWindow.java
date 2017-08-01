@@ -24,7 +24,7 @@ public class AreaPopUpWindow {
     private List<Area> areas;
     private TextView tvSelectedArea;
     private TextView tvBackUp;
-    private PopupWindow popupWindow;
+    public PopupWindow popupWindow;
     private IAreaModule areaModule;
     private SelectAreaListener selectAreaListener;
     private Area areaProvince;
@@ -64,7 +64,7 @@ public class AreaPopUpWindow {
         tvBackUp = (TextView) contentView.findViewById(R.id.tv_area_pop_window_backup);
         backUp();
         tvBackUp.setText("全国");
-        popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, false);
+        popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
 
 //        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
 //            @Override

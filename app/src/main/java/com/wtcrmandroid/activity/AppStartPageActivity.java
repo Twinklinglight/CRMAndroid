@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.main.LoginActivity;
+import com.wtcrmandroid.utils.StatusBarUtil;
 
 /**
  * Created by wt-pc on 2017/7/21.
@@ -38,9 +39,7 @@ public class AppStartPageActivity extends Activity {
             //设置虚拟按键颜色
             window.setNavigationBarColor(Color.BLACK);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
+        StatusBarUtil.StatusBarLightMode(this);
         final View view = View.inflate(this, R.layout.activity_start, null);
         setContentView(view);
 

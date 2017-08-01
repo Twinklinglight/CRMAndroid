@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -57,14 +58,10 @@ public class popubwindow_share extends PopupWindow {
         this.filename = filename;
         initView();
         setContentView(view);
+
         setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
-        setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
-//        int[] locations = new int[2];
-//        view.getLocationOnScreen(locations);
-//        int screenHeight = mContext.getApplicationContext().getResources().getDisplayMetrics().heightPixels;
-//        int height = screenHeight - parentView.getHeight() - locations[1];
-//        setHeight(height);
-        showAsDropDown(parentView);
+        setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
+        showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
     }
 
     private void initView() {

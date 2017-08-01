@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title_window"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="250dp"
     android:orientation="vertical"
-    android:background="#00000000">
+    >
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -13,14 +13,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
 
         />
-    <LinearLayout
-        android:id="@+id/cancle_onlick"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minHeight="400dp"
-        android:background="#40000000"
-        android:orientation="vertical" />
 </LinearLayout>

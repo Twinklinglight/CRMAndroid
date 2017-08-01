@@ -22,6 +22,7 @@ import com.wtcrmandroid.service.GuardianService;
 import com.wtcrmandroid.service.JobScheduleService;
 import com.wtcrmandroid.service.utils.ServiceUtils;
 import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,9 +54,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
             //设置虚拟按键颜色
             window.setNavigationBarColor(Color.BLACK);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
+        StatusBarUtil.StatusBarLightMode(this);
 
         return R.layout.activity_login;
     }
@@ -101,7 +100,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
     public void onClick() {
         presenter.login();
     }
-
     @Override
     public void returnData(int key, LoginData data) {
         L.e("返回数据"+key+data.toString());

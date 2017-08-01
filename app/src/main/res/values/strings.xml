@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CRMAndroid</string>
+    <string name="app_name">物通CRM</string>
 
     <string name="write_journal">写日志</string>
     <string name="send_approval">发审批</string>

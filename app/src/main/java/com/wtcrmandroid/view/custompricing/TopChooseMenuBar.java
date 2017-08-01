@@ -191,6 +191,7 @@ public class TopChooseMenuBar extends LinearLayout {
     }
 
     public void NoCheckStyle(int i) {
+
         switch (i) {
             case 0:
 

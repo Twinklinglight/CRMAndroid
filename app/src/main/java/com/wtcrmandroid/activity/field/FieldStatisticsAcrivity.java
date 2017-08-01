@@ -38,6 +38,8 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
     TopChooseMenuBar tcmbBar;
     @BindView(R.id.rv_view)
     RecyclerView rvView;
+    @BindView(R.id.v_shadow)
+    View vShadow;
 
     private FieldStatisticaAdapter adapter;
     private TitlePopupWindow titleLeftPopupWindow;
@@ -65,6 +67,7 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
+                vShadow.setVisibility(View.VISIBLE);
                 switch (i) {
                     case 1:
                         //左边弹窗
@@ -89,6 +92,7 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
                         public void onDismiss() {
                             tcmbBar.NoCheckStyle(1);
                             tcmbBar.setIsCheck_number(0);
+                            vShadow.setVisibility(View.GONE);
                         }
                     });
                         break;
@@ -116,17 +120,12 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
                                 public void onDismiss() {
                                     tcmbBar.NoCheckStyle(3);
                                     tcmbBar.setIsCheck_number(0);
+                                    vShadow.setVisibility(View.GONE);
                                 }
                             });
                         }
                         calendarPopupWindow.show();
-                        calendarPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                        @Override
-                        public void onDismiss() {
-                            tcmbBar.NoCheckStyle(3);
-                            tcmbBar.setIsCheck_number(0);
-                        }
-                    });
+
                         break;
                 }
 
