@@ -205,7 +205,8 @@ public class HttpRequest {
                     }
                 }
                 else if (ret == 1) {//无数据
-                    downkey(callBack, call);
+                    error = json.optString("msg", "系统错误");
+                    callBack.onError(ret, error);
                 }else if (ret == 2) {//key验证失败
                     downkey(callBack, call);
                 } else if (ret == 4) {
