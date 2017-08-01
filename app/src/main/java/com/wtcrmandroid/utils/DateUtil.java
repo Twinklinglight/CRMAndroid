@@ -1,5 +1,9 @@
 package com.wtcrmandroid.utils;
 
+import android.util.Log;
+
+import com.iflytek.cloud.thirdparty.Y;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,7 +43,71 @@ public class DateUtil {
 
     }
 
+    /**
+     * 返回所选日期所在周 周一的日期
+     */
 
+    public  Date getMondey(Date selectDate){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(selectDate);
+
+        int Year = calendar.get(Calendar.YEAR);
+        int Month = calendar.get(Calendar.MONTH)+1;
+        int Day = calendar.get(Calendar.DAY_OF_MONTH);
+        int Hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int Minute = calendar.get(Calendar.MINUTE);
+        int Second = calendar.get(Calendar.SECOND);
+        int whichDay = calendar.get(Calendar.DAY_OF_WEEK);
+
+        return getNowWeek(whichDay, Year,Month,Day,Hour,Minute,Second,calendar);
+    }
+
+
+    public Date getNowWeek(int whichday,int Year,int Month,int Day,int Hour,int Minute,int Second,Calendar calendar) {
+        Date date = null;
+        switch (whichday) {
+            case 1:         //今天是周日
+                calendar.set(Year,Month-1,Day,0,0,0);
+                calendar.add(Calendar.DAY_OF_MONTH, -(6));
+                date = calendar.getTime();
+                break;
+            case 2:         //今天是周一
+                calendar.set(Year,Month-1,Day,0,0,0);
+                calendar.add(Calendar.DAY_OF_MONTH, -(0));
+                date = calendar.getTime();
+                break;
+            case 3:         //今天是周二
+                calendar.set(Year,Month-1,Day,0,0,0);
+                calendar.add(Calendar.DAY_OF_MONTH, -(1));
+               date = calendar.getTime();
+                break;
+            case 4:         //今天是周三
+                calendar.set(Year,Month-1,Day,0,0,0);
+                calendar.add(Calendar.DAY_OF_MONTH, -(2));
+                date = calendar.getTime();
+                Log.i("--------","date = "+date.toString());
+                break;
+            case 5:         //今天是周四
+                calendar.set(Year,Month-1,Day,0,0,0);
+                calendar.add(Calendar.DAY_OF_MONTH, -(3));
+                date = calendar.getTime();
+                break;
+            case 6:         //今天是周五
+                calendar.set(Year,Month-1,Day,0,0,0);
+                calendar.add(Calendar.DAY_OF_MONTH, -(4));
+                date = calendar.getTime();
+                Log.i("--------","date = "+date.toString());
+                break;
+            case 7:         //今天是周六
+                calendar.set(Year,Month-1,Day,0,0,0);
+                calendar.add(Calendar.DAY_OF_MONTH, -(5));
+                date = calendar.getTime();
+                break;
+            default:
+                break;
+        }
+        return date;
+    }
 
     /**
      * 判断俩个日期是否是同一天

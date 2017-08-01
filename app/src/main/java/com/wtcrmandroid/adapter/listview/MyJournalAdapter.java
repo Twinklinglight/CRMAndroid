@@ -108,7 +108,7 @@ public class MyJournalAdapter extends BaseAdapter {
             case NullType:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_null,null);
                 TextView tvNull = (TextView)view.findViewById(R.id.tv_listnull);
-                tvNull.setText("本周暂无数据");
+                tvNull.setText("暂无数据");
                 break;
         }
 

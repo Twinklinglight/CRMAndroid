@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/ll_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
@@ -12,14 +13,13 @@
 
         <com.thinkcool.circletextimageview.CircleTextImageView
             android:id="@+id/iv_head"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             app:citv_fill_color="#F76129"
             app:citv_text_color="#fff"
-            app:citv_text_size="18sp"
-            app:citv_text_text="晴朗" />
+            app:citv_text_size="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

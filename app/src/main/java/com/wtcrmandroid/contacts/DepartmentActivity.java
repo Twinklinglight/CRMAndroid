@@ -4,10 +4,14 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.MyApplication;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.expandablelistview.GroupEListViewAdapter;
+import com.wtcrmandroid.contacts.presenter.ContactDepartPresenter;
 import com.wtcrmandroid.model.ContactsChild;
 import com.wtcrmandroid.model.ContactsGroup;
+import com.wtcrmandroid.model.reponsedata.ContactsDpmentRP;
+import com.wtcrmandroid.model.requestdata.MineRQ;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 
 import java.util.ArrayList;
@@ -20,7 +24,7 @@ import butterknife.BindView;
  * 通讯录部门界面
  */
 
-public class DepartmentActivity extends BaseActivity {
+public class DepartmentActivity extends BaseActivity<ContactDepartPresenter,List<ContactsDpmentRP>> {
     @BindView(R.id.titlebar)
     TitleBar titlebar;
     @BindView(R.id.elv)
@@ -29,8 +33,8 @@ public class DepartmentActivity extends BaseActivity {
     private List<ContactsGroup> mDataList;
 
     @Override
-    public void returnData(int key, Object data) {
-
+    public void returnData(int key, List<ContactsDpmentRP> data) {
+        elv.setAdapter(new GroupEListViewAdapter(this, data));
     }
 
     @Override
@@ -40,6 +44,11 @@ public class DepartmentActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        presenter = new ContactDepartPresenter(this,this);
+        MineRQ mineRQ = new MineRQ();
+        mineRQ.setUserId(MyApplication.application.getLoginData().getUserID());
+        presenter.postDepartment(mineRQ);
+
         titlebar.setTitletext("部门");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,15 +57,6 @@ public class DepartmentActivity extends BaseActivity {
             }
         });
 
-        mDataList = new ArrayList<>();
-        List<ContactsChild> arrayList = new ArrayList<>();
-        arrayList.add(new ContactsChild("", "小", "小"));
-        mDataList.add(new ContactsGroup("大", arrayList));
-        arrayList.add(new ContactsChild("", "小", "小"));
-        mDataList.add(new ContactsGroup("大大", arrayList));
-        arrayList.add(new ContactsChild("", "小", "小"));
-        mDataList.add(new ContactsGroup("大大大", arrayList));
-        elv.setAdapter(new GroupEListViewAdapter(this, mDataList));
     }
 
 

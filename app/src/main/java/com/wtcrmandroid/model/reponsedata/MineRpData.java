@@ -14,6 +14,7 @@ public class MineRpData {
      * departments : 6,25,26,27,32,33,34,35
      * teamId : 0
      * teamName :
+     * headerImg:
      * teams :
      * groupId : 1
      * groupName : 公司总部
@@ -35,6 +36,15 @@ public class MineRpData {
     private String roleName;
     private String telPhone;
     private String username;
+    private String headerImg;
+
+    public String getHeaderImg() {
+        return headerImg;
+    }
+
+    public void setHeaderImg(String headerImg) {
+        this.headerImg = headerImg;
+    }
 
     public String getUsername() {
         return username;
@@ -138,5 +148,25 @@ public class MineRpData {
 
     public void setTelPhone(String telPhone) {
         this.telPhone = telPhone;
+    }
+
+    @Override
+    public String toString() {
+        return "MineRpData{" +
+                "attribution='" + attribution + '\'' +
+                ", departmentId=" + departmentId +
+                ", departmentName='" + departmentName + '\'' +
+                ", departments='" + departments + '\'' +
+                ", teamId=" + teamId +
+                ", teamName='" + teamName + '\'' +
+                ", teams='" + teams + '\'' +
+                ", groupId=" + groupId +
+                ", groupName='" + groupName + '\'' +
+                ", roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                ", telPhone='" + telPhone + '\'' +
+                ", username='" + username + '\'' +
+                ", headerImg='" + headerImg + '\'' +
+                '}';
     }
 }

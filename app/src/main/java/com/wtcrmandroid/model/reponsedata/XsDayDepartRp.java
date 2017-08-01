@@ -12,7 +12,6 @@ public class XsDayDepartRp {
     private XsDausumWorkData work;
     private XsDayplanDetailsRP plan;
     private List<CommentData> exam;
-    private String leve;
     private String learning;
 
     public int getLogId() {
@@ -45,14 +44,6 @@ public class XsDayDepartRp {
 
     public void setExam(List<CommentData> exam) {
         this.exam = exam;
-    }
-
-    public String getLeve() {
-        return leve;
-    }
-
-    public void setLeve(String leve) {
-        this.leve = leve;
     }
 
     public String getLearning() {

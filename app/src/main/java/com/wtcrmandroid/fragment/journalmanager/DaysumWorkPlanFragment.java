@@ -52,7 +52,6 @@ public class DaysumWorkPlanFragment extends BaseFragment {
 
         mDataList = activity.DaysumData.getWork().getWorkdetail();
         mCommentDatas = activity.DaysumData.getExam();
-        level = activity.DaysumData.getLeve();
         Learning = activity.DaysumData.getLearning();
 
         mDetailsAdapter = new HtDaysumDetailsAdapter(activity,mDataList);
@@ -61,9 +60,10 @@ public class DaysumWorkPlanFragment extends BaseFragment {
         TextView tvLearn = (TextView)footview.findViewById(R.id.tv_daysum_xxfx);
         tvLearn.setText(Learning);
         mLvWorkPlan.addFooterView(footview);
+        if (mDataList.size() == 0) footview.setVisibility(View.GONE);
         mDetailsAdapter.notifyDataSetChanged();
 
-        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDatas,level);
+        mCommentAdapter = new CommentAdapter(getActivity(), mCommentDatas);
         mIvComment.setAdapter(mCommentAdapter);
 
         if (mCommentDatas.size()>0){

@@ -22,15 +22,16 @@
         android:gravity="center_vertical">
 
         <com.thinkcool.circletextimageview.CircleTextImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             app:citv_fill_color="#3C9DFF"
             app:citv_text_color="#fff"
-            app:citv_text_size="13sp"
+            app:citv_text_size="18sp"
             app:citv_text_text="部门" />
 
         <TextView
+            android:id="@+id/tv_dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -57,12 +58,12 @@
         android:gravity="center_vertical">
 
         <com.thinkcool.circletextimageview.CircleTextImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             app:citv_fill_color="#3C9DFF"
             app:citv_text_color="#fff"
-            app:citv_text_size="13sp"
+            app:citv_text_size="18sp"
             app:citv_text_text="群组" />
 
         <TextView

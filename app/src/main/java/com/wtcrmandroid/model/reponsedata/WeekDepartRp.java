@@ -9,7 +9,6 @@ import java.util.List;
 public class WeekDepartRp {
 
     private int logId;
-    private String leve;
     private String learning;
     private List<WriterWeekPlaneData> plan;
     private List<WeeksumDetailsData> work;
@@ -21,14 +20,6 @@ public class WeekDepartRp {
 
     public void setLogId(int logId) {
         this.logId = logId;
-    }
-
-    public String getLeve() {
-        return leve;
-    }
-
-    public void setLeve(String leve) {
-        this.leve = leve;
     }
 
     public String getLearning() {

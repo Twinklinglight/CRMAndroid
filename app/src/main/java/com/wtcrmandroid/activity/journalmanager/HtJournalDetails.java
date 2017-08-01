@@ -38,7 +38,6 @@ public class HtJournalDetails extends BaseActivity {
     public List<BaseFragment> mfragmentList;
     public int userid = 0;
 
-
     @Override
     protected int layout() {
         return R.layout.activity_ht_journal_details;

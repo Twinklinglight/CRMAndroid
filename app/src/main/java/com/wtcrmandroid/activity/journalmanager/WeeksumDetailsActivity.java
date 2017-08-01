@@ -96,7 +96,6 @@ public class WeeksumDetailsActivity extends BaseActivity<HtWeekSumDetailsPresent
 
         List<WeeksumDetailsData> work = data.getWork();
         List<CommentData> exam = data.getExam();
-        String leve = data.getLeve();
         String learning = data.getLearning();
 
         if (work.size()>0){
@@ -114,7 +113,7 @@ public class WeeksumDetailsActivity extends BaseActivity<HtWeekSumDetailsPresent
         }else {
             headView.setVisibility(View.GONE);
         }
-        mCommentAdapter = new CommentAdapter(this, exam,leve);
+        mCommentAdapter = new CommentAdapter(this, exam);
         viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
         mLvComment.setAdapter(mCommentAdapter);
         mCommentAdapter.notifyDataSetChanged();

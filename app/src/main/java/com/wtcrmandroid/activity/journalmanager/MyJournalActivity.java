@@ -14,6 +14,7 @@ import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
 import com.wtcrmandroid.model.reponsedata.MyjournalRponseData;
 import com.wtcrmandroid.model.requestdata.MyJournalRequestData;
 import com.wtcrmandroid.presenter.activity.MyJournalPresenter;
+import com.wtcrmandroid.utils.DateUtil;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.dialog.CalendarDialog;
@@ -60,6 +61,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
 
     private List<MyjournalRponseData> mDatas;
     private int roleClass;
+    private static final String TAG = "MyJournalActivity";
 
     @Override
     protected int layout() {
@@ -69,7 +71,7 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
     @Override
     protected void initView() {
         presenter = new MyJournalPresenter(this,this);
-        sDf = new SimpleDateFormat("yyyy年MM月dd日");
+        sDf = new SimpleDateFormat("yyyy-MM-dd");
         nowDate = new Date();
         roleClass = MyApplication.application.getLoginData().getRoleClass();
 
@@ -101,7 +103,6 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
                                         @Override
                                         public void oNclicklistner(String data, int position) {
 
-                                            todate = "";
                                             switch (position){
                                                 case 0:
                                                     type = "";
@@ -117,11 +118,11 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
                                                     break;
                                                 case 3:
                                                     type = "weekPlan";
-                                                    postData(0,type,todate,1);
+                                                    postData(index,type,todate,1);
                                                     break;
                                                 case 4:
                                                     type = "weekWork";
-                                                    postData(0,type,todate,1);
+                                                    postData(index,type,todate,1);
                                                     break;
                                             }
                                             TypeWindows.dismiss();
@@ -194,21 +195,26 @@ public class MyJournalActivity extends BaseActivity<MyJournalPresenter, List<Myj
 
     /**
      * 日期选中的回调
-     * todate 不为空，忽略index，（日 日志）
-     * todate 为空 ，index 为准 （周 日志）
+     *  index 本周为0 上周为1、以此类推（日 日志）
      */
     @Override
     public void CalendarSelcet(String datetext, Date date) {
 
         String rightDate = sDf.format(date);
+
+        Date nowDate = new Date();
+
+        DateUtil dateUtil = new DateUtil();
+        Date nowMonday = dateUtil.getMondey(nowDate);
+        Date selectMonday = dateUtil.getMondey(date);
+
+        Log.i(TAG, "nowMonday = "+nowMonday.toString()+"  selectMonday = "+selectMonday.toString());
+
+        index = (int)((nowMonday.getTime() - selectMonday.getTime())/(1000 * 60 * 60 * 24))/6;
+
         tcmbBar.setRightAllText(datetext);
-        if (type.equals("weekPlan")||type.equals("weekWork")){
-            todate = "";
-            index = getWeekOfYear(nowDate)-getWeekOfYear(date);
-            Log.i("----------","index = "+index);
-        }else {
-            todate = datetext;
-        }
+        todate = rightDate;
+        Log.i(TAG,"index = "+index);
 
         postData(index,type,todate,1);
     }

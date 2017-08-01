@@ -108,7 +108,6 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
 
         List<HtDaysumDetailsData> work = data.getWork();
         List<CommentData> exam = data.getExam();
-        String leve = data.getLeve();
         String learning = data.getLearning();
 
         if (work.size()>0){
@@ -135,7 +134,7 @@ public class HtDaysumDetailsActivity extends BaseActivity<HtDaysumDetailsPresent
         }else {
             comentHead.setVisibility(View.GONE);
         }
-        commentAdapter = new CommentAdapter(this, exam,leve);
+        commentAdapter = new CommentAdapter(this, exam);
         viewHolder.mTvCommentCount.setText("评论("+exam.size()+")");
         mLvComment.setAdapter(commentAdapter);
         commentAdapter.notifyDataSetChanged();

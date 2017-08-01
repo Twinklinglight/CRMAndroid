@@ -8,6 +8,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class CommentData {
 
+    /**
+        "id": "104867",
+            "LogID": "394856",
+            "userId": "1558",
+            "userName": "邴万丹",
+            "RoleName": "电话营销部部长(物通)",
+            "content": "已经查看，继续努力！加油！",
+            "time": "2017/7/25 19:41:27",
+            "leve": "良好"
+    */
+
     @SerializedName("userName")
     private String CommentPerson;
     @SerializedName("RoleName")
@@ -20,6 +31,15 @@ public class CommentData {
     private String id;
     private String LogID;
     private String userId;
+    private String leve;
+
+    public String getLeve() {
+        return leve;
+    }
+
+    public void setLeve(String leve) {
+        this.leve = leve;
+    }
 
     public String getCommentPerson() {
         return CommentPerson;

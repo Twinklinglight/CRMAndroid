@@ -92,7 +92,6 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
                 List<CommentData> exam1 = dayData.getExam();
                 learnStudy.setText(dayData.getLearning());
                 Logid = dayData.getLogId();
-                level = dayData.getLeve();
 
                 mDayplanAdapter = new HtDayplanDetailsAdapter(getActivity(),plan);
                 mLvDayplanDetails.setAdapter(mDayplanAdapter);
@@ -114,7 +113,7 @@ public class DepartDayjournalFragment extends BaseFragment<DepartDayPresenter,Ob
                         commentHead.setVisibility(View.GONE);
                     }
 
-                    mCommentAdapter = new CommentAdapter(getActivity(), exam1,level);
+                    mCommentAdapter = new CommentAdapter(getActivity(), exam1);
                     mLvComment.setAdapter(mCommentAdapter);     //评论列表
                     viewHolder.mTvCommentCount.setText("评论(" + exam1.size() + ")");
                     mCommentAdapter.notifyDataSetChanged();
