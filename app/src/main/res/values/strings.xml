@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CRMAndroid</string>
+    <string name="app_name">物通CRM</string>
 
     <string name="write_journal">写日志</string>
     <string name="send_approval">发审批</string>
@@ -105,8 +105,8 @@
     <string name="member_sort">会员类型</string>
     <string name="company_profile">公司简介:</string>
     <string name="company_address">公司地址:</string>
-    <string name="detail_address">详细地址</string>
-    <string name="company_sort">公司类型</string>
+    <string name="detail_address">详细地址:</string>
+    <string name="company_sort">公司类型:</string>
     <string name="major_product">主营产品类型:</string>
     <string name="customer_job">客户职位:</string>
     <string name="line_phone">固定电话:</string>
@@ -122,7 +122,7 @@
     <string name="hint_address">请输入详细地址</string>
     <string name="hint_jog">请输入客户职位</string>
     <string name="hint_linenumber">请输入固定电话</string>
-    <string name="hint_emil">请输入电子邮件</string>
+    <string name="hint_emil">请输入电子邮箱</string>
     <string name="hint_qq">请输入QQ号</string>
     <string name="hint_message">请输入传真号</string>
 

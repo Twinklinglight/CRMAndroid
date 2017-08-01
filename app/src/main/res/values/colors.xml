@@ -11,7 +11,7 @@
     <color name="colorTitle">#ffffff</color>
     <color name="colorIconText">#2b2f33</color>
     <color name="colorContext">#939699</color>
-
+    <color name="color_gray_alpha_ccc">#96cccccc</color>
     <color name="pulltorefresh_bg">#BCBCBC</color>
     <color name="lineColor">#E9EDF2</color>
 
@@ -23,4 +23,5 @@
     <color name="color_text_black">#222222</color>
     <color name="black_alpha">#55333333</color>
     <color name="color_gray_999">#999</color>
+    <color name="hint">#c4c8cc</color>
 </resources>

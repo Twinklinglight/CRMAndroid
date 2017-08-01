@@ -1,13 +1,16 @@
 package com.wtcrmandroid.view.popupwindow;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.utils.sharesdk.onekeyshare.OnekeyShare;
 
@@ -48,22 +51,25 @@ public class popubwindow_share extends PopupWindow {
     private String filepath;
     private String filename;
 
-    public popubwindow_share(Context context, View parentView,String path,String filename) {
+    public popubwindow_share(Activity context, View parentView,String path,String filename) {
         super(context);
         this.mContext = context;
         this.filepath = path;
         this.filename = filename;
         initView();
         setContentView(view);
-        showAsDropDown(parentView);
+
+        setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
+        setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
+        showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
     }
 
     private void initView() {
         view = LayoutInflater.from(mContext).inflate(R.layout.popupwindow_share, null);
         ButterKnife.bind(this, view);
 
-        setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
-        setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
+
+
 
         setFocusable(true);
         setOutsideTouchable(true);
@@ -127,24 +133,24 @@ public class popubwindow_share extends PopupWindow {
         // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
         //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-//        oks.setTitle(mContext.getString(R.string.app_name));
+        oks.setTitle(mContext.getString(R.string.app_name));
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用 仅在Linked-in,QQ
-//        oks.setTitleUrl(URL_SHARE_CLICK);
+        oks.setTitleUrl(URL_SHARE_CLICK);
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
         File iconFile = new File(iconPath);
         if (iconFile.exists()) {//确保SDcard下面存在此张图片
             oks.setImagePath(iconPath);
         }
         // text是分享文本，所有平台都需要这个字段
-//        oks.setText("我在用免费的配货软件，货源信息多，找货发车很方便，你可以试试: " + URL_SHARE_CLICK);
+        oks.setText("我在用免费的配货软件，货源信息多，找货发车很方便，你可以试试: " + URL_SHARE_CLICK);
         // url仅在微信（包括好友和朋友圈）中使用
-//        oks.setUrl(URL_SHARE_CLICK);
+        oks.setUrl(URL_SHARE_CLICK);
         // comment是我对这条分享的评论，仅在人人网和QQ空间使用
 //        oks.setComment("我是测试评论文本");
         // site是分享此内容的网站名称，仅在QQ空间使用
         oks.setSite("北京物通时空网络科技开发有限公司");
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-//        oks.setSiteUrl(URL_SHARE_CLICK);
+        oks.setSiteUrl(URL_SHARE_CLICK);
         // 启动分享GUI
         oks.show(mContext);
     }

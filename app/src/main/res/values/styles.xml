@@ -18,15 +18,16 @@
 
 
     <style name="HomeRadioButtonTheme">
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:drawablePadding">3dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:drawablePadding">1dp</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@drawable/selector_text_blue_black</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
         <item name="android:button">@null</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="TopPlusText">

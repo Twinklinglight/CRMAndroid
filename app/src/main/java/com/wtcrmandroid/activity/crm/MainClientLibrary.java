@@ -6,22 +6,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.PopupWindow;
 
-import com.wtcrmandroid.R;
 import com.wtcrmandroid.BaseActivity;
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.adapter.recycleview.ClientLibraryAdapter;
 import com.wtcrmandroid.adapter.recycleview.PoppupWindowTitleAdapter;
+import com.wtcrmandroid.model.reponsedata.SearchCustomerRP;
 import com.wtcrmandroid.model.requestdata.AKeyPullInRQ;
+import com.wtcrmandroid.model.requestdata.SearchCustomerRQ;
+import com.wtcrmandroid.presenter.activity.MainClientLibraryPresenter;
+import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.areaslection.Area;
+import com.wtcrmandroid.utils.areaslection.AreaPopUpWindow;
 import com.wtcrmandroid.view.RefreshHeaderView;
 import com.wtcrmandroid.view.RefreshLoadMoreFooterView;
 import com.wtcrmandroid.view.custompricing.TitleBar;
 import com.wtcrmandroid.view.custompricing.TopChooseMenuBar;
 import com.wtcrmandroid.view.popupwindow.TitlePopupWindow;
-import com.wtcrmandroid.utils.areaslection.Area;
-import com.wtcrmandroid.utils.areaslection.AreaPopUpWindow;
-import com.wtcrmandroid.model.reponsedata.SearchCustomerRP;
-import com.wtcrmandroid.model.requestdata.SearchCustomerRQ;
-import com.wtcrmandroid.presenter.activity.MainClientLibraryPresenter;
-import com.wtcrmandroid.utils.L;
 import com.wtcrmandroid.view.pulltorefresh.OnLoadMoreListener;
 import com.wtcrmandroid.view.pulltorefresh.OnRefreshListener;
 import com.wtcrmandroid.view.pulltorefresh.SwipeToLoadLayout;
@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/23.
@@ -50,15 +51,17 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     RefreshLoadMoreFooterView mFooterView;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout mSwipeToLoadLayout;
+    @BindView(R.id.v_shadow)
+    View vShadow;
 
     private TitlePopupWindow titleLeftPopupWindow;
     private TitlePopupWindow titleCenterPopupWindow;
-    private TitlePopupWindow titleRightPopupWindow;
     private ClientLibraryAdapter adapter;
     private AreaPopUpWindow toWindow;
 
     private SearchCustomerRQ data;
-    private int page=1;
+    private int page = 1;
+
     @Override
     protected int layout() {
         return R.layout.activity_client_library;
@@ -77,7 +80,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         titlebar.setrightLayoutClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainClientLibrary.this,SearchClientLibraryActivity.class).putExtra("kind",0));
+                startActivity(new Intent(MainClientLibrary.this, SearchClientLibraryActivity.class).putExtra("kind", 0));
             }
         });
 
@@ -85,6 +88,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
+                vShadow.setVisibility(View.VISIBLE);
                 switch (i) {
                     case 1:
                         //左边弹窗
@@ -109,9 +113,9 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                                     tcmbBar.NoCheckStyle(1);
                                     tcmbBar.setIsCheck_number(0);
                                     data.setCustomerKind(text);
-                                    page=1;
+                                    page = 1;
                                     data.setPageSize(page);
-                                    presenter.getData(data,0);
+                                    presenter.getData(data, 0);
                                     adapter.addList(new ArrayList<SearchCustomerRP>());
 
                                 }
@@ -124,6 +128,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                             public void onDismiss() {
                                 tcmbBar.NoCheckStyle(1);
                                 tcmbBar.setIsCheck_number(0);
+                                vShadow.setVisibility(View.GONE);
                             }
                         });
                         break;
@@ -144,9 +149,9 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                                     tcmbBar.NoCheckStyle(2);
                                     tcmbBar.setIsCheck_number(0);
                                     data.setCurrentStatus(text);
-                                    page=1;
+                                    page = 1;
                                     data.setPageSize(page);
-                                    presenter.getData(data,0);
+                                    presenter.getData(data, 0);
                                     adapter.addList(new ArrayList<SearchCustomerRP>());
                                 }
                             });
@@ -158,6 +163,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                             public void onDismiss() {
                                 tcmbBar.NoCheckStyle(2);
                                 tcmbBar.setIsCheck_number(0);
+                                vShadow.setVisibility(View.GONE);
                             }
                         });
                         break;
@@ -166,6 +172,14 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                             initToWindow(tcmbBar);
                         }
                         toWindow.showPopWindow(tcmbBar);
+                        toWindow.popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                            @Override
+                            public void onDismiss() {
+                                tcmbBar.NoCheckStyle(3);
+                                tcmbBar.setIsCheck_number(0);
+                                vShadow.setVisibility(View.GONE);
+                            }
+                        });
                         break;
                 }
 
@@ -173,7 +187,7 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
 
             @Override
             public void isNoSelected(int i) {
-                switch (i){
+                switch (i) {
                     case 1:
                         titleLeftPopupWindow.dismiss();
                         break;
@@ -195,12 +209,12 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
         adapter.setaKeyPullIn(new ClientLibraryAdapter.AKeyPullIn() {
             @Override
             public void AKeyPullIn(AKeyPullInRQ aKeyPullInRQ) {
-                presenter.aKeyPullIn(aKeyPullInRQ,2);
+                presenter.aKeyPullIn(aKeyPullInRQ, 2);
             }
         });
-        presenter = new MainClientLibraryPresenter(this,this);
-        data=new SearchCustomerRQ();
-        presenter.getData(data,0);
+        presenter = new MainClientLibraryPresenter(this, this);
+        data = new SearchCustomerRQ();
+        presenter.getData(data, 0);
         mSwipeToLoadLayout.setRefreshHeaderView(mHeaderView);
         mSwipeToLoadLayout.setLoadMoreFooterView(mFooterView);
         mSwipeToLoadLayout.setOnLoadMoreListener(this);
@@ -210,27 +224,29 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     private Area toArea;
 
     private void initToWindow(View view) {
-      toWindow = new AreaPopUpWindow(this, view);
+        toWindow = new AreaPopUpWindow(this, view);
         toWindow.setSelectAreaListener(new AreaPopUpWindow.SelectAreaListener() {
             @Override
             public void selectAreaOk(Area area, View parentView) {
                 L.e(area.toString());
                 tcmbBar.NoCheckStyle(3);
                 tcmbBar.setIsCheck_number(0);
+                vShadow.setVisibility(View.GONE);
                 data.setProvince(area.getSheng());
                 data.setCity(area.getShi());
                 data.setArea(area.getXian());
-                page=1;
+                page = 1;
                 data.setPageSize(page);
-                presenter.getData(data,0);
+                presenter.getData(data, 0);
                 adapter.addList(new ArrayList<SearchCustomerRP>());
             }
         });
+
     }
 
     @Override
     public void returnData(int key, List<SearchCustomerRP> data) {
-        switch(key){
+        switch (key) {
             //刷新返回数据
             case 0:
                 adapter.addList(data);
@@ -238,16 +254,16 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
                 break;
             //加载更多返回数据
             case 1:
-                List<SearchCustomerRP> list=adapter.getList();
+                List<SearchCustomerRP> list = adapter.getList();
                 list.addAll(data);
                 adapter.addList(list);
                 mSwipeToLoadLayout.setLoadingMore(false);
                 break;
             case 2:
                 showShortToast("拉入成功！");
-                page=1;
+                page = 1;
                 this.data.setPageSize(page);
-                presenter.getData(this.data,0);
+                presenter.getData(this.data, 0);
                 adapter.addList(new ArrayList<SearchCustomerRP>());
                 break;
 
@@ -257,17 +273,17 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
 
     @Override
     public void onRefresh() {
-        page=1;
+        page = 1;
         data.setPageSize(page);
-        presenter.getData(data,0);
+        presenter.getData(data, 0);
         adapter.addList(new ArrayList<SearchCustomerRP>());
     }
 
     @Override
     public void onLoadMore() {
-        page=page+1;
+        page = page + 1;
         data.setPageSize(page);
-        presenter.getData(data,1);
+        presenter.getData(data, 1);
 
     }
 
@@ -275,12 +291,24 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     public void showShortToast(String text) {
         super.showShortToast(text);
         mSwipeToLoadLayout.setLoadingMore(false);
-        if(page==1) {
+        if (page == 1) {
             mSwipeToLoadLayout.setRefreshing(false);
-        }else {
+        } else {
             mSwipeToLoadLayout.setLoadingMore(false);
-            page=page-1;
+            page = page - 1;
         }
 
+    }
+
+
+
+    @OnClick(R.id.v_shadow)
+    public void onViewClicked() {
+        if(titleLeftPopupWindow!=null)
+        titleLeftPopupWindow.dismiss();
+        if(titleCenterPopupWindow!=null)
+        titleCenterPopupWindow.dismiss();
+        if(toWindow!=null)
+        toWindow.popupWindow.dismiss();
     }
 }

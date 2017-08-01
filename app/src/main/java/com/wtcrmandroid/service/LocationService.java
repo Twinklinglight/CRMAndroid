@@ -2,10 +2,12 @@ package com.wtcrmandroid.service;
 
 import android.app.AlertDialog;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Build;
 import android.os.IBinder;
@@ -17,16 +19,24 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.location.Poi;
 import com.ctoyo.protect.service.IProgressService;
+import com.google.gson.Gson;
+import com.wtcrmandroid.Const;
 import com.wtcrmandroid.MyApplication;
+import com.wtcrmandroid.baidumap.MyBDLocation;
+import com.wtcrmandroid.model.requestdata.PlaceSaveRQ;
+import com.wtcrmandroid.utils.L;
+import com.wtcrmandroid.utils.PreferenceUtils;
 
-import java.util.List;
+import java.io.IOException;
 
-import static com.baidu.location.LocationClientOption.LOC_SENSITIVITY_HIGHT;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * 位置服务进程
@@ -35,19 +45,15 @@ public class LocationService extends Service implements Runnable {
     private boolean isRun = false;
     private Thread mThread;
     private MyApplication app;
-    public LocationClient mLocationClient = null;
-    public BDLocationListener myListener;
+    private MyBDLocation myBDLocation;
+    MyBroadcastReciver myBroadcastReciver;
 
     @Override
     public void onCreate() {
-
         myBinder = new MyBinder();
         if (myConn == null) {
             myConn = new MyConn();
         }
-        Toast.makeText(LocationService.this, "LocationService正在启动...", Toast.LENGTH_SHORT)
-                .show();
-
     }
 
 
@@ -59,21 +65,27 @@ public class LocationService extends Service implements Runnable {
     @Override
     public void onDestroy() {
         isRun = false;
-        mLocationClient.stop();
-        mLocationClient.unRegisterLocationListener(myListener);
+        if (myBroadcastReciver != null) {
+            unregisterReceiver(myBroadcastReciver);
+            myBroadcastReciver = null;
+        }
+
+        mThread.interrupt();
+        mThread = null;
+        LocationService.this.startService(new Intent(LocationService.this, GuardianService.class));
+        LocationService.this.bindService(new Intent(LocationService.this, GuardianService.class), myConn, Context.BIND_IMPORTANT);
         super.onDestroy();
     }
 
     private MyBinder myBinder;
 
+
     @Override
     public void run() {
         while (isRun) {
             Log.e("LocationService", "我还活着！");
-
-
             try {
-                Thread.sleep(1000 * 1);
+                Thread.sleep(1000 * 600);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -90,24 +102,40 @@ public class LocationService extends Service implements Runnable {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        isRun = true;
-        app = (MyApplication) this.getApplicationContext();
+        Log.e("LocationService", "我又onStartCommand！");
+        if (app == null)
+            app = (MyApplication) this.getApplicationContext();
+        if (myBDLocation == null)
+            myBDLocation = app.myBDLocation;
+        if (myConn == null) {
+            myConn = new MyConn();
+        }
         LocationService.this.bindService(new Intent(LocationService.this, GuardianService.class), myConn, Context.BIND_IMPORTANT);
+        isRun = true;
         if (mThread == null) {
             mThread = new Thread(this);
             mThread.start();
         }
-//        if (mLocationClient == null) {
-//            mLocationClient = new LocationClient(app);
-//            initLocation();
-//            //声明LocationClient类
-//            mLocationClient.registerLocationListener(myListener = new MyLocationListener());
-//            mLocationClient.start();
-//        }
-        Log.e("LocationService", "我又onStartCommand！");
-        Toast.makeText(LocationService.this, "LocationService又onStartCommand...", Toast.LENGTH_SHORT)
-                .show();
+        if (myBroadcastReciver != null) {
+            unregisterReceiver(myBroadcastReciver);
+            myBroadcastReciver = null;
+        }
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.wtcrmandroid.myLocation");
+        this.registerReceiver(myBroadcastReciver = new MyBroadcastReciver(), intentFilter);
+        myBDLocation.start();
         return START_STICKY;
+    }
+
+    private class MyBroadcastReciver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals("com.wtcrmandroid.myLocation")) {
+                BDLocation bdLocation = intent.getParcelableExtra("location");
+                setData(bdLocation);
+            }
+        }
     }
 
     private MyConn myConn;
@@ -116,11 +144,12 @@ public class LocationService extends Service implements Runnable {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.i("LocationService", "程序 1 链接 程序2成功");
+            Log.e("LocationService", "程序 1 链接 程序2成功");
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            Log.e("LocationService", "链接断开");
             Toast.makeText(LocationService.this, "LocationService 链接断开...", Toast.LENGTH_SHORT).show();
             LocationService.this.startService(new Intent(LocationService.this, GuardianService.class));
             LocationService.this.bindService(new Intent(LocationService.this, GuardianService.class), myConn, Context.BIND_IMPORTANT);
@@ -181,146 +210,36 @@ public class LocationService extends Service implements Runnable {
         }
     }
 
-    private void initLocation() {
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
-        //可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
 
-        option.setCoorType("bd09ll");
-        //可选，默认gcj02，设置返回的定位结果坐标系
-
-//		int span=1000 * 10;
-//		option.setScanSpan(span);
-//		//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
-        option.disableCache(false);//禁止启用缓存定位
-        option.setIsNeedAddress(true);
-        //可选，设置是否需要地址信息，默认不需要
-
-        option.setOpenGps(true);
-        //可选，默认false,设置是否使用gps
-
-        option.setOpenAutoNotifyMode(0, 10, LOC_SENSITIVITY_HIGHT);
-//
-//		option.setLocationNotify(true);
-//		//可选，默认false，设置是否当GPS有效时按照1S/1次频率输出GPS结果
-//
-//		option.setIsNeedLocationDescribe(true);
-//		//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
-//
-//		option.setIsNeedLocationPoiList(true);
-//		//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
-//
-//		option.setIgnoreKillProcess(false);
-//		//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
-//
-//		option.SetIgnoreCacheException(false);
-//		//可选，默认false，设置是否收集CRASH信息，默认收集
-//
-//		option.setEnableSimulateGps(false);
-//		//可选，默认false，设置是否需要过滤GPS仿真结果，默认需要
-
-        mLocationClient.setLocOption(option);
-    }
-
-    public class MyLocationListener implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-
-            //获取定位结果
-            StringBuffer sb = new StringBuffer(256);
-
-            sb.append("time : ");
-            sb.append(location.getTime());    //获取定位时间
-
-            sb.append("\nerror code : ");
-            sb.append(location.getLocType());    //获取类型类型
-
-            sb.append("\nlatitude : ");
-            sb.append(location.getLatitude());    //获取纬度信息
-
-            sb.append("\nlontitude : ");
-            sb.append(location.getLongitude());    //获取经度信息
-
-            sb.append("\nradius : ");
-            sb.append(location.getRadius());    //获取定位精准度
-
-            if (location.getLocType() == BDLocation.TypeGpsLocation) {
-
-                // GPS定位结果
-                sb.append("\nspeed : ");
-                sb.append(location.getSpeed());    // 单位：公里每小时
-
-                sb.append("\nsatellite : ");
-                sb.append(location.getSatelliteNumber());    //获取卫星数
-
-                sb.append("\nheight : ");
-                sb.append(location.getAltitude());    //获取海拔高度信息，单位米
-
-                sb.append("\ndirection : ");
-                sb.append(location.getDirection());    //获取方向信息，单位度
-
-                sb.append("\naddr : ");
-                sb.append(location.getAddrStr());    //获取地址信息
-
-                sb.append("\ndescribe : ");
-                sb.append("gps定位成功");
-
-            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
-
-                // 网络定位结果
-                sb.append("\naddr : ");
-                sb.append(location.getAddrStr());    //获取地址信息
-
-                sb.append("\noperationers : ");
-                sb.append(location.getOperators());    //获取运营商信息
-
-                sb.append("\ndescribe : ");
-                sb.append("网络定位成功");
-
-            } else if (location.getLocType() == BDLocation.TypeOffLineLocation) {
-
-                // 离线定位结果
-                sb.append("\ndescribe : ");
-                sb.append("离线定位成功，离线定位结果也是有效的");
-
-            } else if (location.getLocType() == BDLocation.TypeServerError) {
-
-                sb.append("\ndescribe : ");
-                sb.append("服务端网络定位失败，可以反馈IMEI号和大体定位时间到loc-bugs@baidu.com，会有人追查原因");
-
-            } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
-
-                sb.append("\ndescribe : ");
-                sb.append("网络不同导致定位失败，请检查网络是否通畅");
-
-            } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
-
-                sb.append("\ndescribe : ");
-                sb.append("无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
-
+    private void setData(BDLocation location) {
+        String userId = PreferenceUtils.getPrefString(app, Const.WT_CRM, Const.USERID, "");
+        PlaceSaveRQ data = new PlaceSaveRQ();
+        data.setLng(location.getLongitude());
+        data.setLat(location.getLatitude());
+        data.setPositionType("2");
+        data.setUserId(userId);
+        Gson gson = new Gson();
+        String json = gson.toJson(data);
+        String path = Const.http + "OutSide/savePosition";
+        OkHttpClient httpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .header("token", PreferenceUtils.getPrefString(app, Const.WT_CRM, Const.TOKEN, ""))
+                .addHeader("userid", userId)
+                .addHeader("imei", PreferenceUtils.getPrefString(app, Const.WT_CRM, Const.IMEI, ""))
+                .url(path)
+                .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json))
+                .build();
+        Call call = httpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                L.e("失败");
             }
 
-            sb.append("\nlocationdescribe : ");
-            sb.append(location.getLocationDescribe());    //位置语义化信息
-
-            List<Poi> list = location.getPoiList();    // POI数据
-            if (list != null) {
-                sb.append("\npoilist size = : ");
-                sb.append(list.size());
-                for (Poi p : list) {
-                    sb.append("\npoi= : ");
-                    sb.append(p.getId() + " " + p.getName() + " " + p.getRank());
-                }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                L.e(response.body().string());
             }
-            Toast.makeText(LocationService.this, sb.toString(), Toast.LENGTH_SHORT)
-                    .show();
-            Log.i("BaiduLocationApiDem", sb.toString());
-        }
-
-        @Override
-        public void onConnectHotSpotMessage(String s, int i) {
-
-        }
+        });
     }
 }

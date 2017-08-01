@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,6 +40,10 @@ public class BattlefieldReportActivity extends BaseActivity {
     LinearLayout llCenter;
     @BindView(R.id.rl_title)
     RelativeLayout rlTitle;
+    @BindView(R.id.v_shadow)
+    View vShadow;
+
+
     private boolean window;
     private TitlePopupWindow titlePopupWindow;
     private FragmentAdapter fragmentAdapter;
@@ -84,13 +89,22 @@ public class BattlefieldReportActivity extends BaseActivity {
 
                         }
                     });
+                    titlePopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            window = false;
+                            vShadow.setVisibility(View.GONE);
+                            ivCenter.setBackgroundResource(R.mipmap.ic_arrow_down_white);
+                        }
+                    });
                 }
                 if (!window) {
                     titlePopupWindow.show();
+                    vShadow.setVisibility(View.VISIBLE);
+                    ivCenter.setBackgroundResource(R.mipmap.ic_arrow_up_white);
                     window = true;
                 } else {
                     titlePopupWindow.dismiss();
-                    window = false;
                 }
 //
 
@@ -98,33 +112,7 @@ public class BattlefieldReportActivity extends BaseActivity {
         }
     }
 
-//    @OnClick(R.id.ll_center)
-//    public void onViewClicked() {
-//        if (titlePopupWindow == null) {
-//            List list = new ArrayList();
-//            list.add("销售战报");
-//            list.add("总业绩");
-//            titlePopupWindow = new TitlePopupWindow(this, rlTitle, list, 0, 0, new PoppupWindowTitleAdapter.oNclicklistner() {
-//                @Override
-//                public void oNclicklistner(String data, int position) {
-//                    tvCenter.setText(data);
-//                    titlePopupWindow.dismiss();
-//                    window = false;
-//                    fragmentAdapter.Changed(position);
-//                    L.e(position + "yemian");
-//
-//                }
-//            });
-//        }
-//        if (!window) {
-//            titlePopupWindow.show();
-//            window = true;
-//        } else {
-//            titlePopupWindow.dismiss();
-//            window = false;
-//        }
-//
-//    }
+
 
 
 }

@@ -36,57 +36,27 @@
 
             <ImageView
                 android:id="@+id/iv_center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_marginLeft="10dp"
                 android:background="@mipmap/ic_arrow_down_white" />
         </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#fff"
-        android:gravity="center_vertical"
-        android:visibility="gone">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="战报日期"
-            android:textColor="@color/colorContext"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_start_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="2017-06-01"
-            android:textColor="@color/colorIconText"
-            android:textSize="16sp" />
-
+        <FrameLayout
+            android:id="@+id/fl_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <View
-            android:layout_width="20dp"
-            android:layout_height="1dp"
-            android:layout_marginLeft="15dp"
-            android:background="@color/colorContext"/>
-
-        <TextView
-            android:id="@+id/tv_end_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="2017-06-30"
-            android:textColor="@color/colorIconText"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/fl_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
+            android:id="@+id/v_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#66000000"
+            android:visibility="gone"/>
+    </RelativeLayout>
 
 </LinearLayout>

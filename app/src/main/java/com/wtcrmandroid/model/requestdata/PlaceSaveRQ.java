@@ -7,7 +7,7 @@ package com.wtcrmandroid.model.requestdata;
 
 public class PlaceSaveRQ {
    //用户Id
-    private int userId;
+    private String userId;
     //经度
     private Double lat;
     //维度
@@ -25,11 +25,11 @@ public class PlaceSaveRQ {
         this.address = address;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

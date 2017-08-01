@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by 1363655717 on 2017-06-14.
@@ -38,6 +39,8 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
     TopChooseMenuBar tcmbBar;
     @BindView(R.id.rv_view)
     RecyclerView rvView;
+    @BindView(R.id.v_shadow)
+    View vShadow;
 
     private FieldStatisticaAdapter adapter;
     private TitlePopupWindow titleLeftPopupWindow;
@@ -65,6 +68,7 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
         tcmbBar.setOnCheckedChangedListener(new TopChooseMenuBar.OnCheckedChangedListener() {
             @Override
             public void isSelected(int i) {
+                vShadow.setVisibility(View.VISIBLE);
                 switch (i) {
                     case 1:
                         //左边弹窗
@@ -84,6 +88,14 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
 
                         }
                         titleLeftPopupWindow.show();
+                        titleLeftPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            tcmbBar.NoCheckStyle(1);
+                            tcmbBar.setIsCheck_number(0);
+                            vShadow.setVisibility(View.GONE);
+                        }
+                    });
                         break;
                     case 3:
                         if (calendarPopupWindow == null) {
@@ -109,6 +121,7 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
                                 public void onDismiss() {
                                     tcmbBar.NoCheckStyle(3);
                                     tcmbBar.setIsCheck_number(0);
+                                    vShadow.setVisibility(View.GONE);
                                 }
                             });
                         }
@@ -148,5 +161,12 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
     public void returnData(int key, List<FieldStatisticsRP> data) {
         adapter.addList(data);
 
+    }
+    @OnClick(R.id.v_shadow)
+    public void onViewClicked() {
+        if(titleLeftPopupWindow!=null)
+            titleLeftPopupWindow.dismiss();
+        if(calendarPopupWindow!=null)
+            calendarPopupWindow.dismiss();
     }
 }

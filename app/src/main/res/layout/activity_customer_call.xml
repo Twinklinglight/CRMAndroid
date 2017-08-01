@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F7F7F7">
 
     <com.wtcrmandroid.view.custompricing.TitleBar
         android:id="@+id/titlebar"
@@ -34,21 +35,22 @@
         android:id="@+id/bt_submit"
         android:layout_width="match_parent"
         android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:text="立即提交"
         android:textColor="#fff"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"/>
+        android:textSize="18sp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bt_submit"
-        android:layout_below="@+id/rl"
-        >
+        android:layout_below="@+id/rl">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:orientation="vertical">
 
             <LinearLayout
@@ -76,29 +78,38 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#e9edf2" />
+                android:background="#E7EFEF" />
 
-            <EditText
-                android:id="@+id/et_addrss_details"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:hint="请补充详细地址"
-                android:minHeight="48dp"
-                android:textColor="#2b2f33"
-                android:textSize="16sp" />
+                android:background="#FFF">
+
+                <EditText
+                    android:id="@+id/et_addrss_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:hint="请补充详细地址"
+                    android:minHeight="48dp"
+                    android:textColor="#2b2f33"
+                    android:textColorHint="@color/hint"
+                    android:textSize="@dimen/text_size_16" />
+            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#e9edf2" />
+                android:layout_height="1dp"
+                android:background="#E7EFEF" />
 
             <LinearLayout
                 android:id="@+id/ll_select_customer"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginTop="9dp"
+                android:background="#FFF"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -113,9 +124,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:text="请选择客户名称"
+                    android:hint="请选择客户"
                     android:textColor="@color/colorContext"
-                    android:textSize="16sp" />
+                    android:textColorHint="@color/hint"
+                    android:textSize="@dimen/text_size_16" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -126,12 +138,14 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#e9edf2" />
+                android:layout_height="1dp"
+                android:background="#E7EFEF" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:background="#FFF"
                 android:gravity="center_vertical">
 
 
@@ -142,10 +156,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="请输入此次客户拜访详细情况"
+                    android:hint="请输入此次拜访详细情况"
                     android:minHeight="48dp"
                     android:textColor="#2b2f33"
-                    android:textSize="16sp" />
+                    android:textColorHint="@color/hint"
+                    android:textSize="@dimen/text_size_16" />
 
                 <ImageView
                     android:id="@+id/iv_microphone"
@@ -159,9 +174,14 @@
                 android:id="@+id/rv_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingBottom="30dp" />
+                android:background="#FFF"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E7EFEF" />
 
 
         </LinearLayout>

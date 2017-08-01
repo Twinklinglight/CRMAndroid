@@ -173,15 +173,15 @@ public class TopChooseMenuBar extends LinearLayout {
         switch (i) {
             case 1:
                 tvLeft.setTextColor(Color.parseColor("#3b9cff"));
-                ivLeft.setBackgroundResource(R.mipmap.ic_arrow_up);
+                ivLeft.setBackgroundResource(R.mipmap.ic_arrow_up_blue);
                 break;
             case 2:
                 tvCenter.setTextColor(Color.parseColor("#3b9cff"));
-                ivCenter.setBackgroundResource(R.mipmap.ic_arrow_up);
+                ivCenter.setBackgroundResource(R.mipmap.ic_arrow_up_blue);
                 break;
             case 3:
                 tvRight.setTextColor(Color.parseColor("#3b9cff"));
-                ivRight.setBackgroundResource(R.mipmap.ic_arrow_up);
+                ivRight.setBackgroundResource(R.mipmap.ic_arrow_up_blue);
                 break;
             default:
                 break;
@@ -191,6 +191,7 @@ public class TopChooseMenuBar extends LinearLayout {
     }
 
     public void NoCheckStyle(int i) {
+
         switch (i) {
             case 0:
 
