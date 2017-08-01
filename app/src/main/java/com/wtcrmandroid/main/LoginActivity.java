@@ -14,9 +14,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import com.wtcrmandroid.R;
 import com.wtcrmandroid.base.BaseActivity;
 import com.wtcrmandroid.base.Const;
-import com.wtcrmandroid.R;
+import com.wtcrmandroid.base.MyApplication;
 import com.wtcrmandroid.base.WTDataBaseManager;
 import com.wtcrmandroid.model.reponsedata.LoginData;
 import com.wtcrmandroid.model.requestdata.LoginRequestData;
@@ -101,16 +102,23 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
 
     @OnClick(R.id.bt_login)
     public void onClick() {
-        loginRequestData.setUserName("jiaxinhe");
-
-        loginRequestData.setImei("9209843230929988");
-
-        presenter.login(loginRequestData,0);
+        String username=etAccount.getText().toString();
+        String pass=etPass.getText().toString();
+        if(username.equals("")){
+            showShortToast("请输入账号！");
+        }else if(pass.equals("")){
+            showShortToast("请输入密码！");
+        } else {
+            loginRequestData.setUserName(username);
+            loginRequestData.setUserPass(pass);
+            presenter.login(loginRequestData, 0);
+        }
     }
     @Override
     public void returnData(int key, LoginData data) {
         L.e("返回数据"+key+data.toString());
         L.e(data.getUserName());
+        startActivity(new Intent(this,MainActivity.class));
         boolean isLocalServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.LocationService");
         boolean isRemoteServiceWork = ServiceUtils.isServiceWork(this, "com.wtcrmandroid.service.GuardianService");
         if(!isLocalServiceWork||
@@ -124,7 +132,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
                 startService(new Intent(this, JobScheduleService.class));
             }
         }
-        startActivity(new Intent(this,MainActivity.class));
         this.finish();
 
     }
@@ -136,11 +143,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
             startPermissionsActivity();
         }else {
             TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+            loginRequestData.setImei(tm.getDeviceId());
 //        L.e(tm.getDeviceId()+"--");
             //保存token
             PreferenceUtils.setPrefString(this, Const.WT_CRM, Const.IMEI, tm.getDeviceId());
             presenter.checkVersion(1);
-//            MyApplication.application.setImei(tm.getDeviceId());
+            MyApplication.application.setImei(tm.getDeviceId());
         }
     }
 }

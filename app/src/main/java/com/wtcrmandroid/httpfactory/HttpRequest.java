@@ -156,11 +156,7 @@ public class HttpRequest {
      */
 
     public void sendPost(String url, Object params, Object tag, StringCallBack resultCallBack) {
-
         LoginData loginData =MyApplication.application.getLoginData();
-
-
-//        params.put("ver_version", VERSION_CODE + "");//版本
         PostRequest postRequest = new PostRequest(url,null, params, tag);
         Request request = postRequest.getRequest();
         L.e( postRequest.toString());
@@ -207,11 +203,14 @@ public class HttpRequest {
                         error = "服务器数据格式异常";
                         callBack.onError(ret, error);
                     }
-                } else if (ret == 2) {//key验证失败
+                }else if (ret == 1) {//无数据
+                    error = json.optString("msg", "系统错误");
+                    callBack.onError(ret, error);
+                }/*else if (ret == 2) {//key验证失败
                     downkey(callBack, call);
                 } else if (ret == 4) {
                     callBack.onError(ret, json.getString("data"));
-                } else {
+                } */else {
                     error = json.optString("msg", "系统错误");
                     callBack.onError(ret, error);
                 }

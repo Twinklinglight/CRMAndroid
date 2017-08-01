@@ -2,12 +2,12 @@ package com.wtcrmandroid.baidumap;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.wtcrmandroid.utils.L;
 
 import static com.baidu.location.LocationClientOption.LOC_SENSITIVITY_HIGHT;
 
@@ -74,9 +74,11 @@ public class MyBDLocation implements BDLocationListener {
     public void start(){
         if(mLocationClient.isStarted()){
             mLocationClient.requestLocation();
-            Toast.makeText(context,"重新定位", Toast.LENGTH_SHORT).show();
+            L.e("重新定位");
+//            Toast.makeText(context,"重新定位", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context,"开始定位", Toast.LENGTH_SHORT).show();
+            L.e("开始定位");
+//            Toast.makeText(context,"开始定位", Toast.LENGTH_SHORT).show();
             mLocationClient.start();
         }
     }
