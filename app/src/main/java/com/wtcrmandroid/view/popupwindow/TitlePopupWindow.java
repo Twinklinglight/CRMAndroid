@@ -39,7 +39,7 @@ public class TitlePopupWindow extends PopupWindow {
         setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         ColorDrawable dw = new ColorDrawable(Color.TRANSPARENT);
        setBackgroundDrawable(dw);
-        setFocusable(true);
+        setFocusable(false);
         setOutsideTouchable(false);
         this.view = view;
         this.context=context;

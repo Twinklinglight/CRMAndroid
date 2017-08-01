@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/23.
@@ -55,7 +56,6 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
 
     private TitlePopupWindow titleLeftPopupWindow;
     private TitlePopupWindow titleCenterPopupWindow;
-    private TitlePopupWindow titleRightPopupWindow;
     private ClientLibraryAdapter adapter;
     private AreaPopUpWindow toWindow;
 
@@ -301,4 +301,14 @@ public class MainClientLibrary extends BaseActivity<MainClientLibraryPresenter, 
     }
 
 
+
+    @OnClick(R.id.v_shadow)
+    public void onViewClicked() {
+        if(titleLeftPopupWindow!=null)
+        titleLeftPopupWindow.dismiss();
+        if(titleCenterPopupWindow!=null)
+        titleCenterPopupWindow.dismiss();
+        if(toWindow!=null)
+        toWindow.popupWindow.dismiss();
+    }
 }

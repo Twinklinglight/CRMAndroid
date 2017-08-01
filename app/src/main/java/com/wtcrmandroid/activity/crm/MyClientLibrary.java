@@ -281,4 +281,13 @@ public class MyClientLibrary extends BaseActivity<MyClientLibraryPresenter, List
             page=page-1;
         }
     }
+    @OnClick(R.id.v_shadow)
+    public void onViewClicked() {
+        if(titleLeftPopupWindow!=null)
+            titleLeftPopupWindow.dismiss();
+        if(titleCenterPopupWindow!=null)
+            titleCenterPopupWindow.dismiss();
+        if(toWindow!=null)
+            toWindow.popupWindow.dismiss();
+    }
 }

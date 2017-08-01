@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/23.
@@ -291,5 +292,14 @@ public class PublicSeaActivity extends BaseActivity<MainClientLibraryPresenter, 
             page=page-1;
         }
 
+    }
+    @OnClick(R.id.v_shadow)
+    public void onViewClicked() {
+        if(titleLeftPopupWindow!=null)
+            titleLeftPopupWindow.dismiss();
+        if(titleCenterPopupWindow!=null)
+            titleCenterPopupWindow.dismiss();
+        if(toWindow!=null)
+            toWindow.popupWindow.dismiss();
     }
 }

@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by 1363655717 on 2017-06-14.
@@ -160,5 +161,12 @@ public class FieldStatisticsAcrivity extends BaseActivity<FieldStatisticsPresent
     public void returnData(int key, List<FieldStatisticsRP> data) {
         adapter.addList(data);
 
+    }
+    @OnClick(R.id.v_shadow)
+    public void onViewClicked() {
+        if(titleLeftPopupWindow!=null)
+            titleLeftPopupWindow.dismiss();
+        if(calendarPopupWindow!=null)
+            calendarPopupWindow.dismiss();
     }
 }
