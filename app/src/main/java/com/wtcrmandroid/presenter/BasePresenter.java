@@ -1,6 +1,8 @@
 package com.wtcrmandroid.presenter;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -24,60 +26,72 @@ public abstract class BasePresenter {
     public BasePresenter(AllView view, Context context) {
         this.view = view;
         mainHandler = new Handler(Looper.getMainLooper());
-        loadingDialog=new LoadingDialog(context);
-        this.context=context;
-
+        loadingDialog = new LoadingDialog(context);
+        this.context = context;
     }
 
     protected abstract void returnData(int key, String response);
 
     protected void post(String url, Object params, final int key) {
-        loadingDialog.show();
+        if (!isNetworkConnected()) {
+           view.showShortToast("当前网络不可用，请检查网络设置！");
+        } else {
+            loadingDialog.show();
+            HttpRequest.instance().sendPost(Const.http + url, params, null, new StringCallBack() {
+                @Override
+                public void onError(int errorRet, final String errorMsg) {
 
-        HttpRequest.instance().sendPost(Const.http + url, params, null, new StringCallBack() {
-            @Override
-            public void onError(int errorRet, final String errorMsg) {
-
-                loadingDialog.dismiss();
-                mainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //已在主线程中，可以更新UI
-                        view.showShortToast(errorMsg);
-
-
-
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(final String response) {
-                mainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //已在主线程中，可以更新UI
-                        returnData(key, response);
-                        loadingDialog.dismiss();
-                    }
-                });
+                    loadingDialog.dismiss();
+                    mainHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //已在主线程中，可以更新UI
+                            view.showShortToast(errorMsg);
 
 
-            }
+                        }
+                    });
+                }
 
-            @Override
-            public void onNetError(Exception e) {
-                mainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //已在主线程中，可以更新UI
-                        view.showShortToast("网络错误！");
-                    }
-                });
+                @Override
+                public void onResponse(final String response) {
+                    mainHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //已在主线程中，可以更新UI
+                            returnData(key, response);
+                            loadingDialog.dismiss();
+                        }
+                    });
 
-                L.e("BasePresenter.onNetError(Exception e)"+e.toString());
-                loadingDialog.dismiss();
-            }
-        });
+
+                }
+
+                @Override
+                public void onNetError(Exception e) {
+                    mainHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //已在主线程中，可以更新UI
+                            view.showShortToast("网络错误！");
+                        }
+                    });
+
+                    L.e("BasePresenter.onNetError(Exception e)" + e.toString());
+                    loadingDialog.dismiss();
+                }
+            });
+        }
+    }
+
+    /**
+     * 检测网络是否可用
+     *
+     * @return
+     */
+    public boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        return ni != null && ni.isConnectedOrConnecting();
     }
 }

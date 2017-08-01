@@ -1,10 +1,14 @@
 package com.wtcrmandroid.model.reponsedata;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 /**
  * Created by 1363655717 on 2017-06-12.
  */
 
-public class LoginData {
+public class LoginData implements Serializable {
 
     /**
      * UserID : 3066
@@ -14,12 +18,17 @@ public class LoginData {
      * Token : 4879BD23AAA7FA31
      * IsSaler : false
      */
-
+    @SerializedName("UserID")
     private int UserID;
+    @SerializedName("UserName")
     private String UserName;
+    @SerializedName("Attribution")
     private String Attribution;
+    @SerializedName("DepartmentID")
     private int DepartmentID;
+    @SerializedName("Token")
     private String Token;
+    @SerializedName("RoleClass")
     private int RoleClass;
 
     public int getUserID() {

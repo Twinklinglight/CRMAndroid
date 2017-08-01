@@ -105,7 +105,7 @@ public class TotalAchievementsFragment extends BaseFragment<TotalAchievementsP, 
     @OnClick({R.id.tv_start_data, R.id.tv_end_data})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_start_data:
+            case R.id.tv_start_data://开始时间选择
                 new CalendarDialog(getActivity(), new CalendarDialog.CalendarListener() {
                     @Override
                     public void CalendarSelcet(String datetext, Date date) {
@@ -116,7 +116,7 @@ public class TotalAchievementsFragment extends BaseFragment<TotalAchievementsP, 
                     }
                 }).show();
                 break;
-            case R.id.tv_end_data:
+            case R.id.tv_end_data://结束时间选择
                 new CalendarDialog(getActivity(), new CalendarDialog.CalendarListener() {
                     @Override
                     public void CalendarSelcet(String datetext, Date date) {

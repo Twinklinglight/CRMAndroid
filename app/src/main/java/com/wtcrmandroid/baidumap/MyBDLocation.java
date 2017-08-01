@@ -13,6 +13,7 @@ import static com.baidu.location.LocationClientOption.LOC_SENSITIVITY_HIGHT;
 
 /**
  * Created by wt-pc on 2017/7/29.
+ * 百度地图服务类
  */
 
 public class MyBDLocation implements BDLocationListener {

@@ -1,11 +1,13 @@
 package com.wtcrmandroid.model.requestdata;
 
+import java.io.Serializable;
+
 /**
  * Created by wt-pc on 2017/7/13.
  * 设为我的客户
  */
 
-public class AKeyPullInRQ {
+public class AKeyPullInRQ implements Serializable {
     private int userId;
     private String customerId;
 

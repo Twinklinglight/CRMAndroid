@@ -25,6 +25,7 @@ import butterknife.OnClick;
 
 /**
  * Created by wt-pc on 2017/6/20.
+ * 战报
  */
 
 public class BattlefieldReportActivity extends BaseActivity {

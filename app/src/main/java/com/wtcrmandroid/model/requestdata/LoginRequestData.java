@@ -2,16 +2,20 @@ package com.wtcrmandroid.model.requestdata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by wt-pc on 2017/6/22.
  * 登录接口上传参数实体类
  */
 
-public class LoginRequestData {
+public class LoginRequestData implements Serializable {
     //将java对象的属性转换成指定的json名字
     @SerializedName("userName")
     private String userName;
+    @SerializedName("userPass")
     private String userPass;
+    @SerializedName("imei")
     private String imei;
 
     public String getUserName() {
