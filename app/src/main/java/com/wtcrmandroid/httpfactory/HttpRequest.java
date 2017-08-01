@@ -203,15 +203,14 @@ public class HttpRequest {
                         error = "服务器数据格式异常";
                         callBack.onError(ret, error);
                     }
-                }
-                else if (ret == 1) {//无数据
+                }else if (ret == 1) {//无数据
                     error = json.optString("msg", "系统错误");
                     callBack.onError(ret, error);
-                }else if (ret == 2) {//key验证失败
+                }/*else if (ret == 2) {//key验证失败
                     downkey(callBack, call);
                 } else if (ret == 4) {
                     callBack.onError(ret, json.getString("data"));
-                } else {
+                } */else {
                     error = json.optString("msg", "系统错误");
                     callBack.onError(ret, error);
                 }
