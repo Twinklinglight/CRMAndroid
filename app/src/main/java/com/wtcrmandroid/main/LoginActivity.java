@@ -106,7 +106,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
         String pass=etPass.getText().toString();
         if(username.equals("")){
             showShortToast("请输入账号！");
-        }else {
+        }else if(pass.equals("")){
+            showShortToast("请输入密码！");
+        } else {
             loginRequestData.setUserName(username);
             loginRequestData.setUserPass(pass);
             presenter.login(loginRequestData, 0);
