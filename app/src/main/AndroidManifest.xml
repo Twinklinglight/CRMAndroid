@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.wtcrmandroid"
-    android:installLocation="preferExternal" >
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+    package="com.wtcrmandroid"
+    android:installLocation="preferExternal">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 读取网络信息状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 获取当前wifi状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 允许程序改变网络连接状态 -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <!-- 读取手机信息权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- SD卡读写的权限（如果需要保存音频文件到本地的话） -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!-- shareSDK -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <!-- 动态权限 -->
     <application
@@ -50,35 +50,37 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.AppStartPageActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.LoginActivity"/>
-        <activity android:name=".main.MainActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".main.LoginActivity" />
+        <activity
+            android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
         <!-- ——————————————————————-外勤模块—————————————————————————— -->
         <!-- 外勤 -->
-        <activity android:name=".activity.field.FieldActivity"/>
+        <activity android:name=".activity.field.FieldActivity" />
         <!-- 外勤打卡 -->
-        <activity android:name=".activity.field.FieldClockActivity"/>
+        <activity android:name=".activity.field.FieldClockActivity" />
         <!-- 打卡记录 -->
-        <activity android:name=".activity.field.ClockRecordActivity"/>
+        <activity android:name=".activity.field.ClockRecordActivity" />
         <!-- 外勤统计 -->
-        <activity android:name=".activity.field.FieldStatisticsAcrivity"/>
+        <activity android:name=".activity.field.FieldStatisticsAcrivity" />
         <!-- 客户拜访 -->
-        <activity android:name=".activity.field.CustomerCallActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.field.CustomerCallActivity"
+            android:windowSoftInputMode="adjustPan" />
         <!-- 我的拜访记录 -->
-        <activity android:name=".activity.field.MyCallRecordActivity"/>
+        <activity android:name=".activity.field.MyCallRecordActivity" />
         <!-- 客户拜访情况 -->
-        <activity android:name=".activity.field.CustomerCallSituationActivity"/>
+        <activity android:name=".activity.field.CustomerCallSituationActivity" />
         <!-- 客户拜访统计 -->
-        <activity android:name=".activity.field.CustomerCallStatisticalAcrivity"/>
-        <activity android:name=".activity.field.CustomerVisitDetailsListActivity"/>
-        <activity android:name=".activity.field.CustomerVisitDetailsMapActivity"/>
-        <activity android:name=".activity.field.StatisticsDetailsActivity"/>
+        <activity android:name=".activity.field.CustomerCallStatisticalAcrivity" />
+        <activity android:name=".activity.field.CustomerVisitDetailsListActivity" />
+        <activity android:name=".activity.field.CustomerVisitDetailsMapActivity" />
+        <activity android:name=".activity.field.StatisticsDetailsActivity" />
         <!-- ———————————————————————————————————————————————————————————————— -->
 
 
@@ -102,88 +104,99 @@
 
         <!-- ————————————————————————————— 日志管理 ————————————————————————————————— -->
         <!-- 日志管理 -->
-        <activity android:name=".activity.journalmanager.JournalManagerActivity"/>
+        <activity android:name=".activity.journalmanager.JournalManagerActivity" />
         <!-- 写日计划 -->
-        <activity android:name=".activity.journalmanager.WriteDayPlanActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.WriteDayPlanActivity"
+            android:windowSoftInputMode="adjustPan" />
         <!-- 战报 -->
         <!-- 写日总结 -->
-        <activity android:name=".activity.journalmanager.WriteDaySumActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.WriteDaySumActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- 写周计划界面 -->
-        <activity android:name=".activity.journalmanager.WriteWeekPlanActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.WriteWeekPlanActivity"
+            android:windowSoftInputMode="adjustPan" />
         <!-- 写周总结界面 -->
-        <activity android:name=".activity.journalmanager.WriteWeekConclusionActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.WriteWeekConclusionActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- 我的日志 -->
-        <activity android:name=".activity.journalmanager.MyJournalActivity"/>
+        <activity android:name=".activity.journalmanager.MyJournalActivity" />
         <!-- 预测到单客户 -->
-        <activity android:name=".activity.journalmanager.SingleCustomer"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.SingleCustomer"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- 重点意向客户 -->
-        <activity android:name=".activity.journalmanager.MajorCustomerActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.MajorCustomerActivity"
+            android:windowSoftInputMode="adjustPan" />
         <!-- 回款到单 -->
-        <activity android:name=".activity.journalmanager.GetMoneyActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.GetMoneyActivity"
+            android:windowSoftInputMode="adjustPan" />
 
-       <!--————————————————————————————————CRM——————————————————————————————————————-->
-        <activity android:name=".activity.crm.MainClientLibrary"/>
-        <activity android:name=".activity.crm.MyClientLibrary"/>
-        <activity android:name=".activity.crm.PublicSeaActivity"/>
-        <activity android:name=".activity.crm.MyPushCustomerActivity"/>
-        <activity android:name=".activity.crm.SearchClientLibraryActivity"/>
-        <activity android:name=".activity.crm.SearchMyClientLibraryActivity"/>
-        <activity android:name=".activity.crm.SearchPushCustomerActivity"/>
-        <activity android:name=".activity.crm.BattlefieldReportActivity"/>
-        <activity android:name=".activity.SelectAreaActivity"/>
-        <!--————————————————————————————————————————————————————————————————-->
+        <!-- ————————————————————————————————CRM—————————————————————————————————————— -->
+        <activity android:name=".activity.crm.MainClientLibrary" />
+        <activity android:name=".activity.crm.MyClientLibrary" />
+        <activity android:name=".activity.crm.PublicSeaActivity" />
+        <activity android:name=".activity.crm.MyPushCustomerActivity" />
+        <activity android:name=".activity.crm.SearchClientLibraryActivity" />
+        <activity android:name=".activity.crm.SearchMyClientLibraryActivity" />
+        <activity android:name=".activity.crm.SearchPushCustomerActivity" />
+        <activity android:name=".activity.crm.BattlefieldReportActivity" />
+        <activity android:name=".activity.SelectAreaActivity" />
+        <!-- ———————————————————————————————————————————————————————————————— -->
+
 
         <!-- 今日工作量 -->
         <activity
             android:name=".activity.journalmanager.TodayWorkLoadActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <!-- 预测单客户踩中 -->
-        <activity android:name=".activity.journalmanager.GetSingleCustomerActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.GetSingleCustomerActivity"
+            android:windowSoftInputMode="adjustPan" />
         <!-- 新增意向客户 -->
-        <activity android:name=".activity.journalmanager.AddPurposeCustomerActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.journalmanager.AddPurposeCustomerActivity"
+            android:windowSoftInputMode="adjustPan" />
         <!-- 部门员工日志管理首页 -->
-        <activity android:name=".activity.journalmanager.DepartmentMainActivity"/>
+        <activity android:name=".activity.journalmanager.DepartmentMainActivity" />
         <!-- 部门员工日志管理搜索页 -->
-        <activity android:name=".activity.journalmanager.DepartmentSerachActivity"/>
-        <activity android:name=".activity.journalmanager.HtDayplanDetails"/>
+        <activity android:name=".activity.journalmanager.DepartmentSerachActivity" />
+        <activity android:name=".activity.journalmanager.HtDayplanDetails" />
         <!-- 后台日总结详情 -->
-        <activity android:name=".activity.journalmanager.HtDaysumDetailsActivity"/>
+        <activity android:name=".activity.journalmanager.HtDaysumDetailsActivity" />
         <!-- 销售日计划详情 -->
-        <activity android:name=".activity.journalmanager.XsDayplanDetailsActivity"/>
+        <activity android:name=".activity.journalmanager.XsDayplanDetailsActivity" />
         <!-- 销售日总结详情 -->
-        <activity android:name=".activity.journalmanager.XsDaysumDetailsActivity"/>
+        <activity android:name=".activity.journalmanager.XsDaysumDetailsActivity" />
         <!-- 周计划详情 -->
-        <activity android:name=".activity.journalmanager.WeekplanDetailsActivity"/>
+        <activity android:name=".activity.journalmanager.WeekplanDetailsActivity" />
         <!-- 周总结详情 -->
-        <activity android:name=".activity.journalmanager.WeeksumDetailsActivity"/>
-        <!--销售写日计划-->
-        <activity android:name=".activity.journalmanager.XsWriteDayplanActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <!--销售写日总结-->
-        <activity android:name=".activity.journalmanager.XsWriteDaysumActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activity.journalmanager.WeeksumDetailsActivity" />
+        <!-- 销售写日计划 -->
+        <activity
+            android:name=".activity.journalmanager.XsWriteDayplanActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <!-- 销售写日总结 -->
+        <activity
+            android:name=".activity.journalmanager.XsWriteDaysumActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- 我的名片 -->
-        <activity android:name=".activity.aboutmy.MycardActivity"/>
-
-        <activity android:name=".permission.PermissionsActivity"/>
+        <activity android:name=".activity.aboutmy.MycardActivity" />
+        <activity android:name=".permission.PermissionsActivity" />
 
         <!-- 百度地图可以 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="UtlbHSVhVkYbnDTbtRlh96oHcs5xTCLv"/>
+            android:value="UtlbHSVhVkYbnDTbtRlh96oHcs5xTCLv" />
 
         <!-- shareSDK 的activity -->
         <activity
@@ -193,19 +206,19 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
-                <data android:scheme="tencent1105662792"/>
+                <data android:scheme="tencent1105662792" />
 
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
             <!-- 调用新浪原生SDK，需要注册的回调activity -->
             <intent-filter>
-                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -216,38 +229,42 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activity.foodpullcustomer.PullintoCustomerActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.foodpullcustomer.PullintoCustomerActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.foodpullcustomer.FoodSelectActivity" />
-        <activity android:name=".activity.salepullcustomer.SalePullintoCustomerActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.salepullcustomer.SalePullintoCustomerActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.salepullcustomer.SaleSelectActivity" />
         <activity android:name=".activity.journalmanager.HtJournalDetails" />
         <activity android:name=".activity.journalmanager.XsJournalDetails" />
         <activity android:name=".activity.aboutdocument.DocumentProcessActivity" />
         <activity android:name=".activity.aboutdocument.DocumentNomalProcessActivity" />
         <activity android:name=".activity.aboutdocument.SubDocumentActivity" />
-        <activity android:name=".activity.aboutdocument.DocSelectPersonActivity"></activity>
-        <!--图片放大浏览-->
-        <activity android:name=".activity.ImageBrowsingActivity"/>
-
+        <activity android:name=".activity.aboutdocument.DocSelectPersonActivity" />
+        <!-- 图片放大浏览 -->
+        <activity android:name=".activity.ImageBrowsingActivity" />
 
         <service
             android:name=".service.LocationService"
             android:enabled="true"
-            android:process=":myLocationService"/>
+            android:process=":myLocationService" />
         <service
             android:name=".service.GuardianService"
             android:enabled="true"
-            android:process=":GuardianService"/>
-
+            android:process=":GuardianService" />
         <service
             android:name=".service.JobScheduleService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
             android:enabled="true"
-            android:exported="true"/>
-        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
-        </service>
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
+
+        <activity android:name=".contacts.ContactSearchActivity"></activity>
     </application>
 
 </manifest>

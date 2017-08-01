@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.thinkcool.circletextimageview.CircleTextImageView;
 import com.wtcrmandroid.BaseActivity;
 import com.wtcrmandroid.Const;
@@ -55,11 +56,14 @@ public class MycardActivity extends BaseActivity {
         String username = intent.getStringExtra("username");
         String rolename = intent.getStringExtra("rolename");
         String phonenumber = intent.getStringExtra("phonenumber");
+        String imageUrl = intent.getStringExtra("imageUrl");
+
+        Log.i("imagUrl","imageUrl = "+imageUrl);
 
         tvName.setText(username);
         tvJob.setText(rolename);
         tvPhone.setText(phonenumber);
-        CircleImage.setText(username.substring(username.length()-2,username.length()));
+        Glide.with(this).load(imageUrl).error(R.mipmap.ic_photo_upload).into(CircleImage);
 
         mTitlebar.setTitletext("我的名片");
         mTitlebar.setrighttext("分享");

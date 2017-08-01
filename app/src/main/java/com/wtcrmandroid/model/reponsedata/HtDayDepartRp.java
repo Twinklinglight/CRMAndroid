@@ -10,7 +10,6 @@ public class HtDayDepartRp {
 
 
     private int logId;
-    private String leve;
     private String learning;
     private List<CommentData> exam;
     private List<HtDayplanDetailsData> plan;
@@ -24,13 +23,6 @@ public class HtDayDepartRp {
         this.logId = logId;
     }
 
-    public String getLeve() {
-        return leve;
-    }
-
-    public void setLeve(String leve) {
-        this.leve = leve;
-    }
 
     public String getLearning() {
         return learning;

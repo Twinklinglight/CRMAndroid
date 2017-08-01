@@ -76,7 +76,7 @@ public class WriteWeekConclusionActivity extends BaseActivity<WriteWeekSumPresen
         weekDetailsRequestData.setWeekBegin(weekBegin);
         weekDetailsRequestData.setWeekEnd(weekEnd);
 
-        presenter.getWeekPlan(weekDetailsRequestData);  //先获取周计划详情
+        //presenter.getWeekPlan(weekDetailsRequestData);  //先获取周计划详情
 
         titlebar.setTitletext("写周总结");
         titlebar.setLeftOnClickListener(new View.OnClickListener() {

@@ -9,7 +9,7 @@ import java.io.File;
  * Created by Mr-Zhang on 2016/3/12.
  */
 public class Const {
-    public final static  String http ="http://192.168.0.33/api/";  //金磊
+    public final static  String http ="http://192.168.0.7/api/";  //金磊
 //    public final static  String http ="http://192.168.0.33/api/";   //黄埔
     public final static String httpString = "http://";
     public final static String httpsString = "http://";

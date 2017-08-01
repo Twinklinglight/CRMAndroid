@@ -22,6 +22,7 @@
 
         <TextView
             android:id="@+id/tv_date"
+            android:paddingLeft="10dp"
             style="@style/ContentText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -33,6 +34,10 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_xrz_calender"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -63,7 +68,8 @@
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_dayplan_details"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
             <TextView
@@ -78,7 +84,8 @@
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_single_analysis"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
             <TextView
@@ -93,7 +100,8 @@
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_major_genjin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
 
@@ -116,7 +124,8 @@
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_daysum_details"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
             <TextView
@@ -388,7 +397,8 @@
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_load"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
             <TextView
@@ -403,7 +413,8 @@
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_ifget_single"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
             <TextView
@@ -418,7 +429,8 @@
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/lv_add_customer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@null">
             </com.wtcrmandroid.view.listview.MyListView>
 
             <com.wtcrmandroid.view.listview.MyListView

@@ -55,7 +55,7 @@ public class GroupsActivity extends BaseActivity {
             }
         });
 
-        mDataList = new ArrayList<>();
+        /*mDataList = new ArrayList<>();
         List<ContactsChild> arrayList = new ArrayList<>();
         arrayList.add(new ContactsChild("", "小", "小"));
         mDataList.add(new ContactsGroup("大", arrayList));
@@ -90,7 +90,7 @@ public class GroupsActivity extends BaseActivity {
                 showShortToast("解散成功");
                 return false;
             }
-        });
+        });*/
     }
 
 

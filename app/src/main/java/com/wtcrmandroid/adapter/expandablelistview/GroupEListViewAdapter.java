@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.wtcrmandroid.R;
 import com.wtcrmandroid.model.ContactsChild;
 import com.wtcrmandroid.model.ContactsGroup;
+import com.wtcrmandroid.model.reponsedata.ContactRP;
+import com.wtcrmandroid.model.reponsedata.ContactsDpmentRP;
 
 import java.util.List;
 
@@ -21,9 +23,9 @@ import java.util.List;
 public class GroupEListViewAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private List<ContactsGroup> parentList;
+    private List<ContactsDpmentRP> parentList;
 
-    public GroupEListViewAdapter(Context context, List<ContactsGroup> parentList) {
+    public GroupEListViewAdapter(Context context, List<ContactsDpmentRP> parentList) {
         this.context = context;
         this.parentList = parentList;
     }
@@ -35,7 +37,7 @@ public class GroupEListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return parentList.get(groupPosition).getChildList().size();
+        return parentList.get(groupPosition).getUsers().size();
     }
 
     @Override
@@ -45,7 +47,7 @@ public class GroupEListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return parentList.get(groupPosition).getChildList().get(childPosition);
+        return parentList.get(groupPosition).getUsers();
     }
 
     @Override
@@ -77,7 +79,7 @@ public class GroupEListViewAdapter extends BaseExpandableListAdapter {
             groupViewHolder.ivArrow.setImageResource(R.mipmap.ic_arrow_up);
         else
             groupViewHolder.ivArrow.setImageResource(R.mipmap.ic_arrow_down);
-        groupViewHolder.tvDepartmentName.setText(parentList.get(groupPosition).getTitle());
+        groupViewHolder.tvDepartmentName.setText(parentList.get(groupPosition).getDepartmentName());
 
         return convertView;
     }
@@ -92,10 +94,11 @@ public class GroupEListViewAdapter extends BaseExpandableListAdapter {
         } else {
             childViewHolder = (ChildViewHolder) convertView.getTag();
         }
-        ContactsChild contactsChild = parentList.get(groupPosition).getChildList().get(childPosition);
 
-        childViewHolder.tvName.setText(contactsChild.getName());
-        childViewHolder.tvDepartment.setText(contactsChild.getDepartment());
+        ContactRP contactRP = parentList.get(groupPosition).getUsers().get(childPosition);
+
+        childViewHolder.tvName.setText(contactRP.getUserName());
+        childViewHolder.tvDepartment.setText(contactRP.getRoleName());
         return convertView;
     }
 

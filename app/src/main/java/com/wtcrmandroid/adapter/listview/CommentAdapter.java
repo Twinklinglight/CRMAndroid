@@ -21,9 +21,8 @@ public class CommentAdapter extends CommentBaseAdapter<CommentData, CommentAdapt
 
     private String level;
 
-    public CommentAdapter(Activity activity, List<CommentData> list,String level) {
+    public CommentAdapter(Activity activity, List<CommentData> list) {
         super(activity, list);
-        this.level = level;
     }
 
     @Override
@@ -32,6 +31,7 @@ public class CommentAdapter extends CommentBaseAdapter<CommentData, CommentAdapt
         holder.mTvCommentContent.setText(list.get(position).getCommentContent());
         holder.mTvCommentJob.setText("("+list.get(position).getCommentJob()+")");
         holder.mTvCommentPerson.setText(list.get(position).getCommentPerson());
+        level = list.get(position).getLeve();
         holder.mTvCommentTime.setText("日志等级 "+level+" "+"发表于 "+list.get(position).getCommentTime());
 
     }

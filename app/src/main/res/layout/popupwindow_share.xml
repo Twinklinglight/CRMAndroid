@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="#00000000"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:id="@+id/ll_share"
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ssdk_oks_classic_wechat"/>
+                android:src="@drawable/ssdk_oks_classic_wechat" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -38,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="微信好友"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,14 +54,14 @@
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ssdk_oks_classic_wechatmoments"/>
+                android:src="@drawable/ssdk_oks_classic_wechatmoments" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="朋友圈"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,14 +75,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ssdk_oks_classic_qq"/>
+                android:src="@drawable/ssdk_oks_classic_qq" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="QQ"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -95,14 +96,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ssdk_oks_classic_qzone"/>
+                android:src="@drawable/ssdk_oks_classic_qzone" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="QQ空间"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </LinearLayout>
@@ -111,8 +112,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:paddingTop="20dp"
         android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:weightSum="4">
 
         <LinearLayout
@@ -126,14 +127,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ssdk_oks_classic_sinaweibo"/>
+                android:src="@drawable/ssdk_oks_classic_sinaweibo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="新浪微博"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 

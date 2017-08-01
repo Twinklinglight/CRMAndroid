@@ -82,7 +82,6 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
                 List<WriterWeekPlaneData> plan = weekData.getPlan();
                 List<WeeksumDetailsData> work = weekData.getWork();
                 List<CommentData> exam = weekData.getExam();
-                level = weekData.getLeve();
                 logId = weekData.getLogId();
                 learnStudy.setText(weekData.getLearning());
 
@@ -105,7 +104,7 @@ public class DepartWeekjournalFragment extends BaseFragment<DepartWeekPresenter,
                 } else {
                     commenthead.setVisibility(View.GONE);
                 }
-                mCommentAdapter = new CommentAdapter(getActivity(), exam, level);
+                mCommentAdapter = new CommentAdapter(getActivity(), exam);
                 mLvComment.setAdapter(mCommentAdapter);
                 viewHolder.mTvCommentCount.setText("评价(" + exam.size() + ")");
                 mCommentAdapter.notifyDataSetChanged();

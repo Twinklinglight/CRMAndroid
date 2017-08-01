@@ -11,7 +11,6 @@ public class XsDaysumDetailsRP {
     private int logId;
     private XsDausumWorkData work;
     private List<CommentData>exam;
-    private String leve;
     private String learning;
 
     public int getLogId() {
@@ -38,13 +37,6 @@ public class XsDaysumDetailsRP {
         this.exam = exam;
     }
 
-    public String getLeve() {
-        return leve;
-    }
-
-    public void setLeve(String leve) {
-        this.leve = leve;
-    }
 
     public String getLearning() {
         return learning;

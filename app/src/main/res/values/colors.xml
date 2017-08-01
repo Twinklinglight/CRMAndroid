@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">#F5F6F7</color>
 
+    <color name="partTranslucent">#39000000</color>
+
     <!--控制台字体颜色-->
     <color name="colorTitle">#ffffff</color>
     <color name="colorIconText">#2b2f33</color>

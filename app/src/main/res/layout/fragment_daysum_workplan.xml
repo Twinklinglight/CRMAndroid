@@ -17,12 +17,17 @@
                 android:id="@+id/lv_work_plan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"></com.wtcrmandroid.view.listview.MyListView>
+                android:layout_marginBottom="10dp"
+                android:divider="@null">
+
+            </com.wtcrmandroid.view.listview.MyListView>
 
             <com.wtcrmandroid.view.listview.MyListView
                 android:id="@+id/iv_comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></com.wtcrmandroid.view.listview.MyListView>
+                android:layout_height="wrap_content">
+
+            </com.wtcrmandroid.view.listview.MyListView>
 
 
         </LinearLayout>
