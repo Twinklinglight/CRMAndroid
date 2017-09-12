@@ -208,7 +208,6 @@
         <!-- 我的名片 -->
         <activity android:name=".activity.aboutmy.MycardActivity" />
         <activity android:name=".permission.PermissionsActivity" />
-
         <!-- 百度地图可以 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

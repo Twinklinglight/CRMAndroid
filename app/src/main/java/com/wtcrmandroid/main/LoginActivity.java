@@ -72,7 +72,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginData> {
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.RECORD_AUDIO
-
         };
         presenter=new LoginPresenter(this,this);
 //
